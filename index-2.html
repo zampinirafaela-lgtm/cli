@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarreiraIA | Intent to Agent Forge</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            border: '#E2E8F0',
+            background: '#F8FAFC',
+            foreground: '#0F172A',
+            primary: {
+              DEFAULT: '#0F172A',
+              hover: '#1E293B',
+              foreground: '#FFFFFF',
+            },
+            accent: {
+              DEFAULT: '#2563EB',
+              hover: '#1D4ED8',
+              foreground: '#FFFFFF',
+              light: '#EFF6FF',
+            },
+            muted: {
+              DEFAULT: '#F1F5F9',
+              foreground: '#64748B',
+            },
+            card: {
+              DEFAULT: '#FFFFFF',
+              foreground: '#0F172A',
+            }
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+            'elevated': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col bg-slate-50 text-slate-900">
+
+  <!-- ==================== HEADER (Lovable / shadcn style) ==================== -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand / Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm">
+          <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-base tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
+            <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200/60">Forge Agent</span>
+          </div>
+          <p class="text-[11px] text-slate-500 hidden sm:block">Transforme Vivências em Conquistas Corporativas</p>
+        </div>
+      </div>
+
+      <!-- Segmented Control Tabs (Center) -->
+      <nav class="hidden md:flex items-center p-1 bg-slate-100/90 rounded-xl border border-slate-200/60 shadow-inner">
+        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-2 bg-white text-slate-900 shadow-sm">
+          <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-blue-600"></i>
+          <span>Cases STAR</span>
+        </button>
+        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2 relative">
+          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Pasta de Cases</span>
+          <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">0</span>
+        </button>
+        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2">
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Currículo Vivo</span>
+        </button>
+        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2 relative">
+          <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Configurações</span>
+          <span id="dotSettingsNav" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute -top-0.5 -right-0.5"></span>
+        </button>
+      </nav>
+
+      <!-- Right Actions (Status + Key button) -->
+      <div class="flex items-center gap-2.5">
+        <button onclick="navigateToTab('settings')" id="statusPill" class="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          <span id="statusLabel">Configurar Chave</span>
+        </button>
+        <a href="https://github.com" target="_blank" class="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">
+          <i data-lucide="help-circle" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- ==================== VIEW 1: CASES STAR (?tab=cases) ==================== -->
+    <section id="view-cases" class="space-y-6">
+      
+      <!-- Top Title Bar with Quick Actions -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100 mb-1.5">
+            <i data-lucide="award" class="w-3 h-3"></i> Metodologia STAR Corporativa
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Cases de Carreira</h1>
+          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Estruture projetos, pesquisas, TCCs e voluntariados em estudos de caso com impacto corporativo para portfólio e LinkedIn.</p>
+        </div>
+        <div class="flex items-center gap-2 self-start sm:self-auto">
+          <button onclick="loadStarSample()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+            Carregar Exemplo
+          </button>
+          <button onclick="clearStarForm()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-all">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            Limpar
+          </button>
+        </div>
+      </div>
+
+      <!-- Activity Category Selector (Lovable Style Cards) -->
+      <div class="space-y-2">
+        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">1. Tipo de Vivência Prática</label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2" id="categoryChips">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Form Cards: Method STAR (S - T - A - R) -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-subtle space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">2. Detalhamento Estruturado (Método STAR)</span>
+          <span class="text-[11px] text-slate-400">Preencha os tópicos para máxima precisão</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- S: Situation -->
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-extrabold">S</span>
+              Situação (Contexto)
+            </label>
+            <textarea id="inputSituation" rows="3" placeholder="Qual era o contexto, empresa, disciplina ou laboratório?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+          </div>
+
+          <!-- T: Task -->
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-[10px] font-extrabold">T</span>
+              Tarefa (Desafio & Objetivo)
+            </label>
+            <textarea id="inputTask" rows="3" placeholder="Qual problema você precisava resolver e qual era a meta esperada?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+          </div>
+
+          <!-- A: Action -->
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded bg-purple-100 text-purple-700 flex items-center justify-center text-[10px] font-extrabold">A</span>
+              Ação (O que você executou)
+            </label>
+            <textarea id="inputAction" rows="3" placeholder="Quais metodologias, ferramentas e decisões técnicas você tomou?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+          </div>
+
+          <!-- R: Result -->
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-extrabold">R</span>
+              Resultado (Impacto & Métricas)
+            </label>
+            <textarea id="inputResult" rows="3" placeholder="Quais dados, notas, percentuais ou melhorias foram alcançadas?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+          </div>
+        </div>
+
+        <!-- Optional File Upload Dropzone -->
+        <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <input type="file" id="fileInputStar" class="hidden" accept=".txt,.pdf,.docx,.doc" onchange="handleFileSelected(event, 'cases')">
+            <button onclick="document.getElementById('fileInputStar').click()" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 bg-slate-50 hover:bg-slate-100 transition-all">
+              <i data-lucide="paperclip" class="w-3.5 h-3.5"></i>
+              <span>Anexar Relatório / Documento</span>
+            </button>
+            <span id="fileNameCases" class="text-xs text-slate-400 truncate max-w-xs">Nenhum anexo</span>
+          </div>
+          <span class="text-[11px] text-slate-400">TXT, PDF ou DOCX</span>
+        </div>
+      </div>
+
+      <!-- Action Button: "Gerar Conquista com IA" (White Text on Dark Slate/Navy) -->
+      <button onclick="handleGenerateStar()" id="btnActionStar" class="w-full py-4 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-card transition-all">
+        <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+        <span class="text-white font-bold tracking-tight">Gerar Conquista com IA</span>
+      </button>
+
+      <!-- Output Results Card (Rich Formatted with Consultant Advice, Portfolio & LinkedIn) -->
+      <div id="resultsCardStar" class="hidden space-y-6">
+        
+        <!-- Status & Auto-Save Banner -->
+        <div class="bg-emerald-50 border border-emerald-200/90 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-subtle">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-bold text-emerald-900">Estudo de Caso gerado e salvo na sua Pasta de Cases!</p>
+              <p class="text-[11px] text-emerald-700">Seu projeto foi catalogado no repositório local e pode ser acessado a qualquer momento.</p>
+            </div>
+          </div>
+          <button onclick="navigateToTab('folder')" class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-subtle transition-all">
+            <i data-lucide="folder-kanban" class="w-3.5 h-3.5"></i>
+            <span>Ver na Pasta de Cases</span>
+          </button>
+        </div>
+
+        <!-- ==================== CONSELHO DO CONSULTOR (Espaço Dedicado) ==================== -->
+        <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-900 rounded-2xl text-white p-5 sm:p-6 shadow-elevated border border-indigo-500/30 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-400/30 flex items-center justify-center shrink-0">
+                <i data-lucide="compass" class="w-5 h-5 text-blue-300"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-sm sm:text-base font-bold text-white tracking-tight">Conselho do Consultor de Carreira</h3>
+                  <span class="text-[10px] font-semibold uppercase tracking-wider bg-blue-500/30 text-blue-200 px-2 py-0.5 rounded-full border border-blue-400/30">Visão Estratégica</span>
+                </div>
+                <p class="text-xs text-slate-300 mt-0.5">Dicas de um recrutador executivo sobre como defender essa experiência em entrevistas e processos seletivos.</p>
+              </div>
+            </div>
+            <button onclick="copyToClipboard('textOutputConsultant', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white border border-white/15 transition-all self-start sm:self-auto">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copiar Conselho</span>
+            </button>
+          </div>
+
+          <!-- Consultant Body Output -->
+          <div id="textOutputConsultant" class="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans space-y-3 bg-white/5 p-4 sm:p-5 rounded-xl border border-white/10">
+            <!-- Rendered via JS formatMarkdown -->
+          </div>
+        </div>
+
+        <!-- ==================== TABS: PORTFOLIO & LINKEDIN ==================== -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <div class="border-b border-slate-200 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+              <span class="font-bold text-sm text-slate-900">Materiais Prontos para Uso</span>
+            </div>
+            <!-- Output Selector Tabs -->
+            <div class="flex items-center bg-slate-200/70 p-1 rounded-xl self-start sm:self-auto">
+              <button onclick="switchOutputTab('portfolio')" id="btnOutputPortfolio" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5">
+                <i data-lucide="file-code" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Estudo de Caso (Portfólio)</span>
+              </button>
+              <button onclick="switchOutputTab('linkedin')" id="btnOutputLinkedin" class="px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
+                <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-400"></i>
+                <span>Post para LinkedIn</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <!-- Portfolio Output Box -->
+            <div id="boxOutputPortfolio" class="space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
+                <div>
+                  <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Texto Executivo Pronto</span>
+                  <p class="text-xs text-slate-500">Ideal para Notion, GitHub README, Portfólio online ou anexo em candidaturas.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button onclick="copyToClipboard('rawOutputPortfolio', this)" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-subtle transition-all">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span>Copiar Estudo de Caso</span>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Formatted display -->
+              <div id="textOutputPortfolio" class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans bg-slate-50/70 p-6 rounded-2xl border border-slate-200/80 space-y-3"></div>
+              <!-- Hidden raw text for clean clipboard copy -->
+              <div id="rawOutputPortfolio" class="hidden"></div>
+            </div>
+
+            <!-- LinkedIn Output Box -->
+            <div id="boxOutputLinkedin" class="hidden space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
+                <div>
+                  <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Publicação Estruturada para LinkedIn</span>
+                  <p class="text-xs text-slate-500">Narrativa magnética, tópicos de impacto, chamada para ação e hashtags recomendadas.</p>
+                </div>
+                <!-- Proeminent Copy to Clipboard Button -->
+                <button onclick="copyToClipboard('rawOutputLinkedin', this)" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#004182] text-white text-xs sm:text-sm font-bold shadow-subtle transition-all active:scale-[0.98]">
+                  <i data-lucide="copy" class="w-4 h-4 text-white"></i>
+                  <span>Copiar para Área de Transferência</span>
+                </button>
+              </div>
+
+              <!-- LinkedIn Preview Card -->
+              <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-subtle space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs">
+                    <i data-lucide="user" class="w-5 h-5 text-slate-400"></i>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-xs font-bold text-slate-900">Seu Perfil Profissional</span>
+                      <span class="text-[10px] text-slate-400">• 1º</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400 flex items-center gap-1">
+                      <span>Agora</span> • <i data-lucide="globe" class="w-2.5 h-2.5"></i>
+                    </p>
+                  </div>
+                </div>
+
+                <div id="textOutputLinkedin" class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-slate-50/70 p-4 rounded-xl border border-slate-200/80"></div>
+                <!-- Hidden raw text for 1-click clipboard copy -->
+                <div id="rawOutputLinkedin" class="hidden"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW: PASTA DE CASES (?tab=folder) ==================== -->
+    <section id="view-folder" class="hidden space-y-6">
+      
+      <!-- Top Title Bar with Folder Stats & Actions -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100 mb-1.5">
+            <i data-lucide="folder-archive" class="w-3 h-3"></i> Repositório Central de Conquistas
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Pasta de Cases & Projetos</h1>
+          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Acesse todos os seus estudos de caso, conselhos do consultor e posts prontos para o LinkedIn em um só local seguro.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+          <button onclick="navigateToTab('cases')" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-slate-900 hover:bg-slate-800 text-white shadow-subtle transition-all">
+            <i data-lucide="plus" class="w-3.5 h-3.5 text-white"></i>
+            <span>+ Novo Case STAR</span>
+          </button>
+          <button onclick="exportCasesJson()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all" title="Baixar arquivo de backup dos seus cases (.json)">
+            <i data-lucide="database" class="w-3.5 h-3.5 text-slate-600"></i>
+            <span>Exportar Backup</span>
+          </button>
+          <label class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all cursor-pointer" title="Restaurar cases de um arquivo .json salvo anteriormente">
+            <i data-lucide="upload" class="w-3.5 h-3.5 text-slate-600"></i>
+            <span>Importar Backup</span>
+            <input type="file" accept=".json" onchange="importCasesJson(event)" class="hidden">
+          </label>
+        </div>
+      </div>
+
+      <!-- Quick Search & Filter Controls -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-subtle space-y-3">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="text" id="inputSearchFolder" oninput="handleSearchFolder()" placeholder="Buscar por título, desafio, ferramenta ou métrica..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400">
+          </div>
+          <!-- Clear or Filter Reset -->
+          <div class="flex items-center gap-2 shrink-0">
+            <span id="folderStatsCount" class="text-xs font-semibold text-slate-500 px-2">0 cases catalogados</span>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar pb-1 text-xs" id="folderCategoryFilter">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+
+      <!-- Cases Grid -->
+      <div id="casesFolderGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="casesFolderEmpty" class="hidden bg-white rounded-3xl border border-dashed border-slate-300 p-12 text-center space-y-4 shadow-subtle">
+        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto border border-blue-100">
+          <i data-lucide="folder-plus" class="w-8 h-8"></i>
+        </div>
+        <div class="max-w-md mx-auto space-y-1">
+          <h3 class="text-base font-bold text-slate-900">Sua Pasta de Cases está vazia</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Estruture suas experiências na aba <strong>Cases STAR</strong> para que a IA gere automaticamente o conselho do consultor, o estudo para portfólio e o post do LinkedIn. Todos os seus projetos ficarão salvos aqui!
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+          <button onclick="navigateToTab('cases')" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-subtle transition-all inline-flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-300"></i>
+            <span>Criar Meu Primeiro Case</span>
+          </button>
+          <button onclick="loadDemoCaseToFolder()" class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-subtle transition-all inline-flex items-center gap-2">
+            <i data-lucide="folder-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Carregar Case de Exemplo na Pasta</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 2: RESUME LIVE (?tab=resume) ==================== -->
+    <section id="view-resume" class="hidden space-y-6">
+      
+      <!-- Top Title Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 mb-1.5">
+            <i data-lucide="shield-check" class="w-3 h-3"></i> Otimização ATS & Recrutadores
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Currículo Vivo</h1>
+          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Incorpore novos projetos e conquistas ao seu currículo atual, calibrado para passar nas triagens automáticas e humanas.</p>
+        </div>
+        <div class="flex items-center gap-2 self-start sm:self-auto">
+          <button onclick="loadResumeSample()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+            Carregar Exemplo
+          </button>
+        </div>
+      </div>
+
+      <!-- Inputs Form -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-subtle space-y-5">
+        
+        <!-- Target Role -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+            <i data-lucide="target" class="w-3.5 h-3.5 text-blue-600"></i>
+            Cargo ou Área Alvo
+          </label>
+          <input type="text" id="inputTargetRole" placeholder="Ex: Desenvolvedor Front-end Júnior / Analista de Dados Trainee" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400">
+        </div>
+
+        <!-- Recent Activities to Incorporate -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-blue-600"></i>
+            Novas Atividades e Projetos para Incorporar
+          </label>
+          <textarea id="inputNewActivities" rows="3" placeholder="Ex: Finalizei curso de TypeScript de 40h com projeto prático; liderei refatoração de banco de dados com ganho de 97% em latência..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400"></textarea>
+        </div>
+
+        <!-- Current Resume Text or File -->
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i>
+              Currículo Atual (Cole o texto ou anexe o arquivo)
+            </label>
+            <input type="file" id="fileInputResume" class="hidden" accept=".txt,.pdf,.docx,.doc" onchange="handleFileSelected(event, 'resume')">
+            <button onclick="document.getElementById('fileInputResume').click()" class="text-xs text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center gap-1">
+              <i data-lucide="paperclip" class="w-3 h-3"></i>
+              Importar de Arquivo
+            </button>
+          </div>
+          <textarea id="inputCurrentResume" rows="7" placeholder="Cole aqui as seções do seu currículo atual (Resumo, Experiência, Educação, Habilidades)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 font-sans"></textarea>
+          <span id="fileNameResume" class="text-xs text-slate-400 block"></span>
+        </div>
+      </div>
+
+      <!-- Action Button: "Gerar Currículo com IA" (White Text on Dark Slate/Navy) -->
+      <button onclick="handleGenerateResume()" id="btnActionResume" class="w-full py-4 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-card transition-all">
+        <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+        <span class="text-white font-bold tracking-tight">Gerar Currículo com IA</span>
+      </button>
+
+      <!-- Output Results Card -->
+      <div id="resultsCardResume" class="hidden bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+        <div class="border-b border-slate-200 px-6 py-4 flex items-center justify-between bg-slate-50/50">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span class="font-bold text-sm text-slate-900">Versão Otimizada Pronta para Candidaturas</span>
+          </div>
+          <button onclick="copyToClipboard('textOutputResume', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-subtle transition-all">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copiar Currículo</span>
+          </button>
+        </div>
+        <div class="p-6">
+          <div id="textOutputResume" class="text-xs sm:text-sm text-slate-700 whitespace-pre-wrap leading-relaxed font-sans bg-slate-50/70 p-5 rounded-xl border border-slate-200/80"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 3: SETTINGS (?tab=settings) ==================== -->
+    <section id="view-settings" class="hidden space-y-6">
+      
+      <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Configurações & Chave de API</h1>
+          <p class="text-sm text-slate-500 mt-0.5">Gerencie a conexão segura com os modelos de IA do Google Gemini.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle space-y-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+            <i data-lucide="key" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-sm font-bold text-slate-900">Google Gemini API Key</h2>
+            <p class="text-xs text-slate-500">Sua chave é salva no navegador (LocalStorage) e usada diretamente pelo cliente.</p>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Chave de Acesso</label>
+          <div class="relative">
+            <input type="password" id="inputApiKey" placeholder="AIzaSy..." class="w-full text-xs sm:text-sm p-3.5 pr-20 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none font-mono">
+            <button onclick="toggleKeyVisibility()" class="absolute right-3.5 top-3.5 text-xs text-slate-500 hover:text-slate-800 font-semibold">
+              <span id="labelToggleKey">Ver</span>
+            </button>
+          </div>
+          <div class="space-y-1.5 pt-2">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Modelo do Google Gemini</label>
+              <span id="activeModelBadge" class="text-[10px] font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">Auto (Detectar melhor)</span>
+            </div>
+            <select id="selectModel" onchange="onModelChange()" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none">
+              <option value="auto">⚡ Automático (Gemini 3.5 Flash-Lite / 3.5 Flash - Recomendado)</option>
+              <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite (Super rápido / Sem filas / Mais estável)</option>
+              <option value="gemini-3.5-flash">Gemini 3.5 Flash (Excelente qualidade e velocidade)</option>
+              <option value="gemini-3.6-flash">Gemini 3.6 Flash (Mais recente)</option>
+            </select>
+            <p class="text-[11px] text-slate-500">Usa os modelos mais recentes e ativos da API do Google Gemini com fallback automático.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 pt-2">
+            <button onclick="saveApiKey()" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 shadow-subtle transition-all">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              Salvar Chave
+            </button>
+            <button id="btnTestKey" onclick="testApiKeyConnection()" class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-blue-600"></i>
+              Testar Conexão
+            </button>
+            <button onclick="clearApiKey()" class="px-4 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 text-xs font-semibold transition-all">
+              Limpar
+            </button>
+          </div>
+
+          <!-- Test Result Box -->
+          <div id="testResultBox" class="hidden p-3.5 rounded-xl border text-xs transition-all"></div>
+        </div>
+
+        <!-- Help Guide Card -->
+        <div class="rounded-xl bg-slate-50 p-4 border border-slate-200/80 text-xs text-slate-600 space-y-2">
+          <div class="font-bold text-slate-800 flex items-center gap-1.5">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-blue-600"></i>
+            Como obter sua chave gratuita do Gemini:
+          </div>
+          <ol class="list-decimal pl-5 space-y-1">
+            <li>Acesse o <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-semibold underline">Google AI Studio</a>.</li>
+            <li>Faça login com sua conta Google e clique em <strong>"Create API Key"</strong>.</li>
+            <li>Cole a chave no campo acima e clique em <strong>Testar Conexão</strong> ou <strong>Salvar Chave</strong>. O Gemini Flash é gratuito para desenvolvedores.</li>
+          </ol>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==================== MOBILE NAVIGATION BAR ==================== -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 p-2 flex justify-around items-center">
+    <button onclick="navigateToTab('cases')" id="mobile-tab-cases" class="flex flex-col items-center gap-1 text-slate-900 font-bold px-3 py-1">
+      <div class="w-9 h-7 rounded-full bg-slate-100 flex items-center justify-center">
+        <i data-lucide="layout-grid" class="w-4 h-4 text-slate-900"></i>
+      </div>
+      <span class="text-[10px]">Cases</span>
+    </button>
+    <button onclick="navigateToTab('folder')" id="mobile-tab-folder" class="flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1 relative">
+      <div class="w-9 h-7 rounded-full flex items-center justify-center">
+        <i data-lucide="folder-kanban" class="w-4 h-4 text-slate-400"></i>
+      </div>
+      <span class="text-[10px]">Pasta</span>
+      <span id="badgeFolderMobile" class="w-2 h-2 rounded-full bg-blue-600 absolute top-1 right-3 hidden"></span>
+    </button>
+    <button onclick="navigateToTab('resume')" id="mobile-tab-resume" class="flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1">
+      <div class="w-9 h-7 rounded-full flex items-center justify-center">
+        <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
+      </div>
+      <span class="text-[10px]">Currículo</span>
+    </button>
+    <button onclick="navigateToTab('settings')" id="mobile-tab-settings" class="flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1 relative">
+      <div class="w-9 h-7 rounded-full flex items-center justify-center">
+        <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>
+      </div>
+      <span class="text-[10px]">Ajustes</span>
+      <span id="dotSettingsMobile" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-3"></span>
+    </button>
+  </div>
+
+  <!-- Modal: Case Detail (Full View with Consultant Advice, Portfolio & LinkedIn) -->
+  <div id="modalCaseDetail" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in">
+      
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-5 border-b border-slate-200 flex items-start justify-between gap-3 bg-slate-50/70">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span id="modalCaseCategory" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">Categoria</span>
+            <span id="modalCaseDate" class="text-xs text-slate-400">Data</span>
+          </div>
+          <h3 id="modalCaseTitle" class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">Título do Estudo de Caso</h3>
+        </div>
+        <button onclick="closeCaseDetailModal()" class="w-8 h-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Modal Tabs Control -->
+      <div class="border-b border-slate-200 px-4 sm:px-5 py-2.5 bg-white flex items-center justify-between gap-2 overflow-x-auto">
+        <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl shrink-0">
+          <button onclick="switchModalDetailTab('consultant')" id="modalTabBtnConsultant" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5">
+            <i data-lucide="compass" class="w-3.5 h-3.5 text-blue-600"></i>
+            <span>Conselho do Consultor</span>
+          </button>
+          <button onclick="switchModalDetailTab('portfolio')" id="modalTabBtnPortfolio" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
+            <i data-lucide="file-code" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>Portfólio</span>
+          </button>
+          <button onclick="switchModalDetailTab('linkedin')" id="modalTabBtnLinkedin" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
+            <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>LinkedIn</span>
+          </button>
+        </div>
+
+        <button onclick="copyCurrentModalTab(this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-subtle transition-all shrink-0">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span>Copiar Esta Aba</span>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-5 sm:p-6 overflow-y-auto flex-1 custom-scrollbar space-y-4">
+        
+        <!-- Consultant Tab Content -->
+        <div id="modalBoxConsultant" class="space-y-3">
+          <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-2.5">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+            <div>
+              <p class="font-bold">Visão do Especialista de Carreira:</p>
+              <p class="text-[11px] text-blue-700 mt-0.5">Use estes pontos de argumentação em suas entrevistas e adicione as competências recomendadas ao seu currículo.</p>
+            </div>
+          </div>
+          <div id="modalTextConsultant" class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-slate-50/70 p-5 rounded-xl border border-slate-200"></div>
+        </div>
+
+        <!-- Portfolio Tab Content -->
+        <div id="modalBoxPortfolio" class="hidden space-y-3">
+          <div id="modalTextPortfolio" class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-slate-50/70 p-5 rounded-xl border border-slate-200"></div>
+        </div>
+
+        <!-- LinkedIn Tab Content -->
+        <div id="modalBoxLinkedin" class="hidden space-y-3">
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-800 flex items-center justify-between">
+            <span class="font-semibold">Texto formatado pronto para copiar e colar no feed do LinkedIn</span>
+            <button onclick="copyCurrentModalTab(this)" class="px-2.5 py-1 rounded bg-[#0A66C2] text-white text-xs font-bold hover:bg-[#004182]">
+              Copiar Post
+            </button>
+          </div>
+          <div id="modalTextLinkedin" class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-slate-50/70 p-5 rounded-xl border border-slate-200"></div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3.5 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+        <button id="modalBtnDeleteCase" onclick="deleteCaseFromModal()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-rose-50 transition-all">
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          <span>Excluir da Pasta</span>
+        </button>
+        <button onclick="closeCaseDetailModal()" class="px-4 py-2 text-xs font-semibold rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 transition-all">
+          Fechar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Error Modal (Clean replacement for alerts) -->
+  <div id="modalError" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4 animate-in fade-in">
+      <div class="flex items-start gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 border border-rose-100">
+          <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 id="modalErrorTitle" class="text-base font-bold text-slate-900">Atenção ao Conectar</h3>
+          <p id="modalErrorMessage" class="text-xs text-slate-600 mt-1 leading-relaxed"></p>
+        </div>
+      </div>
+      <div id="modalErrorHint" class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 text-xs text-slate-600 space-y-1"></div>
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button onclick="closeErrorModal()" class="px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition-all">
+          Fechar
+        </button>
+        <button onclick="closeErrorModal(); navigateToTab('settings');" class="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white flex items-center gap-1.5 shadow-subtle transition-all">
+          <i data-lucide="settings" class="w-3.5 h-3.5"></i>
+          <span>Ajustar Chave</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-16 md:bottom-6 right-4 sm:right-6 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-elevated transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2 z-50">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastText">Mensagem</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Activity Categories (Lovable style chips)
+    const categories = [
+      { id: 'SEMINAR', label: 'Seminário', icon: 'graduation-cap', desc: 'Bancas e palestras' },
+      { id: 'RESEARCH', label: 'Pesquisa', icon: 'flask-conical', desc: 'IC e TCCs' },
+      { id: 'INDEPENDENT', label: 'Projeto', icon: 'code', desc: 'Apps e protótipos' },
+      { id: 'COURSE', label: 'Curso', icon: 'book-open', desc: 'Bootcamps e extensão' },
+      { id: 'INTERNSHIP', label: 'Estágio', icon: 'briefcase', desc: 'Vivência de mercado' },
+      { id: 'VOLUNTEER', label: 'Voluntário', icon: 'heart', desc: 'ONGs e entidades' },
+      { id: 'OTHER', label: 'Outros', icon: 'layers', desc: 'Geral' }
+    ];
+
+    let currentSelectedCategory = 'SEMINAR';
+    let currentTab = 'cases';
+
+    // Initialize Category Chips
+    function renderCategoryChips() {
+      const container = document.getElementById('categoryChips');
+      container.innerHTML = categories.map(cat => {
+        const isSelected = cat.id === currentSelectedCategory;
+        return `
+          <button onclick="selectCategory('${cat.id}')" class="text-left p-2.5 rounded-xl border transition-all ${
+            isSelected 
+              ? 'border-slate-900 bg-slate-900 text-white shadow-subtle' 
+              : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700'
+          }">
+            <div class="flex items-center gap-1.5 mb-1">
+              <i data-lucide="${cat.icon}" class="w-3.5 h-3.5 ${isSelected ? 'text-blue-300' : 'text-slate-400'}"></i>
+              <span class="text-xs font-bold truncate">${cat.label}</span>
+            </div>
+            <p class="text-[10px] ${isSelected ? 'text-slate-300' : 'text-slate-400'} truncate">${cat.desc}</p>
+          </button>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function selectCategory(id) {
+      currentSelectedCategory = id;
+      renderCategoryChips();
+    }
+
+    // Tab Navigation & URL Query Sync (?tab=cases, ?tab=resume, ?tab=settings)
+    function navigateToTab(tabName, updateHistory = true) {
+      currentTab = tabName;
+
+      // Update URL query parameter without full reload
+      if (updateHistory) {
+        const url = new URL(window.location);
+        url.searchParams.set('tab', tabName);
+        window.history.pushState({}, '', url);
+      }
+
+      // Hide all views
+      ['cases', 'folder', 'resume', 'settings'].forEach(t => {
+        const viewEl = document.getElementById(`view-${t}`);
+        if (viewEl) viewEl.classList.add('hidden');
+        
+        // Desktop styles reset
+        const dBtn = document.getElementById(`tab-btn-${t}`);
+        if (dBtn) {
+          dBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2 relative";
+          const icon = dBtn.querySelector('i');
+          if (icon) icon.className = "w-3.5 h-3.5 text-slate-400";
+        }
+
+        // Mobile styles reset
+        const mBtn = document.getElementById(`mobile-tab-${t}`);
+        if (mBtn) {
+          mBtn.className = "flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1 relative";
+          const iconBox = mBtn.querySelector('div');
+          if (iconBox) iconBox.className = "w-9 h-7 rounded-full flex items-center justify-center";
+          const icon = mBtn.querySelector('i');
+          if (icon) icon.className = "w-4 h-4 text-slate-400";
+        }
+      });
+
+      // Show active view
+      const activeView = document.getElementById(`view-${tabName}`);
+      if (activeView) activeView.classList.remove('hidden');
+
+      // Highlight active desktop tab
+      const activeDesktopBtn = document.getElementById(`tab-btn-${tabName}`);
+      if (activeDesktopBtn) {
+        activeDesktopBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-2 bg-white text-slate-900 shadow-sm relative";
+        const icon = activeDesktopBtn.querySelector('i');
+        if (icon) icon.className = "w-3.5 h-3.5 text-blue-600";
+      }
+
+      // Highlight active mobile tab
+      const activeMobileBtn = document.getElementById(`mobile-tab-${tabName}`);
+      if (activeMobileBtn) {
+        activeMobileBtn.className = "flex flex-col items-center gap-1 text-slate-900 font-bold px-3 py-1 relative";
+        const iconBox = activeMobileBtn.querySelector('div');
+        if (iconBox) iconBox.className = "w-9 h-7 rounded-full bg-slate-100 flex items-center justify-center";
+        const icon = activeMobileBtn.querySelector('i');
+        if (icon) icon.className = "w-4 h-4 text-slate-900";
+      }
+
+      if (tabName === 'folder') {
+        renderCasesFolder();
+      }
+
+      lucide.createIcons();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Switch output view between Portfolio and LinkedIn
+    function switchOutputTab(type) {
+      const pBox = document.getElementById('boxOutputPortfolio');
+      const lBox = document.getElementById('boxOutputLinkedin');
+      const pBtn = document.getElementById('btnOutputPortfolio');
+      const lBtn = document.getElementById('btnOutputLinkedin');
+
+      if (type === 'portfolio') {
+        pBox.classList.remove('hidden');
+        lBox.classList.add('hidden');
+        pBtn.className = "px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5";
+        lBtn.className = "px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5";
+      } else {
+        pBox.classList.add('hidden');
+        lBox.classList.remove('hidden');
+        lBtn.className = "px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5";
+        pBtn.className = "px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5";
+      }
+      lucide.createIcons();
+    }
+
+    // Samples
+    function loadStarSample() {
+      selectCategory('SEMINAR');
+      document.getElementById('inputSituation').value = "No 6º período de Engenharia de Software, realizamos um seminário sobre Otimização de Bancos de Dados Relacionais para uma banca de professores e convidados de empresas de tecnologia.";
+      document.getElementById('inputTask').value = "Minha responsabilidade como líder técnico foi demonstrar na prática como refatorar queries lentas e implantar índices compostos e particionamento em uma base com 2 milhões de registros.";
+      document.getElementById('inputAction').value = "Analisei planos de execução com EXPLAIN ANALYZE, identifiquei gargalos de Sequential Scan, desenhei uma arquitetura de cache com Redis e implementei pools de conexão com HikariCP no backend Spring Boot.";
+      document.getElementById('inputResult').value = "Reduzimos a latência de consultas críticas de 8.4s para 180ms (ganho de 97% de performance). A apresentação recebeu nota 10/10 e foi incluída no repositório de melhores práticas da faculdade.";
+      showToast("Exemplo STAR preenchido!");
+    }
+
+    function clearStarForm() {
+      document.getElementById('inputSituation').value = '';
+      document.getElementById('inputTask').value = '';
+      document.getElementById('inputAction').value = '';
+      document.getElementById('inputResult').value = '';
+      document.getElementById('fileNameCases').innerText = 'Nenhum anexo';
+      document.getElementById('resultsCardStar').classList.add('hidden');
+      showToast("Formulário limpo.");
+    }
+
+    function loadResumeSample() {
+      document.getElementById('inputTargetRole').value = "Desenvolvedor Backend Júnior (Java / Kotlin / Spring)";
+      document.getElementById('inputNewActivities').value = "1. Conclusão do seminário de performance em banco de dados com ganho de 97% em latência.\n2. Criação de API RESTful com autenticação JWT e testes automatizados (JUnit 5 / Mockito).\n3. Monitoria acadêmica de algoritmos para 40 calouros.";
+      document.getElementById('inputCurrentResume').value = "JOÃO SILVA\nSão Paulo - SP | (11) 99999-9999 | joao.silva@email.com | github.com/joaosilva | linkedin.com/in/joaosilva\n\nOBJETIVO:\nEstágio ou posição Júnior em Desenvolvimento de Software.\n\nFORMAÇÃO ACADÊMICA:\nBacharelado em Engenharia de Software - Universidade XYZ (2022 - 2026)\n\nCONHECIMENTOS TÉCNICOS:\nJava, Python básico, SQL, Git, HTML/CSS.";
+      showToast("Exemplo de Currículo carregado!");
+    }
+
+    // File Input Handler
+    function handleFileSelected(event, type) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        if (type === 'cases') {
+          document.getElementById('fileNameCases').innerText = `${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+          if (text && text.trim()) {
+            document.getElementById('inputSituation').value += `\n[Anexo ${file.name}]:\n` + text.slice(0, 1500);
+          }
+        } else {
+          document.getElementById('fileNameResume').innerText = `Arquivo anexado: ${file.name}`;
+          if (text && text.trim()) {
+            document.getElementById('inputCurrentResume').value = text;
+          }
+        }
+        showToast(`Arquivo "${file.name}" importado!`);
+      };
+      reader.readAsText(file);
+    }
+
+    // Candidate models to ensure 100% compatibility across Google AI Studio API versions
+    const CANDIDATE_MODELS = [
+      'gemini-3.5-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-3.6-flash',
+      'gemini-3.7-flash',
+      'gemini-3.8-flash'
+    ];
+
+    // LocalStorage API Key & Model Helpers
+    function getStoredKey() {
+      return localStorage.getItem('carreira_ia_gemini_key') || '';
+    }
+
+    function getSelectedModel() {
+      return localStorage.getItem('carreira_ia_selected_model') || 'auto';
+    }
+
+    function setSelectedModel(val) {
+      localStorage.setItem('carreira_ia_selected_model', val);
+    }
+
+    function getWorkingModel() {
+      return localStorage.getItem('carreira_ia_working_model') || '';
+    }
+
+    function setWorkingModel(val) {
+      localStorage.setItem('carreira_ia_working_model', val);
+    }
+
+    function onModelChange() {
+      const val = document.getElementById('selectModel').value;
+      setSelectedModel(val);
+      if (val !== 'auto') {
+        setWorkingModel(val);
+      }
+      updateStatusBadge();
+      showToast(`Modelo selecionado: ${val === 'auto' ? 'Automático' : val}`);
+    }
+
+    function saveApiKey() {
+      const key = document.getElementById('inputApiKey').value.trim();
+      if (!key) {
+        showErrorModal(
+          "Chave não informada",
+          "Por favor, insira uma chave de API válida do Google Gemini antes de salvar.",
+          "Você pode gerar uma chave gratuitamente em <a href='https://aistudio.google.com/app/apikey' target='_blank' class='text-blue-600 underline font-semibold'>aistudio.google.com/app/apikey</a>."
+        );
+        return;
+      }
+      localStorage.setItem('carreira_ia_gemini_key', key);
+      updateStatusBadge();
+      showToast("Chave salva com sucesso!");
+    }
+
+    function clearApiKey() {
+      localStorage.removeItem('carreira_ia_gemini_key');
+      localStorage.removeItem('carreira_ia_working_model');
+      document.getElementById('inputApiKey').value = '';
+      const testResult = document.getElementById('testResultBox');
+      if (testResult) testResult.classList.add('hidden');
+      updateStatusBadge();
+      showToast("Chave removida.");
+    }
+
+    function toggleKeyVisibility() {
+      const input = document.getElementById('inputApiKey');
+      const label = document.getElementById('labelToggleKey');
+      if (input.type === 'password') {
+        input.type = 'text';
+        label.innerText = 'Ocultar';
+      } else {
+        input.type = 'password';
+        label.innerText = 'Ver';
+      }
+    }
+
+    function updateStatusBadge() {
+      const key = getStoredKey();
+      const workingModel = getWorkingModel();
+      const pill = document.getElementById('statusPill');
+      const dotNav = document.getElementById('dotSettingsNav');
+      const dotMobile = document.getElementById('dotSettingsMobile');
+      const activeBadge = document.getElementById('activeModelBadge');
+
+      if (activeBadge) {
+        const selected = getSelectedModel();
+        if (selected === 'auto') {
+          activeBadge.innerText = workingModel ? `Auto (${workingModel})` : 'Auto (Detectar)';
+        } else {
+          activeBadge.innerText = selected;
+        }
+      }
+
+      if (key) {
+        const displayLabel = workingModel ? `Gemini (${workingModel})` : 'Gemini Conectado';
+        pill.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200/80 hover:bg-emerald-100/60 transition-all cursor-pointer";
+        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span title="${displayLabel}">${displayLabel}</span>`;
+        if (dotNav) dotNav.classList.add('hidden');
+        if (dotMobile) dotMobile.classList.add('hidden');
+      } else {
+        pill.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer";
+        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span><span>Configurar Chave</span>`;
+        if (dotNav) dotNav.classList.remove('hidden');
+        if (dotMobile) dotMobile.classList.remove('hidden');
+      }
+    }
+
+    // Modal Helpers
+    function showErrorModal(title, message, hint) {
+      document.getElementById('modalErrorTitle').innerText = title;
+      document.getElementById('modalErrorMessage').innerHTML = message;
+      const hintEl = document.getElementById('modalErrorHint');
+      if (hint) {
+        hintEl.innerHTML = hint;
+        hintEl.classList.remove('hidden');
+      } else {
+        hintEl.classList.add('hidden');
+      }
+      document.getElementById('modalError').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeErrorModal() {
+      document.getElementById('modalError').classList.add('hidden');
+    }
+
+    // Test API Connection with ping query
+    async function testApiKeyConnection() {
+      const key = document.getElementById('inputApiKey').value.trim() || getStoredKey();
+      const resultBox = document.getElementById('testResultBox');
+      const btn = document.getElementById('btnTestKey');
+
+      if (!key) {
+        resultBox.className = "p-3.5 rounded-xl border border-amber-200 bg-amber-50 text-amber-800 text-xs flex items-center gap-2";
+        resultBox.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-amber-600 shrink-0"></i><span>Por favor, digite ou cole a chave de API antes de testar.</span>`;
+        resultBox.classList.remove('hidden');
+        lucide.createIcons();
+        return;
+      }
+
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i><span>Testando...</span>`;
+      resultBox.className = "p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs flex items-center gap-2";
+      resultBox.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-blue-600 shrink-0"></i><span>Conectando com o Google Gemini e identificando modelo suportado...</span>`;
+      resultBox.classList.remove('hidden');
+      lucide.createIcons();
+
+      const selected = getSelectedModel();
+      const modelsToTry = selected !== 'auto'
+        ? [selected, ...CANDIDATE_MODELS.filter(m => m !== selected)]
+        : [...CANDIDATE_MODELS];
+
+      let workingModelFound = null;
+      let lastErrorMessage = '';
+
+      for (const model of modelsToTry) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: "ping" }] }],
+              generationConfig: { maxOutputTokens: 5 }
+            })
+          });
+
+          if (res.ok) {
+            workingModelFound = model;
+            break;
+          } else {
+            const errData = await res.json().catch(() => ({}));
+            lastErrorMessage = errData.error?.message || `HTTP ${res.status}`;
+            if (res.status === 400 && lastErrorMessage.includes('API_KEY_INVALID')) {
+              break;
+            }
+          }
+        } catch (e) {
+          lastErrorMessage = e.message;
+        }
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = origHtml;
+
+      if (workingModelFound) {
+        localStorage.setItem('carreira_ia_gemini_key', key);
+        setWorkingModel(workingModelFound);
+        updateStatusBadge();
+        resultBox.className = "p-3.5 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-900 text-xs flex items-start gap-2.5";
+        resultBox.innerHTML = `
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+          <div>
+            <p class="font-bold">Conexão 100% estabelecida e funcionando!</p>
+            <p class="text-[11px] text-emerald-700 mt-0.5">Modelo compatível ativo: <code class="font-mono font-semibold bg-emerald-100/70 px-1 py-0.5 rounded text-emerald-800">${workingModelFound}</code>. Chave salva no navegador.</p>
+          </div>
+        `;
+      } else {
+        const isHighDemand = lastErrorMessage.toLowerCase().includes('high demand') || lastErrorMessage.toLowerCase().includes('overloaded');
+        const detailMsg = isHighDemand
+          ? "Sua chave é 100% válida! Porém os servidores públicos do Google estão enfrentando um pico de acessos neste instante. Aguarde 30 a 60 segundos ou selecione outro modelo no menu acima (como Gemini 1.5 Flash) e clique em Testar Conexão."
+          : (lastErrorMessage || "Verifique se a chave está correta e ativa no Google AI Studio.");
+
+        resultBox.className = "p-3.5 rounded-xl border border-rose-200 bg-rose-50 text-rose-900 text-xs flex items-start gap-2.5";
+        resultBox.innerHTML = `
+          <i data-lucide="x-circle" class="w-4 h-4 text-rose-600 shrink-0 mt-0.5"></i>
+          <div>
+            <p class="font-bold">${isHighDemand ? "Pico Temporário de Demanda no Google" : "Falha na conexão com o Gemini"}</p>
+            <p class="text-[11px] text-rose-700 mt-0.5">${detailMsg}</p>
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    // Gemini API Call with resilient automatic model fallback
+    async function requestGemini(prompt) {
+      const apiKey = getStoredKey();
+      if (!apiKey) {
+        navigateToTab('settings');
+        showErrorModal(
+          "Chave de API não configurada",
+          "Para gerar o Estudo de Caso ou otimizar o Currículo, você precisa adicionar sua chave gratuita do Google Gemini.",
+          "Clique em <strong>Ajustar Chave</strong> abaixo para colar sua chave criada no Google AI Studio."
+        );
+        throw new Error("Chave ausente");
+      }
+
+      const selected = getSelectedModel();
+      let modelsToTry = [];
+
+      if (selected !== 'auto') {
+        modelsToTry = [selected, ...CANDIDATE_MODELS.filter(m => m !== selected)];
+      } else {
+        const cached = getWorkingModel();
+        if (cached && CANDIDATE_MODELS.includes(cached)) {
+          modelsToTry = [cached, ...CANDIDATE_MODELS.filter(m => m !== cached)];
+        } else {
+          modelsToTry = [...CANDIDATE_MODELS];
+        }
+      }
+
+      let lastError = null;
+
+      for (const model of modelsToTry) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 2500
+              }
+            })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) {
+              setWorkingModel(model);
+              updateStatusBadge();
+              return text;
+            }
+          }
+
+          const errorData = await response.json().catch(() => ({}));
+          const errMsg = errorData.error?.message || `Status HTTP ${response.status}`;
+          lastError = errMsg;
+
+          if (response.status === 400 && errMsg.includes('API_KEY_INVALID')) {
+            showErrorModal(
+              "Chave de API Inválida",
+              `O Google Gemini informou que a chave de API fornecida é inválida: <br><code class="font-mono text-rose-700 bg-rose-50 px-1 py-0.5 rounded">${errMsg}</code>`,
+              "Acesse <a href='https://aistudio.google.com/app/apikey' target='_blank' class='text-blue-600 underline font-semibold'>Google AI Studio</a> para gerar uma nova chave gratuita e cole na aba Configurações."
+            );
+            throw new Error("Chave de API inválida.");
+          }
+
+          console.warn(`Tentativa com modelo ${model} falhou: ${errMsg}. Alternando para o próximo modelo compatível...`);
+        } catch (fetchErr) {
+          if (fetchErr.message === "Chave de API inválida.") {
+            throw fetchErr;
+          }
+          lastError = fetchErr.message;
+        }
+      }
+
+      const isHighDemand = lastError && (lastError.toLowerCase().includes('high demand') || lastError.toLowerCase().includes('temporarily'));
+      const friendlyDetail = isHighDemand
+        ? "Os servidores do Google Gemini estão com um pico momentâneo de acessos no mundo todo. Aguarde cerca de 30 a 60 segundos e tente novamente."
+        : `Detalhe técnico retornado: ${lastError}`;
+
+      showErrorModal(
+        isHighDemand ? "Pico Temporário de Demanda no Google" : "Erro ao conectar com o Gemini",
+        `Não foi possível obter resposta com os modelos disponíveis (${modelsToTry.join(', ')}).<br><span class="text-slate-600 text-xs mt-2 block">${friendlyDetail}</span>`,
+        "Dica: Vá até a aba <strong>Configurações</strong>, clique em <strong>Testar Conexão</strong> ou aguarde 1 minuto."
+      );
+      throw new Error(`Falha no Gemini: ${lastError}`);
+    }
+
+    // Enhanced Markdown Formatter for Gorgeous Executive Typography
+    function formatMarkdown(text) {
+      if (!text) return '';
+      
+      let html = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+      // Headings
+      html = html.replace(/^### (.*$)/gim, '<h4 class="text-xs sm:text-sm font-bold text-slate-900 mt-3 mb-1.5 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0"></span><span>$1</span></h4>');
+      html = html.replace(/^## (.*$)/gim, '<h3 class="text-sm sm:text-base font-bold text-slate-900 mt-4 mb-2 pb-1 border-b border-slate-200/70 flex items-center gap-2"><span>$1</span></h3>');
+      html = html.replace(/^# (.*$)/gim, '<h2 class="text-base sm:text-lg font-extrabold text-slate-900 mt-3 mb-2">$1</h2>');
+
+      // Bold & Italic
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-slate-900">$1</strong>');
+      html = html.replace(/\*(.*?)\*/g, '<em class="italic text-slate-700">$1</em>');
+
+      // Quotes & Callouts
+      html = html.replace(/^\> (.*$)/gim, '<div class="my-2 p-3 bg-blue-50/80 border-l-4 border-blue-600 rounded-r-xl text-xs sm:text-sm text-blue-950 font-medium">$1</div>');
+
+      // Unordered lists
+      html = html.replace(/^\s*[-*]\s+(.*$)/gim, '<li class="flex items-start gap-2 mb-1.5 text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></span><span>$1</span></li>');
+
+      // Ordered lists
+      html = html.replace(/^\s*(\d+)\.\s+(.*$)/gim, '<li class="flex items-start gap-2 mb-1.5 text-slate-700"><span class="font-bold text-blue-600 text-xs shrink-0 mt-0.5">$1.</span><span>$2</span></li>');
+
+      // Wrap lists
+      html = html.replace(/(<li.*<\/li>)/gms, '<ul class="my-2 space-y-1 pl-1">$1</ul>');
+
+      // Paragraphs
+      html = html.replace(/\n{2,}/g, '</p><p class="mb-2.5 text-slate-700 leading-relaxed">');
+      html = '<p class="mb-2.5 text-slate-700 leading-relaxed">' + html + '</p>';
+
+      html = html.replace(/<p class="mb-2.5 text-slate-700 leading-relaxed">\s*<\/p>/g, '');
+      return html;
+    }
+
+    // Helper: Extract a clean title from the portfolio text
+    function extractCaseTitle(text, fallbackCategory) {
+      if (!text) return `Estudo de Caso - ${fallbackCategory}`;
+      const lines = text.split('\n');
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('#') || trimmed.toLowerCase().includes('título:')) {
+          const clean = trimmed.replace(/^[#\*\s:]+|Título:\s*|\*+/gi, '').trim();
+          if (clean.length > 5) return clean.slice(0, 90);
+        }
+      }
+      return `Estudo de Caso: ${fallbackCategory}`;
+    }
+
+    // ==================== PASTA DE CASES STORAGE & MANAGEMENT ====================
+    function getSavedCases() {
+      try {
+        const raw = localStorage.getItem('carreira_ia_saved_cases');
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        console.error("Erro ao ler pasta de cases:", e);
+        return [];
+      }
+    }
+
+    function saveCaseToFolder(caseObj) {
+      try {
+        const cases = getSavedCases();
+        // Remove if exists with same id, then prepend
+        const filtered = cases.filter(c => c.id !== caseObj.id);
+        filtered.unshift(caseObj);
+        localStorage.setItem('carreira_ia_saved_cases', JSON.stringify(filtered));
+        updateFolderBadge();
+        renderCasesFolder();
+      } catch (e) {
+        console.error("Erro ao salvar case:", e);
+      }
+    }
+
+    function deleteCaseFromFolder(caseId) {
+      if (!confirm("Tem certeza de que deseja remover este estudo de caso da sua pasta?")) {
+        return;
+      }
+      try {
+        const cases = getSavedCases().filter(c => c.id !== caseId);
+        localStorage.setItem('carreira_ia_saved_cases', JSON.stringify(cases));
+        updateFolderBadge();
+        renderCasesFolder();
+        showToast("Estudo de caso removido da pasta.");
+      } catch (e) {
+        console.error("Erro ao excluir case:", e);
+      }
+    }
+
+    function updateFolderBadge() {
+      const cases = getSavedCases();
+      const count = cases.length;
+      
+      const badgeDesktop = document.getElementById('badgeFolderDesktop');
+      if (badgeDesktop) {
+        badgeDesktop.innerText = count;
+      }
+      
+      const badgeMobile = document.getElementById('badgeFolderMobile');
+      if (badgeMobile) {
+        if (count > 0) {
+          badgeMobile.classList.remove('hidden');
+        } else {
+          badgeMobile.classList.add('hidden');
+        }
+      }
+
+      const statsEl = document.getElementById('folderStatsCount');
+      if (statsEl) {
+        statsEl.innerText = `${count} ${count === 1 ? 'case catalogado' : 'cases catalogados'}`;
+      }
+    }
+
+    let currentFolderFilter = 'ALL';
+
+    function renderFolderCategoryFilter() {
+      const container = document.getElementById('folderCategoryFilter');
+      if (!container) return;
+
+      const filters = [
+        { id: 'ALL', label: 'Todos os Projetos' },
+        ...categories.map(c => ({ id: c.id, label: c.label }))
+      ];
+
+      container.innerHTML = filters.map(f => {
+        const isSelected = f.id === currentFolderFilter;
+        return `
+          <button onclick="filterFolderByCategory('${f.id}')" class="px-3 py-1.5 rounded-lg font-semibold shrink-0 transition-all ${
+            isSelected
+              ? 'bg-slate-900 text-white shadow-subtle'
+              : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+          }">
+            ${f.label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function filterFolderByCategory(catId) {
+      currentFolderFilter = catId;
+      renderFolderCategoryFilter();
+      renderCasesFolder();
+    }
+
+    function handleSearchFolder() {
+      renderCasesFolder();
+    }
+
+    function renderCasesFolder() {
+      const grid = document.getElementById('casesFolderGrid');
+      const emptyState = document.getElementById('casesFolderEmpty');
+      if (!grid || !emptyState) return;
+
+      const searchTerm = (document.getElementById('inputSearchFolder')?.value || '').toLowerCase().trim();
+      let cases = getSavedCases();
+
+      // Category filter
+      if (currentFolderFilter !== 'ALL') {
+        cases = cases.filter(c => c.categoryId === currentFolderFilter);
+      }
+
+      // Text search
+      if (searchTerm) {
+        cases = cases.filter(c => {
+          return (
+            (c.title && c.title.toLowerCase().includes(searchTerm)) ||
+            (c.categoryLabel && c.categoryLabel.toLowerCase().includes(searchTerm)) ||
+            (c.situation && c.situation.toLowerCase().includes(searchTerm)) ||
+            (c.result && c.result.toLowerCase().includes(searchTerm)) ||
+            (c.portfolioPart && c.portfolioPart.toLowerCase().includes(searchTerm))
+          );
+        });
+      }
+
+      if (cases.length === 0) {
+        grid.innerHTML = '';
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        lucide.createIcons();
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.classList.remove('hidden');
+
+      grid.innerHTML = cases.map(c => {
+        const dateStr = c.createdAt ? new Date(c.createdAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Recente';
+        const cat = categories.find(cat => cat.id === c.categoryId) || { icon: 'folder', label: c.categoryLabel || 'Case' };
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between group">
+            <div class="space-y-3">
+              <!-- Top Row: Badge & Date -->
+              <div class="flex items-center justify-between text-xs">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                  <i data-lucide="${cat.icon}" class="w-3 h-3 text-blue-600"></i>
+                  ${c.categoryLabel || 'Vivência'}
+                </span>
+                <span class="text-slate-400 text-[11px]">${dateStr}</span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-bold text-slate-900 text-sm leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
+                ${c.title || 'Estudo de Caso Corporativo'}
+              </h3>
+
+              <!-- Brief excerpts -->
+              <div class="space-y-1 text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100">
+                <p class="line-clamp-2"><strong class="text-slate-700">Desafio:</strong> ${c.situation || 'Experiência estruturada com método STAR'}</p>
+                ${c.result ? `<p class="line-clamp-2 text-emerald-800"><strong class="text-emerald-900">Impacto:</strong> ${c.result}</p>` : ''}
+              </div>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="pt-4 mt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <button onclick="openCaseDetailModal('${c.id}')" class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-subtle transition-all">
+                <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                <span>Ver Completo</span>
+              </button>
+              
+              <button onclick="copySavedCasePart('${c.id}', 'portfolio', this)" title="Copiar Portfólio" class="p-2 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">
+                <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
+              </button>
+
+              <button onclick="copySavedCasePart('${c.id}', 'linkedin', this)" title="Copiar LinkedIn" class="p-2 rounded-lg border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-all">
+                <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+              </button>
+
+              <button onclick="deleteCaseFromFolder('${c.id}')" title="Excluir" class="p-2 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Modal Case Detail
+    let currentViewingCase = null;
+    let currentModalTab = 'consultant';
+
+    function openCaseDetailModal(caseId) {
+      const cases = getSavedCases();
+      const target = cases.find(c => c.id === caseId);
+      if (!target) return;
+
+      currentViewingCase = target;
+      currentModalTab = 'consultant';
+
+      document.getElementById('modalCaseTitle').innerText = target.title || 'Estudo de Caso Corporativo';
+      document.getElementById('modalCaseCategory').innerText = target.categoryLabel || 'Projeto';
+      document.getElementById('modalCaseDate').innerText = target.createdAt ? new Date(target.createdAt).toLocaleDateString('pt-BR') : '';
+
+      document.getElementById('modalTextConsultant').innerHTML = formatMarkdown(target.consultantPart || "Conselho do consultor não disponível para este registro antigo.");
+      document.getElementById('modalTextPortfolio').innerHTML = formatMarkdown(target.portfolioPart || "Texto de portfólio não disponível.");
+      document.getElementById('modalTextLinkedin').innerText = target.linkedinPart || "Post do LinkedIn não disponível.";
+
+      switchModalDetailTab('consultant');
+      document.getElementById('modalCaseDetail').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeCaseDetailModal() {
+      document.getElementById('modalCaseDetail').classList.add('hidden');
+      currentViewingCase = null;
+    }
+
+    function switchModalDetailTab(tab) {
+      currentModalTab = tab;
+      const bConsultant = document.getElementById('modalBoxConsultant');
+      const bPortfolio = document.getElementById('modalBoxPortfolio');
+      const bLinkedin = document.getElementById('modalBoxLinkedin');
+
+      const btnConsultant = document.getElementById('modalTabBtnConsultant');
+      const btnPortfolio = document.getElementById('modalTabBtnPortfolio');
+      const btnLinkedin = document.getElementById('modalTabBtnLinkedin');
+
+      bConsultant.classList.add('hidden');
+      bPortfolio.classList.add('hidden');
+      bLinkedin.classList.add('hidden');
+
+      const inactiveClasses = "px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5";
+      const activeClasses = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5";
+
+      btnConsultant.className = inactiveClasses;
+      btnPortfolio.className = inactiveClasses;
+      btnLinkedin.className = inactiveClasses;
+
+      if (tab === 'consultant') {
+        bConsultant.classList.remove('hidden');
+        btnConsultant.className = activeClasses;
+      } else if (tab === 'portfolio') {
+        bPortfolio.classList.remove('hidden');
+        btnPortfolio.className = activeClasses;
+      } else {
+        bLinkedin.classList.remove('hidden');
+        btnLinkedin.className = activeClasses;
+      }
+      lucide.createIcons();
+    }
+
+    function copyCurrentModalTab(btnEl) {
+      if (!currentViewingCase) return;
+      let text = '';
+      if (currentModalTab === 'consultant') {
+        text = currentViewingCase.consultantPart || '';
+      } else if (currentModalTab === 'portfolio') {
+        text = currentViewingCase.portfolioPart || '';
+      } else {
+        text = currentViewingCase.linkedinPart || '';
+      }
+      copyToClipboard(text, btnEl, true);
+    }
+
+    function copySavedCasePart(caseId, part, btnEl) {
+      const cases = getSavedCases();
+      const target = cases.find(c => c.id === caseId);
+      if (!target) return;
+      const text = part === 'linkedin' ? (target.linkedinPart || '') : (target.portfolioPart || '');
+      copyToClipboard(text, btnEl, true);
+    }
+
+    function deleteCaseFromModal() {
+      if (!currentViewingCase) return;
+      const id = currentViewingCase.id;
+      closeCaseDetailModal();
+      deleteCaseFromFolder(id);
+    }
+
+    function exportCasesJson() {
+      const cases = getSavedCases();
+      if (cases.length === 0) {
+        showToast("Não há cases salvos para exportar.");
+        return;
+      }
+      const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cases, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", jsonStr);
+      downloadAnchor.setAttribute("download", `carreira_ia_cases_${new Date().toISOString().slice(0, 10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Backup baixado com sucesso!");
+    }
+
+    function importCasesJson(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            const existing = getSavedCases();
+            const existingIds = new Set(existing.map(c => c.id));
+            let addedCount = 0;
+            for (const item of imported) {
+              if (item.id && !existingIds.has(item.id)) {
+                existing.push(item);
+                addedCount++;
+              }
+            }
+            localStorage.setItem('carreira_ia_saved_cases', JSON.stringify(existing));
+            updateFolderBadge();
+            renderCasesFolder();
+            showToast(`${addedCount} cases restaurados do backup!`);
+          } else {
+            showToast("Formato de backup inválido.");
+          }
+        } catch(err) {
+          console.error("Erro import:", err);
+          showToast("Erro ao processar arquivo de backup.");
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function loadDemoCaseToFolder() {
+      const demoCase = {
+        id: 'case_demo_' + Date.now(),
+        title: 'Otimização de Banco de Dados: Redução de 97% na Latência com Spring Boot e Redis',
+        categoryId: 'SEMINAR',
+        categoryLabel: 'Seminário',
+        createdAt: new Date().toISOString(),
+        situation: 'No 6º período de Engenharia de Software, realizamos um seminário sobre Otimização de Bancos de Dados Relacionais para uma banca de professores e convidados de empresas de tecnologia.',
+        task: 'Minha responsabilidade como líder técnico foi demonstrar na prática como refatorar queries lentas e implantar índices compostos e particionamento em uma base com 2 milhões de registros.',
+        action: 'Analisei planos de execução com EXPLAIN ANALYZE, identifiquei gargalos de Sequential Scan, desenhei uma arquitetura de cache com Redis e implementei pools de conexão com HikariCP no backend Spring Boot.',
+        result: 'Reduzimos a latência de consultas críticas de 8.4s para 180ms (ganho de 97% de performance). A apresentação recebeu nota 10/10 e foi incluída no repositório de melhores práticas da faculdade.',
+        consultantPart: `### Análise de Potencial & Valor no Mercado
+Este projeto demonstra capacidade analítica avançada em engenharia de dados e infraestrutura. Recrutadores valorizam profundamente profissionais que não apenas escrevem código, mas sabem resolver gargalos reais de escalabilidade e custo computacional.
+
+### Como Defender este Case em Entrevistas
+- **Pergunta Típica do Recrutador:** "Conte sobre uma ocasião em que você precisou otimizar um sistema sob pressão técnica."
+- **Como Responder:** Enfatize que você começou pelo diagnóstico de métricas (EXPLAIN ANALYZE) antes de alterar qualquer código, comprovando que decisões técnicas foram baseadas em dados e não em suposições.
+
+### Habilidades-Chave em Destaque
+- **Hard Skills:** PostgreSQL, Redis, EXPLAIN ANALYZE, Query Tuning, Spring Boot, HikariCP.
+- **Soft Skills:** Liderança Técnica, Comunicação Didática sob Banca Avaliadora, Pensamento Sistêmico.
+
+### Dica de Ouro do Consultor
+Adicione no topo do seu currículo: "Especialista em Otimização de Banco de Dados e Cache Distribuído com ganho comprovado de 97% em tempo de resposta".`,
+        portfolioPart: `# Otimização de Banco de Dados: Redução de 97% na Latência com Spring Boot e Redis
+
+## Visão Geral do Desafio
+Em sistemas corporativos, consultas lentas a bancos relacionais afetam diretamente a experiência do usuário e aumentam custos operacionais em servidores de nuvem. Este estudo de caso aborda a investigação e resolução de gargalos em uma base com mais de 2 milhões de registros.
+
+## Estratégia de Execução (Método STAR)
+1. **Auditoria de Desempenho:** Aplicação do comando EXPLAIN ANALYZE em consultas analíticas complexas, detectando operações de Sequential Scan recorrentes.
+2. **Engenharia de Índices:** Modelagem e implantação de índices compostos e particionamento por data.
+3. **Camada de Cache Distribuído:** Integração do Redis com TTL dinâmico para dados de leitura massiva.
+4. **Pool de Conexões:** Calibração do pool HikariCP no backend Spring Boot para suportar concorrência elevada sem overhead.
+
+## Resultados Quantitativos e Métricas
+- **Redução de Latência:** De 8.4 segundos para 180ms (ganho de 97% de velocidade).
+- **Consumo de CPU:** Diminuição de 65% na carga do banco de dados em horários de pico.
+- **Avaliação da Banca:** Nota máxima (10/10) e inclusão no acervo acadêmico como referência de boas práticas.
+
+## Competências e Tecnologias
+PostgreSQL, Redis Cache, Java 17, Spring Boot, HikariCP, Monitoramento de Performance.`,
+        linkedinPart: `Como reduzimos o tempo de consulta de um banco com 2 milhões de linhas de 8,4 segundos para apenas 180 milissegundos? 🚀
+
+Durante meu último projeto acadêmico focado em escalabilidade de sistemas, tive a oportunidade de liderar a estratégia técnica de otimização de banco de dados.
+
+O desafio era claro: queries analíticas pesadas estavam sufocando os recursos e tornando a aplicação inviável para uso real.
+
+Em vez de apenas aumentar recursos de hardware, focamos em engenharia:
+🔹 Mapeamos gargalos através do EXPLAIN ANALYZE;
+🔹 Implantamos índices compostos e particionamento inteligente;
+🔹 Adicionamos uma camada de cache estratégico com Redis;
+🔹 Ajustamos o pool de conexões com HikariCP.
+
+O resultado?
+⚡ 97% de ganho de performance nas rotinas mais críticas;
+📉 Redução expressiva no consumo de recursos;
+🏆 Nota 10/10 na banca avaliadora.
+
+Esse projeto reforçou para mim que otimização eficiente não é tentativa e erro, e sim diagnóstico orientado a dados e métricas!
+
+Você já enfrentou gargalos parecidos em projetos de dados? Como costuma abordar a resolução? Compartilhe comigo nos comentários! 👇
+
+#EngenhariaDeSoftware #DatabaseOptimization #PostgreSQL #Redis #SpringBoot #Performance #CarreiraTech`
+      };
+
+      saveCaseToFolder(demoCase);
+      showToast("Case de demonstração adicionado à sua pasta!");
+    }
+
+    // ==================== GENERATE STAR CASE WITH GEMINI ====================
+    async function handleGenerateStar() {
+      const s = document.getElementById('inputSituation').value.trim();
+      const t = document.getElementById('inputTask').value.trim();
+      const a = document.getElementById('inputAction').value.trim();
+      const r = document.getElementById('inputResult').value.trim();
+
+      if (!s || !t || !a || !r) {
+        showErrorModal(
+          "Campos incompletos",
+          "Por favor, preencha todos os 4 campos do método STAR (Situação, Tarefa, Ação e Resultado) para que a IA possa valorizar sua experiência.",
+          "Dica: Você também pode clicar no botão <strong>Carregar Exemplo</strong> para ver como preencher."
+        );
+        return;
+      }
+
+      const btn = document.getElementById('btnActionStar');
+      const originalHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-white"></i><span class="text-white font-bold">Gerando Conselho, Portfólio & LinkedIn com IA...</span>`;
+      lucide.createIcons();
+
+      const catObj = categories.find(c => c.id === currentSelectedCategory) || categories[0];
+
+      const prompt = `Você é um Consultor Especialista de Carreira Executiva, Headhunter e Líder de Talent Acquisition.
+Sua missão é transformar a vivência de um profissional/estudante em um Estudo de Caso corporativo de alto impacto, fornecendo conselho consultivo estratégico, um case impecável para portfólio e um post engajador para o LinkedIn.
+
+DADOS DA VIVÊNCIA:
+- Tipo de Atividade: ${catObj.label} (${catObj.desc})
+- Situação (Contexto do desafio): ${s}
+- Tarefa (Objetivo e metas): ${t}
+- Ação (Metodologia, ferramentas e execução): ${a}
+- Resultado (Impacto, métricas e ganhos): ${r}
+
+ESTRUTURE SUA RESPOSTA OBRIGATORIAMENTE NAS 3 PARTES ABAIXO (Mantenha os delimitadores exatos):
+
+=== PARTE 1: CONSELHO DO CONSULTOR ===
+Atue como o mentor/consultor sênior de carreira do candidato:
+- **Análise de Potencial & Valor no Mercado**: O que essa experiência demonstra para gestores e recrutadores.
+- **Como Defender este Case em Entrevistas**: As 2 principais perguntas comportamentais que recrutadores farão sobre essa vivência e exatamente como o candidato deve responder com segurança.
+- **Habilidades-Chave em Destaque**: Lista de Hard Skills e Soft Skills evidenciadas para colocar em destaque no perfil.
+- **Dica de Ouro do Consultor**: Uma recomendação tática para diferenciar este case da concorrência.
+
+=== PARTE 2: ESTUDO DE CASO PARA PORTFÓLIO ===
+Estrutura executiva completa e profissional (pronta para Notion, GitHub, site pessoal ou PDF):
+- **Título do Case**: Um título executivo forte focado em solução e resultado.
+- **Visão Geral & Desafio**: Resumo executivo do problema e relevância.
+- **Estratégia & Execução Técnica (Método STAR)**: Detalhamento passo a passo com verbos de ação no passado, citando métodos, tecnologias e tomadas de decisão.
+- **Métricas & Resultados de Impacto**: Resultados quantitativos e qualitativos organizados de forma clara e visual.
+- **Competências & Tecnologias Utilizadas**: Tecnologias, frameworks e metodologias empregadas.
+- **Lições Aprendidas & Visão de Futuro**: Conclusão técnica e de negócio.
+
+=== PARTE 3: PUBLICAÇÃO PARA O LINKEDIN ===
+Post pronto, magnético e profissional para publicar no feed do LinkedIn:
+- **Gancho Inicial (Hook)**: Frase inicial impactante que prende a atenção nos primeiros 3 segundos (sem frases batidas como "É com muito orgulho que venho compartilhar").
+- **Narrativa (Storytelling)**: Contexto rápido do desafio, obstáculos superados e a solução prática adotada.
+- **Resultados em Destaque**: Principais métricas em marcadores simples e legíveis no celular.
+- **Reflexão & Conexão**: Aprendizado gerado e como isso agrega valor.
+- **Chamada para Ação (CTA)**: Pergunta envolvente para gerar comentários e interações no post.
+- **Hashtags Estratégicas**: 4 a 6 hashtags relevantes para o nicho.`;
+
+      try {
+        const result = await requestGemini(prompt);
+        let consultantPart = "";
+        let portfolioPart = "";
+        let linkedinPart = "";
+
+        if (result.includes("=== PARTE 1: CONSELHO DO CONSULTOR ===")) {
+          const p1Split = result.split("=== PARTE 2: ESTUDO DE CASO PARA PORTFÓLIO ===");
+          consultantPart = p1Split[0].replace("=== PARTE 1: CONSELHO DO CONSULTOR ===", "").trim();
+          
+          if (p1Split[1] && p1Split[1].includes("=== PARTE 3: PUBLICAÇÃO PARA O LINKEDIN ===")) {
+            const p2Split = p1Split[1].split("=== PARTE 3: PUBLICAÇÃO PARA O LINKEDIN ===");
+            portfolioPart = p2Split[0].trim();
+            linkedinPart = p2Split[1].trim();
+          } else {
+            portfolioPart = p1Split[1] ? p1Split[1].trim() : "";
+          }
+        } else if (result.includes("=== PARTE 2:")) {
+          const parts = result.split("=== PARTE 2:");
+          portfolioPart = parts[0].replace("=== PARTE 1: ESTUDO DE CASO PARA PORTFÓLIO ===", "").trim();
+          linkedinPart = parts[1].replace("PUBLICAÇÃO PARA O LINKEDIN ===", "").trim();
+        } else {
+          portfolioPart = result;
+        }
+
+        // Render formatted texts
+        document.getElementById('textOutputConsultant').innerHTML = formatMarkdown(consultantPart || "Conselho do consultor pronto.");
+        document.getElementById('textOutputPortfolio').innerHTML = formatMarkdown(portfolioPart);
+        document.getElementById('rawOutputPortfolio').innerText = portfolioPart;
+        
+        document.getElementById('textOutputLinkedin').innerText = linkedinPart || "Consulte o estudo detalhado para a versão completa.";
+        document.getElementById('rawOutputLinkedin').innerText = linkedinPart || "";
+
+        // Auto-save to Pasta de Cases
+        const newCaseObj = {
+          id: 'case_' + Date.now(),
+          title: extractCaseTitle(portfolioPart, catObj.label),
+          categoryId: currentSelectedCategory,
+          categoryLabel: catObj.label,
+          createdAt: new Date().toISOString(),
+          situation: s,
+          task: t,
+          action: a,
+          result: r,
+          consultantPart: consultantPart,
+          portfolioPart: portfolioPart,
+          linkedinPart: linkedinPart
+        };
+        saveCaseToFolder(newCaseObj);
+
+        document.getElementById('resultsCardStar').classList.remove('hidden');
+        document.getElementById('resultsCardStar').scrollIntoView({ behavior: 'smooth' });
+        showToast("Conquista gerada e salva na sua Pasta de Cases!");
+      } catch (err) {
+        console.error("Erro STAR:", err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+        lucide.createIcons();
+      }
+    }
+
+    // Generate Resume Execution
+    async function handleGenerateResume() {
+      const targetRole = document.getElementById('inputTargetRole').value.trim();
+      const newActivities = document.getElementById('inputNewActivities').value.trim();
+      const currentResume = document.getElementById('inputCurrentResume').value.trim();
+
+      if (!currentResume || !newActivities) {
+        showErrorModal(
+          "Campos obrigatórios ausentes",
+          "Por favor, preencha o campo do Currículo Atual e as Novas Atividades a serem incorporadas.",
+          "Dica: Você pode colar seu currículo atual ou clicar em <strong>Carregar Exemplo</strong> para testar."
+        );
+        return;
+      }
+
+      const btn = document.getElementById('btnActionResume');
+      const originalHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-white"></i><span class="text-white font-bold">Otimizando Currículo com IA...</span>`;
+      lucide.createIcons();
+
+      const prompt = `Você é um Recrutador Sênior e Especialista em Sistemas de Rastreamento de Candidatos (ATS) e Currículos Vivos.
+
+O candidato deseja atualizar seu currículo incorporando novas atividades recentes e direcioná-lo para a seguinte meta:
+- Cargo/Área Alvo: ${targetRole || "Desenvolvimento Profissional na Área de Formação"}
+
+Novas atividades/projetos/aprendizados recentes a incorporar:
+${newActivities}
+
+Currículo Atual do Candidato:
+${currentResume}
+
+INSTRUÇÕES DE OTIMIZAÇÃO:
+1. Preserve rigorosamente os dados pessoais e formação verídica do candidato.
+2. Integre as novas atividades de forma harmoniosa nas seções de Experiência / Projetos Práticos / Conquistas.
+3. Utilize verbos de ação fortes no início de cada marcador (ex: "Desenvolveu", "Otimizou", "Liderou", "Estruturou").
+4. Formate de maneira clara, profissional e 100% pronta para envio aos recrutadores e sistemas ATS.`;
+
+      try {
+        const result = await requestGemini(prompt);
+        document.getElementById('textOutputResume').innerText = result;
+        document.getElementById('resultsCardResume').classList.remove('hidden');
+        document.getElementById('resultsCardResume').scrollIntoView({ behavior: 'smooth' });
+        showToast("Currículo otimizado com sucesso!");
+      } catch (err) {
+        console.error("Erro Currículo:", err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+        lucide.createIcons();
+      }
+    }
+
+    // Copy to clipboard helper
+    function copyToClipboard(elementIdOrText, buttonEl, isRawString = false) {
+      let text = '';
+      if (isRawString) {
+        text = elementIdOrText;
+      } else {
+        const el = document.getElementById(elementIdOrText);
+        if (el) {
+          text = el.innerText || el.textContent;
+        }
+      }
+      if (!text) return;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Copiado para a área de transferência!");
+        if (buttonEl) {
+          const original = buttonEl.innerHTML;
+          buttonEl.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span class="font-bold">Copiado!</span>`;
+          lucide.createIcons();
+          setTimeout(() => {
+            buttonEl.innerHTML = original;
+            lucide.createIcons();
+          }, 2000);
+        }
+      }).catch(err => {
+        console.error("Erro ao copiar:", err);
+        showToast("Não foi possível copiar automaticamente.");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    // Handle browser back/forward buttons (?tab=...)
+    window.addEventListener('popstate', () => {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab') || 'cases';
+      navigateToTab(tabParam, false);
+    });
+
+    // On Load Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCategoryChips();
+      renderFolderCategoryFilter();
+      updateFolderBadge();
+      
+      const savedKey = getStoredKey();
+      if (savedKey) {
+        document.getElementById('inputApiKey').value = savedKey;
+      }
+
+      const savedModel = getSelectedModel();
+      const selectModelEl = document.getElementById('selectModel');
+      if (selectModelEl && savedModel) {
+        selectModelEl.value = savedModel;
+      }
+      updateStatusBadge();
+
+      // Read ?tab= query parameter from URL (e.g. ?tab=cases or ?tab=folder)
+      const params = new URLSearchParams(window.location.search);
+      const initialTab = params.get('tab') || 'cases';
+      navigateToTab(initialTab, false);
+
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
