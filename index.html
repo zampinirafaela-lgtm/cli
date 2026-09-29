@@ -371,6 +371,22 @@
                 </button>
               </div>
 
+              <!-- Authenticity Guidance Notice -->
+              <div class="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/90 text-amber-950 flex items-start gap-3 shadow-subtle">
+                <div class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-amber-600"></i>
+                </div>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <h5 class="text-xs sm:text-sm font-black text-amber-900 tracking-tight">💡 Dica de Ouro: Imprima sua Voz e Autenticidade</h5>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-200/60 text-amber-800 px-2 py-0.2 rounded-full">Alto Impacto</span>
+                  </div>
+                  <p class="text-xs text-amber-900/90 leading-relaxed font-medium">
+                    Este texto gerado é uma <strong>base estrutural de alta performance</strong>. Recomendamos que você <strong>ajuste as palavras com o seu tom pessoal, seus sentimentos reais e aprendizados íntimos</strong>. Posts autênticos geram <strong>3x mais engajamento</strong> e transmitem segurança genuína para recrutadores e líderes da sua rede!
+                  </p>
+                </div>
+              </div>
+
               <!-- LinkedIn Preview Card -->
               <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-subtle space-y-4">
                 <div class="flex items-center gap-3">
@@ -1107,11 +1123,24 @@
         <!-- LinkedIn Tab Content -->
         <div id="modalBoxLinkedin" class="hidden space-y-3">
           <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-800 flex items-center justify-between">
-            <span class="font-semibold">Texto formatado pronto para copiar e colar no feed do LinkedIn</span>
-            <button onclick="copyCurrentModalTab(this)" class="px-2.5 py-1 rounded bg-[#0A66C2] text-white text-xs font-bold hover:bg-[#004182]">
-              Copiar Post
+            <span class="font-semibold">Texto formatado pronto para o feed do LinkedIn</span>
+            <button onclick="copyCurrentModalTab(this)" class="px-3 py-1.5 rounded-lg bg-[#0A66C2] text-white text-xs font-bold hover:bg-[#004182] transition-all flex items-center gap-1.5">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copiar Post</span>
             </button>
           </div>
+          
+          <!-- Authenticity Guidance Notice inside Modal -->
+          <div class="p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-950 flex items-start gap-2.5 text-xs">
+            <i data-lucide="sparkles" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div>
+              <p class="font-bold text-amber-900">Personalize com a sua essência antes de postar:</p>
+              <p class="text-[11px] text-amber-800/90 mt-0.5 leading-relaxed">
+                Adapte o vocabulário para refletir seu estilo pessoal. A sua autenticidade gera conexões mais verdadeiras e destaca seu perfil perante recrutadores!
+              </p>
+            </div>
+          </div>
+
           <div id="modalTextLinkedin" class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-slate-50/70 p-5 rounded-xl border border-slate-200"></div>
         </div>
 
