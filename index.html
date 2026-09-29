@@ -2,8 +2,17 @@
 <html lang="pt-BR" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarreiraIA | Intent to Agent Forge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CarreiraIA | Portfólio de Cases STAR & Rede de Talentos</title>
+  
+  <!-- PWA & Mobile Web App Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0F172A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CarreiraIA">
+  <link rel="apple-touch-icon" href="https://api.iconify.design/lucide:sparkles.svg?color=%232563eb">
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter -->
@@ -98,36 +107,45 @@
       </div>
 
       <!-- Segmented Control Tabs (Center) -->
-      <nav class="hidden md:flex items-center p-1 bg-slate-100/90 rounded-xl border border-slate-200/60 shadow-inner">
-        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-2 bg-white text-slate-900 shadow-sm">
+      <nav class="hidden lg:flex items-center p-1 bg-slate-100/90 rounded-xl border border-slate-200/60 shadow-inner">
+        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-white text-slate-900 shadow-sm">
           <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-blue-600"></i>
-          <span>Cases STAR</span>
+          <span>Gerador STAR</span>
         </button>
-        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2 relative">
+        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 relative">
           <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
           <span>Pasta de Cases</span>
           <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">0</span>
         </button>
-        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2">
+        <button onclick="navigateToTab('profile')" id="tab-btn-profile" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
+          <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Meu Perfil Público</span>
+        </button>
+        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Rede & Recrutadores</span>
+          <span class="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-emerald-100 text-emerald-700">Novo</span>
+        </button>
+        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
           <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
           <span>Currículo Vivo</span>
         </button>
-        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2 relative">
+        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1 relative">
           <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-400"></i>
-          <span>Configurações</span>
           <span id="dotSettingsNav" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute -top-0.5 -right-0.5"></span>
         </button>
       </nav>
 
-      <!-- Right Actions (Status + Key button) -->
-      <div class="flex items-center gap-2.5">
-        <button onclick="navigateToTab('settings')" id="statusPill" class="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all">
+      <!-- Right Actions (PWA Install + Status + Key button) -->
+      <div class="flex items-center gap-2">
+        <button onclick="openInstallPwaModal()" id="btnInstallPwa" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-sm transition-all animate-pulse">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Instalar App</span>
+        </button>
+        <button onclick="navigateToTab('settings')" id="statusPill" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all">
           <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
           <span id="statusLabel">Configurar Chave</span>
         </button>
-        <a href="https://github.com" target="_blank" class="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">
-          <i data-lucide="help-circle" class="w-4 h-4"></i>
-        </a>
       </div>
     </div>
   </header>
@@ -527,6 +545,220 @@
 
     </section>
 
+    <!-- ==================== VIEW: MEU PERFIL PÚBLICO (?tab=profile) ==================== -->
+    <section id="view-profile" class="hidden space-y-6">
+      
+      <!-- Top Title Bar with Preview Action -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100 mb-1.5">
+            <i data-lucide="globe" class="w-3 h-3"></i> Sua Vitrine Profissional na Web
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Meu Perfil Público & Portfólio</h1>
+          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Personalize como recrutadores e líderes verão seus cases STAR comprovados, trajetória e contatos profissionais.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+          <button onclick="sharePublicProfile()" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-slate-900 hover:bg-slate-800 text-white shadow-subtle transition-all">
+            <i data-lucide="share-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>Compartilhar Perfil</span>
+          </button>
+          <button onclick="toggleEditProfileMode()" id="btnToggleEditProfile" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all">
+            <i data-lucide="edit-3" class="w-3.5 h-3.5 text-slate-500"></i>
+            <span id="btnEditProfileText">Editar Informações</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Public Profile Header Card (LinkedIn / Twitter executive card style) -->
+      <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-subtle">
+        <!-- Profile Banner -->
+        <div class="h-32 sm:h-44 bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 relative p-4 flex items-end justify-end">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Disponível para Oportunidades
+          </span>
+        </div>
+
+        <!-- Profile Info Row -->
+        <div class="px-6 sm:px-8 pb-6 pt-0 relative">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between -mt-12 sm:-mt-16 gap-4 mb-4">
+            <!-- Avatar with Initials / Photo -->
+            <div class="flex items-end gap-4">
+              <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-slate-800 text-white border-4 border-white shadow-card flex items-center justify-center text-3xl font-extrabold relative overflow-hidden" id="profileAvatarContainer">
+                <span id="profileAvatarText">RZ</span>
+                <img id="profileAvatarImg" src="" class="w-full h-full object-cover hidden">
+              </div>
+              <div>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2" id="profileDisplayName">
+                  Rafaela Zampini
+                  <i data-lucide="badge-check" class="w-5 h-5 text-blue-600"></i>
+                </h2>
+                <p class="text-xs sm:text-sm font-semibold text-blue-600" id="profileDisplayHeadline">Líder Técnica & Desenvolvedora de Software | Foco em Otimização e Performance</p>
+                <p class="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5" id="profileDisplayLocation">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-slate-400"></i> São Paulo, Brasil • Remoto / Híbrido
+                </p>
+              </div>
+            </div>
+
+            <!-- Quick Action Links -->
+            <div class="flex flex-wrap items-center gap-2">
+              <a id="profileLinkLinkedin" href="https://linkedin.com" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition-all">
+                <i data-lucide="linkedin" class="w-3.5 h-3.5 text-blue-700"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a id="profileLinkGithub" href="https://github.com" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition-all">
+                <i data-lucide="github" class="w-3.5 h-3.5 text-slate-900"></i>
+                <span>GitHub</span>
+              </a>
+              <a id="profileLinkContact" href="mailto:contato@carreiraia.com" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-subtle">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                <span>Contatar</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Professional Bio -->
+          <div class="mt-4 pt-4 border-t border-slate-100">
+            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Sobre Mim & Foco de Carreira</h4>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-4xl" id="profileDisplayBio">
+              Profissional apaixonada por resolver problemas complexos com engenharia pragmática, pensamento crítico e dados. Experiência em liderança técnica de projetos acadêmicos e corporativos, com foco em resultados mensuráveis de eficiência, redução de latência e excelência em arquitetura de software.
+            </p>
+          </div>
+
+          <!-- Top Skills Tags -->
+          <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-1.5" id="profileDisplaySkills">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Edit Form (Hidden by default, toggled via button) -->
+      <div id="cardEditProfile" class="hidden bg-white rounded-3xl border border-blue-200 p-6 shadow-card space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+              <i data-lucide="user-cog" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900">Editar Detalhes do Perfil Público</h3>
+          </div>
+          <button onclick="toggleEditProfileMode()" class="text-xs text-slate-400 hover:text-slate-600">Fechar edição</button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Seu Nome Completo</label>
+            <input type="text" id="editProfileName" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Título / Cargo Desejado</label>
+            <input type="text" id="editProfileHeadline" placeholder="Ex: Desenvolvedora Backend | Java & Cloud" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Localização / Modalidade</label>
+            <input type="text" id="editProfileLocation" placeholder="Ex: São Paulo, Brasil • Remoto" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">E-mail para Contato de Recrutadores</label>
+            <input type="email" id="editProfileEmail" placeholder="seu-email@gmail.com" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Link do LinkedIn</label>
+            <input type="text" id="editProfileLinkedin" placeholder="https://linkedin.com/in/seuperfil" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Link do GitHub / Portfólio Externo</label>
+            <input type="text" id="editProfileGithub" placeholder="https://github.com/seuperfil" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1 sm:col-span-2">
+            <label class="text-xs font-bold text-slate-700">Competências em Destaque (separadas por vírgula)</label>
+            <input type="text" id="editProfileSkills" placeholder="Ex: Java, Spring Boot, PostgreSQL, Redis, Metodologia Ágil, Comunicação" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="space-y-1 sm:col-span-2">
+            <label class="text-xs font-bold text-slate-700">Biografia Profissional (Resumo Executivo)</label>
+            <textarea id="editProfileBio" rows="3" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none resize-none"></textarea>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button onclick="toggleEditProfileMode()" class="px-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50">Cancelar</button>
+          <button onclick="saveProfileData()" class="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-subtle">Salvar Perfil</button>
+        </div>
+      </div>
+
+      <!-- Public Showcase: Verified STAR Cases Portfolio -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+              <i data-lucide="award" class="w-5 h-5 text-blue-600"></i>
+              Cases STAR em Destaque no Perfil
+            </h3>
+            <p class="text-xs text-slate-500">Estudos de caso reais com resultados práticos gerados na plataforma</p>
+          </div>
+          <button onclick="navigateToTab('cases')" class="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
+            <span>+ Adicionar Novo Case</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Grid of Verified Public Cases -->
+        <div id="profileCasesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Populated via JS -->
+        </div>
+
+        <div id="profileCasesEmpty" class="hidden bg-white rounded-3xl border border-dashed border-slate-300 p-8 text-center space-y-3">
+          <p class="text-xs text-slate-500">Você ainda não tem cases catalogados no perfil. Crie seu primeiro case STAR para que recrutadores vejam seu impacto!</p>
+          <button onclick="navigateToTab('cases')" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold">Criar Primeiro Case STAR</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW: REDE & RECRUTADORES (?tab=network) ==================== -->
+    <section id="view-network" class="hidden space-y-6">
+      
+      <!-- Top Title Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100 mb-1.5">
+            <i data-lucide="sparkles" class="w-3 h-3"></i> Talent Radar & Recruiter Discovery
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Radar de Talentos & Cases STAR</h1>
+          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Conecte-se com profissionais com projetos reais comprovados e descubra talentos com evidências práticas de resultado.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            Modo Recrutador Ativo
+          </span>
+        </div>
+      </div>
+
+      <!-- Recruiter Filter Bar -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-subtle space-y-3">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="text" id="inputSearchNetwork" oninput="handleSearchNetwork()" placeholder="Buscar por competência (ex: Redis, Python, Metodologia Ágil, Gestão de Projetos)..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="selectNetworkRole" onchange="handleSearchNetwork()" class="text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none">
+              <option value="ALL">Todas as Áreas</option>
+              <option value="Engenharia / Backend">Engenharia / Backend</option>
+              <option value="Produto / Gestão">Produto / Gestão</option>
+              <option value="Design / UX">Design / UX</option>
+              <option value="Dados / IA">Dados / IA</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Profiles Grid (Simulating Social Network of STAR Talent) -->
+      <div id="networkTalentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered via JS -->
+      </div>
+
+    </section>
+
     <!-- ==================== VIEW 3: SETTINGS (?tab=settings) ==================== -->
     <section id="view-settings" class="hidden space-y-6">
       
@@ -607,32 +839,45 @@
   </main>
 
   <!-- ==================== MOBILE NAVIGATION BAR ==================== -->
-  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 p-2 flex justify-around items-center">
-    <button onclick="navigateToTab('cases')" id="mobile-tab-cases" class="flex flex-col items-center gap-1 text-slate-900 font-bold px-3 py-1">
-      <div class="w-9 h-7 rounded-full bg-slate-100 flex items-center justify-center">
-        <i data-lucide="layout-grid" class="w-4 h-4 text-slate-900"></i>
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-1 py-1.5 flex justify-around items-center">
+    <button onclick="navigateToTab('cases')" id="mobile-tab-cases" class="flex flex-col items-center gap-0.5 text-slate-900 font-bold px-2 py-1">
+      <div class="w-8 h-6 rounded-full bg-slate-100 flex items-center justify-center">
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-900"></i>
       </div>
-      <span class="text-[10px]">Cases</span>
+      <span class="text-[9px]">Cases</span>
     </button>
-    <button onclick="navigateToTab('folder')" id="mobile-tab-folder" class="flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1 relative">
-      <div class="w-9 h-7 rounded-full flex items-center justify-center">
-        <i data-lucide="folder-kanban" class="w-4 h-4 text-slate-400"></i>
+    <button onclick="navigateToTab('folder')" id="mobile-tab-folder" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative">
+      <div class="w-8 h-6 rounded-full flex items-center justify-center">
+        <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
       </div>
-      <span class="text-[10px]">Pasta</span>
-      <span id="badgeFolderMobile" class="w-2 h-2 rounded-full bg-blue-600 absolute top-1 right-3 hidden"></span>
+      <span class="text-[9px]">Pasta</span>
+      <span id="badgeFolderMobile" class="w-2 h-2 rounded-full bg-blue-600 absolute top-1 right-2 hidden"></span>
     </button>
-    <button onclick="navigateToTab('resume')" id="mobile-tab-resume" class="flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1">
-      <div class="w-9 h-7 rounded-full flex items-center justify-center">
-        <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
+    <button onclick="navigateToTab('profile')" id="mobile-tab-profile" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1">
+      <div class="w-8 h-6 rounded-full flex items-center justify-center">
+        <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-400"></i>
       </div>
-      <span class="text-[10px]">Currículo</span>
+      <span class="text-[9px]">Meu Perfil</span>
     </button>
-    <button onclick="navigateToTab('settings')" id="mobile-tab-settings" class="flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1 relative">
-      <div class="w-9 h-7 rounded-full flex items-center justify-center">
-        <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>
+    <button onclick="navigateToTab('network')" id="mobile-tab-network" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative">
+      <div class="w-8 h-6 rounded-full flex items-center justify-center">
+        <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
       </div>
-      <span class="text-[10px]">Ajustes</span>
-      <span id="dotSettingsMobile" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-3"></span>
+      <span class="text-[9px]">Rede</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 absolute top-1 right-2"></span>
+    </button>
+    <button onclick="navigateToTab('resume')" id="mobile-tab-resume" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1">
+      <div class="w-8 h-6 rounded-full flex items-center justify-center">
+        <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
+      </div>
+      <span class="text-[9px]">Currículo</span>
+    </button>
+    <button onclick="navigateToTab('settings')" id="mobile-tab-settings" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative">
+      <div class="w-8 h-6 rounded-full flex items-center justify-center">
+        <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-400"></i>
+      </div>
+      <span class="text-[9px]">Ajustes</span>
+      <span id="dotSettingsMobile" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-2"></span>
     </button>
   </div>
 
@@ -724,6 +969,65 @@
     </div>
   </div>
 
+  <!-- Install PWA App Modal (iOS, Android & Desktop) -->
+  <div id="modalInstallPwa" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4 animate-in fade-in">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center shadow-card">
+            <i data-lucide="sparkles" class="w-6 h-6 text-blue-400"></i>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-base text-slate-900">Instalar CarreiraIA</h3>
+            <p class="text-xs text-slate-500">Acesso rápido na tela inicial do celular ou PC</p>
+          </div>
+        </div>
+        <button onclick="closeInstallPwaModal()" class="w-7 h-7 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 flex items-center justify-center">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 pt-1">
+        <!-- Native Browser Trigger (if supported) -->
+        <button id="btnNativeInstallPrompt" onclick="triggerNativeInstall()" class="w-full py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-subtle transition-all">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Instalar Agora no Dispositivo</span>
+        </button>
+
+        <!-- Instructions for iPhone / Safari -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2 text-xs">
+          <p class="font-bold text-slate-800 flex items-center gap-1.5">
+            <i data-lucide="apple" class="w-3.5 h-3.5 text-slate-700"></i>
+            No iPhone / iPad (Safari):
+          </p>
+          <ol class="list-decimal pl-4 space-y-1 text-slate-600">
+            <li>Toque no botão <strong>Compartilhar</strong> (ícone de quadrado com seta para cima no Safari).</li>
+            <li>Role para baixo e toque em <strong>"Adicionar à Tela de Início"</strong>.</li>
+            <li>Toque em <strong>Adicionar</strong> no canto superior direito.</li>
+          </ol>
+        </div>
+
+        <!-- Instructions for Android / Chrome -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2 text-xs">
+          <p class="font-bold text-slate-800 flex items-center gap-1.5">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-slate-700"></i>
+            No Android / Chrome / Computador:
+          </p>
+          <ol class="list-decimal pl-4 space-y-1 text-slate-600">
+            <li>Toque no menu de <strong>3 pontinhos (⋮)</strong> no canto superior do navegador.</li>
+            <li>Selecione <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar à tela inicial"</strong>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="pt-1 flex justify-end">
+        <button onclick="closeInstallPwaModal()" class="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700">
+          Entendi
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Error Modal (Clean replacement for alerts) -->
   <div id="modalError" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4 animate-in fade-in">
@@ -798,7 +1102,7 @@
       renderCategoryChips();
     }
 
-    // Tab Navigation & URL Query Sync (?tab=cases, ?tab=resume, ?tab=settings)
+    // Tab Navigation & URL Query Sync (?tab=cases, ?tab=profile, ?tab=network, etc)
     function navigateToTab(tabName, updateHistory = true) {
       currentTab = tabName;
 
@@ -810,14 +1114,14 @@
       }
 
       // Hide all views
-      ['cases', 'folder', 'resume', 'settings'].forEach(t => {
+      ['cases', 'folder', 'profile', 'network', 'resume', 'settings'].forEach(t => {
         const viewEl = document.getElementById(`view-${t}`);
         if (viewEl) viewEl.classList.add('hidden');
         
         // Desktop styles reset
         const dBtn = document.getElementById(`tab-btn-${t}`);
         if (dBtn) {
-          dBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-2 relative";
+          dBtn.className = "px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 relative";
           const icon = dBtn.querySelector('i');
           if (icon) icon.className = "w-3.5 h-3.5 text-slate-400";
         }
@@ -825,11 +1129,11 @@
         // Mobile styles reset
         const mBtn = document.getElementById(`mobile-tab-${t}`);
         if (mBtn) {
-          mBtn.className = "flex flex-col items-center gap-1 text-slate-400 font-medium px-3 py-1 relative";
+          mBtn.className = "flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative";
           const iconBox = mBtn.querySelector('div');
-          if (iconBox) iconBox.className = "w-9 h-7 rounded-full flex items-center justify-center";
+          if (iconBox) iconBox.className = "w-8 h-6 rounded-full flex items-center justify-center";
           const icon = mBtn.querySelector('i');
-          if (icon) icon.className = "w-4 h-4 text-slate-400";
+          if (icon) icon.className = "w-3.5 h-3.5 text-slate-400";
         }
       });
 
@@ -840,7 +1144,7 @@
       // Highlight active desktop tab
       const activeDesktopBtn = document.getElementById(`tab-btn-${tabName}`);
       if (activeDesktopBtn) {
-        activeDesktopBtn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-2 bg-white text-slate-900 shadow-sm relative";
+        activeDesktopBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-white text-slate-900 shadow-sm relative";
         const icon = activeDesktopBtn.querySelector('i');
         if (icon) icon.className = "w-3.5 h-3.5 text-blue-600";
       }
@@ -848,15 +1152,19 @@
       // Highlight active mobile tab
       const activeMobileBtn = document.getElementById(`mobile-tab-${tabName}`);
       if (activeMobileBtn) {
-        activeMobileBtn.className = "flex flex-col items-center gap-1 text-slate-900 font-bold px-3 py-1 relative";
+        activeMobileBtn.className = "flex flex-col items-center gap-0.5 text-slate-900 font-bold px-2 py-1 relative";
         const iconBox = activeMobileBtn.querySelector('div');
-        if (iconBox) iconBox.className = "w-9 h-7 rounded-full bg-slate-100 flex items-center justify-center";
+        if (iconBox) iconBox.className = "w-8 h-6 rounded-full bg-slate-100 flex items-center justify-center";
         const icon = activeMobileBtn.querySelector('i');
-        if (icon) icon.className = "w-4 h-4 text-slate-900";
+        if (icon) icon.className = "w-3.5 h-3.5 text-slate-900";
       }
 
       if (tabName === 'folder') {
         renderCasesFolder();
+      } else if (tabName === 'profile') {
+        renderUserProfile();
+      } else if (tabName === 'network') {
+        renderTalentNetwork();
       }
 
       lucide.createIcons();
@@ -1915,6 +2223,373 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const tabParam = params.get('tab') || 'cases';
       navigateToTab(tabParam, false);
     });
+
+    // ==================== PWA INSTALLATION HELPER ====================
+    let deferredInstallPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      const btnNative = document.getElementById('btnNativeInstallPrompt');
+      if (btnNative) {
+        btnNative.classList.remove('hidden');
+      }
+    });
+
+    function openInstallPwaModal() {
+      const modal = document.getElementById('modalInstallPwa');
+      if (modal) modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeInstallPwaModal() {
+      const modal = document.getElementById('modalInstallPwa');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function triggerNativeInstall() {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        const { outcome } = await deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          showToast("App instalado com sucesso na tela inicial!");
+          closeInstallPwaModal();
+        }
+        deferredInstallPrompt = null;
+      } else {
+        showToast("Use a opção Adicionar à Tela Inicial do navegador!");
+      }
+    }
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch((err) => {
+          console.warn('SW registration skipped:', err);
+        });
+      });
+    }
+
+    // ==================== USER PROFILE DATA & SOCIAL MANAGEMENT ====================
+    const DEFAULT_USER_PROFILE = {
+      name: "Rafaela Zampini",
+      headline: "Líder Técnica & Engenharia de Software | Especialista em Otimização e Performance",
+      location: "São Paulo, Brasil • Remoto / Híbrido",
+      email: "contato.rafaela@carreiraia.com",
+      linkedin: "https://linkedin.com",
+      github: "https://github.com",
+      bio: "Profissional focada em transformar vivências práticas em resultados corporativos comprovados. Especialista em resolução de problemas de alta complexidade com dados e metodologia STAR, com cases em bancos de dados relacionais, microsserviços e liderança técnica.",
+      skills: ["Java", "Spring Boot", "PostgreSQL", "Redis", "Metodologia Ágil", "Arquitetura Limpa", "Pensamento Estruturado", "Liderança Técnica"]
+    };
+
+    function getUserProfile() {
+      try {
+        const raw = localStorage.getItem('carreira_ia_user_profile');
+        return raw ? JSON.parse(raw) : DEFAULT_USER_PROFILE;
+      } catch (e) {
+        return DEFAULT_USER_PROFILE;
+      }
+    }
+
+    function saveUserProfile(profile) {
+      localStorage.setItem('carreira_ia_user_profile', JSON.stringify(profile));
+    }
+
+    function toggleEditProfileMode() {
+      const card = document.getElementById('cardEditProfile');
+      const isHidden = card.classList.contains('hidden');
+      if (isHidden) {
+        const p = getUserProfile();
+        document.getElementById('editProfileName').value = p.name || '';
+        document.getElementById('editProfileHeadline').value = p.headline || '';
+        document.getElementById('editProfileLocation').value = p.location || '';
+        document.getElementById('editProfileEmail').value = p.email || '';
+        document.getElementById('editProfileLinkedin').value = p.linkedin || '';
+        document.getElementById('editProfileGithub').value = p.github || '';
+        document.getElementById('editProfileSkills').value = (p.skills || []).join(', ');
+        document.getElementById('editProfileBio').value = p.bio || '';
+        card.classList.remove('hidden');
+        document.getElementById('btnEditProfileText').innerText = "Fechar Edição";
+      } else {
+        card.classList.add('hidden');
+        document.getElementById('btnEditProfileText').innerText = "Editar Informações";
+      }
+    }
+
+    function saveProfileData() {
+      const skillsStr = document.getElementById('editProfileSkills').value;
+      const skillsArray = skillsStr.split(',').map(s => s.trim()).filter(Boolean);
+
+      const profile = {
+        name: document.getElementById('editProfileName').value.trim() || 'Profissional',
+        headline: document.getElementById('editProfileHeadline').value.trim() || 'Especialista em Carreira',
+        location: document.getElementById('editProfileLocation').value.trim() || 'Brasil • Remoto',
+        email: document.getElementById('editProfileEmail').value.trim() || '',
+        linkedin: document.getElementById('editProfileLinkedin').value.trim() || 'https://linkedin.com',
+        github: document.getElementById('editProfileGithub').value.trim() || 'https://github.com',
+        skills: skillsArray.length ? skillsArray : ['Metodologia STAR', 'Inovação'],
+        bio: document.getElementById('editProfileBio').value.trim() || ''
+      };
+
+      saveUserProfile(profile);
+      toggleEditProfileMode();
+      renderUserProfile();
+      showToast("Perfil público atualizado com sucesso!");
+    }
+
+    function sharePublicProfile() {
+      const profile = getUserProfile();
+      const shareUrl = window.location.origin + window.location.pathname + '?tab=profile';
+      if (navigator.share) {
+        navigator.share({
+          title: `Portfólio & Cases STAR - ${profile.name}`,
+          text: `Confira meus cases de impacto e currículo no CarreiraIA:`,
+          url: shareUrl
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(shareUrl);
+        showToast("Link do seu perfil público copiado para a área de transferência!");
+      }
+    }
+
+    function renderUserProfile() {
+      const p = getUserProfile();
+      const initials = p.name ? p.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase() : 'CI';
+      
+      const avatarEl = document.getElementById('profileAvatarText');
+      if (avatarEl) avatarEl.innerText = initials;
+
+      const nameEl = document.getElementById('profileDisplayName');
+      if (nameEl) nameEl.innerHTML = `${p.name} <i data-lucide="badge-check" class="w-5 h-5 text-blue-600"></i>`;
+
+      const headlineEl = document.getElementById('profileDisplayHeadline');
+      if (headlineEl) headlineEl.innerText = p.headline;
+
+      const locEl = document.getElementById('profileDisplayLocation');
+      if (locEl) locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> ${p.location}`;
+
+      const bioEl = document.getElementById('profileDisplayBio');
+      if (bioEl) bioEl.innerText = p.bio;
+
+      const linkedinEl = document.getElementById('profileLinkLinkedin');
+      if (linkedinEl) linkedinEl.href = p.linkedin || 'https://linkedin.com';
+
+      const githubEl = document.getElementById('profileLinkGithub');
+      if (githubEl) githubEl.href = p.github || 'https://github.com';
+
+      const contactEl = document.getElementById('profileLinkContact');
+      if (contactEl) contactEl.href = p.email ? `mailto:${p.email}?subject=Oportunidade%20Profissional%20via%20CarreiraIA` : 'mailto:contato@carreiraia.com';
+
+      // Render Skills
+      const skillsContainer = document.getElementById('profileDisplaySkills');
+      if (skillsContainer) {
+        skillsContainer.innerHTML = (p.skills || []).map(skill => `
+          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            ${skill}
+          </span>
+        `).join('');
+      }
+
+      // Render Cases Showcase
+      const casesGrid = document.getElementById('profileCasesGrid');
+      const emptyBox = document.getElementById('profileCasesEmpty');
+      const cases = getSavedCases();
+
+      if (cases.length === 0) {
+        if (casesGrid) {
+          casesGrid.innerHTML = '';
+          casesGrid.classList.add('hidden');
+        }
+        if (emptyBox) emptyBox.classList.remove('hidden');
+      } else {
+        if (emptyBox) emptyBox.classList.add('hidden');
+        if (casesGrid) {
+          casesGrid.classList.remove('hidden');
+          casesGrid.innerHTML = cases.map(c => {
+            const cat = categories.find(cat => cat.id === c.categoryId) || { icon: 'folder', label: c.categoryLabel || 'Vivência' };
+            const cleanResult = (c.result || '').slice(0, 160) + (c.result && c.result.length > 160 ? '...' : '');
+
+            return `
+              <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between group">
+                <div class="space-y-2.5">
+                  <div class="flex items-center justify-between">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                      <i data-lucide="${cat.icon}" class="w-3 h-3 text-blue-600"></i>
+                      ${c.categoryLabel || 'Case Verificado'}
+                    </span>
+                    <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Evidência STAR</span>
+                  </div>
+                  <h4 class="font-bold text-slate-900 text-sm leading-snug group-hover:text-blue-600 transition-colors">
+                    ${c.title || 'Estudo de Caso Corporativo'}
+                  </h4>
+                  <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 text-xs text-slate-600 space-y-1">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Resultado Mensurável:</span>
+                    <p class="font-medium text-slate-800">${cleanResult || 'Impacto mensurado com metodologia STAR corporativa.'}</p>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <button onclick="openCaseDetailModal('${c.id}')" class="text-xs font-bold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1">
+                    <span>Ver Case Completo & Argumentação</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+      lucide.createIcons();
+    }
+
+    // ==================== TALENT NETWORK / RECRUITER RADAR ====================
+    const COMMUNITY_TALENTS = [
+      {
+        id: 'user_1',
+        name: 'Rafaela Zampini',
+        headline: 'Líder Técnica & Engenharia de Software | Especialista em Otimização e Performance',
+        area: 'Engenharia / Backend',
+        location: 'São Paulo • Remoto',
+        verifiedCases: 3,
+        highlightMetric: '-97% de Latência em Banco de Dados (PostgreSQL + Redis)',
+        skills: ['Spring Boot', 'Redis', 'PostgreSQL', 'Performance', 'Liderança Técnica'],
+        avatar: 'RZ',
+        available: true
+      },
+      {
+        id: 'user_2',
+        name: 'Lucas Brandão',
+        headline: 'Product Manager & Growth | Foco em Retenção e Monetização',
+        area: 'Produto / Gestão',
+        location: 'Belo Horizonte • Remoto',
+        verifiedCases: 4,
+        highlightMetric: '+38% na conversão do onboarding em fintech B2B',
+        skills: ['Product Discovery', 'SQL', 'A/B Testing', 'Metodologia STAR', 'Scrum'],
+        avatar: 'LB',
+        available: true
+      },
+      {
+        id: 'user_3',
+        name: 'Beatriz Vasconcelos',
+        headline: 'Product Designer Sênior | Design System & Acessibilidade',
+        area: 'Design / UX',
+        location: 'Curitiba • Híbrido',
+        verifiedCases: 5,
+        highlightMetric: 'Redução de 45% no tempo de tarefas com redesign de Design System',
+        skills: ['Figma', 'Design System', 'User Research', 'Acessibilidade WCAG'],
+        avatar: 'BV',
+        available: true
+      },
+      {
+        id: 'user_4',
+        name: 'Diego Nogueira',
+        headline: 'Engenheiro de Dados & IA | Pipelines Distribuídos & LLMs',
+        area: 'Dados / IA',
+        location: 'Rio de Janeiro • Remoto',
+        verifiedCases: 2,
+        highlightMetric: 'Processamento de 10TB/dia com Spark & Redução de 40% em Cloud Cost',
+        skills: ['Python', 'Apache Spark', 'Databricks', 'AWS', 'Gemini API'],
+        avatar: 'DN',
+        available: false
+      },
+      {
+        id: 'user_5',
+        name: 'Camila Ferreira',
+        headline: 'Desenvolvedora Full Stack Pleno | React, Node.js & TypeScript',
+        area: 'Engenharia / Backend',
+        location: 'Florianópolis • Remoto',
+        verifiedCases: 3,
+        highlightMetric: 'Lançamento de MVP em 4 semanas com 10k usuários ativos',
+        skills: ['TypeScript', 'React', 'Node.js', 'Docker', 'GraphQL'],
+        avatar: 'CF',
+        available: true
+      }
+    ];
+
+    function handleSearchNetwork() {
+      renderTalentNetwork();
+    }
+
+    function renderTalentNetwork() {
+      const container = document.getElementById('networkTalentGrid');
+      if (!container) return;
+
+      const query = (document.getElementById('inputSearchNetwork')?.value || '').toLowerCase().trim();
+      const areaFilter = document.getElementById('selectNetworkRole')?.value || 'ALL';
+
+      let list = [...COMMUNITY_TALENTS];
+
+      if (areaFilter !== 'ALL') {
+        list = list.filter(t => t.area === areaFilter);
+      }
+
+      if (query) {
+        list = list.filter(t => 
+          t.name.toLowerCase().includes(query) ||
+          t.headline.toLowerCase().includes(query) ||
+          t.highlightMetric.toLowerCase().includes(query) ||
+          t.skills.some(s => s.toLowerCase().includes(query))
+        );
+      }
+
+      container.innerHTML = list.map(t => `
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-subtle hover:shadow-elevated transition-all flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-950 text-white font-extrabold flex items-center justify-center text-sm shadow-subtle">
+                  ${t.avatar}
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-slate-900 text-sm flex items-center gap-1.5">
+                    ${t.name}
+                    <i data-lucide="badge-check" class="w-4 h-4 text-blue-600"></i>
+                  </h3>
+                  <p class="text-[11px] text-slate-400">${t.location}</p>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                t.available ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600'
+              }">
+                <span class="w-1.5 h-1.5 rounded-full ${t.available ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}"></span>
+                ${t.available ? 'Disponível' : 'Em projeto'}
+              </span>
+            </div>
+
+            <p class="text-xs font-semibold text-slate-700 leading-snug line-clamp-2">
+              ${t.headline}
+            </p>
+
+            <div class="p-3 bg-blue-50/60 rounded-2xl border border-blue-100/80 space-y-1">
+              <span class="text-[10px] font-bold text-blue-700 uppercase tracking-wider flex items-center gap-1">
+                <i data-lucide="trophy" class="w-3 h-3 text-amber-500"></i> Case STAR em Destaque
+              </span>
+              <p class="text-xs font-bold text-slate-900 leading-tight">${t.highlightMetric}</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-1">
+              ${t.skills.map(skill => `
+                <span class="px-2 py-0.5 rounded-lg text-[10px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+                  ${skill}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-[11px] text-slate-500 font-semibold flex items-center gap-1">
+              <i data-lucide="folder-check" class="w-3.5 h-3.5 text-blue-600"></i>
+              ${t.verifiedCases} cases verificados
+            </span>
+            <button onclick="navigateToTab('profile')" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-subtle transition-all">
+              Ver Portfólio
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
 
     // On Load Initialization
     window.addEventListener('DOMContentLoaded', () => {
