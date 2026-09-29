@@ -107,62 +107,62 @@
 <body class="min-h-full flex flex-col bg-slate-50 text-slate-900">
 
   <!-- ==================== HEADER (Lovable / shadcn style) ==================== -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       
-      <!-- Brand / Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm">
+      <!-- Brand / Logo (Left) -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm shrink-0">
           <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-base tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
-            <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200/60">Forge Agent</span>
+        <div class="flex flex-col justify-center">
+          <div class="flex items-center gap-1.5 leading-none">
+            <span class="font-extrabold text-base tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
+            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full border border-slate-200/60 leading-none">Agent</span>
           </div>
-          <p class="text-[11px] text-slate-500 hidden sm:block">Transforme Vivências em Conquistas Corporativas</p>
+          <p class="text-[11px] text-slate-400 hidden xl:block mt-0.5 leading-tight">Vivências em Conquistas Corporativas</p>
         </div>
       </div>
 
-      <!-- Segmented Control Tabs (Center) -->
-      <nav class="hidden lg:flex items-center p-1 bg-slate-100/90 rounded-xl border border-slate-200/60 shadow-inner">
-        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-white text-slate-900 shadow-sm">
-          <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-blue-600"></i>
+      <!-- Segmented Control Navigation (Center) -->
+      <nav class="hidden lg:flex items-center p-1 bg-slate-100/90 rounded-xl border border-slate-200/70 shadow-inner shrink-0">
+        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="h-8 px-3 rounded-lg text-xs font-semibold transition-all inline-flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-sm whitespace-nowrap">
+          <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i>
           <span>Gerador STAR</span>
         </button>
-        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 relative">
-          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
+        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
           <span>Pasta de Cases</span>
-          <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">0</span>
+          <span id="badgeFolderDesktop" class="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 leading-none">0</span>
         </button>
-        <button onclick="navigateToTab('profile')" id="tab-btn-profile" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
-          <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-400"></i>
-          <span>Meu Perfil Público</span>
+        <button onclick="navigateToTab('profile')" id="tab-btn-profile" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+          <span>Meu Perfil</span>
         </button>
-        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
-          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
-          <span>Rede & Recrutadores</span>
-          <span class="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-emerald-100 text-emerald-700">Novo</span>
+        <button onclick="navigateToTab('network')" id="tab-btn-network" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+          <span>Radar Talentos</span>
+          <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-100 text-emerald-700 leading-none">Novo</span>
         </button>
-        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
-          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
+        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
           <span>Currículo Vivo</span>
         </button>
-        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1 relative">
+        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="h-8 w-8 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center relative shrink-0" title="Configurações">
           <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-400"></i>
-          <span id="dotSettingsNav" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute -top-0.5 -right-0.5"></span>
+          <span id="dotSettingsNav" class="w-2 h-2 rounded-full bg-amber-500 absolute top-1.5 right-1.5 ring-2 ring-white"></span>
         </button>
       </nav>
 
-      <!-- Right Actions (PWA Install + Status + Key button) -->
-      <div class="flex items-center gap-2">
-        <button onclick="openInstallPwaModal()" id="btnInstallPwa" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-sm transition-all animate-pulse">
-          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+      <!-- Right Actions (PWA + Model Status) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button onclick="openInstallPwaModal()" id="btnInstallPwa" class="h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-sm transition-all whitespace-nowrap">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5 shrink-0"></i>
           <span class="hidden sm:inline">Instalar App</span>
         </button>
-        <button onclick="navigateToTab('settings')" id="statusPill" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all">
-          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-          <span id="statusLabel">Configurar Chave</span>
+        <button onclick="navigateToTab('settings')" id="statusPill" class="h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
+          <span id="statusLabel" class="max-w-[150px] truncate">Configurar Chave</span>
         </button>
       </div>
     </div>
@@ -1283,9 +1283,13 @@
         // Desktop styles reset
         const dBtn = document.getElementById(`tab-btn-${t}`);
         if (dBtn) {
-          dBtn.className = "px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 relative";
+          if (t === 'settings') {
+            dBtn.className = "h-8 w-8 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center relative shrink-0";
+          } else {
+            dBtn.className = "h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap";
+          }
           const icon = dBtn.querySelector('i');
-          if (icon) icon.className = "w-3.5 h-3.5 text-slate-400";
+          if (icon) icon.className = "w-3.5 h-3.5 text-slate-400 shrink-0";
         }
 
         // Mobile styles reset
@@ -1306,9 +1310,13 @@
       // Highlight active desktop tab
       const activeDesktopBtn = document.getElementById(`tab-btn-${tabName}`);
       if (activeDesktopBtn) {
-        activeDesktopBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 bg-white text-slate-900 shadow-sm relative";
+        if (tabName === 'settings') {
+          activeDesktopBtn.className = "h-8 w-8 rounded-lg text-xs font-semibold transition-all inline-flex items-center justify-center bg-white text-slate-900 shadow-sm relative shrink-0";
+        } else {
+          activeDesktopBtn.className = "h-8 px-3 rounded-lg text-xs font-semibold transition-all inline-flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-sm whitespace-nowrap";
+        }
         const icon = activeDesktopBtn.querySelector('i');
-        if (icon) icon.className = "w-3.5 h-3.5 text-blue-600";
+        if (icon) icon.className = "w-3.5 h-3.5 text-blue-600 shrink-0";
       }
 
       // Highlight active mobile tab
@@ -1501,13 +1509,13 @@
 
       if (key) {
         const displayLabel = workingModel ? `Gemini (${workingModel})` : 'Gemini Conectado';
-        pill.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200/80 hover:bg-emerald-100/60 transition-all cursor-pointer";
-        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span title="${displayLabel}">${displayLabel}</span>`;
+        pill.className = "h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200/80 hover:bg-emerald-100/60 transition-all cursor-pointer whitespace-nowrap";
+        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span><span title="${displayLabel}" class="max-w-[150px] truncate">${displayLabel}</span>`;
         if (dotNav) dotNav.classList.add('hidden');
         if (dotMobile) dotMobile.classList.add('hidden');
       } else {
-        pill.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer";
-        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span><span>Configurar Chave</span>`;
+        pill.className = "h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer whitespace-nowrap";
+        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0"></span><span class="max-w-[150px] truncate">Configurar Chave</span>`;
         if (dotNav) dotNav.classList.remove('hidden');
         if (dotMobile) dotMobile.classList.remove('hidden');
       }
