@@ -612,7 +612,18 @@
                   <i data-lucide="badge-check" class="w-5 h-5 text-blue-600"></i>
                 </h2>
                 <p class="text-xs sm:text-sm font-semibold text-blue-600" id="profileDisplayHeadline">Líder Técnica & Desenvolvedora de Software | Foco em Otimização e Performance</p>
-                <p class="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5" id="profileDisplayLocation">
+                <div class="flex flex-wrap items-center gap-2 mt-1">
+                  <span id="profileDisplayAreaBadge" class="inline-flex items-center gap-1 text-[10px] font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200">
+                    <i data-lucide="briefcase" class="w-3 h-3"></i> Tecnologia & Dados
+                  </span>
+                  <span id="profileDisplaySeniorityBadge" class="inline-flex items-center gap-1 text-[10px] font-bold bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-200">
+                    <i data-lucide="trending-up" class="w-3 h-3"></i> Liderança / Gestão
+                  </span>
+                  <span id="profileDisplayOriginBadge" class="inline-flex items-center gap-1 text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full border border-slate-200">
+                    <i data-lucide="award" class="w-3 h-3"></i> Projeto Acadêmico
+                  </span>
+                </div>
+                <p class="text-xs text-slate-400 flex items-center gap-1.5 mt-1.5" id="profileDisplayLocation">
                   <i data-lucide="map-pin" class="w-3 h-3 text-slate-400"></i> São Paulo, Brasil • Remoto / Híbrido
                 </p>
               </div>
@@ -671,10 +682,33 @@
             <label class="text-xs font-bold text-slate-700">Título / Cargo Desejado</label>
             <input type="text" id="editProfileHeadline" placeholder="Ex: Desenvolvedora Backend | Java & Cloud" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
           </div>
+          
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Área de Atuação Principal</label>
+            <select id="editProfileArea" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Nível de Senioridade</label>
+            <select id="editProfileSeniority" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-slate-700">Origem Principal da Experiência</label>
+            <select id="editProfileOrigin" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+
           <div class="space-y-1">
             <label class="text-xs font-bold text-slate-700">Localização / Modalidade</label>
             <input type="text" id="editProfileLocation" placeholder="Ex: São Paulo, Brasil • Remoto" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
           </div>
+
           <div class="space-y-1">
             <label class="text-xs font-bold text-slate-700">E-mail para Contato de Recrutadores</label>
             <input type="email" id="editProfileEmail" placeholder="seu-email@gmail.com" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
@@ -683,14 +717,57 @@
             <label class="text-xs font-bold text-slate-700">Link do LinkedIn</label>
             <input type="text" id="editProfileLinkedin" placeholder="https://linkedin.com/in/seuperfil" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
           </div>
-          <div class="space-y-1">
+          <div class="space-y-1 sm:col-span-2">
             <label class="text-xs font-bold text-slate-700">Link do GitHub / Portfólio Externo</label>
             <input type="text" id="editProfileGithub" placeholder="https://github.com/seuperfil" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
           </div>
-          <div class="space-y-1 sm:col-span-2">
-            <label class="text-xs font-bold text-slate-700">Competências em Destaque (separadas por vírgula)</label>
-            <input type="text" id="editProfileSkills" placeholder="Ex: Java, Spring Boot, PostgreSQL, Redis, Metodologia Ágil, Comunicação" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+
+          <!-- Quick Skill Tag Selector Chips (Hard Skills, Soft Skills, IA) -->
+          <div class="space-y-2 sm:col-span-2 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="tags" class="w-3.5 h-3.5 text-blue-600"></i>
+                Seletor Rápido de Competências Padronizadas (Clique para Adicionar)
+              </label>
+              <span class="text-[11px] text-slate-500">Facilita ser encontrado por recrutadores</span>
+            </div>
+
+            <!-- Hard Skills Group -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-bold text-blue-700 flex items-center gap-1">
+                <span>💻 Hard Skills:</span>
+              </span>
+              <div class="flex flex-wrap gap-1.5" id="chipsHardSkillsSelector">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- Soft Skills Group -->
+            <div class="space-y-1 pt-1">
+              <span class="text-[11px] font-bold text-purple-700 flex items-center gap-1">
+                <span>🧠 Soft Skills:</span>
+              </span>
+              <div class="flex flex-wrap gap-1.5" id="chipsSoftSkillsSelector">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- IA & Automação Group -->
+            <div class="space-y-1 pt-1">
+              <span class="text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                <span>⚡ Habilidades em IA & Automação:</span>
+              </span>
+              <div class="flex flex-wrap gap-1.5" id="chipsIaSkillsSelector">
+                <!-- Populated via JS -->
+              </div>
+            </div>
           </div>
+
+          <div class="space-y-1 sm:col-span-2">
+            <label class="text-xs font-bold text-slate-700">Todas as Competências do Perfil (separadas por vírgula ou selecionadas acima)</label>
+            <input type="text" id="editProfileSkills" placeholder="Ex: Python, SQL, Metodologias Ágeis, Resolução de Problemas Complexos" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+
           <div class="space-y-1 sm:col-span-2">
             <label class="text-xs font-bold text-slate-700">Biografia Profissional (Resumo Executivo)</label>
             <textarea id="editProfileBio" rows="3" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none resize-none"></textarea>
@@ -751,22 +828,60 @@
         </div>
       </div>
 
-      <!-- Recruiter Filter Bar -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-subtle space-y-3">
-        <div class="flex flex-col sm:flex-row gap-3">
-          <div class="relative flex-1">
+      <!-- Recruiter Filter Bar with Full Taxonomy Filters -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-subtle space-y-4">
+        
+        <!-- Search and Primary Dropdowns -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Text Search -->
+          <div class="relative sm:col-span-2 lg:col-span-1">
             <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
-            <input type="text" id="inputSearchNetwork" oninput="handleSearchNetwork()" placeholder="Buscar por competência (ex: Redis, Python, Metodologia Ágil, Gestão de Projetos)..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
+            <input type="text" id="inputSearchNetwork" oninput="handleSearchNetwork()" placeholder="Buscar por nome, competência ou tecnologia..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
           </div>
-          <div class="flex items-center gap-2">
-            <select id="selectNetworkRole" onchange="handleSearchNetwork()" class="text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none">
-              <option value="ALL">Todas as Áreas</option>
-              <option value="Engenharia / Backend">Engenharia / Backend</option>
-              <option value="Produto / Gestão">Produto / Gestão</option>
-              <option value="Design / UX">Design / UX</option>
-              <option value="Dados / IA">Dados / IA</option>
+
+          <!-- Area Filter -->
+          <div>
+            <select id="selectNetworkRole" onchange="handleSearchNetwork()" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none">
+              <!-- Rendered via JS -->
             </select>
           </div>
+
+          <!-- Seniority Filter -->
+          <div>
+            <select id="selectNetworkSeniority" onchange="handleSearchNetwork()" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+
+          <!-- Origin Filter -->
+          <div>
+            <select id="selectNetworkOrigin" onchange="handleSearchNetwork()" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none">
+              <!-- Rendered via JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Quick Filter Tags: Hard Skills, Soft Skills & IA -->
+        <div class="pt-3 border-t border-slate-100 space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-700 flex items-center gap-1.5">
+              <i data-lucide="filter" class="w-3.5 h-3.5 text-blue-600"></i>
+              Filtrar por Competências em Alta:
+            </span>
+            <button onclick="clearNetworkFilters()" class="text-slate-400 hover:text-slate-700 text-[11px] font-semibold">
+              Limpar Filtros
+            </button>
+          </div>
+          <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar pb-1 text-xs" id="networkSkillsFilterPills">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+          <span id="networkCountLabel">Exibindo 0 profissionais</span>
+          <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+            <i data-lucide="check-circle" class="w-3 h-3"></i> 100% com cases de impacto verificados
+          </span>
         </div>
       </div>
 
@@ -2330,22 +2445,78 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       });
     }
 
-    // ==================== USER PROFILE DATA & SOCIAL MANAGEMENT ====================
+    // ==================== PADRONIZAÇÃO DE FILTROS & TAXONOMIA (RECRUTADORES & PERFIL) ====================
+    const TAXONOMY_DATA = {
+      habilidades: {
+        hard_skills: [
+          "Python",
+          "SQL",
+          "JavaScript",
+          "Figma",
+          "Pacote Adobe",
+          "Google Workspace",
+          "Excel Avançado",
+          "Metodologias Ágeis (Scrum/Kanban)",
+          "Design Thinking",
+          "Análise de Dados"
+        ],
+        soft_skills: [
+          "Liderança e Gestão de Equipes",
+          "Resolução de Problemas Complexos",
+          "Comunicação e Oratória",
+          "Autonomia e Gestão de Tempo",
+          "Inteligência Emocional e Adaptabilidade"
+        ],
+        habilidades_ia: [
+          "Engenharia de Prompt",
+          "Automação de Processos (No-code, Zapier, Make)"
+        ]
+      },
+      areas_atuacao: [
+        "Tecnologia & Dados",
+        "Design & Produto",
+        "Negócios & Estratégia",
+        "Marketing & Comunicação",
+        "Engenharia & Operações",
+        "Ciências & Saúde",
+        "Recursos Humanos & Pessoas"
+      ],
+      senioridade: [
+        "Formação / Acadêmico",
+        "Estágio / Trainee",
+        "Júnior (0-2 anos)",
+        "Pleno (3-5 anos)",
+        "Sênior",
+        "Liderança / Gestão"
+      ],
+      origem_experiencia: [
+        "Mercado de Trabalho",
+        "Projeto Acadêmico",
+        "Voluntariado",
+        "Projeto Pessoal",
+        "Empresa Júnior / Centro Acadêmico"
+      ]
+    };
+
+    // User Profile Default Data
     const DEFAULT_USER_PROFILE = {
       name: "Rafaela Zampini",
       headline: "Líder Técnica & Engenharia de Software | Especialista em Otimização e Performance",
+      area: "Tecnologia & Dados",
+      seniority: "Liderança / Gestão",
+      origin: "Projeto Acadêmico",
       location: "São Paulo, Brasil • Remoto / Híbrido",
       email: "contato.rafaela@carreiraia.com",
       linkedin: "https://linkedin.com",
       github: "https://github.com",
       bio: "Profissional focada em transformar vivências práticas em resultados corporativos comprovados. Especialista em resolução de problemas de alta complexidade com dados e metodologia STAR, com cases em bancos de dados relacionais, microsserviços e liderança técnica.",
-      skills: ["Java", "Spring Boot", "PostgreSQL", "Redis", "Metodologia Ágil", "Arquitetura Limpa", "Pensamento Estruturado", "Liderança Técnica"]
+      skills: ["Python", "SQL", "Metodologias Ágeis (Scrum/Kanban)", "Liderança e Gestão de Equipes", "Resolução de Problemas Complexos", "Engenharia de Prompt"]
     };
 
     function getUserProfile() {
       try {
         const raw = localStorage.getItem('carreira_ia_user_profile');
-        return raw ? JSON.parse(raw) : DEFAULT_USER_PROFILE;
+        return raw ? { ...DEFAULT_USER_PROFILE, ...JSON.parse(raw) } : DEFAULT_USER_PROFILE;
       } catch (e) {
         return DEFAULT_USER_PROFILE;
       }
@@ -2355,19 +2526,108 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       localStorage.setItem('carreira_ia_user_profile', JSON.stringify(profile));
     }
 
+    // Populate skill chip toggle buttons inside Profile Editor
+    function renderProfileEditorSkillChips() {
+      const p = getUserProfile();
+      const currentSkills = new Set(p.skills || []);
+
+      const hardContainer = document.getElementById('chipsHardSkillsSelector');
+      if (hardContainer) {
+        hardContainer.innerHTML = TAXONOMY_DATA.habilidades.hard_skills.map(s => {
+          const isSelected = currentSkills.has(s);
+          return `
+            <button type="button" onclick="toggleProfileSkill('${s}')" class="px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              isSelected
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+            }">
+              ${isSelected ? '✓ ' : '+ '}${s}
+            </button>
+          `;
+        }).join('');
+      }
+
+      const softContainer = document.getElementById('chipsSoftSkillsSelector');
+      if (softContainer) {
+        softContainer.innerHTML = TAXONOMY_DATA.habilidades.soft_skills.map(s => {
+          const isSelected = currentSkills.has(s);
+          return `
+            <button type="button" onclick="toggleProfileSkill('${s}')" class="px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              isSelected
+                ? 'bg-purple-600 text-white shadow-sm'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+            }">
+              ${isSelected ? '✓ ' : '+ '}${s}
+            </button>
+          `;
+        }).join('');
+      }
+
+      const iaContainer = document.getElementById('chipsIaSkillsSelector');
+      if (iaContainer) {
+        iaContainer.innerHTML = TAXONOMY_DATA.habilidades.habilidades_ia.map(s => {
+          const isSelected = currentSkills.has(s);
+          return `
+            <button type="button" onclick="toggleProfileSkill('${s}')" class="px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              isSelected
+                ? 'bg-emerald-600 text-white shadow-sm'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+            }">
+              ${isSelected ? '✓ ' : '+ '}${s}
+            </button>
+          `;
+        }).join('');
+      }
+    }
+
+    function toggleProfileSkill(skill) {
+      const input = document.getElementById('editProfileSkills');
+      let skillsArray = input.value.split(',').map(s => s.trim()).filter(Boolean);
+      const idx = skillsArray.indexOf(skill);
+      if (idx >= 0) {
+        skillsArray.splice(idx, 1);
+      } else {
+        skillsArray.push(skill);
+      }
+      input.value = skillsArray.join(', ');
+      renderProfileEditorSkillChips();
+    }
+
+    function initProfileTaxonomySelects() {
+      const areaSelect = document.getElementById('editProfileArea');
+      if (areaSelect) {
+        areaSelect.innerHTML = TAXONOMY_DATA.areas_atuacao.map(a => `<option value="${a}">${a}</option>`).join('');
+      }
+
+      const senioritySelect = document.getElementById('editProfileSeniority');
+      if (senioritySelect) {
+        senioritySelect.innerHTML = TAXONOMY_DATA.senioridade.map(s => `<option value="${s}">${s}</option>`).join('');
+      }
+
+      const originSelect = document.getElementById('editProfileOrigin');
+      if (originSelect) {
+        originSelect.innerHTML = TAXONOMY_DATA.origem_experiencia.map(o => `<option value="${o}">${o}</option>`).join('');
+      }
+    }
+
     function toggleEditProfileMode() {
       const card = document.getElementById('cardEditProfile');
       const isHidden = card.classList.contains('hidden');
       if (isHidden) {
+        initProfileTaxonomySelects();
         const p = getUserProfile();
         document.getElementById('editProfileName').value = p.name || '';
         document.getElementById('editProfileHeadline').value = p.headline || '';
+        document.getElementById('editProfileArea').value = p.area || TAXONOMY_DATA.areas_atuacao[0];
+        document.getElementById('editProfileSeniority').value = p.seniority || TAXONOMY_DATA.senioridade[0];
+        document.getElementById('editProfileOrigin').value = p.origin || TAXONOMY_DATA.origem_experiencia[0];
         document.getElementById('editProfileLocation').value = p.location || '';
         document.getElementById('editProfileEmail').value = p.email || '';
         document.getElementById('editProfileLinkedin').value = p.linkedin || '';
         document.getElementById('editProfileGithub').value = p.github || '';
         document.getElementById('editProfileSkills').value = (p.skills || []).join(', ');
         document.getElementById('editProfileBio').value = p.bio || '';
+        renderProfileEditorSkillChips();
         card.classList.remove('hidden');
         document.getElementById('btnEditProfileText').innerText = "Fechar Edição";
       } else {
@@ -2383,11 +2643,14 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const profile = {
         name: document.getElementById('editProfileName').value.trim() || 'Profissional',
         headline: document.getElementById('editProfileHeadline').value.trim() || 'Especialista em Carreira',
+        area: document.getElementById('editProfileArea').value || 'Tecnologia & Dados',
+        seniority: document.getElementById('editProfileSeniority').value || 'Júnior (0-2 anos)',
+        origin: document.getElementById('editProfileOrigin').value || 'Projeto Acadêmico',
         location: document.getElementById('editProfileLocation').value.trim() || 'Brasil • Remoto',
         email: document.getElementById('editProfileEmail').value.trim() || '',
         linkedin: document.getElementById('editProfileLinkedin').value.trim() || 'https://linkedin.com',
         github: document.getElementById('editProfileGithub').value.trim() || 'https://github.com',
-        skills: skillsArray.length ? skillsArray : ['Metodologia STAR', 'Inovação'],
+        skills: skillsArray.length ? skillsArray : ['Python', 'Metodologias Ágeis'],
         bio: document.getElementById('editProfileBio').value.trim() || ''
       };
 
@@ -2425,6 +2688,16 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const headlineEl = document.getElementById('profileDisplayHeadline');
       if (headlineEl) headlineEl.innerText = p.headline;
 
+      // Update Badges
+      const areaBadge = document.getElementById('profileDisplayAreaBadge');
+      if (areaBadge) areaBadge.innerHTML = `<i data-lucide="briefcase" class="w-3 h-3"></i> ${p.area || 'Tecnologia & Dados'}`;
+
+      const seniorityBadge = document.getElementById('profileDisplaySeniorityBadge');
+      if (seniorityBadge) seniorityBadge.innerHTML = `<i data-lucide="trending-up" class="w-3 h-3"></i> ${p.seniority || 'Júnior'}`;
+
+      const originBadge = document.getElementById('profileDisplayOriginBadge');
+      if (originBadge) originBadge.innerHTML = `<i data-lucide="award" class="w-3 h-3"></i> ${p.origin || 'Projeto Prático'}`;
+
       const locEl = document.getElementById('profileDisplayLocation');
       if (locEl) locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> ${p.location}`;
 
@@ -2440,15 +2713,24 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const contactEl = document.getElementById('profileLinkContact');
       if (contactEl) contactEl.href = p.email ? `mailto:${p.email}?subject=Oportunidade%20Profissional%20via%20CarreiraIA` : 'mailto:contato@carreiraia.com';
 
-      // Render Skills
+      // Render Skills with Category Styling
       const skillsContainer = document.getElementById('profileDisplaySkills');
       if (skillsContainer) {
-        skillsContainer.innerHTML = (p.skills || []).map(skill => `
-          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-            ${skill}
-          </span>
-        `).join('');
+        skillsContainer.innerHTML = (p.skills || []).map(skill => {
+          let badgeColor = "bg-blue-50 text-blue-800 border-blue-200";
+          if (TAXONOMY_DATA.habilidades.soft_skills.includes(skill)) {
+            badgeColor = "bg-purple-50 text-purple-800 border-purple-200";
+          } else if (TAXONOMY_DATA.habilidades.habilidades_ia.includes(skill)) {
+            badgeColor = "bg-emerald-50 text-emerald-800 border-emerald-200";
+          }
+
+          return `
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${badgeColor}">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              ${skill}
+            </span>
+          `;
+        }).join('');
       }
 
       // Render Cases Showcase
@@ -2503,16 +2785,20 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
     }
 
     // ==================== TALENT NETWORK / RECRUITER RADAR ====================
+    let selectedSkillFilter = null;
+
     const COMMUNITY_TALENTS = [
       {
         id: 'user_1',
         name: 'Rafaela Zampini',
         headline: 'Líder Técnica & Engenharia de Software | Especialista em Otimização e Performance',
-        area: 'Engenharia / Backend',
+        area: 'Tecnologia & Dados',
+        seniority: 'Liderança / Gestão',
+        origin: 'Projeto Acadêmico',
         location: 'São Paulo • Remoto',
         verifiedCases: 3,
         highlightMetric: '-97% de Latência em Banco de Dados (PostgreSQL + Redis)',
-        skills: ['Spring Boot', 'Redis', 'PostgreSQL', 'Performance', 'Liderança Técnica'],
+        skills: ['SQL', 'Python', 'Metodologias Ágeis (Scrum/Kanban)', 'Liderança e Gestão de Equipes', 'Resolução de Problemas Complexos', 'Engenharia de Prompt'],
         avatar: 'RZ',
         available: true
       },
@@ -2520,11 +2806,13 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         id: 'user_2',
         name: 'Lucas Brandão',
         headline: 'Product Manager & Growth | Foco em Retenção e Monetização',
-        area: 'Produto / Gestão',
+        area: 'Design & Produto',
+        seniority: 'Pleno (3-5 anos)',
+        origin: 'Mercado de Trabalho',
         location: 'Belo Horizonte • Remoto',
         verifiedCases: 4,
         highlightMetric: '+38% na conversão do onboarding em fintech B2B',
-        skills: ['Product Discovery', 'SQL', 'A/B Testing', 'Metodologia STAR', 'Scrum'],
+        skills: ['Figma', 'Design Thinking', 'SQL', 'Metodologias Ágeis (Scrum/Kanban)', 'Resolução de Problemas Complexos'],
         avatar: 'LB',
         available: true
       },
@@ -2532,11 +2820,13 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         id: 'user_3',
         name: 'Beatriz Vasconcelos',
         headline: 'Product Designer Sênior | Design System & Acessibilidade',
-        area: 'Design / UX',
+        area: 'Design & Produto',
+        seniority: 'Sênior',
+        origin: 'Mercado de Trabalho',
         location: 'Curitiba • Híbrido',
         verifiedCases: 5,
         highlightMetric: 'Redução de 45% no tempo de tarefas com redesign de Design System',
-        skills: ['Figma', 'Design System', 'User Research', 'Acessibilidade WCAG'],
+        skills: ['Figma', 'Pacote Adobe', 'Design Thinking', 'Comunicação e Oratória'],
         avatar: 'BV',
         available: true
       },
@@ -2544,11 +2834,13 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         id: 'user_4',
         name: 'Diego Nogueira',
         headline: 'Engenheiro de Dados & IA | Pipelines Distribuídos & LLMs',
-        area: 'Dados / IA',
+        area: 'Tecnologia & Dados',
+        seniority: 'Pleno (3-5 anos)',
+        origin: 'Empresa Júnior / Centro Acadêmico',
         location: 'Rio de Janeiro • Remoto',
         verifiedCases: 2,
         highlightMetric: 'Processamento de 10TB/dia com Spark & Redução de 40% em Cloud Cost',
-        skills: ['Python', 'Apache Spark', 'Databricks', 'AWS', 'Gemini API'],
+        skills: ['Python', 'SQL', 'Análise de Dados', 'Engenharia de Prompt', 'Automação de Processos (No-code, Zapier, Make)'],
         avatar: 'DN',
         available: false
       },
@@ -2556,15 +2848,112 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         id: 'user_5',
         name: 'Camila Ferreira',
         headline: 'Desenvolvedora Full Stack Pleno | React, Node.js & TypeScript',
-        area: 'Engenharia / Backend',
+        area: 'Tecnologia & Dados',
+        seniority: 'Júnior (0-2 anos)',
+        origin: 'Projeto Pessoal',
         location: 'Florianópolis • Remoto',
         verifiedCases: 3,
         highlightMetric: 'Lançamento de MVP em 4 semanas com 10k usuários ativos',
-        skills: ['TypeScript', 'React', 'Node.js', 'Docker', 'GraphQL'],
+        skills: ['JavaScript', 'SQL', 'Metodologias Ágeis (Scrum/Kanban)', 'Autonomia e Gestão de Tempo'],
         avatar: 'CF',
+        available: true
+      },
+      {
+        id: 'user_6',
+        name: 'Mateus Duarte',
+        headline: 'Especialista em Estratégia & Operações de Negócios',
+        area: 'Negócios & Estratégia',
+        seniority: 'Pleno (3-5 anos)',
+        origin: 'Mercado de Trabalho',
+        location: 'São Paulo • Híbrido',
+        verifiedCases: 3,
+        highlightMetric: 'Redução de 30% em despesas operacionais com modelagem financeira',
+        skills: ['Excel Avançado', 'Análise de Dados', 'Google Workspace', 'Liderança e Gestão de Equipes', 'Automação de Processos (No-code, Zapier, Make)'],
+        avatar: 'MD',
+        available: true
+      },
+      {
+        id: 'user_7',
+        name: 'Juliana Prado',
+        headline: 'Analista de People Analytics & Aquisição de Talentos',
+        area: 'Recursos Humanos & Pessoas',
+        seniority: 'Júnior (0-2 anos)',
+        origin: 'Voluntariado',
+        location: 'Campinas • Remoto',
+        verifiedCases: 2,
+        highlightMetric: 'Diminuição de 20 dias no Time-to-Hire com triagem orientada a cases STAR',
+        skills: ['Google Workspace', 'Excel Avançado', 'Comunicação e Oratória', 'Inteligência Emocional e Adaptabilidade'],
+        avatar: 'JP',
         available: true
       }
     ];
+
+    function initNetworkFiltersUI() {
+      // Area Select
+      const areaSelect = document.getElementById('selectNetworkRole');
+      if (areaSelect) {
+        areaSelect.innerHTML = `<option value="ALL">Todas as Áreas de Atuação</option>` +
+          TAXONOMY_DATA.areas_atuacao.map(a => `<option value="${a}">${a}</option>`).join('');
+      }
+
+      // Seniority Select
+      const senioritySelect = document.getElementById('selectNetworkSeniority');
+      if (senioritySelect) {
+        senioritySelect.innerHTML = `<option value="ALL">Todas as Senioridades</option>` +
+          TAXONOMY_DATA.senioridade.map(s => `<option value="${s}">${s}</option>`).join('');
+      }
+
+      // Origin Select
+      const originSelect = document.getElementById('selectNetworkOrigin');
+      if (originSelect) {
+        originSelect.innerHTML = `<option value="ALL">Todas as Origens de Vivência</option>` +
+          TAXONOMY_DATA.origem_experiencia.map(o => `<option value="${o}">${o}</option>`).join('');
+      }
+
+      // Quick Skill Filter Pills
+      const pillsContainer = document.getElementById('networkSkillsFilterPills');
+      if (pillsContainer) {
+        const topSkills = [
+          ...TAXONOMY_DATA.habilidades.hard_skills.slice(0, 6),
+          ...TAXONOMY_DATA.habilidades.soft_skills.slice(0, 3),
+          ...TAXONOMY_DATA.habilidades.habilidades_ia
+        ];
+
+        pillsContainer.innerHTML = topSkills.map(skill => {
+          const isSelected = selectedSkillFilter === skill;
+          return `
+            <button onclick="toggleNetworkSkillFilter('${skill}')" class="px-2.5 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+              isSelected
+                ? 'bg-slate-900 text-white shadow-sm'
+                : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+            }">
+              ${skill}
+            </button>
+          `;
+        }).join('');
+      }
+    }
+
+    function toggleNetworkSkillFilter(skill) {
+      if (selectedSkillFilter === skill) {
+        selectedSkillFilter = null;
+      } else {
+        selectedSkillFilter = skill;
+      }
+      initNetworkFiltersUI();
+      renderTalentNetwork();
+    }
+
+    function clearNetworkFilters() {
+      document.getElementById('inputSearchNetwork').value = '';
+      document.getElementById('selectNetworkRole').value = 'ALL';
+      document.getElementById('selectNetworkSeniority').value = 'ALL';
+      document.getElementById('selectNetworkOrigin').value = 'ALL';
+      selectedSkillFilter = null;
+      initNetworkFiltersUI();
+      renderTalentNetwork();
+      showToast("Filtros limpos!");
+    }
 
     function handleSearchNetwork() {
       renderTalentNetwork();
@@ -2576,20 +2965,63 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
 
       const query = (document.getElementById('inputSearchNetwork')?.value || '').toLowerCase().trim();
       const areaFilter = document.getElementById('selectNetworkRole')?.value || 'ALL';
+      const seniorityFilter = document.getElementById('selectNetworkSeniority')?.value || 'ALL';
+      const originFilter = document.getElementById('selectNetworkOrigin')?.value || 'ALL';
 
       let list = [...COMMUNITY_TALENTS];
 
+      // Area filter
       if (areaFilter !== 'ALL') {
         list = list.filter(t => t.area === areaFilter);
       }
 
+      // Seniority filter
+      if (seniorityFilter !== 'ALL') {
+        list = list.filter(t => t.seniority === seniorityFilter);
+      }
+
+      // Origin filter
+      if (originFilter !== 'ALL') {
+        list = list.filter(t => t.origin === originFilter);
+      }
+
+      // Skill pill filter
+      if (selectedSkillFilter) {
+        list = list.filter(t => t.skills.some(s => s.toLowerCase() === selectedSkillFilter.toLowerCase()));
+      }
+
+      // Text query
       if (query) {
         list = list.filter(t => 
           t.name.toLowerCase().includes(query) ||
           t.headline.toLowerCase().includes(query) ||
           t.highlightMetric.toLowerCase().includes(query) ||
+          (t.area && t.area.toLowerCase().includes(query)) ||
+          (t.seniority && t.seniority.toLowerCase().includes(query)) ||
           t.skills.some(s => s.toLowerCase().includes(query))
         );
+      }
+
+      const countLabel = document.getElementById('networkCountLabel');
+      if (countLabel) {
+        countLabel.innerText = `Exibindo ${list.length} ${list.length === 1 ? 'profissional encontrado' : 'profissionais encontrados'}`;
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-white rounded-3xl border border-dashed border-slate-300 p-10 text-center space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center mx-auto">
+              <i data-lucide="search-x" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm">Nenhum profissional encontrado com os filtros selecionados</h4>
+            <p class="text-xs text-slate-500">Tente remover ou alterar alguns filtros para ver outros talentos.</p>
+            <button onclick="clearNetworkFilters()" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold">
+              Redefinir Filtros
+            </button>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
       }
 
       container.innerHTML = list.map(t => `
@@ -2616,6 +3048,19 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
               </span>
             </div>
 
+            <!-- Area & Seniority Tags -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                ${t.area}
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                ${t.seniority}
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-100 text-slate-600">
+                ${t.origin}
+              </span>
+            </div>
+
             <p class="text-xs font-semibold text-slate-700 leading-snug line-clamp-2">
               ${t.headline}
             </p>
@@ -2628,11 +3073,17 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
             </div>
 
             <div class="flex flex-wrap items-center gap-1">
-              ${t.skills.map(skill => `
-                <span class="px-2 py-0.5 rounded-lg text-[10px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
-                  ${skill}
-                </span>
-              `).join('')}
+              ${t.skills.map(skill => {
+                let pillStyle = "bg-slate-100 text-slate-700 border-slate-200";
+                if (TAXONOMY_DATA.habilidades.habilidades_ia.includes(skill)) {
+                  pillStyle = "bg-emerald-50 text-emerald-700 border-emerald-200 font-semibold";
+                }
+                return `
+                  <span class="px-2 py-0.5 rounded-lg text-[10px] border ${pillStyle}">
+                    ${skill}
+                  </span>
+                `;
+              }).join('')}
             </div>
           </div>
 
@@ -2641,7 +3092,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
               <i data-lucide="folder-check" class="w-3.5 h-3.5 text-blue-600"></i>
               ${t.verifiedCases} cases verificados
             </span>
-            <button onclick="navigateToTab('profile')" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-subtle transition-all">
+            <button onclick="navigateToTab('profile')" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-subtle transition-all">
               Ver Portfólio
             </button>
           </div>
@@ -2672,6 +3123,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       // Read ?tab= query parameter from URL (e.g. ?tab=cases or ?tab=folder)
       const params = new URLSearchParams(window.location.search);
       const initialTab = params.get('tab') || 'cases';
+      initNetworkFiltersUI();
       navigateToTab(initialTab, false);
 
       lucide.createIcons();
