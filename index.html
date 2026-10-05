@@ -214,6 +214,29 @@
     </div>
   </header>
 
+  <!-- ==================== TRIAL / GUEST MODE BANNER ==================== -->
+  <div id="trialModeBanner" class="hidden bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 text-white text-xs px-4 py-2.5 shadow-sm border-b border-blue-900 transition-all">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-900/80 font-bold text-[10px] uppercase tracking-wider text-blue-200">
+          <i data-lucide="sparkles" class="w-3 h-3 text-blue-300"></i>
+          Modo Degustação
+        </span>
+        <span id="trialBannerText" class="text-xs font-medium text-blue-50">
+          Você está navegando como Profissional no modo de teste sem cadastro. Suas ações ficam ativas neste navegador.
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openAuthModal('register', currentAuthRole)" class="px-3.5 py-1 rounded-lg bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 shadow-2xs transition-all cursor-pointer">
+          Criar Cadastro Oficial
+        </button>
+        <button onclick="handleLogout()" class="px-2 py-1 text-blue-200 hover:text-white text-xs underline cursor-pointer">
+          Sair do Teste
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ==================== MAIN CONTENT ==================== -->
   <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
 
@@ -1864,6 +1887,166 @@
         </div>
       </div>
 
+      <!-- ==================== CENTRAL DE CONTROLE DE CADASTROS & LEADS ==================== -->
+      <div id="section-admin-leads" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle space-y-6">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold">
+              <i data-lucide="database" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-900">Central de Controle de Cadastros & Leads</h2>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-800">Painel Gestor</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Gerenciamento da base de usuários, candidatos e recrutadores cadastrados.</p>
+            </div>
+          </div>
+          
+          <!-- Export Actions -->
+          <div class="flex items-center gap-2">
+            <button onclick="exportLeadsCSV()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+              <i data-lucide="download" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span>Exportar CSV (Leads)</span>
+            </button>
+            <button onclick="exportLeadsJSON()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+              <i data-lucide="code" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span>Exportar JSON</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Metric Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="p-4 rounded-xl border border-slate-200/80 bg-slate-50/50 space-y-1">
+            <div class="flex items-center justify-between text-slate-500 text-xs">
+              <span>Total de Cadastros</span>
+              <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
+            </div>
+            <div id="statTotalUsers" class="text-2xl font-black text-slate-900">0</div>
+            <div class="text-[10px] text-slate-500">Base ativa da plataforma</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/40 space-y-1">
+            <div class="flex items-center justify-between text-blue-700 text-xs">
+              <span class="font-semibold">Candidatos / Profissionais</span>
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-blue-600"></i>
+            </div>
+            <div id="statTotalCandidates" class="text-2xl font-black text-blue-900">0</div>
+            <div class="text-[10px] text-blue-700">Portfólios & cases STAR</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-emerald-100 bg-emerald-50/40 space-y-1">
+            <div class="flex items-center justify-between text-emerald-700 text-xs">
+              <span class="font-semibold">Recrutadores & Tech Leads</span>
+              <i data-lucide="briefcase" class="w-3.5 h-3.5 text-emerald-600"></i>
+            </div>
+            <div id="statTotalRecruiters" class="text-2xl font-black text-emerald-900">0</div>
+            <div class="text-[10px] text-emerald-700">Avaliando no Radar</div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-amber-100 bg-amber-50/40 space-y-1">
+            <div class="flex items-center justify-between text-amber-700 text-xs">
+              <span class="font-semibold">Modo Degustação</span>
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-600"></i>
+            </div>
+            <div id="statTotalTrials" class="text-2xl font-black text-amber-900">0</div>
+            <div class="text-[10px] text-amber-700">Testes sem cadastro</div>
+          </div>
+        </div>
+
+        <!-- Filter and Search Bar -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <div class="relative flex-1 w-full">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3"></i>
+            <input type="text" id="leadsSearchInput" oninput="filterLeadsTable()" placeholder="Buscar cadastro por nome, e-mail, área ou cargo..." class="w-full text-xs pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+          </div>
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <select id="leadsRoleFilter" onchange="filterLeadsTable()" class="text-xs px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none">
+              <option value="all">Todos os Perfis</option>
+              <option value="candidate">Apenas Profissionais (Candidatos)</option>
+              <option value="recruiter">Apenas Recrutadores (Empresas)</option>
+            </select>
+            <button onclick="openAuthModal('register')" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 whitespace-nowrap cursor-pointer transition-all">
+              <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
+              <span>Novo Cadastro</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Leads Table -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left text-xs text-slate-700 border-collapse">
+            <thead class="bg-slate-50/80 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4">Usuário</th>
+                <th class="py-3 px-4">Perfil</th>
+                <th class="py-3 px-4">Área / Empresa</th>
+                <th class="py-3 px-4">Data Cadastro</th>
+                <th class="py-3 px-4">Último Acesso</th>
+                <th class="py-3 px-4 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody" class="divide-y divide-slate-100 font-normal">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Strategic Guidance: Para que serve o controle dos cadastros? -->
+        <div class="rounded-2xl border border-slate-200/90 bg-gradient-to-br from-slate-50 to-indigo-50/30 p-5 space-y-4">
+          <div class="flex items-center gap-2 text-slate-900 font-bold text-xs sm:text-sm">
+            <i data-lucide="compass" class="w-4 h-4 text-indigo-600"></i>
+            <span>Para que serve o controle dos cadastros na estratégia da plataforma?</span>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-600">
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200/70 space-y-1">
+              <div class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                <span>1. Base de Leads Qualificada (Funil de Vendas)</span>
+              </div>
+              <p class="leading-relaxed text-[11px]">
+                Mapeia exatamente quais profissionais e recrutadores têm interesse na solução, viabilizando abordagens comerciais, consultorias de carreira e parcerias com empresas.
+              </p>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200/70 space-y-1">
+              <div class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span>2. Monetização B2B e B2C Escalável</span>
+              </div>
+              <p class="leading-relaxed text-[11px]">
+                Permite cobrar assinaturas corporativas de recrutadores (busca ativa no radar, filtros avançados) e planos Pro para profissionais (consultoria de IA sem limites e portfólio customizado).
+              </p>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200/70 space-y-1">
+              <div class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                <span>3. Retenção & Portfólio Permanente</span>
+              </div>
+              <p class="leading-relaxed text-[11px]">
+                Garante que os cases STAR, o currículo vivo e as evidências fiquem salvos em nuvem, permitindo ao usuário compartilhar links públicos verificáveis com quem quiser.
+              </p>
+            </div>
+
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200/70 space-y-1">
+              <div class="font-bold text-slate-800 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                <span>4. Métricas de Product-Led Growth (PLG)</span>
+              </div>
+              <p class="leading-relaxed text-[11px]">
+                Monitora a taxa de conversão dos visitantes que entram no Modo Degustação e decidem criar uma conta definitiva, orientando as melhorias do produto com dados reais.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </section>
 
   </main>
@@ -2110,16 +2293,27 @@
 
   <!-- ==================== NOTION-INSPIRED AUTH MODAL (LOGIN & CADASTRO) ==================== -->
   <div id="modalAuth" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all" onclick="if(event.target === this) closeAuthModal()">
-    <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in p-6 sm:p-8 relative space-y-5 text-left">
+    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in p-6 sm:p-7 relative space-y-5 text-left max-h-[92vh] overflow-y-auto">
       
       <!-- Close Button -->
       <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
+      <!-- Gatekeeper Context Notice (Shown when navigating to protected tabs) -->
+      <div id="authGatekeeperNotice" class="hidden p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200/80 text-xs text-blue-950 space-y-1">
+        <div class="font-bold flex items-center gap-1.5 text-blue-900">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-blue-600"></i>
+          <span id="gatekeeperNoticeTitle">Acesso ao Espaço Reservado</span>
+        </div>
+        <p id="gatekeeperNoticeText" class="text-[11px] text-blue-800 leading-relaxed">
+          Para acessar as ferramentas, cadastre-se gratuitamente, entre na sua conta ou experimente imediatamente no <strong>Modo Degustação</strong> sem cadastro.
+        </p>
+      </div>
+
       <!-- Notion Centered Brand Header -->
-      <div class="text-center space-y-2 pt-1">
-        <div class="w-12 h-12 rounded-2xl mx-auto overflow-hidden shadow-sm flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
+      <div class="text-center space-y-1.5 pt-0.5">
+        <div class="w-11 h-11 rounded-2xl mx-auto overflow-hidden shadow-xs flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-2" aria-label="Logo CarreiraIA">
             <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
             <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
@@ -2128,60 +2322,109 @@
           </svg>
         </div>
         <h3 id="authModalTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-          Entrar ou criar conta
+          Acessar o CarreiraIA
         </h3>
-        <p class="text-xs text-slate-500 max-w-xs mx-auto">
-          Use seu e-mail profissional ou acesse com um clique para continuar seu espaço de trabalho.
+        <p id="authModalSubtitle" class="text-xs text-slate-500 max-w-sm mx-auto">
+          Escolha seu perfil para ser direcionado ao ambiente sob medida:
         </p>
       </div>
 
-      <!-- Notion One-Click Social Auth Buttons -->
-      <div class="space-y-2">
-        <button type="button" onclick="handleSocialLogin('Google')" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs transition-all cursor-pointer">
-          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-          <span>Continuar com o Google</span>
-        </button>
-        <button type="button" onclick="handleSocialLogin('Microsoft')" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs transition-all cursor-pointer">
-          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#f25022" d="M1 1h10v10H1z"/><path fill="#00a4ef" d="M1 13h10v10H1z"/><path fill="#7fba00" d="M13 1h10v10H13z"/><path fill="#ffb900" d="M13 13h10v10H13z"/></svg>
-          <span>Continuar com a Microsoft</span>
-        </button>
-        <button type="button" onclick="handleSocialLogin('LinkedIn')" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs transition-all cursor-pointer">
-          <svg class="w-4 h-4 text-blue-700 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          <span>Continuar com o LinkedIn</span>
-        </button>
+      <!-- Segmentação por Perfil: Profissional vs Recrutador -->
+      <div class="space-y-1.5">
+        <label class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">Qual é o seu perfil de acesso?</label>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" id="authRoleCandidateBtn" onclick="switchAuthRole('candidate')" class="p-3 rounded-2xl border-2 transition-all text-left flex flex-col justify-between bg-blue-50/70 border-blue-600 text-slate-900 shadow-2xs cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold flex items-center gap-1.5 text-blue-900">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
+                Profissional
+              </span>
+              <span id="roleCheckCandidate" class="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px]">✓</span>
+            </div>
+            <p class="text-[10px] text-slate-600 mt-1 leading-tight">
+              Criar cases STAR, currículo vivo e portfólio
+            </p>
+          </button>
+
+          <button type="button" id="authRoleRecruiterBtn" onclick="switchAuthRole('recruiter')" class="p-3 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/50 text-slate-700 transition-all text-left flex flex-col justify-between cursor-pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold flex items-center gap-1.5 text-slate-800">
+                <i data-lucide="briefcase" class="w-4 h-4 text-emerald-600"></i>
+                Recrutador
+              </span>
+              <span id="roleCheckRecruiter" class="w-4 h-4 rounded-full border border-slate-300 text-transparent flex items-center justify-center text-[10px] hidden">✓</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-1 leading-tight">
+              Radar de talentos & triagem com evidências
+            </p>
+          </button>
+        </div>
       </div>
 
-      <!-- Notion Divider -->
-      <div class="flex items-center gap-3 text-xs text-slate-400">
-        <div class="h-px bg-slate-200 flex-1"></div>
-        <span class="text-[11px] font-medium text-slate-500">ou continue com e-mail</span>
-        <div class="h-px bg-slate-200 flex-1"></div>
+      <!-- Notion Auth Mode Switcher (Cadastro vs Login) -->
+      <div class="flex items-center p-1 bg-slate-100 rounded-xl">
+        <button type="button" id="authTabBtnRegister" onclick="switchAuthTab('register')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-white text-slate-900 shadow-2xs">
+          Criar Cadastro Grátis
+        </button>
+        <button type="button" id="authTabBtnLogin" onclick="switchAuthTab('login')" class="flex-1 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all">
+          Já Tenho Conta
+        </button>
       </div>
 
       <!-- Form Body -->
       <div class="space-y-3">
         <!-- Register only fields -->
-        <div id="authRegisterFields" class="hidden space-y-3">
+        <div id="authRegisterFields" class="space-y-3">
           <div class="space-y-1">
             <label class="text-xs font-bold text-slate-700">Nome Completo</label>
             <input type="text" id="authInputName" placeholder="Ex: Rafaela Zampini" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
           </div>
-          <div class="space-y-1">
-            <label class="text-xs font-bold text-slate-700">Área de Atuação</label>
-            <select id="authSelectArea" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
-              <option value="Tecnologia & Dados">Tecnologia & Dados</option>
-              <option value="Design & Produto">Design & Produto</option>
-              <option value="Negócios & Estratégia">Negócios & Estratégia</option>
-              <option value="Marketing & Comunicação">Marketing & Comunicação</option>
-              <option value="Engenharia & Operações">Engenharia & Operações</option>
-              <option value="Recursos Humanos & Pessoas">Recursos Humanos & Pessoas</option>
-            </select>
+
+          <!-- Role-specific fields: Candidate -->
+          <div id="authCandidateFields" class="space-y-3">
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-slate-700">Área de Atuação</label>
+              <select id="authSelectArea" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+                <option value="Tecnologia & Dados">Tecnologia & Dados</option>
+                <option value="Design & Produto">Design & Produto</option>
+                <option value="Negócios & Estratégia">Negócios & Estratégia</option>
+                <option value="Marketing & Comunicação / PR">Marketing & Comunicação / PR</option>
+                <option value="Engenharia & Operações">Engenharia & Operações</option>
+                <option value="Recursos Humanos & Pessoas">Recursos Humanos & Pessoas</option>
+              </select>
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-slate-700">Objetivo Principal</label>
+              <select id="authSelectGoal" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+                <option value="Criar portfólio de cases STAR estruturados">Criar portfólio de cases STAR estruturados</option>
+                <option value="Destacar impacto em transição ou promoção">Destacar impacto em transição ou promoção</option>
+                <option value="Gerar currículo vivo e bio executiva">Gerar currículo vivo e bio executiva</option>
+                <option value="Ganhar visibilidade no Radar de Talentos">Ganhar visibilidade no Radar de Talentos</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Role-specific fields: Recruiter -->
+          <div id="authRecruiterFields" class="space-y-3 hidden">
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-slate-700">Empresa ou Consultoria</label>
+              <input type="text" id="authInputCompany" placeholder="Ex: Nubank, Consultoria RH, Startup..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-slate-700">Cargo / Função</label>
+              <select id="authSelectRecruiterRole" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+                <option value="Tech Recruiter / Talent Acquisition">Tech Recruiter / Talent Acquisition</option>
+                <option value="Headhunter / Consultor Executivo">Headhunter / Consultor Executivo</option>
+                <option value="Engineering Manager / Tech Lead">Engineering Manager / Tech Lead</option>
+                <option value="Líder de Equipe / Diretor">Líder de Equipe / Diretor</option>
+              </select>
+            </div>
           </div>
         </div>
 
         <!-- Email Field -->
         <div class="space-y-1">
-          <label class="text-xs font-bold text-slate-700">E-mail profissional ou pessoal</label>
+          <label id="authEmailLabel" class="text-xs font-bold text-slate-700">E-mail profissional ou pessoal</label>
           <input type="email" id="authInputEmail" placeholder="nome@empresa.com" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
         </div>
 
@@ -2196,35 +2439,59 @@
 
         <!-- Notion Style Black Submit Button -->
         <button id="authSubmitBtn" onclick="submitAuthForm()" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer mt-2">
-          <span id="authSubmitBtnText">Continuar com e-mail</span>
+          <span id="authSubmitBtnText">Criar Conta e Acessar como Profissional</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
+      </div>
 
-        <!-- Toggle Mode Switcher -->
-        <div class="text-center pt-1">
-          <button type="button" id="authSwitchModeBtn" onclick="toggleAuthMode()" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">
-            Não tem uma conta? <span class="font-bold underline text-blue-600">Criar conta grátis</span>
+      <!-- ==================== SEÇÃO: TESTAR SEM CADASTRO (MODO DEGUSTAÇÃO) ==================== -->
+      <div class="pt-4 border-t border-slate-100 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
+            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
+            Quer apenas experimentar sem cadastro?
+          </span>
+          <span class="text-[10px] text-slate-500">Acesso imediato</span>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <button type="button" onclick="handleDemoTrial('candidate')" class="p-2.5 rounded-xl border border-blue-200 bg-blue-50/50 hover:bg-blue-50 hover:border-blue-300 text-left transition-all flex items-center gap-2.5 cursor-pointer">
+            <div class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="font-bold text-blue-950 block text-[11px] truncate">Degustação Profissional</span>
+              <span class="text-[10px] text-blue-700 block truncate">Gerador STAR & Currículo</span>
+            </div>
+          </button>
+
+          <button type="button" onclick="handleDemoTrial('recruiter')" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/50 hover:bg-emerald-50 hover:border-emerald-300 text-left transition-all flex items-center gap-2.5 cursor-pointer">
+            <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+              <i data-lucide="users" class="w-3.5 h-3.5"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="font-bold text-emerald-950 block text-[11px] truncate">Degustação Recrutador</span>
+              <span class="text-[10px] text-emerald-700 block truncate">Radar & Triagem Preditiva</span>
+            </div>
           </button>
         </div>
       </div>
 
-      <!-- Fast 1-Click Demo Profiles (Notion workspace switcher style) -->
-      <div class="pt-3 border-t border-slate-100 space-y-2">
-        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block text-center">Acesso Rápido para Demonstração:</span>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-          <button type="button" onclick="handleDemoAccess('rafaela')" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 text-left transition-all flex items-center gap-2">
-            <div class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0">RZ</div>
-            <div class="min-w-0 flex-1">
-              <span class="font-bold text-slate-900 block truncate">Rafaela Zampini</span>
-              <span class="text-[10px] text-slate-500 block truncate">Líder Técnica</span>
-            </div>
+      <!-- Social Logins -->
+      <div class="pt-2 border-t border-slate-100 space-y-2">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block text-center">Ou continue com um clique:</span>
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" onclick="handleSocialLogin('Google')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+            <span>Google</span>
           </button>
-          <button type="button" onclick="handleDemoAccess('recruiter')" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 text-left transition-all flex items-center gap-2">
-            <div class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">RT</div>
-            <div class="min-w-0 flex-1">
-              <span class="font-bold text-slate-900 block truncate">Tech Recruiter</span>
-              <span class="text-[10px] text-slate-500 block truncate">Radar de Talentos</span>
-            </div>
+          <button type="button" onclick="handleSocialLogin('LinkedIn')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-blue-700 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </button>
+          <button type="button" onclick="handleSocialLogin('Microsoft')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24"><path fill="#f25022" d="M1 1h10v10H1z"/><path fill="#00a4ef" d="M1 13h10v10H1z"/><path fill="#7fba00" d="M13 1h10v10H13z"/><path fill="#ffb900" d="M13 13h10v10H13z"/></svg>
+            <span>Microsoft</span>
           </button>
         </div>
       </div>
@@ -2238,16 +2505,30 @@
 
   <!-- Notion-style User Account Workspace Dropdown Drawer -->
   <div id="modalUserMenu" class="fixed inset-0 z-50 flex items-start justify-end p-4 sm:p-6 bg-black/20 backdrop-blur-xs hidden transition-all" onclick="if(event.target === this) closeUserMenu()">
-    <div class="bg-white rounded-2xl w-72 shadow-2xl border border-slate-200 p-4 mt-14 space-y-3 animate-in fade-in text-left">
+    <div class="bg-white rounded-2xl w-80 shadow-2xl border border-slate-200 p-4 mt-14 space-y-3 animate-in fade-in text-left">
       <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
         <div class="w-10 h-10 rounded-full overflow-hidden bg-slate-900 text-white flex items-center justify-center text-xs font-extrabold shadow-sm shrink-0 border border-slate-200 relative">
           <span id="userMenuAvatar">RZ</span>
           <img id="userMenuAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Foto">
         </div>
         <div class="min-w-0 flex-1">
-          <h4 id="userMenuName" class="text-xs font-bold text-slate-900 truncate">Rafaela Zampini</h4>
+          <div class="flex items-center gap-1.5">
+            <h4 id="userMenuName" class="text-xs font-bold text-slate-900 truncate">Rafaela Zampini</h4>
+            <span id="userMenuRoleBadge" class="px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-blue-100 text-blue-800">Profissional</span>
+          </div>
           <p id="userMenuEmail" class="text-[11px] text-slate-500 truncate">rafaela@carreiraia.com</p>
         </div>
+      </div>
+
+      <!-- Quick Switch Role Action -->
+      <div class="p-2 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+        <div class="text-[11px]">
+          <span class="text-slate-500 block text-[10px]">Visão Atual:</span>
+          <span id="userMenuCurrentRoleLabel" class="font-bold text-slate-800">Espaço do Profissional</span>
+        </div>
+        <button onclick="toggleUserWorkspaceRole()" class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-[11px] font-bold text-slate-700 transition-all cursor-pointer">
+          Alternar Visão
+        </button>
       </div>
 
       <div class="space-y-1">
@@ -2266,6 +2547,10 @@
         <button onclick="closeUserMenu(); navigateToTab('network');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
           <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
           <span>Radar Social de Talentos</span>
+        </button>
+        <button onclick="closeUserMenu(); navigateToTab('settings'); scrollToAdminLeads();" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-indigo-700 hover:bg-indigo-50 flex items-center gap-2">
+          <i data-lucide="database" class="w-4 h-4 text-indigo-500"></i>
+          <span>Central de Cadastros & Leads</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('settings');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
           <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>
@@ -2360,8 +2645,27 @@
       }
     }
 
+    let pendingRedirectTab = null;
+
+    function checkTabAccess(tabName) {
+      if (tabName === 'landing' || tabName === 'settings') return true;
+      const session = getAuthSession();
+      if (session && (session.isLoggedIn || session.isGuestTrial)) {
+        return true;
+      }
+      return false;
+    }
+
     // Tab Navigation & URL Query Sync (?tab=landing, ?tab=cases, ?tab=profile, ?tab=network, etc)
     function navigateToTab(tabName, updateHistory = true) {
+      // Gatekeeper check: only allow protected tabs if logged in or in guest trial
+      if (!checkTabAccess(tabName)) {
+        pendingRedirectTab = tabName;
+        const suggestedRole = (tabName === 'network') ? 'recruiter' : 'candidate';
+        openAuthModal('gatekeeper', suggestedRole);
+        return;
+      }
+
       currentTab = tabName;
 
       // Update URL query parameter without full reload
@@ -2431,6 +2735,8 @@
         renderUserProfile();
       } else if (tabName === 'network') {
         renderTalentNetwork();
+      } else if (tabName === 'settings') {
+        renderLeadsTable();
       }
 
       lucide.createIcons();
@@ -3654,24 +3960,328 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
     };
 
     // ==================== AUTHENTICATION & SESSION MANAGEMENT (NOTION FLOW) ====================
-    let currentAuthMode = 'login'; // 'login' or 'register'
+    let currentAuthMode = 'register'; // 'login' or 'register'
+    let currentAuthRole = 'candidate'; // 'candidate' or 'recruiter'
+
+    // Leads & Registered Users Database (Persistent in LocalStorage)
+    const DEFAULT_INITIAL_LEADS = [
+      {
+        id: "usr_1727500000001",
+        name: "Rafaela Zampini",
+        email: "contato.rafaela@carreiraia.com",
+        role: "candidate",
+        area: "Tecnologia & Dados",
+        cargo: "Líder Técnica & Engenheira de Software",
+        createdAt: "2026-09-18T14:30:00.000Z",
+        lastLogin: "2026-10-05T10:15:00.000Z",
+        loginCount: 14,
+        status: "active"
+      },
+      {
+        id: "usr_1727500000002",
+        name: "Carlos Eduardo Mendes",
+        email: "carlos.mendes@rhcapital.com.br",
+        role: "recruiter",
+        area: "RH Capital Executive Search",
+        cargo: "Headhunter & Tech Recruiter Sênior",
+        createdAt: "2026-09-24T11:20:00.000Z",
+        lastLogin: "2026-10-04T16:45:00.000Z",
+        loginCount: 8,
+        status: "active"
+      },
+      {
+        id: "usr_1727500000003",
+        name: "Marina Silva Rocha",
+        email: "marina.rocha@fintechbr.com",
+        role: "recruiter",
+        area: "FintechBR Pagamentos",
+        cargo: "Engineering Manager / Tech Lead",
+        createdAt: "2026-09-30T09:10:00.000Z",
+        lastLogin: "2026-10-05T08:30:00.000Z",
+        loginCount: 5,
+        status: "active"
+      },
+      {
+        id: "usr_1727500000004",
+        name: "Gabriel Vasconcelos",
+        email: "gabriel.vasconcelos@devmail.com",
+        role: "candidate",
+        area: "Engenharia & Arquitetura",
+        cargo: "Arquiteto de Soluções",
+        createdAt: "2026-10-01T15:00:00.000Z",
+        lastLogin: "2026-10-03T19:20:00.000Z",
+        loginCount: 3,
+        status: "active"
+      },
+      {
+        id: "usr_1727500000005",
+        name: "Beatriz Nogueira Ramos",
+        email: "beatriz.nogueira@agenciapr.com",
+        role: "candidate",
+        area: "Marketing & Comunicação / PR",
+        cargo: "Especialista em Comunicação Corporativa",
+        createdAt: "2026-10-02T13:40:00.000Z",
+        lastLogin: "2026-10-05T11:00:00.000Z",
+        loginCount: 6,
+        status: "active"
+      }
+    ];
+
+    function getUsersDatabase() {
+      try {
+        const raw = localStorage.getItem('carreira_ia_users_db');
+        if (raw) return JSON.parse(raw);
+        localStorage.setItem('carreira_ia_users_db', JSON.stringify(DEFAULT_INITIAL_LEADS));
+        return DEFAULT_INITIAL_LEADS;
+      } catch (e) {
+        return DEFAULT_INITIAL_LEADS;
+      }
+    }
+
+    function saveUsersDatabase(users) {
+      try {
+        localStorage.setItem('carreira_ia_users_db', JSON.stringify(users));
+        renderLeadsTable();
+      } catch (e) {
+        console.error("Erro ao salvar base de leads", e);
+      }
+    }
+
+    function registerUserInDatabase(newUser) {
+      const users = getUsersDatabase();
+      const existingIdx = users.findIndex(u => u.email.toLowerCase() === newUser.email.toLowerCase());
+      if (existingIdx >= 0) {
+        users[existingIdx] = { 
+          ...users[existingIdx], 
+          ...newUser, 
+          lastLogin: new Date().toISOString(),
+          loginCount: (users[existingIdx].loginCount || 1) + 1
+        };
+      } else {
+        users.unshift(newUser);
+      }
+      saveUsersDatabase(users);
+    }
+
+    function getTrialStats() {
+      try {
+        const raw = localStorage.getItem('carreira_ia_trial_stats');
+        if (raw) return JSON.parse(raw);
+        const initial = { totalCandidates: 22, totalRecruiters: 11 };
+        localStorage.setItem('carreira_ia_trial_stats', JSON.stringify(initial));
+        return initial;
+      } catch (e) {
+        return { totalCandidates: 22, totalRecruiters: 11 };
+      }
+    }
+
+    function recordTrialAccess(role) {
+      const stats = getTrialStats();
+      if (role === 'recruiter') {
+        stats.totalRecruiters = (stats.totalRecruiters || 0) + 1;
+      } else {
+        stats.totalCandidates = (stats.totalCandidates || 0) + 1;
+      }
+      localStorage.setItem('carreira_ia_trial_stats', JSON.stringify(stats));
+    }
+
+    function renderLeadsTable() {
+      const users = getUsersDatabase();
+      const trialStats = getTrialStats();
+      const search = (document.getElementById('leadsSearchInput')?.value || '').toLowerCase().trim();
+      const roleFilter = document.getElementById('leadsRoleFilter')?.value || 'all';
+
+      const totalUsersEl = document.getElementById('statTotalUsers');
+      const totalCandidatesEl = document.getElementById('statTotalCandidates');
+      const totalRecruitersEl = document.getElementById('statTotalRecruiters');
+      const totalTrialsEl = document.getElementById('statTotalTrials');
+
+      const candidatesCount = users.filter(u => u.role === 'candidate' || u.role === 'leader').length;
+      const recruitersCount = users.filter(u => u.role === 'recruiter').length;
+      const trialsCount = (trialStats.totalCandidates || 0) + (trialStats.totalRecruiters || 0);
+
+      if (totalUsersEl) totalUsersEl.innerText = users.length;
+      if (totalCandidatesEl) totalCandidatesEl.innerText = candidatesCount;
+      if (totalRecruitersEl) totalRecruitersEl.innerText = recruitersCount;
+      if (totalTrialsEl) totalTrialsEl.innerText = trialsCount;
+
+      const tbody = document.getElementById('leadsTableBody');
+      if (!tbody) return;
+
+      const filtered = users.filter(u => {
+        const matchesRole = roleFilter === 'all' || 
+          (roleFilter === 'candidate' && (u.role === 'candidate' || u.role === 'leader')) || 
+          (roleFilter === 'recruiter' && u.role === 'recruiter');
+        const matchesSearch = !search || 
+          (u.name && u.name.toLowerCase().includes(search)) || 
+          (u.email && u.email.toLowerCase().includes(search)) || 
+          (u.area && u.area.toLowerCase().includes(search)) ||
+          (u.cargo && u.cargo.toLowerCase().includes(search));
+        return matchesRole && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-xs text-slate-400">Nenhum cadastro encontrado com os filtros atuais.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(u => {
+        const isRecruiter = u.role === 'recruiter';
+        const roleBadge = isRecruiter 
+          ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800"><i data-lucide="briefcase" class="w-3 h-3 text-emerald-600"></i>Recrutador</span>`
+          : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800"><i data-lucide="graduation-cap" class="w-3 h-3 text-blue-600"></i>Profissional</span>`;
+
+        const createdFormatted = u.createdAt ? new Date(u.createdAt).toLocaleDateString('pt-BR') : '-';
+        const lastLoginFormatted = u.lastLogin ? new Date(u.lastLogin).toLocaleDateString('pt-BR') : '-';
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-4">
+              <div class="font-bold text-slate-900">${u.name}</div>
+              <div class="text-[11px] text-slate-500">${u.email}</div>
+            </td>
+            <td class="py-3 px-4">${roleBadge}</td>
+            <td class="py-3 px-4">
+              <div class="font-medium text-slate-800 text-[11px]">${u.area || '-'}</div>
+              <div class="text-[10px] text-slate-500">${u.cargo || '-'}</div>
+            </td>
+            <td class="py-3 px-4 text-[11px] text-slate-600 whitespace-nowrap">${createdFormatted}</td>
+            <td class="py-3 px-4 text-[11px] text-slate-600 whitespace-nowrap">${lastLoginFormatted} (${u.loginCount || 1}x)</td>
+            <td class="py-3 px-4 text-right">
+              <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Ativo
+              </span>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function filterLeadsTable() {
+      renderLeadsTable();
+    }
+
+    function exportLeadsCSV() {
+      const users = getUsersDatabase();
+      const headers = ["ID", "Nome", "Email", "Perfil", "Area_Empresa", "Cargo_Objetivo", "Data_Cadastro", "Ultimo_Acesso", "Logins", "Status"];
+      const rows = users.map(u => [
+        `"${u.id || ''}"`,
+        `"${(u.name || '').replace(/"/g, '""')}"`,
+        `"${(u.email || '').replace(/"/g, '""')}"`,
+        `"${u.role === 'recruiter' ? 'Recrutador' : 'Profissional'}"`,
+        `"${(u.area || '').replace(/"/g, '""')}"`,
+        `"${(u.cargo || '').replace(/"/g, '""')}"`,
+        `"${u.createdAt || ''}"`,
+        `"${u.lastLogin || ''}"`,
+        u.loginCount || 1,
+        `"${u.status || 'active'}"`
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `carreiraia_leads_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("Base de leads exportada em CSV com sucesso!");
+    }
+
+    function exportLeadsJSON() {
+      const users = getUsersDatabase();
+      const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(users, null, 2));
+      const link = document.createElement("a");
+      link.setAttribute("href", jsonStr);
+      link.setAttribute("download", `carreiraia_leads_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("Base de leads exportada em JSON com sucesso!");
+    }
+
+    function scrollToAdminLeads() {
+      setTimeout(() => {
+        const el = document.getElementById('section-admin-leads');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    }
+
+    function switchAuthRole(role) {
+      currentAuthRole = role;
+      const candidateBtn = document.getElementById('authRoleCandidateBtn');
+      const recruiterBtn = document.getElementById('authRoleRecruiterBtn');
+      const checkCandidate = document.getElementById('roleCheckCandidate');
+      const checkRecruiter = document.getElementById('roleCheckRecruiter');
+      const candidateFields = document.getElementById('authCandidateFields');
+      const recruiterFields = document.getElementById('authRecruiterFields');
+      const emailLabel = document.getElementById('authEmailLabel');
+      const emailInput = document.getElementById('authInputEmail');
+      const submitText = document.getElementById('authSubmitBtnText');
+
+      if (role === 'candidate') {
+        if (candidateBtn) candidateBtn.className = "p-3 rounded-2xl border-2 transition-all text-left flex flex-col justify-between bg-blue-50/70 border-blue-600 text-slate-900 shadow-2xs cursor-pointer";
+        if (recruiterBtn) recruiterBtn.className = "p-3 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/50 text-slate-700 transition-all text-left flex flex-col justify-between cursor-pointer";
+        if (checkCandidate) checkCandidate.classList.remove('hidden');
+        if (checkRecruiter) checkRecruiter.classList.add('hidden');
+        if (candidateFields) candidateFields.classList.remove('hidden');
+        if (recruiterFields) recruiterFields.classList.add('hidden');
+        if (emailLabel) emailLabel.innerText = "E-mail profissional ou pessoal";
+        if (emailInput) emailInput.placeholder = "seu.email@exemplo.com";
+        if (submitText) {
+          submitText.innerText = currentAuthMode === 'register' ? "Criar Conta como Profissional e Acessar" : "Entrar como Profissional";
+        }
+      } else {
+        if (recruiterBtn) recruiterBtn.className = "p-3 rounded-2xl border-2 transition-all text-left flex flex-col justify-between bg-emerald-50/70 border-emerald-600 text-slate-900 shadow-2xs cursor-pointer";
+        if (candidateBtn) candidateBtn.className = "p-3 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/50 text-slate-700 transition-all text-left flex flex-col justify-between cursor-pointer";
+        if (checkCandidate) checkCandidate.classList.add('hidden');
+        if (checkRecruiter) checkRecruiter.classList.remove('hidden');
+        if (candidateFields) candidateFields.classList.add('hidden');
+        if (recruiterFields) recruiterFields.classList.remove('hidden');
+        if (emailLabel) emailLabel.innerText = "E-mail corporativo ou institucional";
+        if (emailInput) emailInput.placeholder = "recrutador@empresa.com";
+        if (submitText) {
+          submitText.innerText = currentAuthMode === 'register' ? "Criar Conta como Recrutador e Acessar" : "Entrar como Recrutador";
+        }
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function switchAuthTab(mode) {
+      currentAuthMode = mode;
+      const regFields = document.getElementById('authRegisterFields');
+      const btnReg = document.getElementById('authTabBtnRegister');
+      const btnLogin = document.getElementById('authTabBtnLogin');
+      const submitText = document.getElementById('authSubmitBtnText');
+      const title = document.getElementById('authModalTitle');
+
+      if (mode === 'login') {
+        if (title) title.innerText = "Entrar no CarreiraIA";
+        if (regFields) regFields.classList.add('hidden');
+        if (btnReg) btnReg.className = "flex-1 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all";
+        if (btnLogin) btnLogin.className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-white text-slate-900 shadow-2xs";
+        if (submitText) submitText.innerText = currentAuthRole === 'recruiter' ? "Entrar como Recrutador" : "Entrar como Profissional";
+      } else {
+        if (title) title.innerText = "Criar Cadastro no CarreiraIA";
+        if (regFields) regFields.classList.remove('hidden');
+        if (btnReg) btnReg.className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-white text-slate-900 shadow-2xs";
+        if (btnLogin) btnLogin.className = "flex-1 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all";
+        if (submitText) submitText.innerText = currentAuthRole === 'recruiter' ? "Criar Conta como Recrutador e Acessar" : "Criar Conta como Profissional e Acessar";
+      }
+      if (window.lucide) lucide.createIcons();
+    }
 
     function getAuthSession() {
       try {
         const raw = localStorage.getItem('carreira_ia_auth_session');
         if (raw) return JSON.parse(raw);
-        // Por padrão inicial, manter usuário logado com o perfil cadastrado de Rafaela
-        const defaultSession = {
-          isLoggedIn: true,
-          email: "contato.rafaela@carreiraia.com",
-          name: "Rafaela Zampini",
-          role: "leader",
-          loginDate: new Date().toISOString()
-        };
-        localStorage.setItem('carreira_ia_auth_session', JSON.stringify(defaultSession));
-        return defaultSession;
+        // Inicialmente, visitante começa deslogado para explorar a Landing Page
+        return { isLoggedIn: false, isGuestTrial: false };
       } catch (e) {
-        return { isLoggedIn: false };
+        return { isLoggedIn: false, isGuestTrial: false };
       }
     }
 
@@ -3686,21 +4296,24 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
 
       const navGuestGroup = document.getElementById('navGuestGroup');
       const navUserGroup = document.getElementById('navUserGroup');
-      const navBtn = document.getElementById('navAuthBtn');
       const avatarEl = document.getElementById('navAuthAvatar');
       const avatarImg = document.getElementById('navAuthAvatarImg');
       const labelEl = document.getElementById('navAuthLabel');
       const heroBtn = document.getElementById('heroAuthBtn');
+      const trialBanner = document.getElementById('trialModeBanner');
+      const trialText = document.getElementById('trialBannerText');
 
       const menuName = document.getElementById('userMenuName');
       const menuEmail = document.getElementById('userMenuEmail');
       const menuAvatar = document.getElementById('userMenuAvatar');
       const menuAvatarImg = document.getElementById('userMenuAvatarImg');
+      const menuRoleBadge = document.getElementById('userMenuRoleBadge');
+      const menuRoleLabel = document.getElementById('userMenuCurrentRoleLabel');
 
       const initials = (p.name || 'User').split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
       const firstName = (p.name || 'Usuário').split(' ')[0];
 
-      // Update avatar image or initials with fallback
+      // Update avatar image or initials
       if (p.avatarUrl) {
         if (avatarImg) { avatarImg.src = p.avatarUrl; avatarImg.classList.remove('hidden'); }
         if (avatarEl) avatarEl.classList.add('hidden');
@@ -3716,27 +4329,79 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       if (session && session.isLoggedIn) {
         if (navGuestGroup) navGuestGroup.classList.add('hidden');
         if (navUserGroup) navUserGroup.classList.remove('hidden');
-        if (labelEl) labelEl.innerText = firstName;
-        if (heroBtn) {
-          heroBtn.innerHTML = `<span>Meu Espaço (${firstName})</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
-          heroBtn.onclick = () => navigateToTab('cases');
-        }
-        if (menuName) menuName.innerText = p.name || 'Rafaela Zampini';
+        if (trialBanner) trialBanner.classList.add('hidden');
+
+        const isRecruiter = session.role === 'recruiter';
+        if (labelEl) labelEl.innerText = isRecruiter ? (session.name ? session.name.split(' ')[0] : 'Recrutador') : firstName;
+
+        if (menuName) menuName.innerText = session.name || p.name || 'Rafaela Zampini';
         if (menuEmail) menuEmail.innerText = session.email || p.email || 'contato.rafaela@carreiraia.com';
+        if (menuRoleBadge) {
+          menuRoleBadge.innerText = isRecruiter ? 'Recrutador' : 'Profissional';
+          menuRoleBadge.className = isRecruiter 
+            ? 'px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-emerald-100 text-emerald-800'
+            : 'px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-blue-100 text-blue-800';
+        }
+        if (menuRoleLabel) {
+          menuRoleLabel.innerText = isRecruiter ? 'Radar & Triagem de Talentos' : 'Espaço do Profissional (Cases STAR)';
+        }
+
+        if (heroBtn) {
+          if (isRecruiter) {
+            heroBtn.innerHTML = `<span>Acessar Radar de Talentos</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+            heroBtn.onclick = () => navigateToTab('network');
+          } else {
+            heroBtn.innerHTML = `<span>Meu Espaço (${firstName})</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+            heroBtn.onclick = () => navigateToTab('cases');
+          }
+        }
+      } else if (session && session.isGuestTrial) {
+        // Modo Degustação Ativo
+        if (navGuestGroup) navGuestGroup.classList.add('hidden');
+        if (navUserGroup) navUserGroup.classList.remove('hidden');
+        if (trialBanner) trialBanner.classList.remove('hidden');
+
+        const isRecruiter = session.role === 'recruiter';
+        if (trialText) {
+          trialText.innerText = isRecruiter 
+            ? "Você está navegando no Modo Degustação como Recrutador. Triagens e buscas no Radar estão ativas temporariamente neste navegador."
+            : "Você está navegando no Modo Degustação como Profissional. Criação de cases STAR e currículo estão ativas neste navegador.";
+        }
+
+        if (labelEl) labelEl.innerText = isRecruiter ? "Recrutador (Teste)" : "Degustação";
+
+        if (menuName) menuName.innerText = session.name || (isRecruiter ? 'Visitante Recrutador' : 'Visitante Profissional');
+        if (menuEmail) menuEmail.innerText = "Modo Degustação Ativo";
+        if (menuRoleBadge) {
+          menuRoleBadge.innerText = 'Degustação';
+          menuRoleBadge.className = 'px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-amber-100 text-amber-800';
+        }
+        if (menuRoleLabel) {
+          menuRoleLabel.innerText = isRecruiter ? 'Degustação Recrutador' : 'Degustação Profissional';
+        }
+
+        if (heroBtn) {
+          heroBtn.innerHTML = `<span>Continuar Teste (${isRecruiter ? 'Radar' : 'Cases'})</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+          heroBtn.onclick = () => navigateToTab(isRecruiter ? 'network' : 'cases');
+        }
       } else {
+        // Visitante Não Autenticado
         if (navGuestGroup) navGuestGroup.classList.remove('hidden');
         if (navUserGroup) navUserGroup.classList.add('hidden');
+        if (trialBanner) trialBanner.classList.add('hidden');
+
         if (heroBtn) {
           heroBtn.innerHTML = `<span>Comece grátis</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
           heroBtn.onclick = () => openAuthModal('register');
         }
       }
-      lucide.createIcons();
+
+      if (window.lucide) lucide.createIcons();
     }
 
     function handleAuthButtonClick() {
       const session = getAuthSession();
-      if (session && session.isLoggedIn) {
+      if (session && (session.isLoggedIn || session.isGuestTrial)) {
         openUserMenu();
       } else {
         openAuthModal('login');
@@ -3746,7 +4411,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
     function openUserMenu() {
       const modal = document.getElementById('modalUserMenu');
       if (modal) modal.classList.remove('hidden');
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
     function closeUserMenu() {
@@ -3754,20 +4419,61 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       if (modal) modal.classList.add('hidden');
     }
 
+    function toggleUserWorkspaceRole() {
+      const session = getAuthSession();
+      const currentRole = session.role || 'candidate';
+      const newRole = currentRole === 'candidate' || currentRole === 'leader' ? 'recruiter' : 'candidate';
+      session.role = newRole;
+      saveAuthSession(session);
+      closeUserMenu();
+      showToast(`Visão alterada para ${newRole === 'recruiter' ? 'Recrutador / Tech Lead' : 'Profissional / Candidato'}!`);
+      if (newRole === 'recruiter') {
+        navigateToTab('network');
+      } else {
+        navigateToTab('cases');
+      }
+    }
+
     function handleLogout() {
       closeUserMenu();
-      saveAuthSession({ isLoggedIn: false });
+      saveAuthSession({ isLoggedIn: false, isGuestTrial: false });
       showToast("Você saiu da sua conta. Navegando como visitante.");
       updateAuthUI();
       navigateToTab('landing');
     }
 
-    function openAuthModal(mode = 'login') {
-      currentAuthMode = mode;
-      switchAuthTab(mode);
+    function openAuthModal(mode = 'login', role = null) {
+      const notice = document.getElementById('authGatekeeperNotice');
+      const noticeTitle = document.getElementById('gatekeeperNoticeTitle');
+      const noticeText = document.getElementById('gatekeeperNoticeText');
+
+      if (mode === 'gatekeeper') {
+        if (notice) notice.classList.remove('hidden');
+        const tabName = pendingRedirectTab || 'cases';
+        const tabLabels = {
+          cases: 'Gerador de Cases STAR',
+          folder: 'Pasta de Cases & Portfólio',
+          profile: 'Meu Perfil Profissional',
+          network: 'Radar de Talentos & Triagem',
+          resume: 'Currículo Vivo'
+        };
+        if (noticeTitle) noticeTitle.innerText = `Acesso ao ${tabLabels[tabName] || 'Espaço Reservado'}`;
+        if (noticeText) noticeText.innerText = `Para acessar o ${tabLabels[tabName] || 'recurso'}, selecione seu perfil abaixo, crie sua conta gratuita, faça login ou experimente imediatamente no Modo Degustação sem cadastro.`;
+        switchAuthTab('register');
+      } else {
+        if (notice) notice.classList.add('hidden');
+        switchAuthTab(mode);
+      }
+
+      if (role) {
+        switchAuthRole(role);
+      } else {
+        switchAuthRole(currentAuthRole || 'candidate');
+      }
+
       const modal = document.getElementById('modalAuth');
       if (modal) modal.classList.remove('hidden');
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
     function closeAuthModal() {
@@ -3779,29 +4485,30 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       switchAuthTab(currentAuthMode === 'login' ? 'register' : 'login');
     }
 
-    function switchAuthTab(mode) {
-      currentAuthMode = mode;
-      const title = document.getElementById('authModalTitle');
-      const regFields = document.getElementById('authRegisterFields');
-      const submitText = document.getElementById('authSubmitBtnText');
-      const switchBtn = document.getElementById('authSwitchModeBtn');
+    function handleDemoTrial(role = 'candidate') {
+      recordTrialAccess(role);
+      saveAuthSession({
+        isLoggedIn: false,
+        isGuestTrial: true,
+        role: role,
+        name: role === 'recruiter' ? 'Visitante Recrutador' : 'Visitante Profissional',
+        loginDate: new Date().toISOString()
+      });
+      closeAuthModal();
+      updateAuthUI();
 
-      if (mode === 'login') {
-        if (title) title.innerText = "Entrar no CarreiraIA";
-        if (regFields) regFields.classList.add('hidden');
-        if (submitText) submitText.innerText = "Continuar com e-mail";
-        if (switchBtn) {
-          switchBtn.innerHTML = `Não tem uma conta? <span class="font-bold underline text-blue-600">Criar conta grátis</span>`;
-        }
+      if (pendingRedirectTab) {
+        const target = pendingRedirectTab;
+        pendingRedirectTab = null;
+        navigateToTab(target);
       } else {
-        if (title) title.innerText = "Criar conta no CarreiraIA";
-        if (regFields) regFields.classList.remove('hidden');
-        if (submitText) submitText.innerText = "Cadastrar & Acessar";
-        if (switchBtn) {
-          switchBtn.innerHTML = `Já possui uma conta? <span class="font-bold underline text-blue-600">Fazer login</span>`;
+        if (role === 'recruiter') {
+          navigateToTab('network');
+        } else {
+          navigateToTab('cases');
         }
       }
-      lucide.createIcons();
+      showToast(`⚡ Modo Degustação ativado como ${role === 'recruiter' ? 'Recrutador' : 'Profissional'}! Aproveite para testar todas as ferramentas.`);
     }
 
     function submitAuthForm() {
@@ -3821,44 +4528,111 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       }
 
       if (currentAuthMode === 'register') {
-        const name = (document.getElementById('authInputName')?.value || '').trim() || 'Novo Profissional';
-        const area = document.getElementById('authSelectArea')?.value || 'Tecnologia & Dados';
+        const name = (document.getElementById('authInputName')?.value || '').trim() || (currentAuthRole === 'recruiter' ? 'Recrutador CarreiraIA' : 'Profissional CarreiraIA');
+        const area = currentAuthRole === 'candidate' 
+          ? (document.getElementById('authSelectArea')?.value || 'Tecnologia & Dados')
+          : (document.getElementById('authInputCompany')?.value.trim() || 'Empresa Parceira');
+        const cargo = currentAuthRole === 'candidate'
+          ? (document.getElementById('authSelectGoal')?.value || 'Portfólio STAR')
+          : (document.getElementById('authSelectRecruiterRole')?.value || 'Tech Recruiter');
+
+        const newUser = {
+          id: 'usr_' + Date.now(),
+          name: name,
+          email: email,
+          role: currentAuthRole,
+          area: area,
+          cargo: cargo,
+          createdAt: new Date().toISOString(),
+          lastLogin: new Date().toISOString(),
+          loginCount: 1,
+          status: 'active'
+        };
+
+        registerUserInDatabase(newUser);
 
         const p = getUserProfile();
         p.name = name;
         p.email = email;
-        p.area = area;
+        if (currentAuthRole === 'candidate') p.area = area;
         saveUserProfile(p);
 
         saveAuthSession({
           isLoggedIn: true,
+          isGuestTrial: false,
+          id: newUser.id,
           email: email,
           name: name,
+          role: currentAuthRole,
           loginDate: new Date().toISOString()
         });
 
         closeAuthModal();
         renderUserProfile();
-        showToast(`Bem-vindo(a) ao CarreiraIA, ${name.split(' ')[0]}! Conta criada com sucesso.`);
-        navigateToTab('cases');
+        showToast(`Bem-vindo(a) ao CarreiraIA, ${name.split(' ')[0]}! Conta criada como ${currentAuthRole === 'recruiter' ? 'Recrutador' : 'Profissional'}.`);
+
+        if (pendingRedirectTab) {
+          const target = pendingRedirectTab;
+          pendingRedirectTab = null;
+          navigateToTab(target);
+        } else {
+          if (currentAuthRole === 'recruiter') {
+            navigateToTab('network');
+          } else {
+            navigateToTab('cases');
+          }
+        }
       } else {
-        const p = getUserProfile();
-        if (p.email && p.email !== email) {
-          p.email = email;
-          saveUserProfile(p);
+        // Modo Login
+        const users = getUsersDatabase();
+        const existing = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+        const userRole = existing ? existing.role : currentAuthRole;
+        const userName = existing ? existing.name : (getUserProfile().name || 'Usuário');
+
+        if (existing) {
+          existing.lastLogin = new Date().toISOString();
+          existing.loginCount = (existing.loginCount || 1) + 1;
+          saveUsersDatabase(users);
+        } else {
+          const newUser = {
+            id: 'usr_' + Date.now(),
+            name: userName,
+            email: email,
+            role: userRole,
+            area: userRole === 'recruiter' ? 'Empresa Parceira' : 'Profissional',
+            cargo: userRole === 'recruiter' ? 'Recrutador' : 'Especialista',
+            createdAt: new Date().toISOString(),
+            lastLogin: new Date().toISOString(),
+            loginCount: 1,
+            status: 'active'
+          };
+          registerUserInDatabase(newUser);
         }
 
         saveAuthSession({
           isLoggedIn: true,
+          isGuestTrial: false,
           email: email,
-          name: p.name || 'Rafaela Zampini',
+          name: userName,
+          role: userRole,
           loginDate: new Date().toISOString()
         });
 
         closeAuthModal();
         renderUserProfile();
-        showToast(`Bem-vindo(a) de volta! Login realizado.`);
-        navigateToTab('cases');
+        showToast(`Bem-vindo(a) de volta, ${userName.split(' ')[0]}!`);
+
+        if (pendingRedirectTab) {
+          const target = pendingRedirectTab;
+          pendingRedirectTab = null;
+          navigateToTab(target);
+        } else {
+          if (userRole === 'recruiter') {
+            navigateToTab('network');
+          } else {
+            navigateToTab('cases');
+          }
+        }
       }
     }
 
@@ -3867,45 +4641,74 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       if (event) event.preventDefault();
       const heroEmail = document.getElementById('heroInputEmail')?.value.trim();
       const session = getAuthSession();
-      if (session && session.isLoggedIn) {
-        navigateToTab('cases');
+      if (session && (session.isLoggedIn || session.isGuestTrial)) {
+        navigateToTab(session.role === 'recruiter' ? 'network' : 'cases');
         return;
       }
       if (heroEmail && heroEmail.includes('@')) {
         const emailInput = document.getElementById('authInputEmail');
         if (emailInput) emailInput.value = heroEmail;
-        openAuthModal('register');
+        openAuthModal('register', 'candidate');
       } else {
-        openAuthModal('register');
+        openAuthModal('register', 'candidate');
       }
     }
 
     // Notion-style One-Click Social Logins (Google, Microsoft, LinkedIn)
     function handleSocialLogin(provider) {
       const p = getUserProfile();
+      const role = currentAuthRole || 'candidate';
+      const email = `${provider.toLowerCase()}.user@carreiraia.com`;
+      const name = p.name || (role === 'recruiter' ? 'Recrutador Tech' : 'Rafaela Zampini');
+
+      const newUser = {
+        id: 'usr_' + Date.now(),
+        name: name,
+        email: email,
+        role: role,
+        area: role === 'recruiter' ? 'Recrutamento & Seleção' : (p.area || 'Tecnologia & Dados'),
+        cargo: role === 'recruiter' ? 'Tech Recruiter' : 'Especialista',
+        createdAt: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
+        loginCount: 1,
+        status: 'active'
+      };
+      registerUserInDatabase(newUser);
+
       saveAuthSession({
         isLoggedIn: true,
-        email: p.email || `${provider.toLowerCase()}.user@carreiraia.com`,
-        name: p.name || 'Rafaela Zampini',
+        isGuestTrial: false,
+        email: email,
+        name: name,
+        role: role,
         provider: provider,
         loginDate: new Date().toISOString()
       });
       closeAuthModal();
       renderUserProfile();
       showToast(`Autenticado com sucesso via ${provider}! Bem-vindo(a).`);
-      navigateToTab('cases');
+
+      if (pendingRedirectTab) {
+        const target = pendingRedirectTab;
+        pendingRedirectTab = null;
+        navigateToTab(target);
+      } else {
+        if (role === 'recruiter') {
+          navigateToTab('network');
+        } else {
+          navigateToTab('cases');
+        }
+      }
     }
 
     // Fast 1-Click Demo Profiles (Notion workspace switcher)
     function handleDemoAccess(role) {
       if (role === 'guest') {
-        saveAuthSession({ isLoggedIn: false });
-        closeAuthModal();
-        showToast("Navegando no modo visitante. Você pode testar todas as funcionalidades!");
-        navigateToTab('cases');
+        handleDemoTrial('candidate');
       } else if (role === 'recruiter') {
         saveAuthSession({
           isLoggedIn: true,
+          isGuestTrial: false,
           email: "recrutador.tech@carreiraia.com",
           name: "Recrutador Tech",
           role: "recruiter",
@@ -3919,6 +4722,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         const p = getUserProfile();
         saveAuthSession({
           isLoggedIn: true,
+          isGuestTrial: false,
           email: p.email || "contato.rafaela@carreiraia.com",
           name: p.name || "Rafaela Zampini",
           role: "leader",
@@ -4792,7 +5596,15 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const initialTab = params.get('tab') || 'landing';
       initNetworkFiltersUI();
       updateAuthUI();
-      navigateToTab(initialTab, false);
+      renderLeadsTable();
+
+      // Enforce landing page if user is not authenticated/trial and accessed protected tab directly
+      if (!checkTabAccess(initialTab)) {
+        pendingRedirectTab = initialTab;
+        navigateToTab('landing', false);
+      } else {
+        navigateToTab(initialTab, false);
+      }
 
       lucide.createIcons();
 
