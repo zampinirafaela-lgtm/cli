@@ -109,71 +109,107 @@
 </head>
 <body class="min-h-full flex flex-col bg-slate-50 text-slate-900">
 
-  <!-- ==================== HEADER (Lovable / shadcn style) ==================== -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
+  <!-- ==================== HEADER (Notion Minimalist Style) ==================== -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200/90 bg-white/95 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       
       <!-- Brand / Logo (Left) -->
       <a href="javascript:void(0)" onclick="navigateToTab('landing')" class="flex items-center gap-2.5 shrink-0 hover:opacity-90 transition-opacity">
-        <img src="/icon.svg" class="w-9 h-9 rounded-xl shadow-sm shrink-0 object-cover" alt="CarreiraIA Logo">
-        <div class="flex flex-col justify-center">
-          <div class="flex items-center gap-1.5 leading-none">
-            <span class="font-extrabold text-base tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
-            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full border border-slate-200/60 leading-none">Plataforma</span>
-          </div>
-          <p class="text-[11px] text-slate-400 hidden xl:block mt-0.5 leading-tight">Rede de Talentos & Cases STAR</p>
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-1.5" aria-label="Logo CarreiraIA">
+            <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
+            <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
+            <rect x="250" y="170" width="138" height="42" rx="14" ry="14" fill="#FFFFFF" />
+            <circle cx="330" cy="122" r="33" fill="#FFFFFF" />
+          </svg>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
+          <span class="hidden sm:inline-flex text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200/80">Plataforma</span>
         </div>
       </a>
 
-      <!-- Segmented Control Navigation (Center) -->
-      <nav class="hidden lg:flex items-center p-1 bg-slate-100/90 rounded-xl border border-slate-200/70 shadow-inner shrink-0">
-        <button onclick="navigateToTab('landing')" id="tab-btn-landing" class="h-8 px-3 rounded-lg text-xs font-semibold transition-all inline-flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-sm whitespace-nowrap">
-          <i data-lucide="home" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i>
-          <span>Início</span>
+      <!-- Navigation Links (Center - Notion style clean links, gracefully collapsed to avoid crowding) -->
+      <nav class="hidden xl:flex items-center gap-1 text-xs font-semibold text-slate-600">
+        <button onclick="navigateToTab('landing')" id="tab-btn-landing" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Início
         </button>
-        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
-          <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5">
           <span>Gerador STAR</span>
         </button>
-        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
-          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5">
           <span>Pasta de Cases</span>
-          <span id="badgeFolderDesktop" class="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 leading-none">0</span>
+          <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 leading-none">0</span>
         </button>
-        <button onclick="navigateToTab('profile')" id="tab-btn-profile" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
-          <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-          <span>Meu Perfil</span>
+        <button onclick="navigateToTab('profile')" id="tab-btn-profile" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Meu Perfil
         </button>
-        <button onclick="navigateToTab('network')" id="tab-btn-network" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
-          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5">
           <span>Radar Talentos</span>
           <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-100 text-emerald-700 leading-none">Novo</span>
         </button>
-        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
-          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-          <span>Currículo Vivo</span>
+        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Currículo Vivo
         </button>
-        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="h-8 w-8 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center relative shrink-0" title="Configurações">
-          <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-400"></i>
-          <span id="dotSettingsNav" class="w-2 h-2 rounded-full bg-amber-500 absolute top-1.5 right-1.5 ring-2 ring-white"></span>
+        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="p-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all relative" title="Configurações">
+          <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-500"></i>
+          <span id="dotSettingsNav" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-1"></span>
         </button>
       </nav>
 
-      <!-- Right Actions (PWA + Model Status + User Auth Pill) -->
-      <div class="flex items-center gap-2 shrink-0">
-        <button onclick="openInstallPwaModal()" id="btnInstallPwa" class="h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-sm transition-all whitespace-nowrap">
-          <i data-lucide="smartphone" class="w-3.5 h-3.5 shrink-0"></i>
-          <span class="hidden sm:inline">Instalar App</span>
+      <!-- Compact Nav for Laptops (lg:flex xl:hidden) to guarantee profile button NEVER gets cut off -->
+      <nav class="hidden lg:flex xl:hidden items-center gap-1 text-xs font-semibold text-slate-600">
+        <button onclick="navigateToTab('landing')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Início
         </button>
-        <button onclick="navigateToTab('settings')" id="statusPill" class="h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer whitespace-nowrap">
+        <button onclick="navigateToTab('cases')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Gerador STAR
+        </button>
+        <button onclick="navigateToTab('network')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Radar
+        </button>
+        <button onclick="navigateToTab('profile')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
+          Perfil
+        </button>
+        <button onclick="navigateToTab('settings')" class="p-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all relative" title="Configurações">
+          <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-500"></i>
+          <span id="dotSettingsNavLg" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-1"></span>
+        </button>
+      </nav>
+
+      <!-- Right Actions (Notion Minimalist: Entrar / Comece Grátis OR User Workspace Pill - NEVER CUT OFF) -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
+        <button onclick="openInstallPwaModal()" id="btnInstallPwa" class="hidden sm:inline-flex h-8 items-center gap-1.5 px-2.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all whitespace-nowrap">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+          <span>Instalar</span>
+        </button>
+
+        <button onclick="navigateToTab('settings')" id="statusPill" class="hidden md:inline-flex h-8 items-center gap-1.5 px-2 rounded-lg text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
-          <span id="statusLabel" class="max-w-[140px] truncate">Configurar Chave</span>
+          <span id="statusLabel" class="max-w-[100px] truncate text-[11px]">Chave Gemini</span>
         </button>
-        <!-- Auth Profile Button (Logged in vs Guest) -->
-        <button onclick="handleAuthButtonClick()" id="navAuthBtn" class="h-8 inline-flex items-center gap-2 px-3 rounded-lg text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition-all whitespace-nowrap">
-          <span id="navAuthAvatar" class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-extrabold">RZ</span>
-          <span id="navAuthLabel" class="hidden sm:inline">Rafaela</span>
-        </button>
+
+        <!-- Guest Auth Actions (Notion style: Fazer login + Comece grátis) -->
+        <div id="navGuestGroup" class="flex items-center gap-1.5 shrink-0">
+          <button onclick="openAuthModal('login')" class="text-xs font-semibold text-slate-700 hover:text-slate-900 px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-100/80 transition-colors whitespace-nowrap">
+            Fazer login
+          </button>
+          <button onclick="openAuthModal('register')" class="h-8.5 inline-flex items-center gap-1.5 px-3 sm:px-3.5 rounded-lg text-xs font-bold bg-slate-900 hover:bg-black text-white shadow-xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
+            <span>Comece grátis</span>
+          </button>
+        </div>
+
+        <!-- Logged-in User Workspace Pill (Notion style with photo support - guaranteed NEVER cut off) -->
+        <div id="navUserGroup" class="hidden shrink-0">
+          <button onclick="handleAuthButtonClick()" id="navAuthBtn" class="h-9 inline-flex items-center gap-2 px-2 sm:px-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 shadow-2xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
+            <div id="navAuthAvatarContainer" class="w-6 h-6 rounded-full overflow-hidden bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0 border border-slate-200/80 relative">
+              <span id="navAuthAvatar">RZ</span>
+              <img id="navAuthAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Foto de perfil">
+            </div>
+            <span id="navAuthLabel" class="text-xs font-semibold max-w-[85px] sm:max-w-[110px] truncate">Rafaela</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -181,146 +217,348 @@
   <!-- ==================== MAIN CONTENT ==================== -->
   <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
 
-    <!-- ==================== VIEW 0: LANDING PAGE & APRESENTAÇÃO (?tab=landing) ==================== -->
-    <section id="view-landing" class="space-y-12">
+    <!-- ==================== VIEW 0: LANDING PAGE (NOTION STYLE) ==================== -->
+    <section id="view-landing" class="space-y-16 py-4 sm:py-8">
       
-      <!-- Hero Banner Principal com Identidade Visual Oficial -->
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#061A3D] via-[#0A3273] to-[#1E40AF] text-white p-6 sm:p-10 md:p-12 shadow-elevated border border-blue-900/50">
-        <!-- Elementos de iluminação decorativos no fundo -->
-        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none"></div>
+      <!-- HERO PRINCIPAL (Inspirado diretamente na homepage do Notion) -->
+      <div class="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8">
+        
+        <!-- Notion-style Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs hover:bg-slate-200/60 transition-colors cursor-pointer" onclick="openAuthModal('register')">
+          <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+          <span>Apresentando o CarreiraIA • O novo padrão para demonstrar impacto real</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-500"></i>
+        </div>
 
-        <div class="relative z-10 max-w-3xl space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-white/10 text-blue-200 border border-white/15 backdrop-blur-md">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            A Nova Rede Profissional Orientada por Cases Reais
+        <!-- Huge Headline (Notion bold typography) -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.06]">
+          Onde vivências se tornam conquistas.<br class="hidden sm:inline" />
+          <span class="inline-block mt-1 sm:mt-2">
+            Destaque-se com <span class="text-blue-600 underline decoration-blue-300 decoration-wavy decoration-2">cases reais</span>.
+          </span>
+        </h1>
+
+        <!-- Subtitle claro, elegante e direto ao ponto -->
+        <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
+          Esqueça currículos genéricos e suposições. Transforme projetos acadêmicos, pesquisas e experiências em <strong>estudos de caso executivos no método STAR</strong>, com consultoria de carreira via IA e visibilidade em um radar de talentos verificado.
+        </p>
+
+        <!-- Notion Hero CTA Form (Email input + Black Button + 1-Click Social Auth) -->
+        <div class="max-w-md mx-auto space-y-3 pt-2">
+          <form onsubmit="handleHeroEmailSubmit(event)" class="flex flex-col sm:flex-row items-center gap-2 bg-white p-2 rounded-2xl border border-slate-300 shadow-sm focus-within:ring-2 focus-within:ring-slate-900 focus-within:border-slate-900 transition-all">
+            <input type="email" id="heroInputEmail" placeholder="Digite seu e-mail profissional ou pessoal..." required class="w-full px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 bg-transparent focus:outline-none placeholder:text-slate-400">
+            <button type="submit" id="heroAuthBtn" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm transition-all whitespace-nowrap flex items-center justify-center gap-1.5 shrink-0 cursor-pointer">
+              <span>Comece grátis</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+
+          <!-- Notion-style One-Click Social Auth & Guest Access -->
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+            <button type="button" onclick="handleSocialLogin('Google')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+              <span>Google</span>
+            </button>
+            <button type="button" onclick="handleSocialLogin('Microsoft')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#f25022" d="M1 1h10v10H1z"/><path fill="#00a4ef" d="M1 13h10v10H1z"/><path fill="#7fba00" d="M13 1h10v10H13z"/><path fill="#ffb900" d="M13 13h10v10H13z"/></svg>
+              <span>Microsoft</span>
+            </button>
+            <button type="button" onclick="handleSocialLogin('LinkedIn')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
+              <svg class="w-3.5 h-3.5 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </button>
+            <button type="button" onclick="handleDemoAccess('guest')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 transition-all">
+              <span>Testar como visitante</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
           </div>
+          <p class="text-[11px] text-slate-400">Sem necessidade de cartão • Acesso livre para candidatos e recrutadores</p>
+        </div>
 
+      </div>
+
+      <!-- NOTION INTERACTIVE WORKSPACE CANVAS (O espaço de trabalho interativo do Notion) -->
+      <div class="relative max-w-5xl mx-auto rounded-3xl border border-slate-200/90 bg-white shadow-elevated overflow-hidden text-left">
+        
+        <!-- Notion Window Title Bar (Traffic Lights + Breadcrumb + Actions) -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 bg-slate-50/70">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+            <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium ml-3">
+              <span>CarreiraIA</span>
+              <span class="text-slate-300">/</span>
+              <span class="text-slate-700 font-semibold flex items-center gap-1">
+                <span>🎯</span>
+                <span>Otimização de Índices e Performance</span>
+              </span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-md border border-blue-200 flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3 h-3 text-blue-600"></i> Case STAR Verificado
+            </span>
+            <button onclick="navigateToTab('cases')" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-semibold hover:bg-black transition-all">
+              <i data-lucide="sparkles" class="w-3 h-3 text-blue-400"></i>
+              <span>Novo Case</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Notion Page Content -->
+        <div class="p-6 sm:p-8 space-y-6">
+          
+          <!-- Notion Page Header with Icon & Title -->
           <div class="space-y-3">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-white">
-              Transforme experiências reais em <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-blue-300">conquistas que abrem portas.</span>
-            </h1>
-            <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed font-normal max-w-2xl">
-              Chega de currículos genéricos que passam despercebidos. O <strong>CarreiraIA</strong> é uma plataforma social onde universitários, estagiários e líderes convertem projetos acadêmicos, pesquisas e vivências em <strong>estudos de caso STAR verificados</strong>, com vitrine pública para recrutadores.
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl shadow-2xs">
+              🎯
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
+              Otimização de Índices e Redução de 72% na Latência de Consultas
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500">
+              Estudo de caso prático de engenharia de software e banco de dados estruturado pelo método STAR com métricas de impacto corporativo.
             </p>
           </div>
 
-          <!-- CTAs de Acesso Rápido -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <button onclick="navigateToTab('cases')" class="px-5 py-3 rounded-xl bg-white text-slate-900 font-extrabold text-xs sm:text-sm hover:bg-blue-50 shadow-md hover:shadow-lg transition-all flex items-center gap-2 group">
-              <i data-lucide="sparkles" class="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform"></i>
-              <span>Gerar Meu Primeiro Case STAR</span>
-            </button>
-            <button onclick="navigateToTab('network')" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-all flex items-center gap-2">
-              <i data-lucide="users" class="w-4 h-4 text-blue-300"></i>
-              <span>Explorar Rede de Talentos</span>
-            </button>
-            <button onclick="openAuthModal('register')" id="heroAuthBtn" class="px-4 py-3 rounded-xl bg-blue-600/60 hover:bg-blue-600 text-white font-semibold text-xs sm:text-sm border border-blue-400/30 backdrop-blur-md transition-all flex items-center gap-2">
-              <i data-lucide="user-plus" class="w-4 h-4"></i>
-              <span>Criar Minha Conta Grátis</span>
+          <!-- Notion Properties Table -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-slate-100 text-xs">
+            <div class="space-y-0.5">
+              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Status</span>
+              <span class="inline-flex items-center gap-1.5 font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/80">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Concluído & Verificado
+              </span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Metodologia</span>
+              <span class="inline-flex items-center gap-1 font-semibold text-blue-800 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200/80">
+                ⭐ STAR Corporativo
+              </span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Área & Foco</span>
+              <span class="font-semibold text-slate-700">💻 Engenharia & Dados</span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Métrica Chave</span>
+              <span class="font-bold text-slate-900">📈 -72% Latência / 4.8x QPS</span>
+            </div>
+          </div>
+
+          <!-- Notion Callout Box with AI Consultant Feedback -->
+          <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
+            <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">
+              💡
+            </div>
+            <div class="space-y-1">
+              <h4 class="text-xs font-bold text-blue-900">Diagnóstico Executivo Gemini IA:</h4>
+              <p class="text-xs sm:text-sm text-blue-950/90 leading-relaxed font-normal">
+                "Este case demonstra alta maturidade técnica. A quantificação precisa dos resultados (latência média reduzida de 1.800ms para 120ms sob pico) posiciona o candidato no percentil superior de atratividade para vagas de Tech Lead e Engenharia de Backend Sênior."
+              </p>
+            </div>
+          </div>
+
+          <!-- Notion Interactive Toggle Blocks (S - T - A - R) -->
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold uppercase text-slate-400 tracking-wider">Estrutura do Estudo de Caso (Método STAR)</span>
+
+            <!-- S: Situation -->
+            <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
+              <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
+                <span class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-md bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center justify-center">S</span>
+                  <span>Situação • O Cenário & Gargalo</span>
+                </span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
+                Durante o encerramento do semestre letivo, o sistema acadêmico central sofria com degradação severa de performance, apresentando lentidão de até 12 segundos e travamento em consultas críticas nos horários de maior concorrência simultânea.
+              </p>
+            </details>
+
+            <!-- T: Task -->
+            <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
+              <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
+                <span class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-700 text-xs font-extrabold flex items-center justify-center">T</span>
+                  <span>Tarefa • A Meta de Negócio</span>
+                </span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
+                Assumi a liderança da força-tarefa com o objetivo de auditar as queries mais custosas, eliminar gargalos de I/O em banco de dados relacional e reestabelecer o tempo de resposta médio abaixo de 200ms em menos de 10 dias úteis.
+              </p>
+            </details>
+
+            <!-- A: Action -->
+            <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
+              <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
+                <span class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-md bg-purple-100 text-purple-700 text-xs font-extrabold flex items-center justify-center">A</span>
+                  <span>Ação • As Iniciativas Estratégicas</span>
+                </span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
+                Utilizei análise com EXPLAIN ANALYZE no PostgreSQL para identificar full-table scans em tabelas de transações. Implementei índices B-Tree compostos nas colunas de filtro mais frequentes, reescrevi 14 procedures ineficientes e configurei particionamento por data com connection pooling via PgBouncer.
+              </p>
+            </details>
+
+            <!-- R: Result -->
+            <details open class="group rounded-xl border border-slate-200 bg-emerald-50/40 p-3 sm:p-4 transition-all">
+              <summary class="font-bold text-xs sm:text-sm text-emerald-950 cursor-pointer list-none flex items-center justify-between select-none">
+                <span class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-md bg-emerald-600 text-white text-xs font-extrabold flex items-center justify-center">R</span>
+                  <span>Resultado • O Impacto Quantificado</span>
+                </span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-600 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <p class="text-xs font-medium text-emerald-900 mt-2.5 pl-7 leading-relaxed">
+                Redução comprovada de 72% na latência das requisições (caindo de 1.800ms para 120ms médios) e elevação de 4.8x na capacidade de requisições simultâneas sem custos adicionais de infraestrutura, garantindo 100% de disponibilidade no período mais crítico.
+              </p>
+            </details>
+          </div>
+
+          <!-- Bottom Workspace Toolbar Actions -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
+            <div class="flex items-center gap-2">
+              <button onclick="navigateToTab('cases')" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center gap-2 shadow-xs cursor-pointer">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
+                <span>Gerar Meu Próprio Case STAR</span>
+              </button>
+              <button onclick="navigateToTab('network')" class="px-3.5 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="users" class="w-3.5 h-3.5 text-emerald-600"></i>
+                <span>Ver Radar de Talentos</span>
+              </button>
+            </div>
+            <button onclick="navigateToTab('resume')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+              <span>Abrir Currículo Vivo</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </button>
           </div>
 
-          <!-- Prova Social & Métricas -->
-          <div class="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div>
-              <p class="text-2xl font-black text-white">+1.200</p>
-              <p class="text-[11px] text-blue-200/80 font-medium">Cases Estruturados</p>
-            </div>
-            <div>
-              <p class="text-2xl font-black text-white">98%</p>
-              <p class="text-[11px] text-blue-200/80 font-medium">Aprovação em Entrevistas</p>
-            </div>
-            <div>
-              <p class="text-2xl font-black text-white">4x</p>
-              <p class="text-[11px] text-blue-200/80 font-medium">Mais Visibilidade Recrutador</p>
-            </div>
-            <div>
-              <p class="text-2xl font-black text-white">100%</p>
-              <p class="text-[11px] text-blue-200/80 font-medium">Metodologia STAR Executiva</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Marca d'água da logo no canto superior direito -->
-        <div class="hidden md:block absolute -right-6 -bottom-6 w-80 h-80 opacity-15 pointer-events-none">
-          <img src="/icon.svg" class="w-full h-full object-contain" alt="CarreiraIA Logo Icon">
         </div>
       </div>
 
-      <!-- Apresentação dos 3 Pilares da Plataforma -->
-      <div class="space-y-4">
-        <div class="text-center max-w-xl mx-auto space-y-1">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600">Como o CarreiraIA Funciona</h2>
-          <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">O Ecossistema Completo para a sua Ascensão Profissional</h3>
+      <!-- OS 4 PILARES NOTION STYLE (Construído para todas as etapas) -->
+      <div class="max-w-5xl mx-auto space-y-6 pt-6">
+        <div class="text-center space-y-2">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+            Uma plataforma integrada
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Construído para dar visibilidade ao seu melhor trabalho</h2>
+          <p class="text-sm text-slate-500 max-w-xl mx-auto">Uma arquitetura em 4 etapas conectadas para estruturar, certificar e conectar suas conquistas.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Card Pilar 1: STAR Forge -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-card transition-all space-y-3 group">
-            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <i data-lucide="award" class="w-6 h-6"></i>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
+          
+          <!-- Pillar 1 -->
+          <div onclick="navigateToTab('cases')" class="group bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs hover:shadow-card hover:border-slate-300 transition-all cursor-pointer space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base group-hover:scale-105 transition-transform">
+              ⚡
             </div>
-            <h4 class="text-base font-extrabold text-slate-900">1. Gerador STAR com IA</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Conte o que você viveu na faculdade, TCC, projeto ou voluntariado. Nossa IA sênior formula automaticamente o <strong>Conselho do Consultor</strong>, o <strong>Estudo de Caso Executivo</strong> e o <strong>Post Magnético para LinkedIn</strong>.
+            <h4 class="font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">Gerador STAR</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Transforme ideias esparsas em narrativas executivas estruturadas, com métricas de negócio e posts prontos para o LinkedIn.
             </p>
-            <button onclick="navigateToTab('cases')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 pt-1">
-              <span>Criar case agora</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </button>
           </div>
 
-          <!-- Card Pilar 2: Vitrine & Portfólio Público -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-card transition-all space-y-3 group">
-            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <i data-lucide="globe" class="w-6 h-6"></i>
+          <!-- Pillar 2 -->
+          <div onclick="navigateToTab('network')" class="group bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs hover:shadow-card hover:border-slate-300 transition-all cursor-pointer space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-base group-hover:scale-105 transition-transform">
+              🌐
             </div>
-            <h4 class="text-base font-extrabold text-slate-900">2. Portfólio Público & Vivo</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Seu perfil público reúne seus cases validados com selo de verificação, bio corporativa, links e stack técnica em uma página compartilhável com link direto para recrutadores e LinkedIn.
+            <h4 class="font-bold text-base text-slate-900 group-hover:text-emerald-600 transition-colors">Radar de Talentos</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Uma rede social transparente onde recrutadores encontram perfis por competências e vivências reais comprovadas.
             </p>
-            <button onclick="navigateToTab('profile')" class="text-xs font-bold text-purple-600 hover:text-purple-800 flex items-center gap-1 pt-1">
-              <span>Ver meu perfil público</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </button>
           </div>
 
-          <!-- Card Pilar 3: Radar de Talentos & Rede -->
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-card transition-all space-y-3 group">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <i data-lucide="users" class="w-6 h-6"></i>
+          <!-- Pillar 3 -->
+          <div onclick="navigateToTab('resume')" class="group bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs hover:shadow-card hover:border-slate-300 transition-all cursor-pointer space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-base group-hover:scale-105 transition-transform">
+              📄
             </div>
-            <h4 class="text-base font-extrabold text-slate-900">3. Radar Social de Talentos</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              A comunidade onde recrutadores filtram talentos por área (Tecnologia, Dados, Gestão), senioridade e habilidades reais comprovadas em projetos — não apenas palavras-chave em papel.
+            <h4 class="font-bold text-base text-slate-900 group-hover:text-purple-600 transition-colors">Currículo Vivo</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Portfólio público com link dinâmico e exportação imediata para PDF para anexar em candidaturas de alto impacto.
             </p>
-            <button onclick="navigateToTab('network')" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1 pt-1">
-              <span>Conectar com a rede</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </button>
           </div>
+
+          <!-- Pillar 4 -->
+          <div onclick="navigateToTab('settings')" class="group bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs hover:shadow-card hover:border-slate-300 transition-all cursor-pointer space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-base group-hover:scale-105 transition-transform">
+              🧠
+            </div>
+            <h4 class="font-bold text-base text-slate-900 group-hover:text-amber-600 transition-colors">Consultoria Gemini</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Receba diagnósticos e perguntas de simulação de entrevista formuladas sob medida para o seu case com IA de ponta.
+            </p>
+          </div>
+
         </div>
       </div>
 
-      <!-- Demonstração da Identidade Visual & Propósito -->
-      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-subtle flex flex-col md:flex-row items-center gap-6 md:gap-8">
-        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#0A3273] p-4 flex items-center justify-center shrink-0 shadow-md">
-          <img src="/icon.svg" class="w-full h-full object-contain" alt="CarreiraIA Símbolo Oficial">
-        </div>
-        <div class="space-y-2 text-center md:text-left">
-          <div class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">
-            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> O Símbolo da Subida de Degraus
+      <!-- NOTION TEMPLATES GRID (Comece rápido com modelos prontos) -->
+      <div class="max-w-5xl mx-auto space-y-6 pt-4 text-left">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+          <div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">Modelos estruturados para começar em 1 clique</h3>
+            <p class="text-xs text-slate-500">Selecione uma área para pré-carregar um roteiro do método STAR.</p>
           </div>
-          <h4 class="text-lg sm:text-xl font-black text-slate-900">Uma escada sólida para cada etapa da sua jornada.</h4>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Nossa logo representa o profissional subindo degrau a degrau: desde a primeira vivência acadêmica e primeiros estágios até as posições de liderança e alta remuneração. O CarreiraIA é o seu companheiro inteligente nessa subida.
-          </p>
-        </div>
-        <div class="shrink-0 flex flex-col gap-2 w-full md:w-auto">
-          <button onclick="navigateToTab('cases')" class="w-full md:w-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-subtle transition-all text-center">
-            Começar Gratuitamente
+          <button onclick="navigateToTab('cases')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 self-start sm:self-auto">
+            <span>Ver todos os modelos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
-          <button onclick="openInstallPwaModal()" class="w-full md:w-auto px-5 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-all text-center flex items-center justify-center gap-1.5">
-            <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
-            <span>Instalar no Celular</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div onclick="loadTemplateSample('RESEARCH')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-400 hover:shadow-card transition-all cursor-pointer space-y-2">
+            <div class="text-xl">🎓</div>
+            <h5 class="text-xs font-bold text-slate-900">Projeto Acadêmico / TCC</h5>
+            <p class="text-[11px] text-slate-500 line-clamp-2">Converta pesquisas, artigos e monografias em resolução prática com valor de mercado.</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-600">Usar Modelo →</span>
+          </div>
+
+          <div onclick="loadTemplateSample('INTERNSHIP')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-400 hover:shadow-card transition-all cursor-pointer space-y-2">
+            <div class="text-xl">💼</div>
+            <h5 class="text-xs font-bold text-slate-900">Estágio & Vivência Inicial</h5>
+            <p class="text-[11px] text-slate-500 line-clamp-2">Destaque autonomia, aprendizado acelerado e suporte a projetos de grande escala.</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600">Usar Modelo →</span>
+          </div>
+
+          <div onclick="loadTemplateSample('INDEPENDENT')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-purple-400 hover:shadow-card transition-all cursor-pointer space-y-2">
+            <div class="text-xl">💻</div>
+            <h5 class="text-xs font-bold text-slate-900">Projeto Técnico / Open Source</h5>
+            <p class="text-[11px] text-slate-500 line-clamp-2">Demonstre escolhas de arquitetura, ferramentas modernas e métricas de software.</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-purple-600">Usar Modelo →</span>
+          </div>
+
+          <div onclick="loadTemplateSample('VOLUNTEER')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 hover:shadow-card transition-all cursor-pointer space-y-2">
+            <div class="text-xl">🤝</div>
+            <h5 class="text-xs font-bold text-slate-900">Liderança & Voluntariado</h5>
+            <p class="text-[11px] text-slate-500 line-clamp-2">Evidencie soft skills, gestão de equipes e impacto social ou comunitário.</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600">Usar Modelo →</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NOTION STYLE BOTTOM BANNER -->
+      <div class="max-w-4xl mx-auto rounded-3xl bg-slate-900 text-white p-8 sm:p-10 text-center space-y-5 shadow-elevated">
+        <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Pronto para transformar sua carreira?</h3>
+        <p class="text-xs sm:text-base text-slate-300 max-w-xl mx-auto">
+          Crie seu portfólio executivo de cases agora mesmo e junte-se a centenas de talentos verificados.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <button onclick="openAuthModal('register')" class="px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2 cursor-pointer">
+            <span>Comece grátis agora</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+          <button onclick="handleDemoAccess('guest')" class="px-5 py-3 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-200 font-semibold text-xs sm:text-sm transition-all cursor-pointer">
+            Explorar como visitante
           </button>
         </div>
       </div>
@@ -855,6 +1093,33 @@
             <h3 class="font-bold text-sm text-slate-900">Editar Detalhes do Perfil Público</h3>
           </div>
           <button onclick="toggleEditProfileMode()" class="text-xs text-slate-400 hover:text-slate-600">Fechar edição</button>
+        </div>
+
+        <!-- Photo & Avatar Management -->
+        <div class="sm:col-span-2 bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-xl font-bold overflow-hidden shrink-0 border-2 border-white shadow-sm relative" id="editProfileAvatarPreview">
+            <span id="editProfileAvatarText">RZ</span>
+            <img id="editProfileAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Prévia da foto">
+          </div>
+          <div class="space-y-2 flex-1 w-full text-left">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-slate-700">Foto de Perfil do Portfólio</label>
+              <span class="text-[11px] text-slate-400">Aparecerá na vitrine e na barra superior</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <label class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold cursor-pointer shadow-2xs transition-all flex items-center gap-1.5">
+                <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                <span>Enviar Foto do Computador</span>
+                <input type="file" id="editProfilePhotoFile" accept="image/*" class="hidden" onchange="handleProfilePhotoUpload(event)">
+              </label>
+              <button type="button" onclick="removeProfilePhoto()" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-rose-600 hover:bg-rose-50 transition-all">
+                Remover Foto
+              </button>
+            </div>
+            <div class="pt-1">
+              <input type="url" id="editProfilePhotoUrl" placeholder="Ou cole a URL direta de uma imagem (ex: https://...)" class="w-full text-xs p-2 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none" oninput="handleProfilePhotoUrlChange(this.value)">
+            </div>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1406,52 +1671,67 @@
     </div>
   </div>
 
-  <!-- ==================== AUTH MODAL (LOGIN & CADASTRO COM ID VISUAL) ==================== -->
-  <div id="modalAuth" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all">
-    <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in">
+  <!-- ==================== NOTION-INSPIRED AUTH MODAL (LOGIN & CADASTRO) ==================== -->
+  <div id="modalAuth" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all" onclick="if(event.target === this) closeAuthModal()">
+    <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in p-6 sm:p-8 relative space-y-5 text-left">
       
-      <!-- Top Visual Banner com a Logo do Projeto -->
-      <div class="bg-gradient-to-r from-[#061A3D] via-[#0A3273] to-[#1E40AF] p-6 text-white relative">
-        <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
+      <!-- Close Button -->
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
 
-        <div class="flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-2xl bg-white/10 p-2 border border-white/20 flex items-center justify-center shrink-0 shadow-inner">
-            <img src="/icon.svg" class="w-full h-full object-contain" alt="CarreiraIA Logo">
-          </div>
-          <div>
-            <div class="flex items-center gap-1.5 leading-none">
-              <span class="font-black text-lg tracking-tight text-white">Carreira<span class="text-blue-300">IA</span></span>
-              <span class="text-[9px] font-bold bg-white/20 text-blue-100 px-1.5 py-0.5 rounded-full uppercase tracking-wider">Conta</span>
-            </div>
-            <p class="text-xs text-blue-200/90 mt-1">Sua identidade na rede de talentos</p>
-          </div>
+      <!-- Notion Centered Brand Header -->
+      <div class="text-center space-y-2 pt-1">
+        <div class="w-12 h-12 rounded-2xl mx-auto overflow-hidden shadow-sm flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-2" aria-label="Logo CarreiraIA">
+            <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
+            <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
+            <rect x="250" y="170" width="138" height="42" rx="14" ry="14" fill="#FFFFFF" />
+            <circle cx="330" cy="122" r="33" fill="#FFFFFF" />
+          </svg>
         </div>
-
-        <!-- Auth Tabs: Login vs Cadastro -->
-        <div class="flex items-center p-1 bg-black/20 rounded-xl mt-5 border border-white/10">
-          <button id="authTabBtnLogin" onclick="switchAuthTab('login')" class="flex-1 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-slate-900 shadow-sm text-center">
-            Entrar
-          </button>
-          <button id="authTabBtnRegister" onclick="switchAuthTab('register')" class="flex-1 py-1.5 rounded-lg text-xs font-medium text-blue-100 hover:text-white transition-all text-center">
-            Criar Conta
-          </button>
-        </div>
+        <h3 id="authModalTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+          Entrar ou criar conta
+        </h3>
+        <p class="text-xs text-slate-500 max-w-xs mx-auto">
+          Use seu e-mail profissional ou acesse com um clique para continuar seu espaço de trabalho.
+        </p>
       </div>
 
-      <!-- Auth Form Body -->
-      <div class="p-6 space-y-4">
-        
-        <!-- Registration Only Fields -->
+      <!-- Notion One-Click Social Auth Buttons -->
+      <div class="space-y-2">
+        <button type="button" onclick="handleSocialLogin('Google')" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs transition-all cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          <span>Continuar com o Google</span>
+        </button>
+        <button type="button" onclick="handleSocialLogin('Microsoft')" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs transition-all cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#f25022" d="M1 1h10v10H1z"/><path fill="#00a4ef" d="M1 13h10v10H1z"/><path fill="#7fba00" d="M13 1h10v10H13z"/><path fill="#ffb900" d="M13 13h10v10H13z"/></svg>
+          <span>Continuar com a Microsoft</span>
+        </button>
+        <button type="button" onclick="handleSocialLogin('LinkedIn')" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2.5 shadow-2xs transition-all cursor-pointer">
+          <svg class="w-4 h-4 text-blue-700 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>Continuar com o LinkedIn</span>
+        </button>
+      </div>
+
+      <!-- Notion Divider -->
+      <div class="flex items-center gap-3 text-xs text-slate-400">
+        <div class="h-px bg-slate-200 flex-1"></div>
+        <span class="text-[11px] font-medium text-slate-500">ou continue com e-mail</span>
+        <div class="h-px bg-slate-200 flex-1"></div>
+      </div>
+
+      <!-- Form Body -->
+      <div class="space-y-3">
+        <!-- Register only fields -->
         <div id="authRegisterFields" class="hidden space-y-3">
           <div class="space-y-1">
             <label class="text-xs font-bold text-slate-700">Nome Completo</label>
-            <input type="text" id="authInputName" placeholder="Ex: Rafaela Zampini" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all">
+            <input type="text" id="authInputName" placeholder="Ex: Rafaela Zampini" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
           </div>
           <div class="space-y-1">
-            <label class="text-xs font-bold text-slate-700">Área Principal</label>
-            <select id="authSelectArea" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all">
+            <label class="text-xs font-bold text-slate-700">Área de Atuação</label>
+            <select id="authSelectArea" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
               <option value="Tecnologia & Dados">Tecnologia & Dados</option>
               <option value="Design & Produto">Design & Produto</option>
               <option value="Negócios & Estratégia">Negócios & Estratégia</option>
@@ -1462,42 +1742,70 @@
           </div>
         </div>
 
-        <!-- Common Fields: Email and Password -->
-        <div class="space-y-3">
-          <div class="space-y-1">
-            <label class="text-xs font-bold text-slate-700">E-mail Profissional</label>
-            <input type="email" id="authInputEmail" placeholder="seu.email@exemplo.com" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all">
-          </div>
-
-          <div class="space-y-1">
-            <div class="flex items-center justify-between">
-              <label class="text-xs font-bold text-slate-700">Senha</label>
-              <span class="text-[11px] text-slate-400">Mínimo 6 caracteres</span>
-            </div>
-            <input type="password" id="authInputPassword" placeholder="••••••••" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all">
-          </div>
+        <!-- Email Field -->
+        <div class="space-y-1">
+          <label class="text-xs font-bold text-slate-700">E-mail profissional ou pessoal</label>
+          <input type="email" id="authInputEmail" placeholder="nome@empresa.com" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
         </div>
 
-        <!-- Submit Button -->
-        <button id="authSubmitBtn" onclick="submitAuthForm()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0A3273] to-blue-600 hover:from-blue-900 hover:to-blue-700 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
-          <span id="authSubmitBtnText">Entrar na Plataforma</span>
+        <!-- Password Field -->
+        <div class="space-y-1">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold text-slate-700">Senha</label>
+            <span class="text-[11px] text-slate-400">Mínimo 6 caracteres</span>
+          </div>
+          <input type="password" id="authInputPassword" placeholder="••••••••" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+        </div>
+
+        <!-- Notion Style Black Submit Button -->
+        <button id="authSubmitBtn" onclick="submitAuthForm()" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer mt-2">
+          <span id="authSubmitBtnText">Continuar com e-mail</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
 
-        <p class="text-[11px] text-center text-slate-400 leading-tight">
-          Ao continuar, você concorda em compartilhar seus cases e perfil profissional na rede do CarreiraIA.
-        </p>
+        <!-- Toggle Mode Switcher -->
+        <div class="text-center pt-1">
+          <button type="button" id="authSwitchModeBtn" onclick="toggleAuthMode()" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">
+            Não tem uma conta? <span class="font-bold underline text-blue-600">Criar conta grátis</span>
+          </button>
+        </div>
       </div>
+
+      <!-- Fast 1-Click Demo Profiles (Notion workspace switcher style) -->
+      <div class="pt-3 border-t border-slate-100 space-y-2">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block text-center">Acesso Rápido para Demonstração:</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <button type="button" onclick="handleDemoAccess('rafaela')" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 text-left transition-all flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0">RZ</div>
+            <div class="min-w-0 flex-1">
+              <span class="font-bold text-slate-900 block truncate">Rafaela Zampini</span>
+              <span class="text-[10px] text-slate-500 block truncate">Líder Técnica</span>
+            </div>
+          </button>
+          <button type="button" onclick="handleDemoAccess('recruiter')" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 text-left transition-all flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">RT</div>
+            <div class="min-w-0 flex-1">
+              <span class="font-bold text-slate-900 block truncate">Tech Recruiter</span>
+              <span class="text-[10px] text-slate-500 block truncate">Radar de Talentos</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <p class="text-[11px] text-center text-slate-400 leading-tight">
+        Ao continuar, você concorda com os Termos de Serviço e com a Política de Privacidade do CarreiraIA.
+      </p>
 
     </div>
   </div>
 
-  <!-- User Account Dropdown Modal / Drawer -->
+  <!-- Notion-style User Account Workspace Dropdown Drawer -->
   <div id="modalUserMenu" class="fixed inset-0 z-50 flex items-start justify-end p-4 sm:p-6 bg-black/20 backdrop-blur-xs hidden transition-all" onclick="if(event.target === this) closeUserMenu()">
-    <div class="bg-white rounded-2xl w-72 shadow-2xl border border-slate-200 p-4 mt-14 space-y-3 animate-in fade-in">
+    <div class="bg-white rounded-2xl w-72 shadow-2xl border border-slate-200 p-4 mt-14 space-y-3 animate-in fade-in text-left">
       <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
-        <div id="userMenuAvatar" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-extrabold shadow-sm">
-          RZ
+        <div class="w-10 h-10 rounded-full overflow-hidden bg-slate-900 text-white flex items-center justify-center text-xs font-extrabold shadow-sm shrink-0 border border-slate-200 relative">
+          <span id="userMenuAvatar">RZ</span>
+          <img id="userMenuAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Foto">
         </div>
         <div class="min-w-0 flex-1">
           <h4 id="userMenuName" class="text-xs font-bold text-slate-900 truncate">Rafaela Zampini</h4>
@@ -1508,11 +1816,19 @@
       <div class="space-y-1">
         <button onclick="closeUserMenu(); navigateToTab('profile');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
           <i data-lucide="user" class="w-4 h-4 text-slate-400"></i>
-          <span>Meu Perfil Público</span>
+          <span>Meu Perfil & Portfólio</span>
+        </button>
+        <button onclick="closeUserMenu(); navigateToTab('cases');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-4 h-4 text-slate-400"></i>
+          <span>Gerador STAR com IA</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('folder');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
           <i data-lucide="folder-kanban" class="w-4 h-4 text-slate-400"></i>
           <span>Meus Cases STAR</span>
+        </button>
+        <button onclick="closeUserMenu(); navigateToTab('network');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+          <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+          <span>Radar Social de Talentos</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('settings');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
           <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>
@@ -1521,11 +1837,11 @@
       </div>
 
       <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
-        <button onclick="handleLogout()" class="text-xs font-bold text-rose-600 hover:text-rose-800 flex items-center gap-1.5 px-2 py-1 rounded hover:bg-rose-50 transition-all">
+        <button onclick="handleLogout()" class="text-xs font-bold text-rose-600 hover:text-rose-800 flex items-center gap-1.5 px-2 py-1 rounded hover:bg-rose-50 transition-all cursor-pointer">
           <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
           <span>Sair da Conta</span>
         </button>
-        <button onclick="closeUserMenu()" class="text-xs text-slate-400 hover:text-slate-600">
+        <button onclick="closeUserMenu()" class="text-xs text-slate-400 hover:text-slate-600 cursor-pointer">
           Fechar
         </button>
       </div>
@@ -2852,18 +3168,19 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       ]
     };
 
-    // ==================== AUTHENTICATION & SESSION MANAGEMENT ====================
+    // ==================== AUTHENTICATION & SESSION MANAGEMENT (NOTION FLOW) ====================
     let currentAuthMode = 'login'; // 'login' or 'register'
 
     function getAuthSession() {
       try {
         const raw = localStorage.getItem('carreira_ia_auth_session');
         if (raw) return JSON.parse(raw);
-        // Por padrão inicial, manter usuário logado com o perfil cadastrado
+        // Por padrão inicial, manter usuário logado com o perfil cadastrado de Rafaela
         const defaultSession = {
           isLoggedIn: true,
           email: "contato.rafaela@carreiraia.com",
           name: "Rafaela Zampini",
+          role: "leader",
           loginDate: new Date().toISOString()
         };
         localStorage.setItem('carreira_ia_auth_session', JSON.stringify(defaultSession));
@@ -2881,38 +3198,51 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
     function updateAuthUI() {
       const session = getAuthSession();
       const p = getUserProfile();
+
+      const navGuestGroup = document.getElementById('navGuestGroup');
+      const navUserGroup = document.getElementById('navUserGroup');
       const navBtn = document.getElementById('navAuthBtn');
       const avatarEl = document.getElementById('navAuthAvatar');
+      const avatarImg = document.getElementById('navAuthAvatarImg');
       const labelEl = document.getElementById('navAuthLabel');
       const heroBtn = document.getElementById('heroAuthBtn');
 
       const menuName = document.getElementById('userMenuName');
       const menuEmail = document.getElementById('userMenuEmail');
       const menuAvatar = document.getElementById('userMenuAvatar');
+      const menuAvatarImg = document.getElementById('userMenuAvatarImg');
 
       const initials = (p.name || 'User').split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
+      const firstName = (p.name || 'Usuário').split(' ')[0];
+
+      // Update avatar image or initials with fallback
+      if (p.avatarUrl) {
+        if (avatarImg) { avatarImg.src = p.avatarUrl; avatarImg.classList.remove('hidden'); }
+        if (avatarEl) avatarEl.classList.add('hidden');
+        if (menuAvatarImg) { menuAvatarImg.src = p.avatarUrl; menuAvatarImg.classList.remove('hidden'); }
+        if (menuAvatar) menuAvatar.classList.add('hidden');
+      } else {
+        if (avatarImg) avatarImg.classList.add('hidden');
+        if (avatarEl) { avatarEl.classList.remove('hidden'); avatarEl.innerText = initials; }
+        if (menuAvatarImg) menuAvatarImg.classList.add('hidden');
+        if (menuAvatar) { menuAvatar.classList.remove('hidden'); menuAvatar.innerText = initials; }
+      }
 
       if (session && session.isLoggedIn) {
-        if (avatarEl) avatarEl.innerText = initials;
-        if (labelEl) labelEl.innerText = (p.name || 'Usuário').split(' ')[0];
-        if (navBtn) {
-          navBtn.className = "h-8 inline-flex items-center gap-2 px-3 rounded-lg text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition-all whitespace-nowrap cursor-pointer";
-        }
+        if (navGuestGroup) navGuestGroup.classList.add('hidden');
+        if (navUserGroup) navUserGroup.classList.remove('hidden');
+        if (labelEl) labelEl.innerText = firstName;
         if (heroBtn) {
-          heroBtn.innerHTML = `<i data-lucide="user-check" class="w-4 h-4 text-emerald-300"></i><span>Meu Perfil (${(p.name || '').split(' ')[0]})</span>`;
-          heroBtn.onclick = () => navigateToTab('profile');
+          heroBtn.innerHTML = `<span>Meu Espaço (${firstName})</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+          heroBtn.onclick = () => navigateToTab('cases');
         }
         if (menuName) menuName.innerText = p.name || 'Rafaela Zampini';
-        if (menuEmail) menuEmail.innerText = session.email || p.email || 'contato@carreiraia.com';
-        if (menuAvatar) menuAvatar.innerText = initials;
+        if (menuEmail) menuEmail.innerText = session.email || p.email || 'contato.rafaela@carreiraia.com';
       } else {
-        if (avatarEl) avatarEl.innerText = '?';
-        if (labelEl) labelEl.innerText = 'Entrar';
-        if (navBtn) {
-          navBtn.className = "h-8 inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all whitespace-nowrap cursor-pointer";
-        }
+        if (navGuestGroup) navGuestGroup.classList.remove('hidden');
+        if (navUserGroup) navUserGroup.classList.add('hidden');
         if (heroBtn) {
-          heroBtn.innerHTML = `<i data-lucide="user-plus" class="w-4 h-4"></i><span>Criar Minha Conta Grátis</span>`;
+          heroBtn.innerHTML = `<span>Comece grátis</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
           heroBtn.onclick = () => openAuthModal('register');
         }
       }
@@ -2960,30 +3290,40 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       if (modal) modal.classList.add('hidden');
     }
 
+    function toggleAuthMode() {
+      switchAuthTab(currentAuthMode === 'login' ? 'register' : 'login');
+    }
+
     function switchAuthTab(mode) {
       currentAuthMode = mode;
-      const btnLogin = document.getElementById('authTabBtnLogin');
-      const btnReg = document.getElementById('authTabBtnRegister');
+      const title = document.getElementById('authModalTitle');
       const regFields = document.getElementById('authRegisterFields');
       const submitText = document.getElementById('authSubmitBtnText');
+      const switchBtn = document.getElementById('authSwitchModeBtn');
 
       if (mode === 'login') {
-        btnLogin.className = "flex-1 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-slate-900 shadow-sm text-center";
-        btnReg.className = "flex-1 py-1.5 rounded-lg text-xs font-medium text-blue-100 hover:text-white transition-all text-center";
+        if (title) title.innerText = "Entrar no CarreiraIA";
         if (regFields) regFields.classList.add('hidden');
-        if (submitText) submitText.innerText = "Entrar na Plataforma";
+        if (submitText) submitText.innerText = "Continuar com e-mail";
+        if (switchBtn) {
+          switchBtn.innerHTML = `Não tem uma conta? <span class="font-bold underline text-blue-600">Criar conta grátis</span>`;
+        }
       } else {
-        btnReg.className = "flex-1 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-slate-900 shadow-sm text-center";
-        btnLogin.className = "flex-1 py-1.5 rounded-lg text-xs font-medium text-blue-100 hover:text-white transition-all text-center";
+        if (title) title.innerText = "Criar conta no CarreiraIA";
         if (regFields) regFields.classList.remove('hidden');
-        if (submitText) submitText.innerText = "Cadastrar & Acessar Rede";
+        if (submitText) submitText.innerText = "Cadastrar & Acessar";
+        if (switchBtn) {
+          switchBtn.innerHTML = `Já possui uma conta? <span class="font-bold underline text-blue-600">Fazer login</span>`;
+        }
       }
       lucide.createIcons();
     }
 
     function submitAuthForm() {
-      const email = document.getElementById('authInputEmail').value.trim();
-      const password = document.getElementById('authInputPassword').value.trim();
+      const emailInput = document.getElementById('authInputEmail');
+      const passwordInput = document.getElementById('authInputPassword');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const password = passwordInput ? passwordInput.value.trim() : '';
 
       if (!email || !email.includes('@')) {
         showToast("Por favor, digite um e-mail válido.");
@@ -2996,10 +3336,9 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       }
 
       if (currentAuthMode === 'register') {
-        const name = document.getElementById('authInputName').value.trim() || 'Novo Profissional';
-        const area = document.getElementById('authSelectArea').value || 'Tecnologia & Dados';
+        const name = (document.getElementById('authInputName')?.value || '').trim() || 'Novo Profissional';
+        const area = document.getElementById('authSelectArea')?.value || 'Tecnologia & Dados';
 
-        // Atualizar perfil do usuário
         const p = getUserProfile();
         p.name = name;
         p.email = email;
@@ -3016,9 +3355,8 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         closeAuthModal();
         renderUserProfile();
         showToast(`Bem-vindo(a) ao CarreiraIA, ${name.split(' ')[0]}! Conta criada com sucesso.`);
-        navigateToTab('profile');
+        navigateToTab('cases');
       } else {
-        // Modo login
         const p = getUserProfile();
         if (p.email && p.email !== email) {
           p.email = email;
@@ -3039,6 +3377,157 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       }
     }
 
+    // Notion Hero Email CTA form submission
+    function handleHeroEmailSubmit(event) {
+      if (event) event.preventDefault();
+      const heroEmail = document.getElementById('heroInputEmail')?.value.trim();
+      const session = getAuthSession();
+      if (session && session.isLoggedIn) {
+        navigateToTab('cases');
+        return;
+      }
+      if (heroEmail && heroEmail.includes('@')) {
+        const emailInput = document.getElementById('authInputEmail');
+        if (emailInput) emailInput.value = heroEmail;
+        openAuthModal('register');
+      } else {
+        openAuthModal('register');
+      }
+    }
+
+    // Notion-style One-Click Social Logins (Google, Microsoft, LinkedIn)
+    function handleSocialLogin(provider) {
+      const p = getUserProfile();
+      saveAuthSession({
+        isLoggedIn: true,
+        email: p.email || `${provider.toLowerCase()}.user@carreiraia.com`,
+        name: p.name || 'Rafaela Zampini',
+        provider: provider,
+        loginDate: new Date().toISOString()
+      });
+      closeAuthModal();
+      renderUserProfile();
+      showToast(`Autenticado com sucesso via ${provider}! Bem-vindo(a).`);
+      navigateToTab('cases');
+    }
+
+    // Fast 1-Click Demo Profiles (Notion workspace switcher)
+    function handleDemoAccess(role) {
+      if (role === 'guest') {
+        saveAuthSession({ isLoggedIn: false });
+        closeAuthModal();
+        showToast("Navegando no modo visitante. Você pode testar todas as funcionalidades!");
+        navigateToTab('cases');
+      } else if (role === 'recruiter') {
+        saveAuthSession({
+          isLoggedIn: true,
+          email: "recrutador.tech@carreiraia.com",
+          name: "Recrutador Tech",
+          role: "recruiter",
+          loginDate: new Date().toISOString()
+        });
+        closeAuthModal();
+        showToast("Conectado como Tech Recruiter! Explorando o Radar de Talentos.");
+        navigateToTab('network');
+      } else {
+        // Rafaela Zampini (Líder Técnica)
+        const p = getUserProfile();
+        saveAuthSession({
+          isLoggedIn: true,
+          email: p.email || "contato.rafaela@carreiraia.com",
+          name: p.name || "Rafaela Zampini",
+          role: "leader",
+          loginDate: new Date().toISOString()
+        });
+        closeAuthModal();
+        renderUserProfile();
+        showToast("Conectada como Rafaela Zampini (Líder Técnica)!");
+        navigateToTab('cases');
+      }
+    }
+
+    // Profile Photo Upload Handlers
+    function handleProfilePhotoUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        showToast("Por favor, selecione um arquivo de imagem válido.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        const p = getUserProfile();
+        p.avatarUrl = dataUrl;
+        saveUserProfile(p);
+
+        // Update photo input and previews
+        const urlInput = document.getElementById('editProfilePhotoUrl');
+        if (urlInput) urlInput.value = dataUrl;
+
+        const previewImg = document.getElementById('editProfileAvatarImg');
+        const previewText = document.getElementById('editProfileAvatarText');
+        if (previewImg) { previewImg.src = dataUrl; previewImg.classList.remove('hidden'); }
+        if (previewText) previewText.classList.add('hidden');
+
+        renderUserProfile();
+        updateAuthUI();
+        showToast("Foto de perfil atualizada com sucesso!");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleProfilePhotoUrlChange(url) {
+      const trimmed = url.trim();
+      const previewImg = document.getElementById('editProfileAvatarImg');
+      const previewText = document.getElementById('editProfileAvatarText');
+      if (trimmed) {
+        if (previewImg) { previewImg.src = trimmed; previewImg.classList.remove('hidden'); }
+        if (previewText) previewText.classList.add('hidden');
+      } else {
+        const p = getUserProfile();
+        const initials = (p.name || 'User').split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
+        if (previewImg) previewImg.classList.add('hidden');
+        if (previewText) { previewText.classList.remove('hidden'); previewText.innerText = initials; }
+      }
+    }
+
+    function removeProfilePhoto() {
+      const p = getUserProfile();
+      p.avatarUrl = '';
+      saveUserProfile(p);
+
+      const urlInput = document.getElementById('editProfilePhotoUrl');
+      if (urlInput) urlInput.value = '';
+
+      const fileInput = document.getElementById('editProfilePhotoFile');
+      if (fileInput) fileInput.value = '';
+
+      const previewImg = document.getElementById('editProfileAvatarImg');
+      const previewText = document.getElementById('editProfileAvatarText');
+      const initials = (p.name || 'User').split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
+      if (previewImg) previewImg.classList.add('hidden');
+      if (previewText) { previewText.classList.remove('hidden'); previewText.innerText = initials; }
+
+      renderUserProfile();
+      updateAuthUI();
+      showToast("Foto de perfil removida. Exibindo iniciais.");
+    }
+
+    // Load template directly into STAR Generator
+    function loadTemplateSample(category) {
+      if (typeof selectCategory === 'function') {
+        selectCategory(category);
+      }
+      if (typeof loadStarSample === 'function') {
+        loadStarSample();
+      }
+      navigateToTab('cases');
+      showToast("Modelo carregado no Gerador STAR!");
+    }
+
     // User Profile Default Data
     const DEFAULT_USER_PROFILE = {
       name: "Rafaela Zampini",
@@ -3050,6 +3539,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       email: "contato.rafaela@carreiraia.com",
       linkedin: "https://linkedin.com",
       github: "https://github.com",
+      avatarUrl: "",
       bio: "Profissional focada em transformar vivências práticas em resultados corporativos comprovados. Especialista em resolução de problemas de alta complexidade com dados e metodologia STAR, com cases em bancos de dados relacionais, microsserviços e liderança técnica.",
       skills: ["Python", "SQL", "Metodologias Ágeis (Scrum/Kanban)", "Liderança e Gestão de Equipes", "Resolução de Problemas Complexos", "Engenharia de Prompt"]
     };
@@ -3234,6 +3724,21 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         document.getElementById('editProfileGithub').value = p.github || '';
         document.getElementById('editProfileSkills').value = (p.skills || []).join(', ');
         document.getElementById('editProfileBio').value = p.bio || '';
+        
+        // Sync photo URL and preview in editor
+        const photoInput = document.getElementById('editProfilePhotoUrl');
+        if (photoInput) photoInput.value = p.avatarUrl || '';
+        const previewImg = document.getElementById('editProfileAvatarImg');
+        const previewText = document.getElementById('editProfileAvatarText');
+        const initials = (p.name || 'User').split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
+        if (p.avatarUrl) {
+          if (previewImg) { previewImg.src = p.avatarUrl; previewImg.classList.remove('hidden'); }
+          if (previewText) previewText.classList.add('hidden');
+        } else {
+          if (previewImg) previewImg.classList.add('hidden');
+          if (previewText) { previewText.classList.remove('hidden'); previewText.innerText = initials; }
+        }
+
         renderProfileEditorSkillChips();
         card.classList.remove('hidden');
         document.getElementById('btnEditProfileText').innerText = "Fechar Edição";
@@ -3246,6 +3751,8 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
     function saveProfileData() {
       const skillsStr = document.getElementById('editProfileSkills').value;
       const skillsArray = skillsStr.split(',').map(s => s.trim()).filter(Boolean);
+      const current = getUserProfile();
+      const photoUrl = document.getElementById('editProfilePhotoUrl') ? document.getElementById('editProfilePhotoUrl').value.trim() : (current.avatarUrl || '');
 
       const profile = {
         name: document.getElementById('editProfileName').value.trim() || 'Profissional',
@@ -3257,6 +3764,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         email: document.getElementById('editProfileEmail').value.trim() || '',
         linkedin: document.getElementById('editProfileLinkedin').value.trim() || 'https://linkedin.com',
         github: document.getElementById('editProfileGithub').value.trim() || 'https://github.com',
+        avatarUrl: photoUrl,
         skills: skillsArray.length ? skillsArray : ['Python', 'Metodologias Ágeis'],
         bio: document.getElementById('editProfileBio').value.trim() || ''
       };
@@ -3264,6 +3772,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       saveUserProfile(profile);
       toggleEditProfileMode();
       renderUserProfile();
+      updateAuthUI();
       showToast("Perfil público atualizado com sucesso!");
     }
 
@@ -3287,7 +3796,14 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const initials = p.name ? p.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase() : 'CI';
       
       const avatarEl = document.getElementById('profileAvatarText');
-      if (avatarEl) avatarEl.innerText = initials;
+      const avatarImg = document.getElementById('profileAvatarImg');
+      if (p.avatarUrl) {
+        if (avatarImg) { avatarImg.src = p.avatarUrl; avatarImg.classList.remove('hidden'); }
+        if (avatarEl) avatarEl.classList.add('hidden');
+      } else {
+        if (avatarImg) avatarImg.classList.add('hidden');
+        if (avatarEl) { avatarEl.classList.remove('hidden'); avatarEl.innerText = initials; }
+      }
 
       const nameEl = document.getElementById('profileDisplayName');
       if (nameEl) nameEl.innerHTML = `${p.name} <i data-lucide="badge-check" class="w-5 h-5 text-blue-600"></i>`;
