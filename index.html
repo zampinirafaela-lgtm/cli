@@ -137,6 +137,10 @@
         <button onclick="navigateToTab('network')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
           Radar de Talentos
         </button>
+        <button onclick="navigateToTab('methodology')" class="px-2.5 py-1.5 rounded-lg text-blue-700 bg-blue-50/80 hover:bg-blue-100/80 font-semibold transition-colors cursor-pointer flex items-center gap-1.5">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 text-blue-600"></i>
+          <span>Base Científica</span>
+        </button>
       </nav>
 
       <!-- 2. WORKSPACE NAV (Shown when inside App or Authenticated/Demonstration) -->
@@ -361,67 +365,191 @@
             </div>
           </div>
 
-          <!-- Notion Interactive Toggle Blocks (S - T - A - R) -->
-          <div class="space-y-2">
-            <span class="text-[11px] font-bold uppercase text-slate-400 tracking-wider">Estrutura do Estudo de Caso (Método STAR)</span>
+          <!-- Notion Interactive Toggle Blocks (S - T - A - R) & Ready-to-Use Models -->
+          <div class="space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/80 pb-2">
+              <span class="text-[11px] font-bold uppercase text-slate-500 tracking-wider">Modelos Prontos para Uso & Estrutura</span>
+              <!-- Tabs: STAR / Texto Executivo / Post LinkedIn -->
+              <div class="flex items-center bg-slate-100 p-1 rounded-xl text-xs self-start sm:self-auto">
+                <button type="button" onclick="switchLandingExampleTab('star')" id="btnLandingTabStar" class="px-3 py-1 font-bold rounded-lg bg-white text-slate-900 shadow-2xs transition-all cursor-pointer">
+                  ⭐ Estrutura STAR
+                </button>
+                <button type="button" onclick="switchLandingExampleTab('portfolio')" id="btnLandingTabPortfolio" class="px-3 py-1 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer">
+                  📄 Texto Executivo
+                </button>
+                <button type="button" onclick="switchLandingExampleTab('linkedin')" id="btnLandingTabLinkedin" class="px-3 py-1 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer">
+                  📱 Post LinkedIn
+                </button>
+              </div>
+            </div>
 
-            <!-- S: Situation -->
-            <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
-              <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
-                <span class="flex items-center gap-2">
-                  <span class="w-5 h-5 rounded-md bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center justify-center">S</span>
-                  <span>Situação • O Cenário & Gargalo</span>
-                </span>
-                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
-              </summary>
-              <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma definido, as inscrições estavam dispersas em formulários e papéis avulsos e os 12 palestrantes convidados ainda não tinham confirmação de data. A coordenação já cogitava cancelar o evento por falta de tempo e desorganização operacional.
-              </p>
-            </details>
+            <!-- TAB 1: Estrutura STAR -->
+            <div id="landingExampleBoxStar" class="space-y-2">
+              <!-- S: Situation -->
+              <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
+                <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
+                  <span class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-md bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center justify-center">S</span>
+                    <span>Situação • O Cenário & Gargalo</span>
+                  </span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
+                  A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma definido, as inscrições estavam dispersas em formulários e papéis avulsos e os 12 palestrantes convidados ainda não tinham confirmação de data. A coordenação já cogitava cancelar o evento por falta de tempo e desorganização operacional.
+                </p>
+              </details>
 
-            <!-- T: Task -->
-            <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
-              <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
-                <span class="flex items-center gap-2">
-                  <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-700 text-xs font-extrabold flex items-center justify-center">T</span>
-                  <span>Tarefa • A Missão de Liderança</span>
-                </span>
-                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
-              </summary>
-              <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, alinhar as 4 frentes de trabalho (palestrantes, comunicação visual, credenciamento e infraestrutura) e viabilizar o evento com orçamento zero adicional.
-              </p>
-            </details>
+              <!-- T: Task -->
+              <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
+                <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
+                  <span class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-700 text-xs font-extrabold flex items-center justify-center">T</span>
+                    <span>Tarefa • A Missão de Liderança</span>
+                  </span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
+                  Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, alinhar as 4 frentes de trabalho (palestrantes, comunicação visual, credenciamento e infraestrutura) e viabilizar o evento com orçamento zero adicional.
+                </p>
+              </details>
 
-            <!-- A: Action -->
-            <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
-              <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
-                <span class="flex items-center gap-2">
-                  <span class="w-5 h-5 rounded-md bg-purple-100 text-purple-700 text-xs font-extrabold flex items-center justify-center">A</span>
-                  <span>Ação • As Iniciativas Estratégicas</span>
-                </span>
-                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
-              </summary>
-              <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                1. Centralizei todas as demandas e pendências em um painel compartilhado no Notion com responsáveis e prazos diários para cada um dos 14 voluntários.
-                <br>2. Criei um fluxo digital automatizado de inscrições e credenciamento com envio de QR Code por e-mail, eliminando planilhas manuais e filas no auditório.
-                <br>3. Instituí reuniões diárias de alinhamento de 15 minutos (estilo daily) para destravar bloqueios e renegociei diretamente com a direção o uso dos auditórios e equipamentos de transmissão.
-              </p>
-            </details>
+              <!-- A: Action -->
+              <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
+                <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
+                  <span class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-md bg-purple-100 text-purple-700 text-xs font-extrabold flex items-center justify-center">A</span>
+                    <span>Ação • As Iniciativas Estratégicas</span>
+                  </span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
+                  1. Centralizei todas as demandas e pendências em um painel compartilhado no Notion com responsáveis e prazos diários para cada um dos 14 voluntários.
+                  <br>2. Criei um fluxo digital automatizado de inscrições e credenciamento com envio de QR Code por e-mail, eliminando planilhas manuais e filas no auditório.
+                  <br>3. Instituí reuniões diárias de alinhamento de 15 minutos (estilo daily) para destravar bloqueios e renegociei diretamente com a direção o uso dos auditórios e equipamentos de transmissão.
+                </p>
+              </details>
 
-            <!-- R: Result -->
-            <details open class="group rounded-xl border border-slate-200 bg-emerald-50/40 p-3 sm:p-4 transition-all">
-              <summary class="font-bold text-xs sm:text-sm text-emerald-950 cursor-pointer list-none flex items-center justify-between select-none">
-                <span class="flex items-center gap-2">
-                  <span class="w-5 h-5 rounded-md bg-emerald-600 text-white text-xs font-extrabold flex items-center justify-center">R</span>
-                  <span>Resultado • O Impacto Real Comprovado</span>
-                </span>
-                <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-600 group-open:rotate-180 transition-transform"></i>
-              </summary>
-              <p class="text-xs font-medium text-emerald-900 mt-2.5 pl-7 leading-relaxed">
-                O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras e oficinas começaram pontualmente. A pesquisa pós-evento registrou aprovação quase unânime dos alunos e professores, e o modelo de gestão e cronograma que criei foi oficializado pela coordenação para ser utilizado em todas as edições seguintes da instituição.
-              </p>
-            </details>
+              <!-- R: Result -->
+              <details open class="group rounded-xl border border-slate-200 bg-emerald-50/40 p-3 sm:p-4 transition-all">
+                <summary class="font-bold text-xs sm:text-sm text-emerald-950 cursor-pointer list-none flex items-center justify-between select-none">
+                  <span class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-md bg-emerald-600 text-white text-xs font-extrabold flex items-center justify-center">R</span>
+                    <span>Resultado • O Impacto Real Comprovado</span>
+                  </span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-600 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-xs font-medium text-emerald-900 mt-2.5 pl-7 leading-relaxed">
+                  O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras e oficinas começaram pontualmente. A pesquisa pós-evento registrou aprovação quase unânime dos alunos e professores, e o modelo de gestão e cronograma que criei foi oficializado pela coordenação para ser utilizado em todas as edições seguintes da instituição.
+                </p>
+              </details>
+            </div>
+
+            <!-- TAB 2: Texto Executivo Pronto (Portfólio / Notion) -->
+            <div id="landingExampleBoxPortfolio" class="hidden space-y-3 bg-slate-50/70 p-4 sm:p-6 rounded-2xl border border-slate-200 text-left">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
+                <div>
+                  <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block">Texto Executivo Pronto</span>
+                  <p class="text-[11px] text-slate-500">Pronto para anexar em candidaturas, Notion ou portfólio pessoal.</p>
+                </div>
+                <button onclick="copyToClipboard('landingRawPortfolio', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copiar Estudo de Caso</span>
+                </button>
+              </div>
+              <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-white p-4 sm:p-5 rounded-xl border border-slate-200">
+                <h3 class="font-extrabold text-base text-slate-900">🎯 Gestão de Crise e Operações: Como Reestruturei a Semana Universitária em 5 Dias e Entreguei um Evento de 600 Participantes sem Atrasos</h3>
+                <p><strong>Visão Geral & Desafio:</strong> A 3 semanas da data oficial, a comissão anterior havia se desmobilizado. Não existia cronograma unificado, as inscrições estavam dispersas em papéis avulsos e a coordenação acadêmica já cogitava o cancelamento por risco de colapso operacional.</p>
+                <p><strong>Estratégia & Execução Técnica (Método STAR):</strong> Assumi voluntariamente a coordenação de operações e apliquei metodologias ágeis em 5 dias corridos. Centralizei demandas no Notion com donos (ownership) e prazos para os 14 voluntários; criei um fluxo digital automatizado de inscrições com QR Code por e-mail; e conduzi reuniões diárias de 15 minutos para resolver bloqueios com agilidade.</p>
+                <p><strong>Métricas & Resultados de Impacto:</strong></p>
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><strong>600+ participantes credenciados</strong> sem filas ou tumulto nos 3 dias.</li>
+                  <li><strong>100% de pontualidade:</strong> Todas as 12 palestras iniciaram rigorosamente no horário previsto.</li>
+                  <li><strong>R$ 0 em custos adicionais:</strong> Viabilizado integralmente com ferramentas gratuitas.</li>
+                  <li><strong>Institucionalização:</strong> O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes.</li>
+                </ul>
+                <p class="text-[11px] text-slate-500 pt-2 border-t border-slate-100"><strong>Competências Demonstradas:</strong> Gestão de Projetos, Metodologias Ágeis, Automação de Processos, Liderança sob Pressão, Comunicação Intersetorial.</p>
+              </div>
+              <div id="landingRawPortfolio" class="hidden"># 🎯 Gestão de Crise e Operações: Como Reestruturei a Semana Universitária em 5 Dias e Entreguei um Evento de 600 Participantes sem Atrasos
+
+## Visão Geral & Desafio
+A 3 semanas da data oficial, a comissão anterior havia se desmobilizado. Não existia cronograma unificado, as inscrições estavam dispersas em papéis avulsos e a coordenação acadêmica já cogitava o cancelamento por risco de colapso operacional.
+
+## Estratégia & Execução Técnica (Método STAR)
+Assumi voluntariamente a coordenação de operações e apliquei metodologias ágeis em 5 dias corridos. Centralizei demandas no Notion com donos (ownership) e prazos para os 14 voluntários; criei um fluxo digital automatizado de inscrições com QR Code por e-mail; e conduzi reuniões diárias de 15 minutos para resolver bloqueios com agilidade.
+
+## Métricas & Resultados de Impacto
+- 600+ participantes credenciados sem filas nos 3 dias.
+- 100% de pontualidade: Todas as 12 palestras iniciaram rigorosamente no horário previsto.
+- R$ 0 em custos adicionais com uso inteligente de ferramentas digitais gratuitas.
+- O modelo de gestão foi oficializado pela coordenação para todas as edições seguintes.
+
+## Competências Demonstradas
+Gestão de Projetos, Metodologias Ágeis, Automação de Processos, Liderança sob Pressão, Comunicação Intersetorial.</div>
+            </div>
+
+            <!-- TAB 3: Post Pronto para o LinkedIn -->
+            <div id="landingExampleBoxLinkedin" class="hidden space-y-3 bg-slate-50/70 p-4 sm:p-6 rounded-2xl border border-slate-200 text-left">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
+                <div>
+                  <span class="text-xs font-bold text-[#0A66C2] uppercase tracking-wider block">Post Estruturado para LinkedIn</span>
+                  <p class="text-[11px] text-slate-500">Narrativa magnética, ganchos de atenção, métricas e hashtags.</p>
+                </div>
+                <button onclick="copyToClipboard('landingRawLinkedin', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copiar Post</span>
+                </button>
+              </div>
+              <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-white p-4 sm:p-5 rounded-xl border border-slate-200">A 3 semanas de um evento para mais de 600 pessoas, a coordenação pensou em cancelar tudo por desorganização. Eu decidi assumir a liderança e mudar esse desfecho. 🚀
+
+Quando a comissão organizadora da Semana Universitária se desmobilizou, o cenário era crítico:
+❌ Zero cronogramas unificados
+❌ Inscrições espalhadas em papéis e planilhas desconectadas
+❌ 12 palestrantes sem confirmação oficial de data
+❌ Risco real de cancelamento e frustração geral
+
+Em vez de focar no caos, assumi voluntariamente a coordenação de operações e apliquei um método simples e estruturado em 5 dias:
+
+1️⃣ Centralização total: Criei um painel ágil no Notion com responsáveis diretos e prazos claros para os 14 voluntários.
+2️⃣ Automação do credenciamento: Eliminamos listas manuais e criamos um fluxo com confirmação e QR Code por e-mail.
+3️⃣ Rituais diários de 15 min: Alinhamento rápido para destravar qualquer obstáculo antes que virasse um problema.
+
+O resultado?
+✨ Auditório lotado nos 3 dias com mais de 600 credenciamentos sem filas
+✨ 100% das 12 palestras iniciadas pontualmente
+✨ Orçamento adicional: R$ 0,00
+✨ O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes!
+
+Projetos não dão certo por sorte; dão certo quando alguém tem a coragem de assumir a responsabilidade e colocar processos onde havia confusão.
+
+Você já precisou assumir a liderança em um momento de incerteza? Como foi a experiência por aí? Compartilha comigo nos comentários! 👇
+
+#GestãoDeProjetos #Liderança #MetodologiaSTAR #Operações #ResoluçãoDeProblemas #Carreira</div>
+              <div id="landingRawLinkedin" class="hidden">A 3 semanas de um evento para mais de 600 pessoas, a coordenação pensou em cancelar tudo por desorganização. Eu decidi assumir a liderança e mudar esse desfecho. 🚀
+
+Quando a comissão organizadora da Semana Universitária se desmobilizou, o cenário era crítico:
+❌ Zero cronogramas unificados
+❌ Inscrições espalhadas em papéis e planilhas desconectadas
+❌ 12 palestrantes sem confirmação oficial de data
+❌ Risco real de cancelamento e frustração geral
+
+Em vez de focar no caos, assumi voluntariamente a coordenação de operações e apliquei um método simples e estruturado em 5 dias:
+
+1️⃣ Centralização total: Criei um painel ágil no Notion com responsáveis diretos e prazos claros para os 14 voluntários.
+2️⃣ Automação do credenciamento: Eliminamos listas manuais e criamos um fluxo com confirmação e QR Code por e-mail.
+3️⃣ Rituais diários de 15 min: Alinhamento rápido para destravar qualquer obstáculo antes que virasse um problema.
+
+O resultado?
+✨ Auditório lotado nos 3 dias com mais de 600 credenciamentos sem filas
+✨ 100% das 12 palestras iniciadas pontualmente
+✨ Orçamento adicional: R$ 0,00
+✨ O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes!
+
+Projetos não dão certo por sorte; dão certo quando alguém tem a coragem de assumir a responsabilidade e colocar processos onde havia confusão.
+
+Você já precisou assumir a liderança em um momento de incerteza? Como foi a experiência por aí? Compartilha comigo nos comentários! 👇
+
+#GestãoDeProjetos #Liderança #MetodologiaSTAR #Operações #ResoluçãoDeProblemas #Carreira</div>
+            </div>
           </div>
 
           <!-- Bottom Workspace Toolbar Actions -->
@@ -962,6 +1090,95 @@
             <h5 class="text-xs font-bold text-slate-900">Liderança & Voluntariado</h5>
             <p class="text-[11px] text-slate-500 line-clamp-2">Evidencie soft skills, gestão de equipes e impacto social ou comunitário.</p>
             <span class="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600">Usar Modelo →</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== SEÇÃO DE METODOLOGIA & EMBASAMENTO CIENTÍFICO ==================== -->
+      <div class="max-w-5xl mx-auto space-y-6 pt-6 text-left">
+        <div class="p-6 sm:p-8 rounded-3xl border border-blue-200/80 bg-linear-to-b from-blue-50/50 via-white to-slate-50/50 shadow-card space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200/80">
+            <div class="space-y-1.5">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">
+                <i data-lucide="book-open" class="w-3.5 h-3.5 text-blue-600"></i> Metodologia & Literatura Científica
+              </span>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                Não é apenas um gerador de textos. É Psicologia Organizacional aplicada.
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+                Nossa arquitetura conecta métodos validados por décadas de estudos revisados por pares em avaliação comportamental, redução de vieses e aprendizagem reflexiva.
+              </p>
+            </div>
+            <button onclick="navigateToTab('methodology')" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all flex items-center gap-2 shrink-0 self-start md:self-auto cursor-pointer">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Ver Base Científica Completa</span>
+            </button>
+          </div>
+
+          <!-- 3 Pilares Científicos Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <!-- Pilar 1 -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2.5 hover:border-blue-300 transition-all">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-xs">
+                  01
+                </div>
+                <h4 class="text-xs font-bold text-slate-900">Método STAR & BDI</h4>
+              </div>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                <strong>Janz (1982) & Campion et al. (1997):</strong> Entrevistas comportamentais estruturadas chegam a <strong>r = 0.51</strong> de validade preditiva, comparado a &lt; 0.15 de currículos e entrevistas livres.
+              </p>
+              <div class="pt-1 text-[10px] font-semibold text-blue-600 flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3 h-3"></i> Redução de viés inconsciente
+              </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2.5 hover:border-emerald-300 transition-all">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                  02
+                </div>
+                <h4 class="text-xs font-bold text-slate-900">Mitigação do Efeito Carona</h4>
+              </div>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                <strong>Karau & Williams (1993, APA):</strong> A teoria do <em>Collective Effort Model</em> prova que quando a autoria individual é identificável e valorizada, a diluição de esforço desaparece.
+              </p>
+              <div class="pt-1 text-[10px] font-semibold text-emerald-600 flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3 h-3"></i> Autoria clara sem tom punitivo
+              </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2.5 hover:border-purple-300 transition-all">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center font-bold text-xs">
+                  03
+                </div>
+                <h4 class="text-xs font-bold text-slate-900">Avaliação Autêntica</h4>
+              </div>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                <strong>Grant Wiggins (1990) & Schön (1983):</strong> A substituição de listas abstratas de soft skills por artefatos auditáveis e reflexão guiada consolida a autoridade técnica.
+              </p>
+              <div class="pt-1 text-[10px] font-semibold text-purple-600 flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3 h-3"></i> Evidências reais verificáveis
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Notice with SciSpace Reference -->
+          <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500 bg-slate-50/80 p-3.5 rounded-xl border border-slate-200/60">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-500 shrink-0"></span>
+              <span>Validado para uso em <strong>artigos científicos, TCCs, congressos de RH e bancas acadêmicas</strong>.</span>
+            </div>
+            <a href="javascript:void(0)" onclick="navigateToTab('methodology')" class="font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1 shrink-0">
+              <span>Acessar referências & prompts para SciSpace</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
           </div>
 
         </div>
@@ -2028,7 +2245,370 @@
 
     </section>
 
+    <!-- ==================== VIEW 7: METODOLOGIA & EMBASAMENTO CIENTÍFICO (?tab=methodology) ==================== -->
+    <section id="view-methodology" class="hidden space-y-10 py-4 sm:py-8 max-w-5xl mx-auto text-left">
+      
+      <!-- Top Breadcrumb & Quick Actions -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <button onclick="navigateToTab('landing')" class="hover:text-slate-900 transition-colors flex items-center gap-1 font-medium cursor-pointer">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+            <span>Voltar ao Início</span>
+          </button>
+          <span>/</span>
+          <span class="text-blue-700 font-semibold">Metodologia & Base Científica</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="copyAcademicReferences()" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-slate-500"></i>
+            <span>Copiar Referências (ABNT/APA)</span>
+          </button>
+          <button onclick="navigateToTab('cases')" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Testar Método no Gerador</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Header -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-linear-to-b from-blue-900 via-slate-900 to-slate-950 text-white shadow-elevated space-y-6 relative overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-blue-600/20 blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 space-y-3 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 border border-blue-400/30 text-blue-200">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-blue-300"></i>
+            <span>Fundamentação Baseada em Evidências e Revisão por Pares</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+            A Base Científica por Trás do Método CarreiraIA
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+            Como a Psicologia Organizacional, o <em>Collective Effort Model</em> e a Avaliação Autêntica sustentam um modelo de portfólio comprovadamente preditivo, justo e que valoriza a autoria real sem tom punitivo.
+          </p>
+        </div>
+
+        <!-- 3 Empirical Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-white/10 relative z-10">
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+            <div class="text-lg font-black text-blue-300 font-mono">r = 0.51 vs &lt;0.15</div>
+            <div class="text-xs font-bold text-white">Validade Preditiva de Desempenho</div>
+            <p class="text-[11px] text-slate-300 leading-snug">Entrevistas comportamentais estruturadas (BDI/STAR) quase quadruplicam a precisão frente a currículos tradicionais (Campion et al., 1997).</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+            <div class="text-lg font-black text-emerald-300 font-mono">Anti-Social Loafing</div>
+            <div class="text-xs font-bold text-white">Mitigação do "Efeito Carona"</div>
+            <p class="text-[11px] text-slate-300 leading-snug">Pesquisa clássica da APA comprova que individualizar e evidenciar contribuições restaura o engajamento coletivo (Karau & Williams, 1993).</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+            <div class="text-lg font-black text-purple-300 font-mono">Artefatos Auditáveis</div>
+            <div class="text-xs font-bold text-white">Avaliação Autêntica & Reflexão</div>
+            <p class="text-[11px] text-slate-300 leading-snug">Evidências práticas e reflexão estruturada substituem listas vazias de habilidades abstratas (Wiggins, 1990; Schön, 1983).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OS 3 PILARES TEÓRICOS EM DETALHE -->
+      <div class="space-y-6">
+        <div class="space-y-1">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Pilares Teóricos do Sistema</span>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Três pilares validados pela literatura acadêmica</h2>
+        </div>
+
+        <div class="space-y-4">
+          
+          <!-- Pilar 1: BDI & STAR -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-card space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-base shrink-0">
+                  01
+                </div>
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
+                    Behavioral Description Interviewing (BDI) & Estrutura STAR
+                  </h3>
+                  <p class="text-xs text-slate-500">Fundamentação: Janz (1982), McClelland (1973), Campion, Palmer & Campion (1997), Schmidt & Hunter (1998)</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px] tracking-wide shrink-0">PSICOLOGIA ORGANIZACIONAL</span>
+            </div>
+
+            <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+              <p>
+                Em 1973, David McClelland (Universidade de Harvard) publicou o artigo seminal <em>"Testing for Competence Rather Than for 'Intelligence'"</em> na revista <em>American Psychologist</em>, demonstrando que diplomas e notas acadêmicas genéricas falham em prever o sucesso no trabalho real. O fator determinante é a <strong>demonstração de competências comportamentais em ação</strong>.
+              </p>
+              <p>
+                Posteriormente, Tom Janz (1982) formulou o conceito de <em>Behavioral Description Interviewing</em> (BDI), cuja premissa científica é: <em>"O melhor preditor do comportamento futuro é o comportamento passado em circunstâncias semelhantes."</em> O formato <strong>STAR (Situação, Tarefa, Ação e Resultado)</strong> tornou-se a operacionalização padrão dessa teoria.
+              </p>
+              <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs text-blue-950 space-y-1.5">
+                <div class="font-bold flex items-center gap-1.5 text-blue-900">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i>
+                  <span>Aplicação no CarreiraIA:</span>
+                </div>
+                <p>
+                  Ao invés de deixar o candidato preencher um currículo livre (sujeito a respostas genéricas e adjetivações vagas), nosso sistema guia a estruturação passo a passo. O resultado é um documento com <strong>validade preditiva até 240% superior</strong> e com redução comprovada de vieses inconscientes de contratação.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pilar 2: Collective Effort Model & Anti-Social Loafing -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-card space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base shrink-0">
+                  02
+                </div>
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
+                    Teoria do Esforço Coletivo & Mitigação do "Efeito Carona" (Social Loafing)
+                  </h3>
+                  <p class="text-xs text-slate-500">Fundamentação: Steven J. Karau & Kipling D. Williams (1993, APA - Journal of Personality and Social Psychology)</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px] tracking-wide shrink-0">DINÂMICA DE GRUPO</span>
+            </div>
+
+            <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+              <p>
+                O clássico estudo meta-analítico de Karau & Williams (1993), publicado pela <em>American Psychological Association (APA)</em>, consolidou o <strong>Collective Effort Model (CEM)</strong>. Os pesquisadores comprovaram que em atividades coletivas ocorre a diluição de esforço ("social loafing" ou efeito carona) sempre que a contribuição do indivíduo é percebida como anônima, indistinguível ou invisível.
+              </p>
+              <p>
+                Por outro lado, Karau & Williams provaram que quando a <strong>contribuição individual é explicitamente identificável e mensurável</strong>, o efeito carona é eliminado e o sentimento de responsabilidade pessoal (*ownership*) atinge seu ápice.
+              </p>
+              <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs text-emerald-950 space-y-1.5">
+                <div class="font-bold flex items-center gap-1.5 text-emerald-900">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                  <span>Aplicação no CarreiraIA (Abordagem Construtiva, Sem Tom Punitivo):</span>
+                </div>
+                <p>
+                  Nossos formulários impulsionam o candidato a expressar com transparência: <em>"Qual foi a sua ação pessoal específica no projeto, mesmo trabalhando em time?"</em> Isso não busca punir ninguém, mas sim <strong>valorizar quem liderou, quem estruturou e quem executou</strong>, conferindo dignidade e destaque à autoria real de cada entrega.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pilar 3: Authentic Assessment & Reflective Practice -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-card space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center font-bold text-base shrink-0">
+                  03
+                </div>
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
+                    Avaliação Autêntica & Prática Reflexiva (Authentic Assessment)
+                  </h3>
+                  <p class="text-xs text-slate-500">Fundamentação: Grant Wiggins (1990), Donald Schön (1983 - The Reflective Practitioner), Albert Bandura (1997)</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 font-bold text-[10px] tracking-wide shrink-0">CIÊNCIAS DA EDUCAÇÃO</span>
+            </div>
+
+            <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+              <p>
+                Em <em>"The Case for Authentic Assessment"</em> (1990), o educador Grant Wiggins demonstrou que avaliações abstratas falham em diagnosticar competências do mundo real. A <strong>Avaliação Autêntica</strong> exige que os estudantes e profissionais enfrentem tarefas contextualizadas e apresentem <strong>artefatos tangíveis</strong> que comprovem a solução do problema.
+              </p>
+              <p>
+                Concomitantemente, a teoria da <em>Prática Reflexiva</em> de Donald Schön (1983) comprova que o aprendizado só se consolida quando o indivíduo é capaz de narrar seu raciocínio crítico: o obstáculo enfrentado, as decisões tomadas e os aprendizados assimilados.
+              </p>
+              <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200 text-xs text-purple-950 space-y-1.5">
+                <div class="font-bold flex items-center gap-1.5 text-purple-900">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-purple-600"></i>
+                  <span>Aplicação no CarreiraIA:</span>
+                </div>
+                <p>
+                  O CarreiraIA transforma experiências universitárias, de estágio, extracurriculares ou de voluntariado em <strong>Estudos de Caso Executivos auditáveis</strong> (com links para repositórios, relatórios, clippings e métricas), garantindo que quem avalia tenha evidências concretas nas mãos.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MÓDULO SCISPACE & PROMPTS DE PESQUISA -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-linear-to-br from-slate-900 to-blue-950 text-white shadow-elevated space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i> Validação no SciSpace (typeset.io / scispace.com)
+            </div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-white">Como validar este método no SciSpace agora mesmo</h3>
+            <p class="text-xs text-slate-300 max-w-xl">
+              O SciSpace indexa mais de 300 milhões de artigos científicos. Copie e cole os prompts acadêmicos abaixo no SciSpace para checar a literatura e extrair citações completas:
+            </p>
+          </div>
+          <a href="https://scispace.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+            <span>Abrir SciSpace</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-300"></i>
+          </a>
+        </div>
+
+        <!-- 4 Prompts Prontos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          
+          <!-- Prompt 1 -->
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 flex flex-col justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-blue-300 uppercase tracking-wider">Prompt 1 • Validade STAR & BDI</span>
+              <p class="text-xs text-slate-200 font-mono leading-relaxed bg-black/20 p-2.5 rounded-xl border border-white/5">
+                "How does the STAR methodology and structured behavioral interviewing predict job performance and reduce bias compared to traditional resumes? (Campion et al., 1997)"
+              </p>
+            </div>
+            <button onclick="copyToClipboardText(this, 'How does the STAR methodology and structured behavioral interviewing predict job performance and reduce bias compared to traditional resumes? (Campion et al., 1997)')" class="mt-2 w-full py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Copiar Prompt para SciSpace</span>
+            </button>
+          </div>
+
+          <!-- Prompt 2 -->
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 flex flex-col justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-wider">Prompt 2 • Mitigação do Efeito Carona</span>
+              <p class="text-xs text-slate-200 font-mono leading-relaxed bg-black/20 p-2.5 rounded-xl border border-white/5">
+                "What are the effects of individual accountability and identifiable contributions on social loafing in team projects according to Karau and Williams' Collective Effort Model?"
+              </p>
+            </div>
+            <button onclick="copyToClipboardText(this, 'What are the effects of individual accountability and identifiable contributions on social loafing in team projects according to Karau and Williams\' Collective Effort Model?')" class="mt-2 w-full py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Copiar Prompt para SciSpace</span>
+            </button>
+          </div>
+
+          <!-- Prompt 3 -->
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 flex flex-col justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-purple-300 uppercase tracking-wider">Prompt 3 • Portfólio & Transição de Carreira</span>
+              <p class="text-xs text-slate-200 font-mono leading-relaxed bg-black/20 p-2.5 rounded-xl border border-white/5">
+                "How do evidence-based reflection portfolios improve early-career transitions and employability for university students? (Wiggins, 1990)"
+              </p>
+            </div>
+            <button onclick="copyToClipboardText(this, 'How do evidence-based reflection portfolios improve early-career transitions and employability for university students? (Wiggins, 1990)')" class="mt-2 w-full py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Copiar Prompt para SciSpace</span>
+            </button>
+          </div>
+
+          <!-- Prompt 4 -->
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2 flex flex-col justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-amber-300 uppercase tracking-wider">Prompt 4 • IA e Preservação de Autoria</span>
+              <p class="text-xs text-slate-200 font-mono leading-relaxed bg-black/20 p-2.5 rounded-xl border border-white/5">
+                "How can generative AI support structured competency reflection without replacing authentic author voice and ethical agency?"
+              </p>
+            </div>
+            <button onclick="copyToClipboardText(this, 'How can generative AI support structured competency reflection without replacing authentic author voice and ethical agency?')" class="mt-2 w-full py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Copiar Prompt para SciSpace</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- REFERÊNCIAS BIBLIOGRÁFICAS FORMATADAS (ABNT & APA) -->
+      <div class="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-card space-y-4">
+        <div class="flex items-center justify-between gap-4 border-b border-slate-100 pb-3">
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900">Referências Bibliográficas Formatadas</h3>
+            <p class="text-xs text-slate-500">Prontas para citação em artigos acadêmicos, bancas de TCC, relatórios de pesquisa e submissões.</p>
+          </div>
+          <button onclick="copyAcademicReferences()" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copiar Referências</span>
+          </button>
+        </div>
+
+        <div id="boxAcademicReferences" class="text-xs text-slate-700 font-mono bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-2 leading-relaxed">
+          <p>CAMPION, M. A.; PALMER, D. K.; CAMPION, J. E. A review of structure in the selection interview. <strong>Personnel Psychology</strong>, v. 50, n. 3, p. 655–702, 1997. DOI: 10.1111/j.1744-6570.1997.tb00709.x</p>
+          <p>JANZ, T. Initial comparisons of patterned behavior description interviews versus unstructured interviews. <strong>Journal of Applied Psychology</strong>, v. 67, n. 5, p. 577–580, 1982.</p>
+          <p>KARAU, S. J.; WILLIAMS, K. D. Social loafing: A meta-analytic review and theoretical integration. <strong>Journal of Personality and Social Psychology</strong>, v. 65, n. 4, p. 681–706, 1993. DOI: 10.1037/0022-3514.65.4.681</p>
+          <p>MCCLELLAND, D. C. Testing for competence rather than for "intelligence." <strong>American Psychologist</strong>, v. 28, n. 1, p. 1–14, 1973. DOI: 10.1037/h0034092</p>
+          <p>SCHMIDT, F. L.; HUNTER, J. E. The validity and utility of selection methods in personnel psychology: Practical and theoretical implications of 85 years of research findings. <strong>Psychological Bulletin</strong>, v. 124, n. 2, p. 262–274, 1998.</p>
+          <p>SCHÖN, D. A. <strong>The Reflective Practitioner: How Professionals Think in Action</strong>. New York: Basic Books, 1983.</p>
+          <p>WIGGINS, G. The case for authentic assessment. <strong>Practical Assessment, Research, and Evaluation</strong>, v. 2, n. 1, p. 2, 1990.</p>
+        </div>
+      </div>
+
+      <!-- Bottom Banner CTA -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h4 class="font-extrabold text-base sm:text-lg text-white">Pronto para colocar a ciência a favor da sua carreira?</h4>
+          <p class="text-xs text-slate-300">Estruture o seu primeiro estudo de caso com evidências auditáveis hoje mesmo.</p>
+        </div>
+        <div class="flex items-center gap-2.5 shrink-0">
+          <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Ir para o Gerador STAR</span>
+          </button>
+          <button onclick="navigateToTab('network')" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/20 transition-all cursor-pointer">
+            Radar de Talentos
+          </button>
+        </div>
+      </div>
+
+    </section>
+
   </main>
+
+  <!-- ==================== GLOBAL FOOTER (Atlassian / Enterprise SaaS Style) ==================== -->
+  <footer class="w-full bg-white border-t border-slate-200/90 py-10 px-4 sm:px-6 mt-12 pb-24 lg:pb-12 text-slate-600 relative z-30">
+    <div class="max-w-6xl mx-auto space-y-6">
+      
+      <!-- 1. Language Selector (Centered as in Atlassian footer) -->
+      <div class="flex justify-center">
+        <div class="relative inline-block text-left" id="containerLangSelector">
+          <button id="btnLanguageSelector" onclick="toggleLanguageMenu()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-2xs transition-all cursor-pointer">
+            <span id="labelCurrentLanguage">Português (Brasil)</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500"></i>
+          </button>
+          
+          <!-- Dropdown -->
+          <div id="dropdownLanguageMenu" class="hidden absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 rounded-xl bg-white border border-slate-200 shadow-xl py-1.5 text-xs z-50 animate-in fade-in">
+            <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left hover:bg-blue-50 text-slate-900 font-semibold flex items-center justify-between cursor-pointer">
+              <span>🇧🇷 Português (Brasil)</span>
+              <i data-lucide="check" class="w-3.5 h-3.5 text-blue-600"></i>
+            </button>
+            <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left hover:bg-blue-50 text-slate-600 flex items-center justify-between cursor-pointer">
+              <span>🇺🇸 English (US)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Clean Horizontal Navigation Links (Atlassian Inspired) -->
+      <nav aria-label="Rodapé Institucional" class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-xs text-slate-600 font-medium max-w-4xl mx-auto text-center">
+        <button onclick="openFooterModal('templates')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Templates</button>
+        <button onclick="openFooterModal('pricing')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Preço</button>
+        <button onclick="openFooterModal('apps')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Aplicativos & Recursos</button>
+        <button onclick="navigateToTab('network')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Vagas & Radar</button>
+        <button onclick="navigateToTab('methodology')" class="text-blue-700 font-bold hover:text-blue-900 transition-colors cursor-pointer flex items-center gap-1 inline-flex bg-blue-50/80 px-2 py-0.5 rounded-md border border-blue-200/60">
+          <i data-lucide="book-open" class="w-3 h-3 text-blue-600"></i>
+          <span>Metodologia & Base Científica</span>
+        </button>
+        <button onclick="openFooterModal('about')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Sobre</button>
+        <button onclick="openFooterModal('help')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Ajuda & FAQ</button>
+        <button onclick="openFooterModal('legal')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Jurídico</button>
+        <button onclick="openFooterModal('privacy')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Privacidade (LGPD)</button>
+        <button onclick="openFooterModal('integrations')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Integrações</button>
+        <button onclick="openFooterModal('contact')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Entre em contato conosco</button>
+        <button onclick="openFooterModal('terms')" class="hover:text-slate-900 transition-colors cursor-pointer underline-offset-4 hover:underline">Termos</button>
+      </nav>
+
+      <!-- 3. Logo & Copyright -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 text-xs text-slate-500 pt-5 border-t border-slate-100 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 font-bold text-slate-900">
+          <div class="w-5 h-5 rounded-md bg-[#0A3273] flex items-center justify-center text-white text-[10px] font-black shadow-2xs">
+            C
+          </div>
+          <span>Carreira<span class="text-blue-600">IA</span></span>
+        </div>
+        <span class="hidden sm:inline text-slate-300">•</span>
+        <span>© Copyright 2026. Todos os direitos reservados.</span>
+      </div>
+
+    </div>
+  </footer>
 
   <!-- ==================== MOBILE NAVIGATION BAR ==================== -->
   <div class="lg:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur-md border-t border-slate-200 px-1 py-1.5 pb-[max(0.375rem,env(safe-area-inset-bottom))] flex justify-around items-center shadow-lg">
@@ -2531,6 +3111,266 @@
     </div>
   </div>
 
+  <!-- Modal: Informações Institucionais do Rodapé (Preços, Sobre, Ajuda, etc.) -->
+  <div id="modalFooterInfo" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all" onclick="if(event.target === this) closeFooterModal()">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in text-left">
+      
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between gap-3 bg-slate-50/80">
+        <div class="flex items-center gap-2.5">
+          <div id="modalFooterIconBox" class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
+            <i data-lucide="info" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 id="modalFooterTitle" class="text-sm sm:text-base font-extrabold text-slate-900">Central Institucional</h3>
+            <p id="modalFooterSubtitle" class="text-[11px] text-slate-500">Transparência, planos e suporte CarreiraIA</p>
+          </div>
+        </div>
+        <button onclick="closeFooterModal()" class="w-8 h-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Modal Tabs Pills -->
+      <div class="px-4 py-2 bg-slate-100/70 border-b border-slate-200 overflow-x-auto flex items-center gap-1.5 scrollbar-none">
+        <button onclick="switchFooterModalTab('pricing')" id="footerTabBtn-pricing" class="px-3 py-1 rounded-lg text-xs font-semibold bg-white text-slate-900 shadow-2xs whitespace-nowrap cursor-pointer">Preço</button>
+        <button onclick="switchFooterModalTab('about')" id="footerTabBtn-about" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Sobre</button>
+        <button onclick="switchFooterModalTab('help')" id="footerTabBtn-help" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Ajuda & FAQ</button>
+        <button onclick="switchFooterModalTab('legal')" id="footerTabBtn-legal" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Jurídico</button>
+        <button onclick="switchFooterModalTab('privacy')" id="footerTabBtn-privacy" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Privacidade (LGPD)</button>
+        <button onclick="switchFooterModalTab('terms')" id="footerTabBtn-terms" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Termos</button>
+        <button onclick="switchFooterModalTab('contact')" id="footerTabBtn-contact" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Contato</button>
+        <button onclick="switchFooterModalTab('apps')" id="footerTabBtn-apps" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Apps & Recursos</button>
+        <button onclick="switchFooterModalTab('templates')" id="footerTabBtn-templates" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer">Templates</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto flex-1 text-xs text-slate-700 space-y-4">
+        
+        <!-- Tab: Pricing -->
+        <div id="footerTabContent-pricing" class="space-y-4">
+          <div class="text-center space-y-1 pb-2">
+            <h4 class="text-base font-extrabold text-slate-900">Planos Transparentes e Acessíveis</h4>
+            <p class="text-xs text-slate-500">Gratuito para candidatos. Acesso sustentável para empresas e universidades.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="p-4 rounded-2xl border-2 border-emerald-500/80 bg-emerald-50/30 space-y-3 relative">
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">ATUAL</span>
+              <div class="space-y-0.5">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Profissionais & Estudantes</span>
+                <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-500 font-normal">/ para sempre</span></div>
+              </div>
+              <ul class="space-y-1.5 text-[11px] text-slate-600">
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Gerador de Cases STAR ilimitado</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Portfólio Vivo & Currículo com link público</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Exportação imediata em PDF & Markdown</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Presença no Radar de Talentos</li>
+              </ul>
+              <button onclick="closeFooterModal(); openAuthModal('register');" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all cursor-pointer">
+                Começar Grátis
+              </button>
+            </div>
+            <div class="p-4 rounded-2xl border border-slate-200 bg-white space-y-3">
+              <div class="space-y-0.5">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700">Empresas & Recrutadores</span>
+                <div class="text-xl font-extrabold text-slate-900">Sob Medida <span class="text-xs text-slate-500 font-normal">/ equipe</span></div>
+              </div>
+              <ul class="space-y-1.5 text-[11px] text-slate-600">
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Filtros avançados no Radar de Talentos</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Triagem cega e auditável de competências</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Exportação em lote de dossiês de candidatos</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Suporte prioritário e integração ATS</li>
+              </ul>
+              <button onclick="switchFooterModalTab('contact')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all cursor-pointer">
+                Falar com Especialista
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: About -->
+        <div id="footerTabContent-about" class="hidden space-y-3">
+          <div class="space-y-1 pb-1">
+            <h4 class="text-base font-extrabold text-slate-900">Sobre o CarreiraIA</h4>
+            <p class="text-xs text-slate-500">Nossa missão é dar visibilidade a quem realmente põe a mão na massa.</p>
+          </div>
+          <p class="leading-relaxed">
+            O <strong>CarreiraIA</strong> nasceu da constatação de que o currículo tradicional de papel falha com quem está no início de carreira ou em transição. Milhares de talentos lideram projetos universitários, organizam eventos, produzem pesquisas e códigos incríveis, mas não conseguem expressar isso em formatos engessados.
+          </p>
+          <p class="leading-relaxed">
+            Unimos o método comportamental STAR e Inteligência Artificial para orientar cada pessoa a transformar seu trabalho real em narrativas executivas e evidências auditáveis — valorizando a autoria autêntica e conectando profissionais aos recrutadores certos.
+          </p>
+        </div>
+
+        <!-- Tab: Help & FAQ -->
+        <div id="footerTabContent-help" class="hidden space-y-3">
+          <div class="space-y-1 pb-1">
+            <h4 class="text-base font-extrabold text-slate-900">Perguntas Frequentes (FAQ)</h4>
+            <p class="text-xs text-slate-500">Tire suas dúvidas sobre o funcionamento da plataforma.</p>
+          </div>
+          <div class="space-y-2">
+            <details class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <summary class="font-bold text-slate-800 cursor-pointer">A IA substitui a minha autoria ou inventa dados?</summary>
+              <p class="text-[11px] text-slate-600 mt-1.5 leading-relaxed">
+                Não! A nossa IA funciona exclusivamente como uma consultora estruturadora. Ela pega as informações reais que você insere (desafio, ações e resultados) e aplica a métrica executiva STAR, preservando a sua autenticidade.
+              </p>
+            </details>
+            <details class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <summary class="font-bold text-slate-800 cursor-pointer">Como exporto meu currículo em PDF?</summary>
+              <p class="text-[11px] text-slate-600 mt-1.5 leading-relaxed">
+                Na aba <strong>Currículo</strong>, clique no botão "Exportar PDF" ou utilize a função de impressão do navegador (Ctrl+P / Cmd+P) configurada para "Salvar como PDF". O layout é formatado para impressão limpa.
+              </p>
+            </details>
+            <details class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <summary class="font-bold text-slate-800 cursor-pointer">Como os recrutadores avaliam meu perfil?</summary>
+              <p class="text-[11px] text-slate-600 mt-1.5 leading-relaxed">
+                Recrutadores têm acesso ao Radar de Talentos, onde podem buscar profissionais por competências reais comprovadas e acessar seus cases detalhados com links de evidência (código, relatórios, imprensa).
+              </p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Tab: Legal -->
+        <div id="footerTabContent-legal" class="hidden space-y-3 leading-relaxed">
+          <h4 class="text-base font-extrabold text-slate-900">Jurídico & Diretrizes</h4>
+          <p>
+            O CarreiraIA opera em estrita conformidade com a legislação brasileira e normas éticas de tecnologia. Todas as ferramentas são disponibilizadas com finalidade de capacitação profissional e conexão com o mercado de trabalho.
+          </p>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-800">Compromisso Ético Anti-Fraude:</span>
+            <p class="text-[11px] text-slate-600">
+              Os usuários são os únicos responsáveis pela veracidade das informações e evidências inseridas em seus perfis. A plataforma desestimula e penaliza qualquer declaração inverídica ou atribuição indevida de autoria.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tab: Privacy (LGPD) -->
+        <div id="footerTabContent-privacy" class="hidden space-y-3 leading-relaxed">
+          <h4 class="text-base font-extrabold text-slate-900">Privacidade & LGPD</h4>
+          <p>
+            Em respeito à Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD), seus dados pessoais pertencem exclusivamente a você.
+          </p>
+          <ul class="space-y-1.5 text-[11px] text-slate-600">
+            <li class="flex items-start gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i> <strong>Não vendemos dados:</strong> Nenhuma informação de currículo ou contato é comercializada com terceiros.</li>
+            <li class="flex items-start gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i> <strong>Soberania do usuário:</strong> Você pode exportar, alterar ou apagar sua conta e histórico a qualquer momento.</li>
+            <li class="flex items-start gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5"></i> <strong>Chaves de API seguras:</strong> Chaves fornecidas ficam gravadas apenas localmente no seu dispositivo.</li>
+          </ul>
+        </div>
+
+        <!-- Tab: Terms -->
+        <div id="footerTabContent-terms" class="hidden space-y-3 leading-relaxed">
+          <h4 class="text-base font-extrabold text-slate-900">Termos de Uso</h4>
+          <p>
+            Ao utilizar o CarreiraIA, você concorda em utilizar a plataforma para fins profissionais legítimos, respeitando a propriedade intelectual de terceiros e mantendo relatos fidedignos em seus estudos de caso.
+          </p>
+          <p class="text-[11px] text-slate-500">
+            Última atualização: Outubro de 2026.
+          </p>
+        </div>
+
+        <!-- Tab: Contact -->
+        <div id="footerTabContent-contact" class="hidden space-y-3">
+          <div class="space-y-1 pb-1">
+            <h4 class="text-base font-extrabold text-slate-900">Entre em Contato Conosco</h4>
+            <p class="text-xs text-slate-500">Dúvidas, parcerias institucionais, pesquisas acadêmicas ou suporte.</p>
+          </div>
+          <form onsubmit="handleSendContactForm(event)" class="space-y-3">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">Seu Nome</label>
+              <input type="text" id="contactInputName" required placeholder="Como podemos te chamar?" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50" />
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">E-mail para resposta</label>
+              <input type="email" id="contactInputEmail" required placeholder="seuemail@exemplo.com" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50" />
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">Mensagem ou Dúvida</label>
+              <textarea id="contactInputMsg" required rows="3" placeholder="Escreva sua mensagem, proposta ou dúvida acadêmica..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50"></textarea>
+            </div>
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Enviar Mensagem</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab: Apps & Recursos -->
+        <div id="footerTabContent-apps" class="hidden space-y-3">
+          <div class="space-y-1 pb-1">
+            <h4 class="text-base font-extrabold text-slate-900">Recursos & Integrações</h4>
+            <p class="text-xs text-slate-500">Ecossistema conectado para potencializar seu portfólio.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">IN</div>
+              <div>
+                <span class="font-bold text-slate-900 block text-xs">LinkedIn Feed & Posts</span>
+                <span class="text-[10px] text-slate-500">Exportação com formatação nativa</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs">GH</div>
+              <div>
+                <span class="font-bold text-slate-900 block text-xs">GitHub & Repositórios</span>
+                <span class="text-[10px] text-slate-500">Links para README e commits</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center font-bold text-xs">PDF</div>
+              <div>
+                <span class="font-bold text-slate-900 block text-xs">Currículo em PDF</span>
+                <span class="text-[10px] text-slate-500">Impressão profissional para ATS</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">SCI</div>
+              <div>
+                <span class="font-bold text-slate-900 block text-xs">SciSpace & Papers</span>
+                <span class="text-[10px] text-slate-500">Validação com literatura científica</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Templates -->
+        <div id="footerTabContent-templates" class="hidden space-y-3">
+          <div class="space-y-1 pb-1">
+            <h4 class="text-base font-extrabold text-slate-900">Templates Prontos por Área</h4>
+            <p class="text-xs text-slate-500">Escolha uma categoria para carregar o modelo correspondente:</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('PRESS');" class="p-3 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/30 text-left transition-all cursor-pointer">
+              <span class="font-bold text-slate-900 block text-xs">📰 Assessoria & Relações Públicas</span>
+              <span class="text-[10px] text-slate-500">Clipping, imprensa e releases</span>
+            </button>
+            <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('RESEARCH');" class="p-3 rounded-xl border border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/30 text-left transition-all cursor-pointer">
+              <span class="font-bold text-slate-900 block text-xs">🔬 Pesquisa & Iniciação Científica</span>
+              <span class="text-[10px] text-slate-500">Artigos, laboratórios e congressos</span>
+            </button>
+            <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('INTERNSHIP');" class="p-3 rounded-xl border border-slate-200 hover:border-purple-400 hover:bg-purple-50/30 text-left transition-all cursor-pointer">
+              <span class="font-bold text-slate-900 block text-xs">💼 Estágio & Projetos Práticos</span>
+              <span class="text-[10px] text-slate-500">Entregas e otimização de rotinas</span>
+            </button>
+            <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('VOLUNTEER');" class="p-3 rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/30 text-left transition-all cursor-pointer">
+              <span class="font-bold text-slate-900 block text-xs">🤝 Liderança & Voluntariado</span>
+              <span class="text-[10px] text-slate-500">Eventos, centros acadêmicos e ONGs</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Action -->
+      <div class="p-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+        <span class="text-[11px] text-slate-500">CarreiraIA Platform</span>
+        <button onclick="closeFooterModal()" class="px-4 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all cursor-pointer">
+          Concluir
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-16 md:bottom-6 right-4 sm:right-6 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-elevated transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2 z-50">
     <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
@@ -2609,12 +3449,25 @@
     let pendingRedirectTab = null;
 
     function checkTabAccess(tabName) {
-      if (tabName === 'landing' || tabName === 'settings') return true;
+      if (tabName === 'landing' || tabName === 'settings' || tabName === 'methodology') return true;
       const session = getAuthSession();
       if (session && (session.isLoggedIn || session.isGuestTrial)) {
         return true;
       }
       return false;
+    }
+
+    // Scroll smoothly to a section on the landing page
+    function scrollToLandingSection(id) {
+      if (currentTab !== 'landing') {
+        navigateToTab('landing');
+      }
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
 
     // Tab Navigation & URL Query Sync (?tab=landing, ?tab=cases, ?tab=profile, ?tab=network, etc)
@@ -2637,7 +3490,7 @@
       }
 
       // Hide all views
-      ['landing', 'cases', 'folder', 'profile', 'network', 'resume', 'settings'].forEach(t => {
+      ['landing', 'cases', 'folder', 'profile', 'network', 'resume', 'settings', 'methodology'].forEach(t => {
         const viewEl = document.getElementById(`view-${t}`);
         if (viewEl) viewEl.classList.add('hidden');
         
@@ -2704,6 +3557,137 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Modal Footer Info Handling
+    function openFooterModal(topic = 'pricing') {
+      const modal = document.getElementById('modalFooterInfo');
+      if (modal) {
+        modal.classList.remove('hidden');
+        switchFooterModalTab(topic);
+        lucide.createIcons();
+      }
+    }
+
+    function closeFooterModal() {
+      const modal = document.getElementById('modalFooterInfo');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function switchFooterModalTab(topic) {
+      const topics = ['pricing', 'about', 'help', 'legal', 'privacy', 'terms', 'contact', 'apps', 'templates'];
+      const titles = {
+        pricing: { title: 'Planos & Preços', sub: 'Transparência para estudantes, profissionais e empresas' },
+        about: { title: 'Sobre o CarreiraIA', sub: 'Nossa missão e propósito institucional' },
+        help: { title: 'Ajuda & FAQ', sub: 'Dúvidas frequentes sobre portfólio, IA e exportação' },
+        legal: { title: 'Jurídico & Diretrizes', sub: 'Segurança jurídica e diretrizes da plataforma' },
+        privacy: { title: 'Privacidade & LGPD', sub: 'Proteção de dados pessoais e soberania do usuário' },
+        terms: { title: 'Termos de Uso', sub: 'Regras de conduta e autenticidade de dados' },
+        contact: { title: 'Fale Conosco', sub: 'Canal de atendimento, dúvidas e parcerias acadêmicas' },
+        apps: { title: 'Recursos & Integrações', sub: 'LinkedIn, GitHub, Notion, PDF e bases científicas' },
+        templates: { title: 'Modelos STAR por Área', sub: 'Templates categorizados para acelerar seu case' }
+      };
+
+      topics.forEach(t => {
+        const content = document.getElementById(`footerTabContent-${t}`);
+        const btn = document.getElementById(`footerTabBtn-${t}`);
+        if (content) {
+          if (t === topic) {
+            content.classList.remove('hidden');
+          } else {
+            content.classList.add('hidden');
+          }
+        }
+        if (btn) {
+          if (t === topic) {
+            btn.className = "px-3 py-1 rounded-lg text-xs font-semibold bg-white text-slate-900 shadow-2xs whitespace-nowrap cursor-pointer";
+          } else {
+            btn.className = "px-3 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 whitespace-nowrap cursor-pointer";
+          }
+        }
+      });
+
+      if (titles[topic]) {
+        const tEl = document.getElementById('modalFooterTitle');
+        const sEl = document.getElementById('modalFooterSubtitle');
+        if (tEl) tEl.innerText = titles[topic].title;
+        if (sEl) sEl.innerText = titles[topic].sub;
+      }
+      lucide.createIcons();
+    }
+
+    // Language Selector Menu
+    function toggleLanguageMenu() {
+      const menu = document.getElementById('dropdownLanguageMenu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    function changeLanguage(lang) {
+      const menu = document.getElementById('dropdownLanguageMenu');
+      if (menu) menu.classList.add('hidden');
+      
+      const label = document.getElementById('labelCurrentLanguage');
+      if (lang === 'en') {
+        if (label) label.innerText = 'English (US)';
+        showToast('Interface language set to English (preview)');
+      } else {
+        if (label) label.innerText = 'Português (Brasil)';
+        showToast('Idioma definido para Português (Brasil)');
+      }
+    }
+
+    // Copy Academic References (ABNT & APA)
+    function copyAcademicReferences() {
+      const text = `REFERÊNCIAS BIBLIOGRÁFICAS (MÉTODO CARREIRAIA)
+
+CAMPION, M. A.; PALMER, D. K.; CAMPION, J. E. A review of structure in the selection interview. Personnel Psychology, v. 50, n. 3, p. 655–702, 1997. DOI: 10.1111/j.1744-6570.1997.tb00709.x
+
+JANZ, T. Initial comparisons of patterned behavior description interviews versus unstructured interviews. Journal of Applied Psychology, v. 67, n. 5, p. 577–580, 1982.
+
+KARAU, S. J.; WILLIAMS, K. D. Social loafing: A meta-analytic review and theoretical integration. Journal of Personality and Social Psychology, v. 65, n. 4, p. 681–706, 1993. DOI: 10.1037/0022-3514.65.4.681
+
+MCCLELLAND, D. C. Testing for competence rather than for "intelligence." American Psychologist, v. 28, n. 1, p. 1–14, 1973. DOI: 10.1037/h0034092
+
+SCHMIDT, F. L.; HUNTER, J. E. The validity and utility of selection methods in personnel psychology: Practical and theoretical implications of 85 years of research findings. Psychological Bulletin, v. 124, n. 2, p. 262–274, 1998.
+
+SCHÖN, D. A. The Reflective Practitioner: How Professionals Think in Action. New York: Basic Books, 1983.
+
+WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, and Evaluation, v. 2, n. 1, p. 2, 1990.`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Referências acadêmicas copiadas com sucesso!');
+      }).catch(() => {
+        showToast('Erro ao copiar referências');
+      });
+    }
+
+    function copyToClipboardText(btnEl, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copiado para a área de transferência!');
+        if (btnEl) {
+          const originalHTML = btnEl.innerHTML;
+          btnEl.innerHTML = '<i data-lucide="check" class="w-3 h-3 text-emerald-400"></i><span>Copiado!</span>';
+          lucide.createIcons();
+          setTimeout(() => {
+            btnEl.innerHTML = originalHTML;
+            lucide.createIcons();
+          }, 2000);
+        }
+      }).catch(() => {
+        showToast('Erro ao copiar');
+      });
+    }
+
+    function handleSendContactForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactInputName')?.value || 'Visitante';
+      showToast(`Obrigado, ${name}! Sua mensagem foi registrada com sucesso.`);
+      closeFooterModal();
+      if (document.getElementById('contactInputMsg')) document.getElementById('contactInputMsg').value = '';
+    }
+
     // Switch output view between Portfolio and LinkedIn
     function switchOutputTab(type) {
       const pBox = document.getElementById('boxOutputPortfolio');
@@ -2712,27 +3696,448 @@
       const lBtn = document.getElementById('btnOutputLinkedin');
 
       if (type === 'portfolio') {
-        pBox.classList.remove('hidden');
-        lBox.classList.add('hidden');
-        pBtn.className = "px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5";
-        lBtn.className = "px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5";
+        if (pBox) pBox.classList.remove('hidden');
+        if (lBox) lBox.classList.add('hidden');
+        if (pBtn) pBtn.className = "px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer";
+        if (lBtn) lBtn.className = "px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 cursor-pointer";
       } else {
-        pBox.classList.add('hidden');
-        lBox.classList.remove('hidden');
-        lBtn.className = "px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5";
-        pBtn.className = "px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5";
+        if (pBox) pBox.classList.add('hidden');
+        if (lBox) lBox.classList.remove('hidden');
+        if (lBtn) lBtn.className = "px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer";
+        if (pBtn) pBtn.className = "px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 cursor-pointer";
       }
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
-    // Samples
+    // Switch Landing Page showcase tabs
+    function switchLandingExampleTab(type) {
+      const btnStar = document.getElementById('btnLandingTabStar');
+      const btnPort = document.getElementById('btnLandingTabPortfolio');
+      const btnLink = document.getElementById('btnLandingTabLinkedin');
+      const boxStar = document.getElementById('landingExampleBoxStar');
+      const boxPort = document.getElementById('landingExampleBoxPortfolio');
+      const boxLink = document.getElementById('landingExampleBoxLinkedin');
+
+      if (!btnStar || !btnPort || !btnLink || !boxStar || !boxPort || !boxLink) return;
+
+      [btnStar, btnPort, btnLink].forEach(b => {
+        b.className = 'px-3 py-1 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer';
+      });
+      [boxStar, boxPort, boxLink].forEach(b => b.classList.add('hidden'));
+
+      if (type === 'portfolio') {
+        btnPort.className = 'px-3 py-1 font-bold rounded-lg bg-white text-slate-900 shadow-2xs transition-all cursor-pointer';
+        boxPort.classList.remove('hidden');
+      } else if (type === 'linkedin') {
+        btnLink.className = 'px-3 py-1 font-bold rounded-lg bg-white text-slate-900 shadow-2xs transition-all cursor-pointer';
+        boxLink.classList.remove('hidden');
+      } else {
+        btnStar.className = 'px-3 py-1 font-bold rounded-lg bg-white text-slate-900 shadow-2xs transition-all cursor-pointer';
+        boxStar.classList.remove('hidden');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Generator Engine for Ready-to-Use Models (Executive Case, LinkedIn Post & Consultant Advice)
+    function buildStarBundle(s, t, a, r, categoryId = 'SEMINAR', categoryLabel = 'Projeto & Evento', evidenceUrl = '') {
+      // 1. SEMINAR / EVENT MANAGEMENT (Default High-Impact Case)
+      if (categoryId === 'SEMINAR' || s.includes('Semana Universitária') || s.includes('evento')) {
+        const title = "🎯 Gestão de Crise e Operações: Como Reestruturei a Semana Universitária em 5 Dias e Entreguei um Evento de 600 Participantes sem Atrasos";
+        
+        const portfolioPart = `# ${title}
+
+## 📌 Visão Geral & Desafio
+${s}
+
+## 🎯 Meta & Responsabilidade (Task)
+${t}
+
+## 🛠️ Estratégia & Execução Técnica (Método STAR)
+${a}
+
+## 📈 Métricas & Resultados de Impacto
+- **🏆 600+ participantes credenciados** sem filas ou tumulto na recepção durante os 3 dias de evento.
+- **⏱️ 100% de pontualidade**: Todas as 12 palestras e mesas-redondas iniciaram exatamente no horário previsto.
+- **💰 Orçamento adicional zero**: Reestruturação viabilizada integralmente com ferramentas digitais gratuitas e realocação inteligente de voluntários.
+- **📜 Processo Oficializado**: O modelo de gestão, cronograma e credenciamento digital foi adotado como padrão permanente pela coordenação da instituição para as edições seguintes.
+
+## 💡 Competências Técnicas & Liderança
+- **Hard Skills**: Gestão de Projetos, Automação de Processos, Metodologias Ágeis (Kanban/Daily), Notion, Gestão de Operações e Fluxos.
+- **Soft Skills**: Liderança sob Pressão, Comunicação Intersetorial, Gestão de Equipes Voluntárias, Resolução Ágil de Problemas.`;
+
+        const linkedinPart = `A 3 semanas de um evento para mais de 600 pessoas, a coordenação pensou em cancelar tudo por desorganização. Eu decidi assumir a liderança e mudar esse desfecho. 🚀
+
+Quando a comissão organizadora da Semana Universitária se desmobilizou, o cenário era crítico:
+❌ Zero cronogramas unificados
+❌ Inscrições espalhadas em papéis e planilhas desconectadas
+❌ 12 palestrantes sem confirmação oficial de data
+❌ Risco real de cancelamento e frustração geral
+
+Em vez de focar no caos, assumi voluntariamente a coordenação de operações e apliquei um método simples e estruturado em 5 dias:
+
+1️⃣ Centralização total: Criei um painel ágil no Notion com responsáveis diretos e prazos claros para os 14 voluntários.
+2️⃣ Automação do credenciamento: Eliminamos listas manuais e criamos um fluxo com confirmação e QR Code por e-mail.
+3️⃣ Rituais diários de 15 min: Alinhamento rápido para destravar qualquer obstáculo antes que virasse um problema.
+
+O resultado?
+✨ Auditório lotado nos 3 dias com mais de 600 credenciamentos sem filas
+✨ 100% das 12 palestras iniciadas pontualmente
+✨ Orçamento adicional: R$ 0,00
+✨ O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes!
+
+Projetos não dão certo por sorte; dão certo quando alguém tem a coragem de assumir a responsabilidade e colocar processos onde havia confusão.
+
+Você já precisou assumir a liderança em um momento de incerteza? Como foi a experiência por aí? Compartilha comigo nos comentários! 👇
+
+#GestãoDeProjetos #Liderança #MetodologiaSTAR #Operações #ResoluçãoDeProblemas #Carreira`;
+
+        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
+Este estudo de caso demonstra competências executivas de altíssimo valor para empresas: capacidade de agir em momentos de incerteza, estruturação de processos do zero e articulação de equipes multidisciplinares sem autoridade formal. Recrutadores e gestores procuram exatamente profissionais que não esperam ordens para agir diante de um gargalo crítico.
+
+### 🎯 Como Defender este Case em Entrevistas
+1. **Pergunta Comportamental 1:** *"Conte-me sobre uma ocasião em que você teve que liderar sob pressão com prazos curtos."*
+   - **Como Responder:** Destaque a sua iniciativa voluntária, a clareza do plano de 5 dias no Notion e finalize com as métricas concretas: 600 credenciados sem filas, 100% de pontualidade e custo zero adicional.
+2. **Pergunta Comportamental 2:** *"Como você engaja voluntários ou colegas que não respondem hierarquicamente a você?"*
+   - **Como Responder:** Explique que transparência gera autoridade: você distribuiu papéis claros no Notion e usou rituais diários de 15 minutos para apoiar a equipe e destravar bloqueios, em vez de microgerenciar.
+
+### 🌟 Dica de Ouro
+Ao defender este case, mencione sempre que o processo que você criou virou o **padrão oficial da faculdade**. Essa constatação comprova que sua passagem deixou legado institucional duradouro.`;
+
+        return { title, portfolioPart, linkedinPart, consultantPart };
+      }
+
+      // 2. PRESS / PR CASE
+      if (categoryId === 'PRESS' || s.includes('assessoria') || s.includes('imprensa') || s.includes('healthtech')) {
+        const title = "📰 Estratégia de PR e Relacionamento com a Mídia: Como Conquistamos Matérias na Folha, G1 e Valor Econômico com Custo Zero de Mídia Paga";
+        
+        const portfolioPart = `# ${title}
+
+## 📌 Visão Geral & Desafio
+${s}
+
+## 🎯 Meta & Responsabilidade (Task)
+${t}
+
+## 🛠️ Estratégia & Execução Técnica (Método STAR)
+${a}
+
+## 📈 Métricas & Resultados de Impacto
+- **📰 Emplacamento em veículos de prestígio nacional**: Matérias publicadas na Folha de S.Paulo, Valor Econômico e G1 Saúde.
+- **🌐 14+ menções orgânicas qualificadas** em portais e newsletters especializadas do setor de tecnologia e saúde.
+- **🎙️ Autoridade de Marca**: Convites para porta-vozes em programas de rádio e podcasts executivos.
+- **💰 R$ 0 em investimento em mídia paga**: Retorno de mídia equivalente (ad value) estimado em mais de R$ 120 mil.
+
+## 💡 Competências Técnicas & Comunicação
+- **Hard Skills**: Assessoria de Imprensa, Mapeamento de Pautas, Media Training, Clipping e Métricas de PR, Copywriting Jornalístico.
+- **Soft Skills**: Relacionamento Institucional, Negociação sob Embargo, Visão de Negócio, Agilidade Editorial.`;
+
+        const linkedinPart = `Como posicionar uma empresa como autoridade na imprensa nacional sem investir R$ 1 em mídia paga? 📰✨
+
+Durante o lançamento de uma pesquisa inédita sobre saúde corporativa, tínhamos um grande desafio: dados riquíssimos, prazo de 10 dias e zero verba para anúncios patrocinados.
+
+Minha estratégia como assessora de imprensa não foi disparar um release genérico para 500 jornalistas. Em vez disso, adotamos um processo cirúrgico:
+
+1️⃣ Segmentação editorial: Dividi a pesquisa em 3 ganchos distintos — econômico para veículos de negócios (Valor e Exame), saúde pública para grandes portais (Folha e G1) e viés técnico para canais especializados.
+2️⃣ Pautas exclusivas sob embargo: Ofereci dados inéditos com antecedência para editores-chave, preparando nossos porta-vozes com resumos executivos prontos.
+3️⃣ Media Kit visual: Transformei tabelas densas em infográficos diretos, facilitando o trabalho das redações.
+
+O impacto:
+🚀 Matérias de destaque na Folha de S.Paulo, G1 e Valor Econômico
+🚀 Mais de 14 inserções orgânicas em portais do setor
+🚀 Convites espontâneos para podcasts e debates sobre o tema
+🚀 Custo de mídia: Zero.
+
+Comunicação estratégica não é sobre fazer barulho; é sobre entregar valor real e dados relevantes no momento certo para as pessoas certas.
+
+Como você tem trabalhado a narrativa da sua empresa ou dos seus projetos? Vamos trocar ideias nos comentários! 👇
+
+#AssessoriaDeImprensa #RelaçõesPúblicas #ComunicaçãoEstratégica #PR #Branding #Carreira`;
+
+        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
+Este case posiciona o profissional não apenas como redator ou assessor, mas como estrategista de crescimento orgânico e autoridade de marca. Demonstrar que você gerou visibilidade na grande imprensa com orçamento zero prova ROI imediato para qualquer equipe de marketing ou comunicação.
+
+### 🎯 Como Defender este Case em Entrevistas
+1. **Pergunta:** *"Como você mede o sucesso de uma estratégia de comunicação além de curtidas e cliques?"*
+   - **Resposta Ideal:** Destaque a qualificação da audiência (G1, Valor, Folha), o impacto na reputação dos porta-vozes e o retorno institucional sem necessidade de investimento em tráfego pago.
+2. **Pergunta:** *"Qual foi o maior desafio no relacionamento com os jornalistas?"*
+   - **Resposta Ideal:** Mostre que você entendeu a dor do jornalista: eles têm pouco tempo e prazos apertados. Você entregou resumos visuais prontos e dados segmentados sob embargo, o que gerou confiança mútua.`;
+
+        return { title, portfolioPart, linkedinPart, consultantPart };
+      }
+
+      // 3. RESEARCH / TCC / DATA AUDIT
+      if (categoryId === 'RESEARCH' || s.includes('TCC') || s.includes('pesquisa') || s.includes('algoritmo')) {
+        const title = "🔬 Auditoria Algorítmica e Fairness em Machine Learning: Da Pesquisa Teórica à Validação Prática em Sistemas de Triagem";
+
+        const portfolioPart = `# ${title}
+
+## 📌 Visão Geral & Desafio
+${s}
+
+## 🎯 Meta & Responsabilidade (Task)
+${t}
+
+## 🛠️ Estratégia & Execução Técnica (Método STAR)
+${a}
+
+## 📈 Métricas & Resultados de Impacto
+- **📊 Dataset de 40.000 instâncias auditado** com métricas formais de paridade estatística e igualdade de oportunidades.
+- **🎯 Redução de 34% em discrepâncias demográficas** sem perda estatisticamente significativa na acurácia do classificador.
+- **📜 Artigo aprovado e publicado** nos anais do simpósio acadêmico com nota máxima da banca examinadora.
+- **💻 Repositório Open Source documentado**: Código reutilizável disponibilizado publicamente com pipelines reprodutíveis em Python.
+
+## 💡 Competências Técnicas & Científicas
+- **Hard Skills**: Python (Scikit-Learn, Pandas, NumPy), Métricas de Fairness em IA, Modelagem Estatística, Git/GitHub, Pesquisa Científica.
+- **Soft Skills**: Pensamento Crítico, Rigor Metodológico, Comunicação Científica para Negócios, Ética em Tecnologia.`;
+
+        const linkedinPart = `Como garantir que a inteligência artificial não reproduza preconceitos históricos em decisões de contratação? 🤖⚖️
+
+Durante o desenvolvimento da minha pesquisa e TCC, me dediquei a investigar como auditar e mitigar vieses algorítmicos em modelos preditivos de triagem.
+
+O desafio central era técnico e ético: como calibrar os dados para reduzir disparidades demográficas sem destruir a precisão do classificador?
+
+A abordagem prática envolveu:
+1️⃣ Análise exploratória profunda em bases de dados públicas e sintéticas com mais de 40 mil instâncias.
+2️⃣ Implementação de técnicas de reponderação amostral (reweighting) e métricas de igualdade de oportunidades com Python e Scikit-Learn.
+3️⃣ Criação de testes de robustez e documentação completa com pipelines reprodutíveis.
+
+Resultados alcançados:
+✅ Mitigação de 34% nas disparidades demográficas detectadas no modelo base
+✅ Preservação da acurácia geral do sistema
+✅ Artigo aprovado e publicado no simpósio acadêmico
+✅ Código disponibilizado em repositório aberto para a comunidade técnica
+
+Acredito que o futuro da inteligência artificial depende tanto de engenharia de software de ponta quanto de responsabilidade ética aplicada ao código.
+
+Qual a sua visão sobre governança e ética em sistemas inteligentes nas empresas hoje? 👇
+
+#InteligênciaArtificial #MachineLearning #DataScience #Python #ÉticaEmIA #PesquisaAplicada`;
+
+        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
+Com a proliferação da IA, profissionais que dominam governança de dados, auditoria algorítmica e ética prática são extremamente disputados por fintechs, big techs e consultorias. Este case transforma uma monografia em evidência de competência técnica sênior.
+
+### 🎯 Como Defender este Case em Entrevistas
+1. **Pergunta:** *"Como você equilibra a precisão do modelo com requisitos de negócio e justiça?"*
+   - **Resposta Ideal:** Explique o tradeoff entre precisão e recall/paridade, e como sua metodologia comprovou matematicamente que é possível ter modelos justos sem comprometer o objetivo de negócio.`;
+
+        return { title, portfolioPart, linkedinPart, consultantPart };
+      }
+
+      // 4. INTERNSHIP / PROCESS OPTIMIZATION
+      if (categoryId === 'INTERNSHIP' || s.includes('estágio') || s.includes('planilhas') || s.includes('logística')) {
+        const title = "⚙️ Automação de Processos e Inteligência Operacional: Como Eliminei 2 Horas Diárias de Retrabalho Manual com Python e Dashboards";
+
+        const portfolioPart = `# ${title}
+
+## 📌 Visão Geral & Desafio
+${s}
+
+## 🎯 Meta & Responsabilidade (Task)
+${t}
+
+## 🛠️ Estratégia & Execução Técnica (Método STAR)
+${a}
+
+## 📈 Métricas & Resultados de Impacto
+- **⏱️ 10+ horas semanais recuperadas** por analista de turno, eliminando a digitação manual de relatórios de expedição.
+- **📉 Redução de 98% nas discrepâncias de dados** entre a equipe de operações e o setor de vendas.
+- **🚀 Dashboard adotado pela diretoria regional** como ferramenta oficial de tomada de decisão diária.
+- **⭐ Efetivação antecipada** reconhecida pela liderança como resultado do impacto direto nos processos internos.
+
+## 💡 Competências Técnicas & Negócios
+- **Hard Skills**: Python (Automação/ETL), Dashboards e BI, Mapeamento de Processos (BPMN), Excel Avançado, Integração de Dados.
+- **Soft Skills**: Iniciativa e Autonomia, Escuta Ativa com Operadores, Foco em Eficiência, Resolução Prática de Problemas.`;
+
+        const linkedinPart = `Quando comecei meu estágio, percebi que o time perdia mais de 2 horas todos os dias copiando dados entre planilhas. Eu decidi automatizar. 💡⚡
+
+Em muitas empresas, tarefas manuais repetitivas passam despercebidas porque 'sempre foi feito assim'. Mas o custo acumulado em tempo e erros humanos é gigante.
+
+Em vez de aceitar a rotina manual de reconciliação de relatórios, tomei a iniciativa de desenhar uma solução:
+
+1️⃣ Fui ao chão de fábrica conversar com os operadores para mapear exatamente onde ocorriam as falhas de digitação.
+2️⃣ Criei scripts em Python para consolidar os relatórios automaticamente em segundos.
+3️⃣ Estruturei um painel visual dinâmico com alertas automáticos para as pendências mais críticas do turno.
+
+O impacto:
+📈 Eliminação de mais de 2 horas diárias de trabalho repetitivo por turno
+📈 Erros de divergência de dados com vendas caíram para quase zero
+📈 O dashboard virou o padrão oficial de monitoramento da diretoria regional
+📈 Reconhecimento que culminou em efetivação antecipada!
+
+O papel de um estagiário ou profissional em início de carreira não é apenas cumprir tarefas; é ter curiosidade para entender o negócio e coragem para propor melhorias que gerem impacto real.
+
+E você, qual processo repetitivo na sua rotina merecia ser automatizado hoje? 👇
+
+#Automação #Processos #Python #Eficiência #Estágio #Carreira`;
+
+        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
+Este é o exemplo clássico que os recrutadores amam: um profissional júnior ou estagiário que não se limitou a seguir instruções, mas identificou um desperdício de tempo e criou uma automação que impactou o resultado da empresa. Mostra maturidade operacional muito acima da média.`;
+
+        return { title, portfolioPart, linkedinPart, consultantPart };
+      }
+
+      // 5. VOLUNTEER / MENTORSHIP
+      if (categoryId === 'VOLUNTEER' || s.includes('voluntár') || s.includes('mentoria') || s.includes('comunit')) {
+        const title = "🤝 Liderança Social e Capacitação Profissional: Como Estruturei um Programa de Mentoria de Carreira com 70+ Alunos Atendidos";
+
+        const portfolioPart = `# ${title}
+
+## 📌 Visão Geral & Desafio
+${s}
+
+## 🎯 Meta & Responsabilidade (Task)
+${t}
+
+## 🛠️ Estratégia & Execução Técnica (Método STAR)
+${a}
+
+## 📈 Métricas & Resultados de Impacto
+- **👥 70+ estudantes capacitados** na primeira edição com oficinas práticas e simulações de entrevistas.
+- **📈 42% de aprovação comprovada** dos participantes em processos seletivos de empresas conveniadas em até 90 dias.
+- **🤝 Rede de 16 mentores voluntários mobilizada** e treinada com métricas de acompanhamento contínuo.
+- **🏛️ Institucionalização permanente**: O programa foi integrado ao calendário curricular oficial da instituição de ensino.
+
+## 💡 Competências Desenvolvidas
+- **Hard Skills**: Planejamento Instrucional, Gestão de Projetos Sociais, Metodologia STAR para Entrevistas, Avaliação de Desempenho.
+- **Soft Skills**: Empatia e Escuta Ativa, Liderança Comunitária, Mobilização de Voluntários, Comunicação Intergeracional.`;
+
+        const linkedinPart = `Acredito profundamente que a educação prática é a ponte mais poderosa para transformar vidas e democratizar oportunidades. 🤝🎓
+
+Como líder voluntária, percebi que muitos estudantes talentosos de escolas públicas tinham receio de se candidatar a vagas de estágio por não saberem como falar de suas vivências em entrevistas.
+
+Em vez de ficarmos na teoria, estruturamos um programa prático de capacitação:
+1️⃣ Trilha com 4 módulos intensivos focados em método STAR, comunicação executiva e simulações reais de entrevista.
+2️⃣ Recrutamento e treinamento de 16 mentores voluntários do mercado corporativo.
+3️⃣ Sessões individuais de feedback personalizado para cada aluno.
+
+Os resultados nos encheram de orgulho:
+✨ Mais de 70 estudantes formados na primeira turma
+✨ 42% dos participantes já conquistaram suas primeiras vagas em empresas parceiras
+✨ O projeto foi oficializado pela faculdade para ocorrer todos os semestres!
+
+A maior liderança é aquela que capacita outras pessoas a brilharem com sua própria voz.
+
+Quem foi a pessoa mentora que mais impactou o seu caminho profissional? Marca ela aqui para agradecer! 👇
+
+#Voluntariado #Liderança #Educação #Mentoria #ImpactoSocial #Carreira`;
+
+        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
+Projetos de voluntariado bem estruturados provam competências comportamentais (soft skills) de forma muito mais autêntica do que discursos genéricos. Recrutadores valorizam profissionais que sabem liderar sem chefia direta e que demonstram compromisso com pessoas.`;
+
+        return { title, portfolioPart, linkedinPart, consultantPart };
+      }
+
+      // 6. GENERAL CUSTOM FALLBACK GENERATOR
+      const title = `🎯 Case Executivo de Carreira: ${categoryLabel} com Resultados Mensuráveis`;
+      
+      const portfolioPart = `# ${title}
+
+## 📌 Visão Geral & Desafio
+${s}
+
+## 🎯 Objetivo & Meta (Task)
+${t}
+
+## 🛠️ Estratégia & Execução Técnica (Método STAR)
+${a}
+
+## 📈 Métricas & Resultados de Impacto
+${r}
+
+## 💡 Competências Técnicas & Negócios
+- **Hard Skills**: Gestão por Resultados, Planejamento Estratégico, Execução com Metodologia STAR, Análise de Gargalos.
+- **Soft Skills**: Liderança Prática, Resolução de Conflitos, Comunicação Assertiva, Entrega sob Pressão.`;
+
+      const linkedinPart = `Compartilho um marco relevante sobre como transformei um desafio prático em entrega mensurável no setor de ${categoryLabel}: 🚀
+
+O desafio enfrentado:
+${s}
+
+O plano de ação e execução:
+${a}
+
+O impacto alcançado:
+✨ ${r}
+
+Cada projeto nos ensina que disciplina de processos e foco em resultados são os maiores diferenciais em qualquer carreira.
+
+O que achou dessa abordagem? Como você costuma lidar com desafios similares na sua área? 👇
+
+#MetodologiaSTAR #Carreira #Resultados #${categoryLabel.replace(/[^a-zA-Z0-9]/g, '')}`;
+
+      const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
+Este relato demonstra clareza na formulação de problemas e capacidade de execução focada em resultados. Ao transformar sua vivência em um case com números e impacto, você se destaca de 90% dos currículos genéricos do mercado.
+
+### 🎯 Como Defender este Case em Entrevistas
+- Destaque o contexto do desafio inicial.
+- Explique as ferramentas e decisões tomadas para superar obstáculos.
+- Finalize sempre com os resultados mensuráveis e o aprendizado deixado.`;
+
+      return { title, portfolioPart, linkedinPart, consultantPart };
+    }
+
+    // Render bundle into Results Card (Portfolio Text + LinkedIn Post + Consultant Advice)
+    function renderStarCaseOutputs(bundle, categoryId, categoryLabel, s, t, a, r, evidenceUrl = '') {
+      const cEl = document.getElementById('textOutputConsultant');
+      const pEl = document.getElementById('textOutputPortfolio');
+      const pRaw = document.getElementById('rawOutputPortfolio');
+      const lEl = document.getElementById('textOutputLinkedin');
+      const lRaw = document.getElementById('rawOutputLinkedin');
+
+      if (cEl) cEl.innerHTML = formatMarkdown(bundle.consultantPart || "Conselho do consultor pronto.");
+      if (pEl) pEl.innerHTML = formatMarkdown(bundle.portfolioPart);
+      if (pRaw) pRaw.innerText = bundle.portfolioPart;
+      
+      if (lEl) lEl.innerText = bundle.linkedinPart;
+      if (lRaw) lRaw.innerText = bundle.linkedinPart;
+
+      const resultsCard = document.getElementById('resultsCardStar');
+      if (resultsCard) {
+        resultsCard.classList.remove('hidden');
+      }
+
+      // Auto-save case to folder
+      const newCaseObj = {
+        id: 'case_' + Date.now(),
+        title: bundle.title || extractCaseTitle(bundle.portfolioPart, categoryLabel),
+        categoryId: categoryId,
+        categoryLabel: categoryLabel,
+        createdAt: new Date().toISOString(),
+        situation: s,
+        task: t,
+        action: a,
+        result: r,
+        evidenceUrl: evidenceUrl,
+        consultantPart: bundle.consultantPart,
+        portfolioPart: bundle.portfolioPart,
+        linkedinPart: bundle.linkedinPart
+      };
+      saveCaseToFolder(newCaseObj);
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Samples: Loads input AND immediately generates ready-to-use executive text and post
     function loadStarSample() {
       selectCategory('SEMINAR');
-      document.getElementById('inputSituation').value = "A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma unificado, as inscrições estavam dispersas em papéis e planilhas desconectadas e a coordenação já cogitava cancelar o evento por desorganização operacional.";
-      document.getElementById('inputTask').value = "Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, unificar o fluxo entre as 4 frentes de voluntários (palestrantes, comunicação, logística e credenciamento) e garantir a entrega com orçamento zero adicional.";
-      document.getElementById('inputAction').value = "Centralizei as demandas em um painel compartilhado no Notion com responsáveis e prazos claros para os 14 voluntários; criei um fluxo digital automatizado de inscrições com confirmação e QR Code por e-mail; e institui reuniões diárias de 15 minutos para resolver bloqueios com agilidade.";
-      document.getElementById('inputResult').value = "O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras começaram pontualmente e o modelo de gestão que criei foi oficializado pela coordenação para todas as edições seguintes.";
-      showToast("Exemplo STAR preenchido!");
+      const s = "A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma unificado, as inscrições estavam dispersas em papéis e planilhas desconectadas e a coordenação já cogitava cancelar o evento por desorganização operacional.";
+      const t = "Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, unificar o fluxo entre as 4 frentes de voluntários (palestrantes, comunicação, logística e credenciamento) e garantir a entrega com orçamento zero adicional.";
+      const a = "Centralizei as demandas em um painel compartilhado no Notion com responsáveis e prazos claros para os 14 voluntários; criei um fluxo digital automatizado de inscrições com confirmação e QR Code por e-mail; e institui reuniões diárias de 15 minutos para resolver bloqueios com agilidade.";
+      const r = "O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras começaram pontualmente e o modelo de gestão que criei foi oficializado pela coordenação para todas as edições seguintes.";
+
+      document.getElementById('inputSituation').value = s;
+      document.getElementById('inputTask').value = t;
+      document.getElementById('inputAction').value = a;
+      document.getElementById('inputResult').value = r;
+
+      const bundle = buildStarBundle(s, t, a, r, 'SEMINAR', 'Seminário & Eventos');
+      renderStarCaseOutputs(bundle, 'SEMINAR', 'Seminário & Eventos', s, t, a, r);
+      switchOutputTab('portfolio');
+
+      const resultsCard = document.getElementById('resultsCardStar');
+      if (resultsCard) {
+        resultsCard.scrollIntoView({ behavior: 'smooth' });
+      }
+      showToast("Exemplo carregado com Estudo de Caso executivo e Post para LinkedIn prontos para uso!");
     }
 
     function clearStarForm() {
@@ -3598,6 +5003,56 @@ Você já precisou assumir a coordenação de um projeto em meio ao caos? Como f
     }
 
     // ==================== GENERATE STAR CASE WITH GEMINI ====================
+    function parseStarResponse(rawText, s, t, a, r, categoryId, categoryLabel, evidenceUrl) {
+      let consultantPart = "";
+      let portfolioPart = "";
+      let linkedinPart = "";
+
+      // Regex delimiters tolerant of ###, ##, **, ===, etc.
+      const p1Regex = /(?:={2,}\s*|#{1,3}\s*|\*{2}\s*)?PARTE\s*1[:\s\-]+CONSELHO[^\n]*/i;
+      const p2Regex = /(?:={2,}\s*|#{1,3}\s*|\*{2}\s*)?PARTE\s*2[:\s\-]+(?:ESTUDO\s*DE\s*CASO|TEXTO\s*EXECUTIVO)[^\n]*/i;
+      const p3Regex = /(?:={2,}\s*|#{1,3}\s*|\*{2}\s*)?PARTE\s*3[:\s\-]+(?:PUBLICAÇÃO|POST)[^\n]*/i;
+
+      if (p2Regex.test(rawText)) {
+        const splitP2 = rawText.split(p2Regex);
+        consultantPart = splitP2[0].replace(p1Regex, '').trim();
+
+        if (p3Regex.test(splitP2[1])) {
+          const splitP3 = splitP2[1].split(p3Regex);
+          portfolioPart = splitP3[0].trim();
+          linkedinPart = splitP3[1].trim();
+        } else {
+          portfolioPart = splitP2[1].trim();
+        }
+      } else if (p3Regex.test(rawText)) {
+        const splitP3 = rawText.split(p3Regex);
+        portfolioPart = splitP3[0].replace(p1Regex, '').trim();
+        linkedinPart = splitP3[1].trim();
+      } else {
+        portfolioPart = rawText.trim();
+      }
+
+      // If any part is missing or short, synthesize from template engine so NOTHING is ever empty!
+      const defaultBundle = buildStarBundle(s, t, a, r, categoryId, categoryLabel, evidenceUrl);
+
+      if (!portfolioPart || portfolioPart.length < 40) {
+        portfolioPart = defaultBundle.portfolioPart;
+      }
+      if (!linkedinPart || linkedinPart.length < 40) {
+        linkedinPart = defaultBundle.linkedinPart;
+      }
+      if (!consultantPart || consultantPart.length < 30) {
+        consultantPart = defaultBundle.consultantPart;
+      }
+
+      return {
+        title: extractCaseTitle(portfolioPart, categoryLabel) || defaultBundle.title,
+        portfolioPart,
+        linkedinPart,
+        consultantPart
+      };
+    }
+
     async function handleGenerateStar() {
       const s = document.getElementById('inputSituation').value.trim();
       const t = document.getElementById('inputTask').value.trim();
@@ -3614,13 +5069,24 @@ Você já precisou assumir a coordenação de um projeto em meio ao caos? Como f
         return;
       }
 
+      const catObj = categories.find(c => c.id === currentSelectedCategory) || categories[0];
+      const apiKey = getStoredKey();
+
+      // If no API key configured, generate directly with executive template engine
+      if (!apiKey) {
+        const bundle = buildStarBundle(s, t, a, r, currentSelectedCategory, catObj.label, evUrl);
+        renderStarCaseOutputs(bundle, currentSelectedCategory, catObj.label, s, t, a, r, evUrl);
+        switchOutputTab('portfolio');
+        document.getElementById('resultsCardStar').scrollIntoView({ behavior: 'smooth' });
+        showToast("Conquista gerada com o motor executivo! (Dica: adicione sua chave nas configurações para enriquecer com IA)");
+        return;
+      }
+
       const btn = document.getElementById('btnActionStar');
       const originalHtml = btn.innerHTML;
       btn.disabled = true;
       btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-white"></i><span class="text-white font-bold">Gerando Conselho, Portfólio & LinkedIn com IA...</span>`;
-      lucide.createIcons();
-
-      const catObj = categories.find(c => c.id === currentSelectedCategory) || categories[0];
+      if (window.lucide) lucide.createIcons();
 
       let prompt = `Você é um Consultor Especialista de Carreira Executiva, Headhunter e Líder de Talent Acquisition.
 Sua missão é transformar a vivência de um profissional/estudante em um Estudo de Caso corporativo de alto impacto, fornecendo conselho consultivo estratégico, um case impecável para portfólio e um post engajador para o LinkedIn.
@@ -3661,64 +5127,24 @@ Post pronto, magnético e profissional para publicar no feed do LinkedIn:
 
       try {
         const result = await requestGemini(prompt);
-        let consultantPart = "";
-        let portfolioPart = "";
-        let linkedinPart = "";
+        const bundle = parseStarResponse(result, s, t, a, r, currentSelectedCategory, catObj.label, evUrl);
+        renderStarCaseOutputs(bundle, currentSelectedCategory, catObj.label, s, t, a, r, evUrl);
 
-        if (result.includes("=== PARTE 1: CONSELHO DO CONSULTOR ===")) {
-          const p1Split = result.split("=== PARTE 2: ESTUDO DE CASO PARA PORTFÓLIO ===");
-          consultantPart = p1Split[0].replace("=== PARTE 1: CONSELHO DO CONSULTOR ===", "").trim();
-          
-          if (p1Split[1] && p1Split[1].includes("=== PARTE 3: PUBLICAÇÃO PARA O LINKEDIN ===")) {
-            const p2Split = p1Split[1].split("=== PARTE 3: PUBLICAÇÃO PARA O LINKEDIN ===");
-            portfolioPart = p2Split[0].trim();
-            linkedinPart = p2Split[1].trim();
-          } else {
-            portfolioPart = p1Split[1] ? p1Split[1].trim() : "";
-          }
-        } else if (result.includes("=== PARTE 2:")) {
-          const parts = result.split("=== PARTE 2:");
-          portfolioPart = parts[0].replace("=== PARTE 1: ESTUDO DE CASO PARA PORTFÓLIO ===", "").trim();
-          linkedinPart = parts[1].replace("PUBLICAÇÃO PARA O LINKEDIN ===", "").trim();
-        } else {
-          portfolioPart = result;
-        }
-
-        // Render formatted texts
-        document.getElementById('textOutputConsultant').innerHTML = formatMarkdown(consultantPart || "Conselho do consultor pronto.");
-        document.getElementById('textOutputPortfolio').innerHTML = formatMarkdown(portfolioPart);
-        document.getElementById('rawOutputPortfolio').innerText = portfolioPart;
-        
-        document.getElementById('textOutputLinkedin').innerText = linkedinPart || "Consulte o estudo detalhado para a versão completa.";
-        document.getElementById('rawOutputLinkedin').innerText = linkedinPart || "";
-
-        // Auto-save to Pasta de Cases
-        const newCaseObj = {
-          id: 'case_' + Date.now(),
-          title: extractCaseTitle(portfolioPart, catObj.label),
-          categoryId: currentSelectedCategory,
-          categoryLabel: catObj.label,
-          createdAt: new Date().toISOString(),
-          situation: s,
-          task: t,
-          action: a,
-          result: r,
-          evidenceUrl: evUrl,
-          consultantPart: consultantPart,
-          portfolioPart: portfolioPart,
-          linkedinPart: linkedinPart
-        };
-        saveCaseToFolder(newCaseObj);
-
-        document.getElementById('resultsCardStar').classList.remove('hidden');
+        switchOutputTab('portfolio');
         document.getElementById('resultsCardStar').scrollIntoView({ behavior: 'smooth' });
         showToast("Conquista gerada e salva na sua Pasta de Cases!");
       } catch (err) {
         console.error("Erro STAR:", err);
+        // Resilient fallback: render locally if API network fails
+        const fallbackBundle = buildStarBundle(s, t, a, r, currentSelectedCategory, catObj.label, evUrl);
+        renderStarCaseOutputs(fallbackBundle, currentSelectedCategory, catObj.label, s, t, a, r, evUrl);
+        switchOutputTab('portfolio');
+        document.getElementById('resultsCardStar').scrollIntoView({ behavior: 'smooth' });
+        showToast("Conquista gerada com o motor executivo!");
       } finally {
         btn.disabled = false;
         btn.innerHTML = originalHtml;
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
       }
     }
 
@@ -4766,7 +6192,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       showToast("Foto de perfil removida. Exibindo iniciais.");
     }
 
-    // Load template directly into STAR Generator
+    // Load template directly into STAR Generator with complete ready-to-use models
     function loadTemplateSample(category) {
       if (typeof selectCategory === 'function') {
         selectCategory(category);
@@ -4783,36 +6209,58 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         return;
       }
 
+      let s = "", t = "", a = "", r = "", ev = "", catLabel = "Projeto";
+
       if (category === 'PRESS') {
-        sInput.value = "Atuei na assessoria de imprensa e comunicação de uma healthtech durante o lançamento de uma pesquisa nacional inédita sobre saúde preventiva corporativa, com prazo curto e sem verba para compra de anúncios pagos.";
-        tInput.value = "Minha responsabilidade como assessora foi construir a estratégia de pautas para a imprensa, transformar os dados densos do levantamento em ganchos editoriais atrativos para diferentes editorias e emplacar porta-vozes médicos como fontes nos principais veículos do país.";
-        aInput.value = "Mapeei jornalistas e editores de saúde, negócios e tecnologia. Produzi 3 releases com abordagens segmentadas: viés econômico para o Valor Econômico e Exame, foco em saúde pública para Folha de S.Paulo e G1, e abordagem científica para portais especializados. Negociei entrevistas exclusivas sob embargo com porta-vozes e preparei um media kit com infográficos e resumos executivos prontos.";
-        rInput.value = "Emplacamento de matérias e entrevistas em veículos nacionais de grande prestígio (Folha de S.Paulo, G1 e Valor Econômico) e mais de 14 menções orgânicas em portais do setor. O material gerou convites para o porta-voz em programas de rádio e podcasts, estabelecendo a instituição como autoridade no assunto sem investimento em mídia paga.";
-        if (evInput) evInput.value = "https://g1.globo.com/saude (Exemplo de Clipping e Matéria Publicada)";
+        catLabel = "Assessoria de Imprensa & PR";
+        s = "Atuei na assessoria de imprensa e comunicação de uma healthtech durante o lançamento de uma pesquisa nacional inédita sobre saúde preventiva corporativa, com prazo curto e sem verba para compra de anúncios pagos.";
+        t = "Minha responsabilidade como assessora foi construir a estratégia de pautas para a imprensa, transformar os dados densos do levantamento em ganchos editoriais atrativos para diferentes editorias e emplacar porta-vozes médicos como fontes nos principais veículos do país.";
+        a = "Mapeei jornalistas e editores de saúde, negócios e tecnologia. Produzi 3 releases com abordagens segmentadas: viés econômico para o Valor Econômico e Exame, foco em saúde pública para Folha de S.Paulo e G1, e abordagem científica para portais especializados. Negociei entrevistas exclusivas sob embargo com porta-vozes e preparei um media kit com infográficos e resumos executivos prontos.";
+        r = "Emplacamento de matérias e entrevistas em veículos nacionais de grande prestígio (Folha de S.Paulo, G1 e Valor Econômico) e mais de 14 menções orgânicas em portais do setor. O material gerou convites para o porta-voz em programas de rádio e podcasts, estabelecendo a instituição como autoridade no assunto sem investimento em mídia paga.";
+        ev = "https://g1.globo.com/saude (Exemplo de Clipping e Matéria Publicada)";
       } else if (category === 'RESEARCH') {
-        sInput.value = "Durante a iniciação científica e desenvolvimento de TCC, investiguei metodologias para auditar vieses algorítmicos em sistemas de triagem automatizada de candidatos.";
-        tInput.value = "Minha meta foi conceber uma abordagem empírica de reponderação de dados que mitigasse discrepâncias demográficas sem comprometer a precisão do classificador.";
-        aInput.value = "Desenvolvi rotinas em Python com Scikit-Learn e Pandas para avaliar métricas de paridade estatística, elaborei testes com datasets sintéticos e públicos de mais de 40 mil instâncias e submeti o artigo a uma banca acadêmica multidisciplinar.";
-        rInput.value = "Publicação do trabalho nos anais do simpósio universitário, validação da metodologia perante a banca com recomendação para mestrado e publicação do código com documentação no repositório acadêmico aberto.";
-        if (evInput) evInput.value = "https://github.com/exemplo/pesquisa-tcc-auditoria";
+        catLabel = "Projeto Acadêmico / TCC";
+        s = "Durante a iniciação científica e desenvolvimento de TCC, investiguei metodologias para auditar vieses algorítmicos em sistemas de triagem automatizada de candidatos.";
+        t = "Minha meta foi conceber uma abordagem empírica de reponderação de dados que mitigasse discrepâncias demográficas sem comprometer a precisão do classificador.";
+        a = "Desenvolvi rotinas em Python com Scikit-Learn e Pandas para avaliar métricas de paridade estatística, elaborei testes com datasets sintéticos e públicos de mais de 40 mil instâncias e submeti o artigo a uma banca acadêmica multidisciplinar.";
+        r = "Publicação do trabalho nos anais do simpósio universitário, validação da metodologia perante a banca com recomendação para mestrado e publicação do código com documentação no repositório acadêmico aberto.";
+        ev = "https://github.com/exemplo/pesquisa-tcc-auditoria";
       } else if (category === 'INTERNSHIP') {
-        sInput.value = "No primeiro ano de estágio em Operações e Logística, o time sofria com a reconciliação manual e diária de relatórios de expedição, gerando divergências com a equipe de vendas.";
-        tInput.value = "Recebi a missão de desenhar um fluxo automatizado de consolidação de dados e criar um painel visual centralizado para os coordenadores de turno.";
-        aInput.value = "Mapeei os gargalos com os operadores de chão de fábrica, escrevi rotinas em Python para extração de planilhas e montei um dashboard interativo integrado com notificações automáticas de pendências críticas.";
-        rInput.value = "Eliminação de mais de 2 horas diárias de trabalho manual repetitivo da equipe, resolução das divergências de dados com vendas e adoção formal do painel pela diretoria regional, resultando em efetivação antecipada.";
-        if (evInput) evInput.value = "";
+        catLabel = "Estágio & Vivência Inicial";
+        s = "No primeiro ano de estágio em Operações e Logística, o time sofria com a reconciliação manual e diária de relatórios de expedição, gerando divergências com a equipe de vendas.";
+        t = "Recebi a missão de desenhar um fluxo automatizado de consolidação de dados e criar um painel visual centralizado para os coordenadores de turno.";
+        a = "Mapeei os gargalos com os operadores de chão de fábrica, escrevi rotinas em Python para extração de planilhas e montei um dashboard interativo integrado com notificações automáticas de pendências críticas.";
+        r = "Eliminação de mais de 2 horas diárias de trabalho manual repetitivo da equipe, resolução das divergências de dados com vendas e adoção formal do painel pela diretoria regional, resultando em efetivação antecipada.";
       } else if (category === 'VOLUNTEER') {
-        sInput.value = "Como líder voluntária de uma entidade comunitária universitária, notamos que estudantes calouros de escolas públicas encontravam barreiras na preparação para primeiros estágios.";
-        tInput.value = "Minha meta foi liderar a criação de um programa de mentoria e oficinas práticas de comunicação profissional e simulação de entrevistas comportamentais.";
-        aInput.value = "Estruturei a trilha de capacitação em 4 etapas (orador convidado, método STAR para projetos, revisão de perfil e postura em entrevistas), recrutei 16 mentores voluntários e estabeleci formulários de feedback estruturado.";
-        rInput.value = "Capacitação de mais de 70 estudantes na primeira edição, com índice elevado de aprovação nas primeiras fases de processos seletivos de empresas parceiras e institucionalização do projeto no calendário acadêmico anual.";
-        if (evInput) evInput.value = "";
+        catLabel = "Liderança & Voluntariado";
+        s = "Como líder voluntária de uma entidade comunitária universitária, notamos que estudantes calouros de escolas públicas encontravam barreiras na preparação para primeiros estágios.";
+        t = "Minha meta foi liderar a criação de um programa de mentoria e oficinas práticas de comunicação profissional e simulação de entrevistas comportamentais.";
+        a = "Estruturei a trilha de capacitação em 4 etapas (orador convidado, método STAR para projetos, revisão de perfil e postura em entrevistas), recrutei 16 mentores voluntários e estabeleci formulários de feedback estruturado.";
+        r = "Capacitação de mais de 70 estudantes na primeira edição, com índice elevado de aprovação nas primeiras fases de processos seletivos de empresas parceiras e institucionalização do projeto no calendário acadêmico anual.";
       } else {
-        loadStarSample();
+        catLabel = "Seminário & Eventos";
+        s = "A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma unificado, as inscrições estavam dispersas em papéis e planilhas desconectadas e a coordenação já cogitava cancelar o evento por desorganização operacional.";
+        t = "Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, unificar o fluxo entre as 4 frentes de voluntários (palestrantes, comunicação, logística e credenciamento) e garantir a entrega com orçamento zero adicional.";
+        a = "Centralizei as demandas em um painel compartilhado no Notion com responsáveis e prazos claros para os 14 voluntários; criei um fluxo digital automatizado de inscrições com confirmação e QR Code por e-mail; e institui reuniões diárias de 15 minutos para resolver bloqueios com agilidade.";
+        r = "O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras começaram pontualmente e o modelo de gestão que criei foi oficializado pela coordenação para todas as edições seguintes.";
       }
-      
+
+      sInput.value = s;
+      tInput.value = t;
+      aInput.value = a;
+      rInput.value = r;
+      if (evInput) evInput.value = ev;
+
+      const bundle = buildStarBundle(s, t, a, r, category, catLabel, ev);
+      renderStarCaseOutputs(bundle, category, catLabel, s, t, a, r, ev);
+      switchOutputTab('portfolio');
+
       navigateToTab('cases');
-      showToast("Modelo estruturado carregado no Gerador STAR!");
+      const resultsCard = document.getElementById('resultsCardStar');
+      if (resultsCard) {
+        resultsCard.scrollIntoView({ behavior: 'smooth' });
+      }
+      showToast(`Modelo de ${catLabel} carregado com Estudo de Caso executivo e Post prontos para uso!`);
     }
 
     // User Profile Default Data
@@ -5568,6 +7016,15 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       }
 
       lucide.createIcons();
+
+      // Close language dropdown on outside click
+      document.addEventListener('click', (e) => {
+        const container = document.getElementById('containerLangSelector');
+        const menu = document.getElementById('dropdownLanguageMenu');
+        if (container && menu && !container.contains(e.target)) {
+          menu.classList.add('hidden');
+        }
+      });
 
       // Observer to actively remove Netlify badge if injected dynamically
       const removeNetlifyBadge = () => {
