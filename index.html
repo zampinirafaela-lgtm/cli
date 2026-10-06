@@ -2212,10 +2212,10 @@ Você já precisou assumir a liderança em um momento de incerteza? Como foi a e
             <div class="bg-white p-3.5 rounded-xl border border-slate-200/70 space-y-1">
               <div class="font-bold text-slate-800 flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-                <span>2. Monetização B2B e B2C Escalável</span>
+                <span>2. Acesso Gratuito no Radar & Parcerias Estratégicas</span>
               </div>
               <p class="leading-relaxed text-[11px]">
-                Permite cobrar assinaturas corporativas de recrutadores (busca ativa no radar, filtros avançados) e planos Pro para profissionais (consultoria de IA sem limites e portfólio customizado).
+                O Radar de Talentos é 100% gratuito para recrutadores e candidatos, atraindo forte liquidez de vagas e talentos. Parcerias opcionais com universidades e integrações customizadas com ATS sustentam o ecossistema.
               </p>
             </div>
 
@@ -2239,6 +2239,71 @@ Você já precisou assumir a liderança em um momento de incerteza? Como foi a e
               </p>
             </div>
           </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== CENTRAL DE CONTATOS & FEEDBACKS ==================== -->
+      <div id="section-admin-feedbacks" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle space-y-6">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+              <i data-lucide="inbox" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-900">Caixa de Entrada de Contatos & Feedbacks</h2>
+                <span id="badgeTotalFeedbacks" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">0 mensagens</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Mensagens recebidas pelo formulário de contato do rodapé, organizadas com histórico e respostas.</p>
+            </div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="flex items-center gap-2">
+            <button onclick="exportFeedbacksCSV()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+              <i data-lucide="download" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span>Exportar CSV</span>
+            </button>
+            <button onclick="clearReadFeedbacks()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+              <i data-lucide="check-check" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span>Limpar Lidos</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Notification Email Notice -->
+        <div class="p-3.5 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-950 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="mail-check" class="w-4 h-4 text-blue-600 shrink-0"></i>
+            <div>
+              <span class="font-bold text-blue-900">E-mail de Notificação da Equipe:</span>
+              <span class="text-blue-700 font-mono text-[11px] ml-1" id="displayAdminEmail">zampinirafaela@gmail.com</span>
+            </div>
+          </div>
+          <button onclick="editAdminNotificationEmail()" class="text-[11px] font-bold text-blue-700 hover:text-blue-900 underline cursor-pointer">
+            Alterar E-mail de Destino
+          </button>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <div class="relative flex-1 w-full">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3"></i>
+            <input type="text" id="feedbacksSearchInput" oninput="renderFeedbacksList()" placeholder="Buscar mensagens por nome, e-mail, assunto ou conteúdo..." class="w-full text-xs pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+          </div>
+          <select id="feedbacksStatusFilter" onchange="renderFeedbacksList()" class="text-xs px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none w-full sm:w-auto">
+            <option value="all">Todas as mensagens</option>
+            <option value="unread">Apenas Não Lidas</option>
+            <option value="read">Apenas Lidas</option>
+          </select>
+        </div>
+
+        <!-- Messages List Container -->
+        <div id="feedbacksListContainer" class="space-y-3">
+          <!-- Rendered dynamically -->
         </div>
 
       </div>
@@ -3150,41 +3215,65 @@ Você já precisou assumir a liderança em um momento de incerteza? Como foi a e
         <!-- Tab: Pricing -->
         <div id="footerTabContent-pricing" class="space-y-4">
           <div class="text-center space-y-1 pb-2">
-            <h4 class="text-base font-extrabold text-slate-900">Planos Transparentes e Acessíveis</h4>
-            <p class="text-xs text-slate-500">Gratuito para candidatos. Acesso sustentável para empresas e universidades.</p>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Acesso 100% Gratuito e Aberto
+            </span>
+            <h4 class="text-base sm:text-lg font-extrabold text-slate-900">Gratuito para Candidatos e Recrutadores</h4>
+            <p class="text-xs text-slate-500 max-w-lg mx-auto">
+              Sem pegadinhas e sem mensalidades. Candidatos criam seus portfólios e recrutadores descobrem talentos sem pagar nada.
+            </p>
           </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <!-- Card 1: Candidatos -->
             <div class="p-4 rounded-2xl border-2 border-emerald-500/80 bg-emerald-50/30 space-y-3 relative">
-              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">ATUAL</span>
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">GRATUITO</span>
               <div class="space-y-0.5">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Profissionais & Estudantes</span>
                 <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-500 font-normal">/ para sempre</span></div>
               </div>
               <ul class="space-y-1.5 text-[11px] text-slate-600">
-                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Gerador de Cases STAR ilimitado</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Gerador de Cases STAR ilimitado com IA</li>
                 <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Portfólio Vivo & Currículo com link público</li>
                 <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Exportação imediata em PDF & Markdown</li>
-                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Presença no Radar de Talentos</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Presença visível no Radar de Talentos</li>
               </ul>
-              <button onclick="closeFooterModal(); openAuthModal('register');" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all cursor-pointer">
-                Começar Grátis
+              <button onclick="closeFooterModal(); openAuthModal('register', 'candidate');" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all cursor-pointer">
+                Começar como Profissional
               </button>
             </div>
-            <div class="p-4 rounded-2xl border border-slate-200 bg-white space-y-3">
+
+            <!-- Card 2: Recrutadores (CLEARLY 100% FREE!) -->
+            <div class="p-4 rounded-2xl border-2 border-blue-500/80 bg-blue-50/30 space-y-3 relative">
+              <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800">GRATUITO</span>
               <div class="space-y-0.5">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700">Empresas & Recrutadores</span>
-                <div class="text-xl font-extrabold text-slate-900">Sob Medida <span class="text-xs text-slate-500 font-normal">/ equipe</span></div>
+                <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-500 font-normal">/ acesso livre</span></div>
               </div>
               <ul class="space-y-1.5 text-[11px] text-slate-600">
-                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Filtros avançados no Radar de Talentos</li>
-                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Triagem cega e auditável de competências</li>
-                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Exportação em lote de dossiês de candidatos</li>
-                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Suporte prioritário e integração ATS</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Acesso livre e gratuito ao Radar de Talentos</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Leitura completa de cases STAR e evidências</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Filtros por área, tecnologia e senioridade</li>
+                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Contato direto com candidatos sem taxas de contratação</li>
               </ul>
-              <button onclick="switchFooterModalTab('contact')" class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all cursor-pointer">
-                Falar com Especialista
+              <button onclick="closeFooterModal(); navigateToTab('network');" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all cursor-pointer">
+                Explorar Radar como Recrutador
               </button>
             </div>
+          </div>
+
+          <!-- Bloco Institucional Opcional -->
+          <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-0.5">
+              <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                <i data-lucide="building" class="w-3.5 h-3.5 text-slate-500"></i>
+                Universidades & ATS Corporativo (Projetos Especiais)
+              </span>
+              <p class="text-[11px] text-slate-500">Integração à grade acadêmica, relatórios de estágios ou conexões via API dedicada.</p>
+            </div>
+            <button onclick="switchFooterModalTab('contact')" class="px-3.5 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs whitespace-nowrap cursor-pointer transition-all self-start sm:self-auto">
+              Falar de Parceria
+            </button>
           </div>
         </div>
 
@@ -3269,28 +3358,62 @@ Você já precisou assumir a liderança em um momento de incerteza? Como foi a e
         </div>
 
         <!-- Tab: Contact -->
-        <div id="footerTabContent-contact" class="hidden space-y-3">
+        <div id="footerTabContent-contact" class="hidden space-y-4">
           <div class="space-y-1 pb-1">
             <h4 class="text-base font-extrabold text-slate-900">Entre em Contato Conosco</h4>
-            <p class="text-xs text-slate-500">Dúvidas, parcerias institucionais, pesquisas acadêmicas ou suporte.</p>
+            <p class="text-xs text-slate-500">Dúvidas, sugestões, parcerias institucionais ou suporte ao usuário.</p>
           </div>
+
+          <!-- Transparency Notice: Where feedback goes -->
+          <div class="p-3.5 rounded-2xl bg-blue-50/90 border border-blue-200 text-xs text-blue-950 flex items-start gap-2.5">
+            <i data-lucide="mail-check" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+            <div class="space-y-0.5">
+              <span class="font-bold text-blue-900">Onde sua mensagem será recebida:</span>
+              <p class="text-[11px] text-blue-800 leading-relaxed">
+                Seu feedback é gravado com segurança na <strong>Central de Feedbacks</strong> da plataforma (disponível na aba Ajustes) e direcionado para nossa equipe fundadora no e-mail <a href="mailto:zampinirafaela@gmail.com" class="font-semibold underline text-blue-900">zampinirafaela@gmail.com</a>.
+              </p>
+            </div>
+          </div>
+
           <form onsubmit="handleSendContactForm(event)" class="space-y-3">
-            <div>
-              <label class="block text-[11px] font-bold text-slate-700 mb-1">Seu Nome</label>
-              <input type="text" id="contactInputName" required placeholder="Como podemos te chamar?" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50" />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">Seu Nome</label>
+                <input type="text" id="contactInputName" required placeholder="Como podemos te chamar?" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">E-mail para resposta</label>
+                <input type="email" id="contactInputEmail" required placeholder="seuemail@exemplo.com" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50" />
+              </div>
             </div>
+
             <div>
-              <label class="block text-[11px] font-bold text-slate-700 mb-1">E-mail para resposta</label>
-              <input type="email" id="contactInputEmail" required placeholder="seuemail@exemplo.com" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50" />
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">Assunto</label>
+              <select id="contactInputSubject" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50 text-slate-800">
+                <option value="Dúvida Geral">❓ Dúvida sobre a plataforma ou método STAR</option>
+                <option value="Sugestão de Melhoria / Feedback">💡 Sugestão de melhoria ou feedback</option>
+                <option value="Recrutador buscando talentos">💼 Sou Recrutador e quero encontrar talentos</option>
+                <option value="Parceria Acadêmica / Universidade">🏛️ Parceria acadêmica, TCC ou Universidade</option>
+                <option value="Outro">✉️ Outro assunto</option>
+              </select>
             </div>
+
             <div>
               <label class="block text-[11px] font-bold text-slate-700 mb-1">Mensagem ou Dúvida</label>
-              <textarea id="contactInputMsg" required rows="3" placeholder="Escreva sua mensagem, proposta ou dúvida acadêmica..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50"></textarea>
+              <textarea id="contactInputMsg" required rows="3" placeholder="Escreva sua mensagem, proposta ou dúvida com detalhes..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-slate-50/50"></textarea>
             </div>
-            <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
-              <i data-lucide="send" class="w-3.5 h-3.5"></i>
-              <span>Enviar Mensagem</span>
-            </button>
+
+            <div class="space-y-2 pt-1">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
+                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                <span>Enviar Mensagem</span>
+              </button>
+
+              <a href="mailto:zampinirafaela@gmail.com?subject=Contato%20CarreiraIA" class="w-full py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer text-center">
+                <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
+                <span>Ou clique para abrir diretamente no seu leitor de e-mail</span>
+              </a>
+            </div>
           </form>
         </div>
 
@@ -3551,6 +3674,7 @@ Você já precisou assumir a liderança em um momento de incerteza? Como foi a e
         renderTalentNetwork();
       } else if (tabName === 'settings') {
         renderLeadsTable();
+        renderFeedbacksList();
       }
 
       lucide.createIcons();
@@ -3680,12 +3804,271 @@ WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, a
       });
     }
 
+    // ==================== FEEDBACKS & CONTACT MANAGEMENT ====================
+    const DEFAULT_INITIAL_FEEDBACKS = [
+      {
+        id: 'fb-101',
+        name: 'Camila Fernandes',
+        email: 'camila.fernandes@techhire.com.br',
+        subject: 'Recrutador buscando talentos',
+        message: 'Olá Rafaela! Sou tech recruiter e explorei o Radar de Talentos. Como os cases mostram o método STAR com evidências reais de código e métricas, economizei muito tempo na triagem. O acesso livre para recrutadores foi um diferencial incrível.',
+        date: '04/10/2026, 14:22',
+        read: false
+      },
+      {
+        id: 'fb-102',
+        name: 'Lucas Martins',
+        email: 'lucas.martins@poli.ufrj.br',
+        subject: 'Parceria Acadêmica / Universidade',
+        message: 'Sou coordenador de centro acadêmico e estamos organizando a Semana de Engenharia. Adoraríamos apresentar o CarreiraIA para os alunos do 7º ao 10º período para estruturarem seus portfólios de estágio com o método STAR.',
+        date: '05/10/2026, 09:45',
+        read: true
+      }
+    ];
+
+    function getAdminNotificationEmail() {
+      return localStorage.getItem('carreira_ia_admin_email') || 'zampinirafaela@gmail.com';
+    }
+
+    function editAdminNotificationEmail() {
+      const current = getAdminNotificationEmail();
+      const updated = prompt('Informe o e-mail onde deseja receber notificações e respostas de contatos:', current);
+      if (updated && updated.trim()) {
+        localStorage.setItem('carreira_ia_admin_email', updated.trim());
+        const displayEl = document.getElementById('displayAdminEmail');
+        if (displayEl) displayEl.innerText = updated.trim();
+        showToast('E-mail de notificação atualizado com sucesso!');
+      }
+    }
+
+    function getFeedbacksDatabase() {
+      try {
+        const stored = localStorage.getItem('carreira_ia_feedbacks_db');
+        if (stored) return JSON.parse(stored);
+        localStorage.setItem('carreira_ia_feedbacks_db', JSON.stringify(DEFAULT_INITIAL_FEEDBACKS));
+        return DEFAULT_INITIAL_FEEDBACKS;
+      } catch (e) {
+        return DEFAULT_INITIAL_FEEDBACKS;
+      }
+    }
+
+    function saveFeedbacksDatabase(feedbacks) {
+      try {
+        localStorage.setItem('carreira_ia_feedbacks_db', JSON.stringify(feedbacks));
+        renderFeedbacksList();
+      } catch (e) {
+        console.error("Erro ao salvar feedbacks", e);
+      }
+    }
+
     function handleSendContactForm(e) {
       e.preventDefault();
-      const name = document.getElementById('contactInputName')?.value || 'Visitante';
-      showToast(`Obrigado, ${name}! Sua mensagem foi registrada com sucesso.`);
+      const name = (document.getElementById('contactInputName')?.value || 'Visitante').trim();
+      const email = (document.getElementById('contactInputEmail')?.value || '').trim();
+      const subject = document.getElementById('contactInputSubject')?.value || 'Dúvida Geral';
+      const msg = (document.getElementById('contactInputMsg')?.value || '').trim();
+
+      if (!msg) {
+        showToast('Por favor, escreva uma mensagem.');
+        return;
+      }
+
+      const now = new Date();
+      const dateFormatted = now.toLocaleDateString('pt-BR') + ', ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+      const newFeedback = {
+        id: 'fb-' + Date.now(),
+        name: name,
+        email: email,
+        subject: subject,
+        message: msg,
+        date: dateFormatted,
+        read: false
+      };
+
+      const feedbacks = getFeedbacksDatabase();
+      feedbacks.unshift(newFeedback);
+      saveFeedbacksDatabase(feedbacks);
+
+      const targetEmail = getAdminNotificationEmail();
+      showToast(`Obrigado, ${name}! Mensagem salva na Central e direcionada para ${targetEmail}.`);
+      
       closeFooterModal();
+      
+      // Reset form fields
+      if (document.getElementById('contactInputName')) document.getElementById('contactInputName').value = '';
+      if (document.getElementById('contactInputEmail')) document.getElementById('contactInputEmail').value = '';
       if (document.getElementById('contactInputMsg')) document.getElementById('contactInputMsg').value = '';
+    }
+
+    function toggleFeedbackRead(id) {
+      const feedbacks = getFeedbacksDatabase();
+      const item = feedbacks.find(f => f.id === id);
+      if (item) {
+        item.read = !item.read;
+        saveFeedbacksDatabase(feedbacks);
+        showToast(item.read ? 'Mensagem marcada como lida' : 'Mensagem marcada como não lida');
+      }
+    }
+
+    function deleteFeedback(id) {
+      if (!confirm('Deseja realmente remover esta mensagem da central?')) return;
+      let feedbacks = getFeedbacksDatabase();
+      feedbacks = feedbacks.filter(f => f.id !== id);
+      saveFeedbacksDatabase(feedbacks);
+      showToast('Mensagem removida');
+    }
+
+    function clearReadFeedbacks() {
+      let feedbacks = getFeedbacksDatabase();
+      const unread = feedbacks.filter(f => !f.read);
+      if (unread.length === feedbacks.length) {
+        showToast('Nenhuma mensagem lida para limpar.');
+        return;
+      }
+      if (!confirm('Deseja remover todas as mensagens já marcadas como lidas?')) return;
+      saveFeedbacksDatabase(unread);
+      showToast('Mensagens lidas foram removidas');
+    }
+
+    function exportFeedbacksCSV() {
+      const feedbacks = getFeedbacksDatabase();
+      const headers = ["ID", "Nome", "Email", "Assunto", "Data", "Status", "Mensagem"];
+      const rows = feedbacks.map(f => [
+        `"${f.id || ''}"`,
+        `"${(f.name || '').replace(/"/g, '""')}"`,
+        `"${(f.email || '').replace(/"/g, '""')}"`,
+        `"${(f.subject || '').replace(/"/g, '""')}"`,
+        `"${f.date || ''}"`,
+        `"${f.read ? 'Lido' : 'Novo'}"`,
+        `"${(f.message || '').replace(/"/g, '""')}"`
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `feedbacks_carreira_ia_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Arquivo de feedbacks exportado em CSV!');
+    }
+
+    function renderFeedbacksList() {
+      const container = document.getElementById('feedbacksListContainer');
+      const badge = document.getElementById('badgeTotalFeedbacks');
+      const displayEmail = document.getElementById('displayAdminEmail');
+      if (displayEmail) displayEmail.innerText = getAdminNotificationEmail();
+
+      if (!container) return;
+
+      const feedbacks = getFeedbacksDatabase();
+      const search = (document.getElementById('feedbacksSearchInput')?.value || '').toLowerCase().trim();
+      const filterStatus = document.getElementById('feedbacksStatusFilter')?.value || 'all';
+
+      const unreadCount = feedbacks.filter(f => !f.read).length;
+      if (badge) {
+        badge.innerText = `${feedbacks.length} recebida${feedbacks.length === 1 ? '' : 's'} (${unreadCount} nova${unreadCount === 1 ? '' : 's'})`;
+        badge.className = unreadCount > 0 
+          ? "px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300"
+          : "px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800";
+      }
+
+      let filtered = feedbacks.filter(f => {
+        const matchesSearch = !search || 
+          (f.name || '').toLowerCase().includes(search) || 
+          (f.email || '').toLowerCase().includes(search) || 
+          (f.subject || '').toLowerCase().includes(search) || 
+          (f.message || '').toLowerCase().includes(search);
+        
+        const matchesStatus = filterStatus === 'all' || 
+          (filterStatus === 'unread' && !f.read) || 
+          (filterStatus === 'read' && f.read);
+
+        return matchesSearch && matchesStatus;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-2xl border border-dashed border-slate-200 text-center space-y-2 bg-slate-50/50">
+            <i data-lucide="inbox" class="w-8 h-8 text-slate-300 mx-auto"></i>
+            <h4 class="text-xs font-bold text-slate-700">Nenhuma mensagem encontrada</h4>
+            <p class="text-[11px] text-slate-500 max-w-sm mx-auto">
+              ${search ? 'Nenhum resultado corresponde à sua pesquisa.' : 'Quando os usuários preencherem o formulário de contato do rodapé, as mensagens aparecerão aqui automaticamente.'}
+            </p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(f => {
+        const isUnread = !f.read;
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl border transition-all ${
+            isUnread 
+              ? 'bg-amber-50/30 border-amber-200/80 shadow-2xs' 
+              : 'bg-white border-slate-200/90'
+          } space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full ${isUnread ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-600'} flex items-center justify-center font-black text-xs shrink-0">
+                  ${(f.name || 'U').charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-extrabold text-xs text-slate-900">${f.name}</span>
+                    <span class="text-[10px] font-mono text-slate-500">&lt;${f.email}&gt;</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <span class="px-2 py-0.2 rounded-md text-[9px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                      ${f.subject}
+                    </span>
+                    <span class="text-[10px] text-slate-400">• ${f.date}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1.5 self-end sm:self-auto">
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                  isUnread ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-600'
+                }">
+                  ${isUnread ? 'Novo' : 'Lido'}
+                </span>
+                <button onclick="toggleFeedbackRead('${f.id}')" title="${isUnread ? 'Marcar como Lido' : 'Marcar como Não Lido'}" class="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition-all cursor-pointer">
+                  <i data-lucide="${isUnread ? 'check' : 'rotate-ccw'}" class="w-3.5 h-3.5"></i>
+                </button>
+                <button onclick="deleteFeedback('${f.id}')" title="Excluir mensagem" class="p-1.5 rounded-lg border border-slate-200 hover:bg-rose-50 hover:text-rose-600 text-slate-400 transition-all cursor-pointer">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Message Body -->
+            <p class="text-xs text-slate-700 leading-relaxed font-sans whitespace-pre-wrap bg-slate-50/70 p-3 rounded-xl border border-slate-100">
+              ${f.message}
+            </p>
+
+            <!-- Reply Actions -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <span class="text-[10px] text-slate-400">Resposta direta via e-mail do remetente</span>
+              <div class="flex items-center gap-2">
+                <button onclick="copyToClipboardText(this, '${(f.message || '').replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="copy" class="w-3 h-3 text-slate-400"></i>
+                  <span>Copiar Mensagem</span>
+                </button>
+                <a href="mailto:${f.email}?subject=Re:%20${encodeURIComponent(f.subject)}%20-%20CarreiraIA&body=${encodeURIComponent('Olá ' + f.name + ',\n\nObrigado pelo seu contato através da plataforma CarreiraIA!\n\nEm resposta à sua mensagem:\n\"' + f.message + '\"\n\n')}" class="px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold transition-all flex items-center gap-1.5 shadow-2xs">
+                  <i data-lucide="reply" class="w-3 h-3"></i>
+                  <span>Responder por E-mail</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
     }
 
     // Switch output view between Portfolio and LinkedIn
@@ -7006,6 +7389,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       initNetworkFiltersUI();
       updateAuthUI();
       renderLeadsTable();
+      renderFeedbacksList();
 
       // Enforce landing page if user is not authenticated/trial and accessed protected tab directly
       if (!checkTabAccess(initialTab)) {
