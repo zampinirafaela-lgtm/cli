@@ -111,11 +111,11 @@
 
   <!-- ==================== HEADER (Notion Minimalist Style) ==================== -->
   <header class="sticky top-0 z-40 w-full border-b border-slate-200/90 bg-white/95 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
       
       <!-- Brand / Logo (Left) -->
       <a href="javascript:void(0)" onclick="navigateToTab('landing')" class="flex items-center gap-2.5 shrink-0 hover:opacity-90 transition-opacity">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden shadow-xs shrink-0 flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-1.5" aria-label="Logo CarreiraIA">
             <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
             <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
@@ -123,85 +123,64 @@
             <circle cx="330" cy="122" r="33" fill="#FFFFFF" />
           </svg>
         </div>
-        <div class="flex items-center gap-1.5">
-          <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
-          <span class="hidden sm:inline-flex text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200/80">Plataforma</span>
-        </div>
+        <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
       </a>
 
-      <!-- Navigation Links (Center - Notion style clean links, gracefully collapsed to avoid crowding) -->
-      <nav class="hidden xl:flex items-center gap-1 text-xs font-semibold text-slate-600">
-        <button onclick="navigateToTab('landing')" id="tab-btn-landing" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Início
+      <!-- 1. PUBLIC VISITOR NAV (Minimalist & Clean) -->
+      <nav id="navPublicLinks" class="hidden md:flex items-center gap-1 text-xs font-medium text-slate-600">
+        <button onclick="scrollToLandingSection('section-interactive-canvas')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
+          Como Funciona
         </button>
-        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5">
+        <button onclick="scrollToLandingSection('section-presentation-personas')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
+          Para Quem É
+        </button>
+        <button onclick="navigateToTab('network')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
+          Radar de Talentos
+        </button>
+      </nav>
+
+      <!-- 2. WORKSPACE NAV (Shown when inside App or Authenticated/Demonstration) -->
+      <nav id="navWorkspaceLinks" class="hidden items-center gap-1 text-xs font-semibold text-slate-600">
+        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
           <span>Gerador STAR</span>
         </button>
-        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5">
-          <span>Pasta de Cases</span>
+        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Meus Cases</span>
           <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 leading-none">0</span>
         </button>
-        <button onclick="navigateToTab('profile')" id="tab-btn-profile" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Meu Perfil
+        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Currículo</span>
         </button>
-        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5">
-          <span>Radar Talentos</span>
-          <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-100 text-emerald-700 leading-none">Novo</span>
-        </button>
-        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Currículo Vivo
-        </button>
-        <button onclick="navigateToTab('settings')" id="tab-btn-settings" class="p-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all relative" title="Configurações">
-          <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-500"></i>
-          <span id="dotSettingsNav" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-1"></span>
+        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Radar</span>
         </button>
       </nav>
 
-      <!-- Compact Nav for Laptops (lg:flex xl:hidden) to guarantee profile button NEVER gets cut off -->
-      <nav class="hidden lg:flex xl:hidden items-center gap-1 text-xs font-semibold text-slate-600">
-        <button onclick="navigateToTab('landing')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Início
-        </button>
-        <button onclick="navigateToTab('cases')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Gerador STAR
-        </button>
-        <button onclick="navigateToTab('network')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Radar
-        </button>
-        <button onclick="navigateToTab('profile')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all">
-          Perfil
-        </button>
-        <button onclick="navigateToTab('settings')" class="p-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all relative" title="Configurações">
-          <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-500"></i>
-          <span id="dotSettingsNavLg" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-1"></span>
-        </button>
-      </nav>
-
-      <!-- Right Actions (Notion Minimalist: Entrar / Comece Grátis OR User Workspace Pill - NEVER CUT OFF) -->
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto">
-        <button onclick="openInstallPwaModal()" id="btnInstallPwa" class="hidden sm:inline-flex h-8 items-center gap-1.5 px-2.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all whitespace-nowrap">
-          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
-          <span>Instalar</span>
+      <!-- Right Actions (Clean & Compact) -->
+      <div class="flex items-center gap-2 shrink-0 ml-auto">
+        <!-- AI Status Indicator (Discreet, only shown inside workspace) -->
+        <button onclick="navigateToTab('settings')" id="statusPill" class="hidden h-8 items-center gap-1.5 px-2.5 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer whitespace-nowrap" title="Configurações & Conexão de IA">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+          <span id="statusLabel" class="text-[11px] font-medium hidden sm:inline">IA Ativa</span>
         </button>
 
-        <button onclick="navigateToTab('settings')" id="statusPill" class="hidden md:inline-flex h-8 items-center gap-1.5 px-2 rounded-lg text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200/80 hover:bg-amber-100/60 transition-all cursor-pointer whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
-          <span id="statusLabel" class="max-w-[100px] truncate text-[11px]">Chave de IA</span>
-        </button>
-
-        <!-- Guest Auth Actions (Notion style: Fazer login + Comece grátis) -->
+        <!-- Guest Actions: Entrar + Comece grátis -->
         <div id="navGuestGroup" class="flex items-center gap-1.5 shrink-0">
-          <button onclick="openAuthModal('login')" class="text-xs font-semibold text-slate-700 hover:text-slate-900 px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-100/80 transition-colors whitespace-nowrap">
-            Fazer login
+          <button onclick="openAuthModal('login')" class="text-xs font-semibold text-slate-700 hover:text-slate-900 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition-colors whitespace-nowrap cursor-pointer">
+            Entrar
           </button>
-          <button onclick="openAuthModal('register')" class="h-8.5 inline-flex items-center gap-1.5 px-3 sm:px-3.5 rounded-lg text-xs font-bold bg-slate-900 hover:bg-black text-white shadow-xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
+          <button onclick="openAuthModal('register')" class="h-8.5 sm:h-9 inline-flex items-center gap-1.5 px-3.5 sm:px-4 rounded-xl text-xs font-bold bg-slate-900 hover:bg-black text-white shadow-xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
             <span>Comece grátis</span>
           </button>
         </div>
 
-        <!-- Logged-in User Workspace Pill (Notion style with photo support - guaranteed NEVER cut off) -->
+        <!-- Logged-in / Demonstration User Workspace Pill -->
         <div id="navUserGroup" class="hidden shrink-0">
-          <button onclick="handleAuthButtonClick()" id="navAuthBtn" class="h-9 inline-flex items-center gap-2 px-2 sm:px-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 shadow-2xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
+          <button onclick="handleAuthButtonClick()" id="navAuthBtn" class="h-9 inline-flex items-center gap-2 px-2.5 sm:px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 shadow-2xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
             <div id="navAuthAvatarContainer" class="w-6 h-6 rounded-full overflow-hidden bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0 border border-slate-200/80 relative">
               <span id="navAuthAvatar">RZ</span>
               <img id="navAuthAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Foto de perfil">
@@ -214,24 +193,24 @@
     </div>
   </header>
 
-  <!-- ==================== TRIAL / GUEST MODE BANNER ==================== -->
-  <div id="trialModeBanner" class="hidden bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 text-white text-xs px-4 py-2.5 shadow-sm border-b border-blue-900 transition-all">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-2.5">
-        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-900/80 font-bold text-[10px] uppercase tracking-wider text-blue-200">
-          <i data-lucide="sparkles" class="w-3 h-3 text-blue-300"></i>
-          Modo Degustação
+  <!-- ==================== DEMONSTRATION / TRIAL BANNER (SLIM & DISCREET) ==================== -->
+  <div id="trialModeBanner" class="hidden bg-slate-900 text-white text-xs px-4 py-1.5 border-b border-slate-800 transition-all">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-[11px] sm:text-xs">
+        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-600/30 text-blue-300 font-bold text-[10px] tracking-wide shrink-0">
+          <i data-lucide="sparkles" class="w-2.5 h-2.5 text-blue-300"></i>
+          Modo Demonstração
         </span>
-        <span id="trialBannerText" class="text-xs font-medium text-blue-50">
-          Você está navegando como Profissional no modo de teste sem cadastro. Suas ações ficam ativas neste navegador.
+        <span id="trialBannerText" class="text-slate-300 truncate max-w-[200px] sm:max-w-md">
+          Acesso temporário. Salve seus dados criando uma conta.
         </span>
       </div>
-      <div class="flex items-center gap-2">
-        <button onclick="openAuthModal('register', currentAuthRole)" class="px-3.5 py-1 rounded-lg bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 shadow-2xs transition-all cursor-pointer">
-          Criar Cadastro Oficial
+      <div class="flex items-center gap-2 shrink-0">
+        <button onclick="openAuthModal('register', currentAuthRole)" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px] transition-all cursor-pointer">
+          Criar conta
         </button>
-        <button onclick="handleLogout()" class="px-2 py-1 text-blue-200 hover:text-white text-xs underline cursor-pointer">
-          Sair do Teste
+        <button onclick="handleLogout()" class="text-slate-400 hover:text-slate-200 text-[11px] px-1 py-1 transition-colors cursor-pointer" title="Sair da demonstração">
+          Sair
         </button>
       </div>
     </div>
@@ -301,7 +280,7 @@
       </div>
 
       <!-- NOTION INTERACTIVE WORKSPACE CANVAS (O espaço de trabalho interativo do Notion) -->
-      <div class="relative max-w-5xl mx-auto rounded-3xl border border-slate-200/90 bg-white shadow-elevated overflow-hidden text-left">
+      <div id="section-interactive-canvas" class="relative max-w-5xl mx-auto rounded-3xl border border-slate-200/90 bg-white shadow-elevated overflow-hidden text-left">
         
         <!-- Notion Window Title Bar (Traffic Lights + Breadcrumb + Actions) -->
         <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 bg-slate-50/70">
@@ -1949,7 +1928,7 @@
 
           <div class="p-4 rounded-xl border border-amber-100 bg-amber-50/40 space-y-1">
             <div class="flex items-center justify-between text-amber-700 text-xs">
-              <span class="font-semibold">Modo Degustação</span>
+              <span class="font-semibold">Modo Demonstração</span>
               <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-600"></i>
             </div>
             <div id="statTotalTrials" class="text-2xl font-black text-amber-900">0</div>
@@ -2039,7 +2018,7 @@
                 <span>4. Métricas de Product-Led Growth (PLG)</span>
               </div>
               <p class="leading-relaxed text-[11px]">
-                Monitora a taxa de conversão dos visitantes que entram no Modo Degustação e decidem criar uma conta definitiva, orientando as melhorias do produto com dados reais.
+                Monitora a taxa de conversão dos visitantes que entram no Modo Demonstração e decidem criar uma conta definitiva, orientando as melhorias do produto com dados reais.
               </p>
             </div>
           </div>
@@ -2301,64 +2280,46 @@
       </button>
 
       <!-- Gatekeeper Context Notice (Shown when navigating to protected tabs) -->
-      <div id="authGatekeeperNotice" class="hidden p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200/80 text-xs text-blue-950 space-y-1">
-        <div class="font-bold flex items-center gap-1.5 text-blue-900">
-          <i data-lucide="lock" class="w-3.5 h-3.5 text-blue-600"></i>
-          <span id="gatekeeperNoticeTitle">Acesso ao Espaço Reservado</span>
-        </div>
-        <p id="gatekeeperNoticeText" class="text-[11px] text-blue-800 leading-relaxed">
-          Para acessar as ferramentas, cadastre-se gratuitamente, entre na sua conta ou experimente imediatamente no <strong>Modo Degustação</strong> sem cadastro.
-        </p>
+      <div id="authGatekeeperNotice" class="hidden p-2.5 rounded-xl bg-blue-50/90 border border-blue-200/90 text-xs text-blue-950 flex items-center gap-2">
+        <i data-lucide="lock" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i>
+        <span id="gatekeeperNoticeText" class="text-[11px] text-blue-900 font-medium">
+          Acesso reservado. Entre na sua conta ou explore em modo demonstração.
+        </span>
       </div>
 
-      <!-- Notion Centered Brand Header -->
-      <div class="text-center space-y-1.5 pt-0.5">
-        <div class="w-11 h-11 rounded-2xl mx-auto overflow-hidden shadow-xs flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-2" aria-label="Logo CarreiraIA">
-            <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
-            <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
-            <rect x="250" y="170" width="138" height="42" rx="14" ry="14" fill="#FFFFFF" />
-            <circle cx="330" cy="122" r="33" fill="#FFFFFF" />
-          </svg>
-        </div>
-        <h3 id="authModalTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+      <!-- Centered Brand Header -->
+      <div class="text-center space-y-1">
+        <h3 id="authModalTitle" class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
           Acessar o CarreiraIA
         </h3>
-        <p id="authModalSubtitle" class="text-xs text-slate-500 max-w-sm mx-auto">
-          Escolha seu perfil para ser direcionado ao ambiente sob medida:
+        <p id="authModalSubtitle" class="text-xs text-slate-500">
+          Selecione seu perfil para uma experiência personalizada:
         </p>
       </div>
 
       <!-- Segmentação por Perfil: Profissional vs Recrutador -->
-      <div class="space-y-1.5">
-        <label class="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">Qual é o seu perfil de acesso?</label>
-        <div class="grid grid-cols-2 gap-2">
-          <button type="button" id="authRoleCandidateBtn" onclick="switchAuthRole('candidate')" class="p-3 rounded-2xl border-2 transition-all text-left flex flex-col justify-between bg-blue-50/70 border-blue-600 text-slate-900 shadow-2xs cursor-pointer">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold flex items-center gap-1.5 text-blue-900">
-                <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
-                Profissional
-              </span>
-              <span id="roleCheckCandidate" class="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px]">✓</span>
-            </div>
-            <p class="text-[10px] text-slate-600 mt-1 leading-tight">
-              Criar cases STAR, currículo vivo e portfólio
-            </p>
-          </button>
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" id="authRoleCandidateBtn" onclick="switchAuthRole('candidate')" class="p-2.5 rounded-xl border-2 transition-all text-left flex items-center gap-2.5 bg-blue-50/70 border-blue-600 text-slate-900 cursor-pointer">
+          <div class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs shrink-0">
+            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <span class="text-xs font-bold text-blue-950 block leading-tight">Profissional</span>
+            <span class="text-[10px] text-slate-500 block truncate">Cases STAR & CV</span>
+          </div>
+          <span id="roleCheckCandidate" class="text-blue-600 text-xs font-bold">✓</span>
+        </button>
 
-          <button type="button" id="authRoleRecruiterBtn" onclick="switchAuthRole('recruiter')" class="p-3 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/50 text-slate-700 transition-all text-left flex flex-col justify-between cursor-pointer">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold flex items-center gap-1.5 text-slate-800">
-                <i data-lucide="briefcase" class="w-4 h-4 text-emerald-600"></i>
-                Recrutador
-              </span>
-              <span id="roleCheckRecruiter" class="w-4 h-4 rounded-full border border-slate-300 text-transparent flex items-center justify-center text-[10px] hidden">✓</span>
-            </div>
-            <p class="text-[10px] text-slate-500 mt-1 leading-tight">
-              Radar de talentos & triagem com evidências
-            </p>
-          </button>
-        </div>
+        <button type="button" id="authRoleRecruiterBtn" onclick="switchAuthRole('recruiter')" class="p-2.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/60 text-slate-700 transition-all text-left flex items-center gap-2.5 cursor-pointer">
+          <div class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-xs shrink-0">
+            <i data-lucide="briefcase" class="w-4 h-4"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <span class="text-xs font-bold text-slate-900 block leading-tight">Recrutador</span>
+            <span class="text-[10px] text-slate-500 block truncate">Radar de Talentos</span>
+          </div>
+          <span id="roleCheckRecruiter" class="text-emerald-600 text-xs font-bold hidden">✓</span>
+        </button>
       </div>
 
       <!-- Notion Auth Mode Switcher (Cadastro vs Login) -->
@@ -2449,9 +2410,9 @@
         <div class="flex items-center justify-between">
           <span class="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
             <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
-            Quer apenas experimentar sem cadastro?
+            Quer testar sem cadastro agora?
           </span>
-          <span class="text-[10px] text-slate-500">Acesso imediato</span>
+          <span class="text-[10px] text-slate-400">Modo Demonstração</span>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -2460,7 +2421,7 @@
               <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
             </div>
             <div class="min-w-0 flex-1">
-              <span class="font-bold text-blue-950 block text-[11px] truncate">Degustação Profissional</span>
+              <span class="font-bold text-blue-950 block text-[11px] truncate">Como Profissional</span>
               <span class="text-[10px] text-blue-700 block truncate">Gerador STAR & Currículo</span>
             </div>
           </button>
@@ -2470,7 +2431,7 @@
               <i data-lucide="users" class="w-3.5 h-3.5"></i>
             </div>
             <div class="min-w-0 flex-1">
-              <span class="font-bold text-emerald-950 block text-[11px] truncate">Degustação Recrutador</span>
+              <span class="font-bold text-emerald-950 block text-[11px] truncate">Como Recrutador</span>
               <span class="text-[10px] text-emerald-700 block truncate">Radar & Triagem Preditiva</span>
             </div>
           </button>
@@ -4364,24 +4325,24 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         const isRecruiter = session.role === 'recruiter';
         if (trialText) {
           trialText.innerText = isRecruiter 
-            ? "Você está navegando no Modo Degustação como Recrutador. Triagens e buscas no Radar estão ativas temporariamente neste navegador."
-            : "Você está navegando no Modo Degustação como Profissional. Criação de cases STAR e currículo estão ativas neste navegador.";
+            ? "Acesso temporário como Recrutador. Salve suas triagens criando uma conta."
+            : "Acesso temporário como Profissional. Salve seus cases criando uma conta.";
         }
 
-        if (labelEl) labelEl.innerText = isRecruiter ? "Recrutador (Teste)" : "Degustação";
+        if (labelEl) labelEl.innerText = isRecruiter ? "Recrutador (Demo)" : "Demo";
 
         if (menuName) menuName.innerText = session.name || (isRecruiter ? 'Visitante Recrutador' : 'Visitante Profissional');
-        if (menuEmail) menuEmail.innerText = "Modo Degustação Ativo";
+        if (menuEmail) menuEmail.innerText = "Modo Demonstração";
         if (menuRoleBadge) {
-          menuRoleBadge.innerText = 'Degustação';
-          menuRoleBadge.className = 'px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-amber-100 text-amber-800';
+          menuRoleBadge.innerText = 'Demonstração';
+          menuRoleBadge.className = 'px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-blue-100 text-blue-800';
         }
         if (menuRoleLabel) {
-          menuRoleLabel.innerText = isRecruiter ? 'Degustação Recrutador' : 'Degustação Profissional';
+          menuRoleLabel.innerText = isRecruiter ? 'Recrutador (Demonstração)' : 'Profissional (Demonstração)';
         }
 
         if (heroBtn) {
-          heroBtn.innerHTML = `<span>Continuar Teste (${isRecruiter ? 'Radar' : 'Cases'})</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+          heroBtn.innerHTML = `<span>Continuar (${isRecruiter ? 'Radar' : 'Cases'})</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
           heroBtn.onclick = () => navigateToTab(isRecruiter ? 'network' : 'cases');
         }
       } else {
