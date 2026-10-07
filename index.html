@@ -134,6 +134,17 @@
     .dark-card .text-slate-200 {
       color: #FFFFFF !important;
     }
+
+    /* Enquadramento e ajuste responsivo para smartphones */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    @media (max-width: 640px) {
+      .mobile-safe-bottom {
+        padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      }
+    }
   </style>
 </head>
 <body class="min-h-full flex flex-col bg-slate-50 text-slate-900">
@@ -250,7 +261,7 @@
   </div>
 
   <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+  <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-8 mobile-safe-bottom">
 
     <!-- ==================== VIEW 0: LANDING PAGE (NOTION STYLE) ==================== -->
     <section id="view-landing" class="space-y-16 py-4 sm:py-8">
@@ -261,21 +272,21 @@
         <!-- Notion-style Pill Badge -->
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs hover:bg-slate-200/60 transition-colors cursor-pointer" onclick="openAuthModal('register')">
           <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-          <span>Apresentando o CarreiraIA • O novo padrão para demonstrar impacto real</span>
+          <span>Apresentando o CarreiraIA • Comprove seu valor prático para o mercado</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-500"></i>
         </div>
 
         <!-- Huge Headline (Notion bold typography) -->
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.06]">
-          Onde vivências se tornam conquistas.<br class="hidden sm:inline" />
-          <span class="inline-block mt-1 sm:mt-2">
-            Destaque-se com <span class="text-blue-600 underline decoration-blue-300 decoration-wavy decoration-2">cases reais</span>.
+        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1] sm:leading-[1.06] px-2 sm:px-0">
+          Transforme sua trajetória em resultados que o mercado reconhece.<br class="hidden sm:inline" />
+          <span class="inline-block mt-2 sm:mt-2.5">
+            Destaque-se com <span class="text-blue-600 underline decoration-blue-300 decoration-wavy decoration-2">estudos de caso práticos</span>.
           </span>
         </h1>
 
         <!-- Subtitle claro, elegante e direto ao ponto -->
-        <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
-          Esqueça currículos genéricos e suposições. Transforme projetos acadêmicos, pesquisas e experiências em <strong>estudos de caso executivos no método STAR</strong>, com consultoria de carreira via IA e visibilidade em um radar de talentos verificado.
+        <p class="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed px-2 sm:px-0">
+          Esqueça currículos genéricos e suposições. Transforme projetos reais, pesquisas, iniciativas e histórico profissional em <strong>estudos de caso estruturados (método STAR)</strong> — com diagnósticos estratégicos de IA e visibilidade em um radar de talentos verificado.
         </p>
 
         <!-- Notion Hero CTA Form (Email input + Black Button + 1-Click Social Auth) -->
