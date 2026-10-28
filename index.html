@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>CarreiraIA | Portfólio de Cases STAR & Rede de Talentos</title>
   
+  <!-- Favicon & Brand Icons for Chrome, Safari, Edge and Mobile -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='115' ry='115' fill='%230A3273'/%3E%3Crect x='75' y='322' width='186' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Crect x='156' y='246' width='144' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Crect x='250' y='170' width='138' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Ccircle cx='330' cy='122' r='33' fill='%23FFFFFF'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
   <!-- PWA & Mobile Web App Meta Tags with Official Logo -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0A3273">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="CarreiraIA">
-  <link rel="icon" type="image/svg+xml" href="/icon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -131,8 +137,47 @@
     }
     [class*="bg-slate-9"] .text-slate-200,
     [class*="bg-blue-9"] .text-slate-200,
-    .dark-card .text-slate-200 {
-      color: #FFFFFF !important;
+    /* ==================== PULSE FINTECH MINIMALIST INSPIRATION ==================== */
+    body {
+      background-color: #F8F9FA !important;
+    }
+    .pulse-card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pulse-card:hover {
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
+    }
+    /* Vibrant Velvet Gradient Card (Pulse Agent Inspiration) */
+    .pulse-gradient-coral {
+      background: linear-gradient(135deg, #FF3B7A 0%, #FF655B 50%, #FF8D54 100%);
+      color: #FFFFFF;
+    }
+    /* Lavender Cyan Frosted Card (Metrics & Radar Inspiration) */
+    .pulse-gradient-lavender {
+      background: linear-gradient(135deg, #7E72F2 0%, #688BF8 50%, #46B3E6 100%);
+      color: #FFFFFF;
+    }
+    .pulse-gradient-cyan {
+      background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+      color: #FFFFFF;
+    }
+    /* Frosted glass blur container */
+    .pulse-glass {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .pulse-pill {
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
 
     /* Enquadramento e ajuste responsivo para smartphones */
@@ -149,13 +194,13 @@
 </head>
 <body class="min-h-full flex flex-col bg-slate-50 text-slate-900">
 
-  <!-- ==================== HEADER (Notion Minimalist Style) ==================== -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-200/90 bg-white/95 backdrop-blur-md">
+  <!-- ==================== HEADER (Pulse Minimalist Floating Style) ==================== -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
       
       <!-- Brand / Logo (Left) -->
       <a href="javascript:void(0)" onclick="navigateToTab('landing')" class="flex items-center gap-2.5 shrink-0 hover:opacity-90 transition-opacity">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden shadow-xs shrink-0 flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl overflow-hidden shadow-xs shrink-0 flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-1.5" aria-label="Logo CarreiraIA">
             <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
             <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
@@ -166,65 +211,65 @@
         <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
       </a>
 
-      <!-- 1. PUBLIC VISITOR NAV (Minimalist & Clean) -->
-      <nav id="navPublicLinks" class="hidden md:flex items-center gap-1 text-xs font-medium text-slate-600">
-        <button onclick="scrollToLandingSection('section-interactive-canvas')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
-          Como Funciona
+      <!-- 1. PUBLIC VISITOR NAV (Floating Pill Bar inspired by Pulse) -->
+      <nav id="navPublicLinks" class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1 rounded-full border border-slate-200/70 text-xs font-semibold text-slate-600">
+        <button onclick="scrollToLandingSection('section-bento-preview')" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all cursor-pointer">
+          Visão Geral
         </button>
-        <button onclick="scrollToLandingSection('section-presentation-personas')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
+        <button onclick="scrollToLandingSection('section-presentation-personas')" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all cursor-pointer">
           Para Quem É
         </button>
-        <button onclick="navigateToTab('network')" class="px-2.5 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer">
+        <button onclick="navigateToTab('network')" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all cursor-pointer">
           Radar de Talentos
         </button>
-        <button onclick="navigateToTab('methodology')" class="px-2.5 py-1.5 rounded-lg text-blue-700 bg-blue-50/80 hover:bg-blue-100/80 font-semibold transition-colors cursor-pointer flex items-center gap-1.5">
-          <i data-lucide="book-open" class="w-3.5 h-3.5 text-blue-600"></i>
+        <button onclick="navigateToTab('methodology')" class="px-3.5 py-1.5 rounded-full text-blue-700 bg-white hover:bg-blue-50/50 shadow-2xs font-semibold transition-all cursor-pointer flex items-center gap-1.5">
+          <i data-lucide="book-open" class="w-3 h-3 text-blue-600"></i>
           <span>Base Científica</span>
         </button>
       </nav>
 
-      <!-- 2. WORKSPACE NAV (Shown when inside App or Authenticated/Demonstration) -->
-      <nav id="navWorkspaceLinks" class="hidden items-center gap-1 text-xs font-semibold text-slate-600">
-        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+      <!-- 2. WORKSPACE NAV (Floating Pill Bar inside App) -->
+      <nav id="navWorkspaceLinks" class="hidden items-center gap-1 bg-slate-100/80 p-1 rounded-full border border-slate-200/70 text-xs font-semibold text-slate-600">
+        <button onclick="navigateToTab('cases')" id="tab-btn-cases" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
           <span>Gerador STAR</span>
         </button>
-        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+        <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
           <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
           <span>Meus Cases</span>
           <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 leading-none">0</span>
         </button>
-        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+        <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
           <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
           <span>Currículo</span>
         </button>
-        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all flex items-center gap-1.5 cursor-pointer">
+        <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
           <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
           <span>Radar</span>
         </button>
       </nav>
 
-      <!-- Right Actions (Clean & Compact) -->
+      <!-- Right Actions (Clean Pill Button) -->
       <div class="flex items-center gap-2 shrink-0 ml-auto">
         <!-- AI Status Indicator (Discreet, only shown inside workspace) -->
-        <button onclick="navigateToTab('settings')" id="statusPill" class="hidden h-8 items-center gap-1.5 px-2.5 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer whitespace-nowrap" title="Configurações & Conexão de IA">
+        <button onclick="navigateToTab('settings')" id="statusPill" class="hidden h-8 items-center gap-1.5 px-3 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer whitespace-nowrap" title="Configurações & Conexão de IA">
           <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
           <span id="statusLabel" class="text-[11px] font-medium hidden sm:inline">IA Ativa</span>
         </button>
 
         <!-- Guest Actions: Entrar + Comece grátis -->
-        <div id="navGuestGroup" class="flex items-center gap-1.5 shrink-0">
-          <button onclick="openAuthModal('login')" class="text-xs font-semibold text-slate-700 hover:text-slate-900 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition-colors whitespace-nowrap cursor-pointer">
+        <div id="navGuestGroup" class="flex items-center gap-2 shrink-0">
+          <button onclick="openAuthModal('login')" class="text-xs font-semibold text-slate-700 hover:text-slate-900 px-3 py-1.5 rounded-full hover:bg-slate-100 transition-colors whitespace-nowrap cursor-pointer">
             Entrar
           </button>
-          <button onclick="openAuthModal('register')" class="h-8.5 sm:h-9 inline-flex items-center gap-1.5 px-3.5 sm:px-4 rounded-xl text-xs font-bold bg-slate-900 hover:bg-black text-white shadow-xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
+          <button onclick="openAuthModal('register')" class="h-9 inline-flex items-center gap-1.5 px-4 rounded-full text-xs font-bold bg-slate-900 hover:bg-black text-white shadow-xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
             <span>Comece grátis</span>
           </button>
         </div>
 
         <!-- Logged-in / Demonstration User Workspace Pill -->
         <div id="navUserGroup" class="hidden shrink-0">
-          <button onclick="handleAuthButtonClick()" id="navAuthBtn" class="h-9 inline-flex items-center gap-2 px-2.5 sm:px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 shadow-2xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
+          <button onclick="handleAuthButtonClick()" id="navAuthBtn" class="h-9 inline-flex items-center gap-2 px-3 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 shadow-2xs transition-all whitespace-nowrap shrink-0 cursor-pointer">
             <div id="navAuthAvatarContainer" class="w-6 h-6 rounded-full overflow-hidden bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold shrink-0 border border-slate-200/80 relative">
               <span id="navAuthAvatar">RZ</span>
               <img id="navAuthAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Foto de perfil">
@@ -263,62 +308,205 @@
   <!-- ==================== MAIN CONTENT ==================== -->
   <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-8 mobile-safe-bottom">
 
-    <!-- ==================== VIEW 0: LANDING PAGE (NOTION STYLE) ==================== -->
-    <section id="view-landing" class="space-y-16 py-4 sm:py-8">
+    <!-- ==================== VIEW 0: LANDING PAGE (PULSE FINTECH INSPIRATION) ==================== -->
+    <section id="view-landing" class="space-y-12 sm:space-y-16 py-4 sm:py-8">
       
-      <!-- HERO PRINCIPAL (Inspirado diretamente na homepage do Notion) -->
+      <!-- HERO PRINCIPAL (Inspirado na elegância minimalista da referência Pulse) -->
       <div class="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8">
         
-        <!-- Notion-style Pill Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs hover:bg-slate-200/60 transition-colors cursor-pointer" onclick="openAuthModal('register')">
+        <!-- Pulse-style Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-800 border border-slate-200 shadow-xs hover:border-slate-300 transition-all cursor-pointer" onclick="openAuthModal('register')">
           <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-          <span>Apresentando o CarreiraIA • Comprove seu valor prático para o mercado</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-500"></i>
+          <span>CarreiraIA • Comprove seu valor prático para o mercado</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-400"></i>
         </div>
 
-        <!-- Huge Headline (Notion bold typography) -->
-        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1] sm:leading-[1.06] px-2 sm:px-0">
+        <!-- Huge Headline (Mantida exatamente a frase preferida pela usuária) -->
+        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.12] sm:leading-[1.08] px-2 sm:px-0">
           Transforme sua trajetória em resultados que o mercado reconhece.<br class="hidden sm:inline" />
           <span class="inline-block mt-2 sm:mt-2.5">
-            Destaque-se com <span class="text-blue-600 underline decoration-blue-300 decoration-wavy decoration-2">estudos de caso práticos</span>.
+            Destaque-se com <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">estudos de caso práticos</span>.
           </span>
         </h1>
 
-        <!-- Subtitle claro, elegante e direto ao ponto -->
+        <!-- Subtitle claro, sofisticado e legível -->
         <p class="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed px-2 sm:px-0">
           Esqueça currículos genéricos e suposições. Transforme projetos reais, pesquisas, iniciativas e histórico profissional em <strong>estudos de caso estruturados (método STAR)</strong> — com diagnósticos estratégicos de IA e visibilidade em um radar de talentos verificado.
         </p>
 
-        <!-- Notion Hero CTA Form (Email input + Black Button + 1-Click Social Auth) -->
-        <div class="max-w-md mx-auto space-y-3 pt-2">
-          <form onsubmit="handleHeroEmailSubmit(event)" class="flex flex-col sm:flex-row items-center gap-2 bg-white p-2 rounded-2xl border border-slate-300 shadow-sm focus-within:ring-2 focus-within:ring-slate-900 focus-within:border-slate-900 transition-all">
-            <input type="email" id="heroInputEmail" placeholder="Digite seu e-mail profissional ou pessoal..." required class="w-full px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 bg-transparent focus:outline-none placeholder:text-slate-400">
-            <button type="submit" id="heroAuthBtn" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm shadow-sm transition-all whitespace-nowrap flex items-center justify-center gap-1.5 shrink-0 cursor-pointer">
-              <span>Comece grátis</span>
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        <!-- Pulse-style Action Hub (Sleek Black Pill Button + Minimalist Outline Secondary) -->
+        <div class="max-w-lg mx-auto space-y-4 pt-1">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button onclick="navigateToTab('cases')" class="w-full sm:w-auto h-12 px-7 rounded-full bg-slate-900 hover:bg-black active:scale-[0.98] text-white font-bold text-sm shadow-subtle transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
+              <span>Começar Novo Estudo de Caso</span>
             </button>
-          </form>
+            <button onclick="scrollToLandingSection('section-bento-preview')" class="w-full sm:w-auto h-12 px-6 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-2xs cursor-pointer">
+              <i data-lucide="play-circle" class="w-4 h-4 text-slate-500"></i>
+              <span>Ver Demonstração Interativa</span>
+            </button>
+          </div>
 
-          <!-- Notion-style One-Click Social Auth & Guest Access -->
+          <!-- Social Quick Access Pills -->
           <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
-            <button type="button" onclick="handleSocialLogin('Google')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
+            <span class="text-[11px] text-slate-400 font-medium mr-1">Ou acesse com:</span>
+            <button type="button" onclick="handleSocialLogin('Google')" class="px-3 py-1 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
               <span>Google</span>
             </button>
-            <button type="button" onclick="handleSocialLogin('Microsoft')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#f25022" d="M1 1h10v10H1z"/><path fill="#00a4ef" d="M1 13h10v10H1z"/><path fill="#7fba00" d="M13 1h10v10H13z"/><path fill="#ffb900" d="M13 13h10v10H13z"/></svg>
-              <span>Microsoft</span>
-            </button>
-            <button type="button" onclick="handleSocialLogin('LinkedIn')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
+            <button type="button" onclick="handleSocialLogin('LinkedIn')" class="px-3 py-1 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
               <svg class="w-3.5 h-3.5 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               <span>LinkedIn</span>
             </button>
-            <button type="button" onclick="handleDemoAccess('guest')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 transition-all">
+            <button type="button" onclick="handleDemoAccess('guest')" class="px-3 py-1 rounded-full text-slate-600 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 transition-all">
               <span>Testar como visitante</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
             </button>
           </div>
-          <p class="text-[11px] text-slate-400">Sem necessidade de cartão • Acesso livre para candidatos e recrutadores</p>
+          <p class="text-[11px] text-slate-400">100% Gratuito • Sem necessidade de cartão</p>
+        </div>
+
+      </div>
+
+      <!-- ==================== PULSE BENTO PREVIEW GRID ==================== -->
+      <!-- Inspirado diretamente nos 4 blocos visuais da referência Pulse (Radar, Agente IA Coral, Métrica e STAR) -->
+      <div id="section-bento-preview" class="max-w-5xl mx-auto space-y-4">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          
+          <!-- Widget 1: Radar de Competências (Frosted Lavender Gradient / Card de Gráficos) -->
+          <div class="md:col-span-5 pulse-card p-6 flex flex-col justify-between space-y-4 bg-white relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <i data-lucide="pie-chart" class="w-4 h-4"></i>
+                </div>
+                <span class="text-xs font-bold text-slate-900">Radar de Habilidades</span>
+              </div>
+              <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">Evidência Prática</span>
+            </div>
+
+            <!-- Mini Radar Visual SVG (Inspirado no radar chart de spend do Pulse) -->
+            <div class="p-4 rounded-2xl pulse-gradient-lavender relative shadow-sm text-white">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-semibold text-white/80">Mix de Competências</span>
+                <span class="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-md">STAR Verificado</span>
+              </div>
+              <div class="py-2 flex items-center justify-center">
+                <svg viewBox="0 0 160 140" class="w-36 h-32">
+                  <!-- Hexagon rings -->
+                  <polygon points="80,10 135,42 135,98 80,130 25,98 25,42" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
+                  <polygon points="80,30 115,50 115,90 80,110 45,90 45,50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                  <!-- Filled radar path representing user competencies -->
+                  <polygon points="80,22 125,48 110,88 80,105 38,82 48,46" fill="rgba(255,255,255,0.4)" stroke="#FFFFFF" stroke-width="2" />
+                  <!-- Radar points -->
+                  <circle cx="80" cy="22" r="3.5" fill="#FFFFFF" />
+                  <circle cx="125" cy="48" r="3.5" fill="#FFFFFF" />
+                  <circle cx="110" cy="88" r="3.5" fill="#FFFFFF" />
+                  <circle cx="80" cy="105" r="3.5" fill="#FFFFFF" />
+                  <circle cx="38" cy="82" r="3.5" fill="#FFFFFF" />
+                  <circle cx="48" cy="46" r="3.5" fill="#FFFFFF" />
+                </svg>
+              </div>
+              <div class="grid grid-cols-2 gap-1.5 text-[10px] text-white/90 pt-1 border-t border-white/20">
+                <span>• Atendimento: <strong>Avançado</strong></span>
+                <span>• WhatsApp API: <strong>Prático</strong></span>
+                <span>• Processos: <strong>Estruturado</strong></span>
+                <span>• Comunicação: <strong>Clara</strong></span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+              <span>Mapeado a partir das suas ações</span>
+              <button onclick="navigateToTab('cases')" class="font-bold text-blue-600 hover:text-blue-800 text-xs">Mapear meu perfil →</button>
+            </div>
+          </div>
+
+          <!-- Widget 2: Pulse Agent / Consultor Executivo (Coral Gradient Card da referência) -->
+          <div class="md:col-span-7 pulse-card p-6 flex flex-col justify-between space-y-4 pulse-gradient-coral text-white relative shadow-card overflow-hidden">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 shadow-sm">
+                  <i data-lucide="compass" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
+                    Consultor de Carreira
+                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                  </h3>
+                  <p class="text-xs text-white/80">Inteligência de argumentação para entrevistas</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold bg-white/25 px-2.5 py-1 rounded-full text-white backdrop-blur-md border border-white/30">
+                100% Fiel aos Fatos
+              </span>
+            </div>
+
+            <!-- Dialogue Quote Box (Estilo prompt do Pulse Agent) -->
+            <div class="bg-black/15 backdrop-blur-md p-4 rounded-2xl border border-white/20 space-y-2">
+              <p class="text-xs sm:text-sm font-medium text-white leading-relaxed">
+                "Você reduziu o tempo de espera no WhatsApp de 20 para 3 minutos sem gastar nada. Em entrevistas, não fale de forma genérica — cite que você mapeou as 10 dúvidas mais comuns e criou o guia oficial da equipe."
+              </p>
+              <div class="flex items-center justify-between pt-1 border-t border-white/15 text-[11px] text-white/85">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                  Zero alucinações • Apenas fatos reais
+                </span>
+                <span class="font-bold underline cursor-pointer" onclick="navigateToTab('cases')">Testar com meu case</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <div class="flex items-center gap-2 text-xs font-semibold text-white/90">
+                <span class="w-2 h-2 rounded-full bg-emerald-300"></span>
+                <span>Análise de Mercado & Perguntas Comportamentais</span>
+              </div>
+              <button onclick="navigateToTab('cases')" class="h-8 px-3.5 rounded-full bg-white text-slate-900 font-bold text-xs shadow-sm hover:bg-slate-100 transition-all flex items-center gap-1 cursor-pointer">
+                <span>Gerar Conselho</span>
+                <i data-lucide="chevron-right" class="w-3 h-3 text-slate-700"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Widget 3: Impacto Concreto & Barra Mensal (Estilo Monthly Burn / Cards de Métricas do Pulse) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <div class="pulse-card p-5 bg-white space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
+              <span>TEMPO DE ATENDIMENTO</span>
+              <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">-85%</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-extrabold text-slate-900 font-mono tracking-tight">3 min</span>
+              <span class="text-xs text-slate-400 line-through">20 min</span>
+            </div>
+            <p class="text-[11px] text-slate-500 leading-snug">Queda imediata de espera com atalhos de Respostas Rápidas.</p>
+          </div>
+
+          <div class="pulse-card p-5 bg-white space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
+              <span>CUSTO DE IMPLANTAÇÃO</span>
+              <span class="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full">Zero Reais</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-extrabold text-slate-900 font-mono tracking-tight">R$ 0,00</span>
+            </div>
+            <p class="text-[11px] text-slate-500 leading-snug">Aproveitamento de ferramentas que a equipe já possuía.</p>
+          </div>
+
+          <div class="pulse-card p-5 bg-white space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
+              <span>RECONHECIMENTO</span>
+              <span class="text-indigo-700 font-bold bg-indigo-50 px-2 py-0.5 rounded-full">Legado</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Guia Oficial</span>
+            </div>
+            <p class="text-[11px] text-slate-500 leading-snug">Adotado pela gerência como padrão para novos contratados.</p>
+          </div>
+
         </div>
 
       </div>
@@ -336,14 +524,14 @@
               <span>CarreiraIA</span>
               <span class="text-slate-300">/</span>
               <span class="text-slate-700 font-semibold flex items-center gap-1">
-                <span>🎪</span>
-                <span>Organização de Evento & Gestão de Crise</span>
+                <span>💬</span>
+                <span>Atendimento & Organização de Rotina</span>
               </span>
             </div>
           </div>
           <div class="flex items-center gap-2">
             <span class="text-[10px] font-bold bg-amber-50 text-amber-800 px-2.5 py-0.5 rounded-md border border-amber-200/90 flex items-center gap-1">
-              <i data-lucide="sparkles" class="w-3 h-3 text-amber-600"></i> Exemplo Prático • Para Qualquer Área
+              <i data-lucide="sparkles" class="w-3 h-3 text-amber-600"></i> Exemplo Prático e Realista
             </span>
             <button onclick="navigateToTab('cases')" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-semibold hover:bg-black transition-all">
               <i data-lucide="sparkles" class="w-3 h-3 text-blue-400"></i>
@@ -358,13 +546,13 @@
           <!-- Notion Page Header with Icon & Title -->
           <div class="space-y-3">
             <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl shadow-2xs">
-              🎪
+              💬
             </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-              Como reorganizei o maior evento acadêmico da faculdade e evitei seu cancelamento
+              Como criei um guia de respostas e reduzi o tempo de atendimento em uma loja de bairro
             </h2>
             <p class="text-xs sm:text-sm text-slate-500">
-              Estudo de caso no método STAR: como reestruturei cronogramas em colapso, criei um fluxo digital de inscrições sem custo e liderei a equipe de voluntários para entregar um evento interdisciplinar com 600 participantes e zero atrasos.
+              Estudo de caso no método STAR: como uma atendente de balcão e WhatsApp organizou as dúvidas mais frequentes dos clientes em um documento simples, acabando com a sobrecarga de mensagens repetitivas e agilizando as respostas da equipe.
             </p>
           </div>
 
@@ -373,22 +561,22 @@
             <div class="space-y-0.5">
               <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Status</span>
               <span class="inline-flex items-center gap-1.5 font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/80">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Concluído & Verificado
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Concluído & Aplicado
               </span>
             </div>
             <div class="space-y-0.5">
               <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Metodologia</span>
               <span class="inline-flex items-center gap-1 font-semibold text-blue-800 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200/80">
-                ⭐ STAR Interdisciplinar
+                ⭐ Método STAR
               </span>
             </div>
             <div class="space-y-0.5">
-              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Área & Foco</span>
-              <span class="font-semibold text-slate-700">🤝 Gestão, Eventos & Processos</span>
+              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Área & Posição</span>
+              <span class="font-semibold text-slate-700">🛒 Atendimento / Vendas / Suporte</span>
             </div>
             <div class="space-y-0.5">
-              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Impacto Chave</span>
-              <span class="font-bold text-slate-900">🏆 600 Credenciados & 0 Atrasos</span>
+              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Resultado Real</span>
+              <span class="font-bold text-slate-900">⏱️ Resposta de 20min para 3min</span>
             </div>
           </div>
 
@@ -398,9 +586,9 @@
               💡
             </div>
             <div class="space-y-1">
-              <h4 class="text-xs font-bold text-blue-900">Diagnóstico Executivo de Carreira:</h4>
+              <h4 class="text-xs font-bold text-blue-900">Por que este exemplo é poderoso em entrevistas:</h4>
               <p class="text-xs sm:text-sm text-blue-950/90 leading-relaxed font-normal">
-                "Este case demonstra com precisão as competências mais valorizadas por qualquer recrutador, independentemente da profissão: capacidade de liderar sob pressão, articulação entre múltiplos setores, iniciativa para criar processos onde havia desorganização e foco em entregas. Em vez de recorrer a clichês como 'sou proativo e tenho boa comunicação', o relato comprova como o candidato identificou a causa-raiz dos gargalos, organizou o fluxo de trabalho e garantiu a entrega com excelência."
+                "Você não precisa ter liderado projetos milionários ou equipes de 20 pessoas para impressionar recrutadores. Este case mostra iniciativa própria: diante de uma rotina bagunçada e clientes esperando, a candidata não reclamou nem esperou ordens do chefe; ela organizou a informação, padronizou o processo e gerou alívio imediato para todo o time. É exatamente essa capacidade de resolução simples e prática que gestores procuram."
               </p>
             </div>
           </div>
@@ -430,12 +618,12 @@
                 <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
                   <span class="flex items-center gap-2">
                     <span class="w-5 h-5 rounded-md bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center justify-center">S</span>
-                    <span>Situação • O Cenário & Gargalo</span>
+                    <span>Situação • O Problema do Dia a Dia</span>
                   </span>
                   <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                 </summary>
                 <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                  A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma definido, as inscrições estavam dispersas em formulários e papéis avulsos e os 12 palestrantes convidados ainda não tinham confirmação de data. A coordenação já cogitava cancelar o evento por falta de tempo e desorganização operacional.
+                  Trabalhava no atendimento ao cliente de uma loja de materiais e papelaria. Todos os dias, dezenas de mensagens no WhatsApp chegavam perguntando as mesmas coisas: horário de funcionamento, formas de pagamento, disponibilidade de itens básicos e taxa de entrega. Como cada atendente respondia do seu jeito e de cabeça, as respostas demoravam mais de 20 minutos e alguns clientes desistiam da compra por demora.
                 </p>
               </details>
 
@@ -444,12 +632,12 @@
                 <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
                   <span class="flex items-center gap-2">
                     <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-700 text-xs font-extrabold flex items-center justify-center">T</span>
-                    <span>Tarefa • A Missão de Liderança</span>
+                    <span>Tarefa • O Objetivo Prático</span>
                   </span>
                   <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                 </summary>
                 <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                  Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, alinhar as 4 frentes de trabalho (palestrantes, comunicação visual, credenciamento e infraestrutura) e viabilizar o evento com orçamento zero adicional.
+                  Decidi encontrar uma forma de padronizar essas respostas para que qualquer pessoa da equipe pudesse responder com rapidez e segurança, reduzindo a fila de mensagens sem precisar contratar mais ninguém nem comprar sistemas caros.
                 </p>
               </details>
 
@@ -458,14 +646,14 @@
                 <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
                   <span class="flex items-center gap-2">
                     <span class="w-5 h-5 rounded-md bg-purple-100 text-purple-700 text-xs font-extrabold flex items-center justify-center">A</span>
-                    <span>Ação • As Iniciativas Estratégicas</span>
+                    <span>Ação • O que Foi Feito na Prática</span>
                   </span>
                   <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                 </summary>
                 <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                  1. Centralizei todas as demandas e pendências em um painel compartilhado no Notion com responsáveis e prazos diários para cada um dos 14 voluntários.
-                  <br>2. Criei um fluxo digital automatizado de inscrições e credenciamento com envio de QR Code por e-mail, eliminando planilhas manuais e filas no auditório.
-                  <br>3. Instituí reuniões diárias de alinhamento de 15 minutos (estilo daily) para destravar bloqueios e renegociei diretamente com a direção o uso dos auditórios e equipamentos de transmissão.
+                  1. Durante uma semana, anotei em um caderno as 10 dúvidas que mais se repetiam no balcão e no WhatsApp.
+                  <br>2. Redigi respostas curtas, gentis e diretas para cada uma delas e criei uma tabela no Google Docs e nas 'Respostas Rápidas' do próprio WhatsApp Business.
+                  <br>3. Mostrei o arquivo para os 3 colegas de equipe em 15 minutos, explicando como usar os atalhos no teclado do celular e do computador.
                 </p>
               </details>
 
@@ -474,12 +662,12 @@
                 <summary class="font-bold text-xs sm:text-sm text-emerald-950 cursor-pointer list-none flex items-center justify-between select-none">
                   <span class="flex items-center gap-2">
                     <span class="w-5 h-5 rounded-md bg-emerald-600 text-white text-xs font-extrabold flex items-center justify-center">R</span>
-                    <span>Resultado • O Impacto Real Comprovado</span>
+                    <span>Resultado • A Melhoria Concreta</span>
                   </span>
                   <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-600 group-open:rotate-180 transition-transform"></i>
                 </summary>
                 <p class="text-xs font-medium text-emerald-900 mt-2.5 pl-7 leading-relaxed">
-                  O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras e oficinas começaram pontualmente. A pesquisa pós-evento registrou aprovação quase unânime dos alunos e professores, e o modelo de gestão e cronograma que criei foi oficializado pela coordenação para ser utilizado em todas as edições seguintes da instituição.
+                  O tempo médio de primeira resposta caiu de cerca de 20 minutos para menos de 3 minutos. As reclamações por demora no WhatsApp praticamente zeraram na primeira quinzena. A dona da loja elogiou a iniciativa na reunião da equipe e passou a usar o mesmo guia para treinar novos funcionários que entravam.
                 </p>
               </details>
             </div>
@@ -489,7 +677,7 @@
               <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
                 <div>
                   <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block">Texto Executivo Pronto</span>
-                  <p class="text-[11px] text-slate-500">Pronto para anexar em candidaturas, Notion ou portfólio pessoal.</p>
+                  <p class="text-[11px] text-slate-500">Pronto para colocar no seu portfólio, Notion ou enviar para recrutadores.</p>
                 </div>
                 <button onclick="copyToClipboard('landingRawPortfolio', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
                   <i data-lucide="copy" class="w-3.5 h-3.5"></i>
@@ -497,34 +685,34 @@
                 </button>
               </div>
               <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-white p-4 sm:p-5 rounded-xl border border-slate-200">
-                <h3 class="font-extrabold text-base text-slate-900">🎯 Gestão de Crise e Operações: Como Reestruturei a Semana Universitária em 5 Dias e Entreguei um Evento de 600 Participantes sem Atrasos</h3>
-                <p><strong>Visão Geral & Desafio:</strong> A 3 semanas da data oficial, a comissão anterior havia se desmobilizado. Não existia cronograma unificado, as inscrições estavam dispersas em papéis avulsos e a coordenação acadêmica já cogitava o cancelamento por risco de colapso operacional.</p>
-                <p><strong>Estratégia & Execução Técnica (Método STAR):</strong> Assumi voluntariamente a coordenação de operações e apliquei metodologias ágeis em 5 dias corridos. Centralizei demandas no Notion com donos (ownership) e prazos para os 14 voluntários; criei um fluxo digital automatizado de inscrições com QR Code por e-mail; e conduzi reuniões diárias de 15 minutos para resolver bloqueios com agilidade.</p>
-                <p><strong>Métricas & Resultados de Impacto:</strong></p>
+                <h3 class="font-extrabold text-base text-slate-900">💬 Otimização de Atendimento: Como Criei um Guia de Respostas Rápidas e Reduzi o Tempo de Espera de 20min para 3min</h3>
+                <p><strong>Desafio Real:</strong> Em uma rotina com alto volume de mensagens no WhatsApp e atendimento presencial simultâneo, as dúvidas frequentes dos clientes demoravam mais de 20 minutos para serem respondidas, gerando insatisfação e perda de vendas.</p>
+                <p><strong>Ação Prática (Método STAR):</strong> Mapeei as 10 principais dúvidas recorrentes durante 7 dias, elaborei respostas padronizadas e objetivas e configurei o recurso nativo de Respostas Rápidas do WhatsApp Business para os 3 atendentes da loja.</p>
+                <p><strong>Impacto e Resultados:</strong></p>
                 <ul class="list-disc pl-5 space-y-1">
-                  <li><strong>600+ participantes credenciados</strong> sem filas ou tumulto nos 3 dias.</li>
-                  <li><strong>100% de pontualidade:</strong> Todas as 12 palestras iniciaram rigorosamente no horário previsto.</li>
-                  <li><strong>R$ 0 em custos adicionais:</strong> Viabilizado integralmente com ferramentas gratuitas.</li>
-                  <li><strong>Institucionalização:</strong> O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes.</li>
+                  <li><strong>Redução de 85% no tempo de espera:</strong> Atendimento inicial caiu de ~20 minutos para menos de 3 minutos.</li>
+                  <li><strong>Zero reclamações por atraso</strong> registradas nas duas semanas seguintes à implantação.</li>
+                  <li><strong>Custo financeiro: R$ 0,00</strong>, aproveitando apenas ferramentas gratuitas já disponíveis.</li>
+                  <li><strong>Adoção formal:</strong> O material foi oficializado pela gerência como roteiro de treinamento para novos contratados.</li>
                 </ul>
-                <p class="text-[11px] text-slate-500 pt-2 border-t border-slate-100"><strong>Competências Demonstradas:</strong> Gestão de Projetos, Metodologias Ágeis, Automação de Processos, Liderança sob Pressão, Comunicação Intersetorial.</p>
+                <p class="text-[11px] text-slate-500 pt-2 border-t border-slate-100"><strong>Competências Demonstradas:</strong> Organização de Processos, Foco no Cliente, Comunicação Clara, Resolução de Problemas, Proatividade.</p>
               </div>
-              <div id="landingRawPortfolio" class="hidden"># 🎯 Gestão de Crise e Operações: Como Reestruturei a Semana Universitária em 5 Dias e Entreguei um Evento de 600 Participantes sem Atrasos
+              <div id="landingRawPortfolio" class="hidden"># 💬 Otimização de Atendimento: Como Criei um Guia de Respostas Rápidas e Reduzi o Tempo de Espera de 20min para 3min
 
-## Visão Geral & Desafio
-A 3 semanas da data oficial, a comissão anterior havia se desmobilizado. Não existia cronograma unificado, as inscrições estavam dispersas em papéis avulsos e a coordenação acadêmica já cogitava o cancelamento por risco de colapso operacional.
+## Desafio Real
+Em uma rotina com alto volume de mensagens no WhatsApp e atendimento presencial simultâneo, as dúvidas frequentes dos clientes demoravam mais de 20 minutos para serem respondidas, gerando insatisfação e perda de vendas.
 
-## Estratégia & Execução Técnica (Método STAR)
-Assumi voluntariamente a coordenação de operações e apliquei metodologias ágeis em 5 dias corridos. Centralizei demandas no Notion com donos (ownership) e prazos para os 14 voluntários; criei um fluxo digital automatizado de inscrições com QR Code por e-mail; e conduzi reuniões diárias de 15 minutos para resolver bloqueios com agilidade.
+## Ação Prática (Método STAR)
+Mapeei as 10 principais dúvidas recorrentes durante 7 dias, elaborei respostas padronizadas e objetivas e configurei o recurso nativo de Respostas Rápidas do WhatsApp Business para os 3 atendentes da loja.
 
-## Métricas & Resultados de Impacto
-- 600+ participantes credenciados sem filas nos 3 dias.
-- 100% de pontualidade: Todas as 12 palestras iniciaram rigorosamente no horário previsto.
-- R$ 0 em custos adicionais com uso inteligente de ferramentas digitais gratuitas.
-- O modelo de gestão foi oficializado pela coordenação para todas as edições seguintes.
+## Impacto e Resultados
+- Redução de 85% no tempo de espera: Atendimento inicial caiu de ~20 minutos para menos de 3 minutos.
+- Zero reclamações por atraso registradas nas duas semanas seguintes à implantação.
+- Custo financeiro: R$ 0,00, aproveitando apenas ferramentas gratuitas já disponíveis.
+- Adoção formal: O material foi oficializado pela gerência como roteiro de treinamento para novos contratados.
 
 ## Competências Demonstradas
-Gestão de Projetos, Metodologias Ágeis, Automação de Processos, Liderança sob Pressão, Comunicação Intersetorial.</div>
+Organização de Processos, Foco no Cliente, Comunicação Clara, Resolução de Problemas, Proatividade.</div>
             </div>
 
             <!-- TAB 3: Post Pronto para o LinkedIn -->
@@ -532,63 +720,53 @@ Gestão de Projetos, Metodologias Ágeis, Automação de Processos, Liderança s
               <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
                 <div>
                   <span class="text-xs font-bold text-[#0A66C2] uppercase tracking-wider block">Post Estruturado para LinkedIn</span>
-                  <p class="text-[11px] text-slate-500">Narrativa magnética, ganchos de atenção, métricas e hashtags.</p>
+                  <p class="text-[11px] text-slate-500">Narrativa autêntica, humana e sem jargões corporativos forçados.</p>
                 </div>
                 <button onclick="copyToClipboard('landingRawLinkedin', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
                   <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                   <span>Copiar Post</span>
                 </button>
               </div>
-              <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-white p-4 sm:p-5 rounded-xl border border-slate-200">A 3 semanas de um evento para mais de 600 pessoas, a coordenação pensou em cancelar tudo por desorganização. Eu decidi assumir a liderança e mudar esse desfecho. 🚀
+              <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-white p-4 sm:p-5 rounded-xl border border-slate-200">Você não precisa de um software caro para resolver um problema que incomoda clientes todos os dias. 💡
 
-Quando a comissão organizadora da Semana Universitária se desmobilizou, o cenário era crítico:
-❌ Zero cronogramas unificados
-❌ Inscrições espalhadas em papéis e planilhas desconectadas
-❌ 12 palestrantes sem confirmação oficial de data
-❌ Risco real de cancelamento e frustração geral
+Onde eu trabalhava no atendimento, o WhatsApp vivia com dezenas de mensagens acumuladas. O motivo? Perguntas simples como 'qual o horário de funcionamento?' ou 'tem entrega para o bairro X?' eram digitadas do zero toda vez, demorando até 20 minutos para sair uma resposta.
 
-Em vez de focar no caos, assumi voluntariamente a coordenação de operações e apliquei um método simples e estruturado em 5 dias:
+Em vez de aceitar a sobrecarga diária, decidi fazer algo simples:
 
-1️⃣ Centralização total: Criei um painel ágil no Notion com responsáveis diretos e prazos claros para os 14 voluntários.
-2️⃣ Automação do credenciamento: Eliminamos listas manuais e criamos um fluxo com confirmação e QR Code por e-mail.
-3️⃣ Rituais diários de 15 min: Alinhamento rápido para destravar qualquer obstáculo antes que virasse um problema.
+1️⃣ Anotei as 10 perguntas mais comuns que os clientes faziam todos os dias.
+2️⃣ Escrevi respostas claras, diretas e gentis para cada uma.
+3️⃣ Configurei atalhos de 'Respostas Rápidas' no WhatsApp para toda a equipe.
 
-O resultado?
-✨ Auditório lotado nos 3 dias com mais de 600 credenciamentos sem filas
-✨ 100% das 12 palestras iniciadas pontualmente
-✨ Orçamento adicional: R$ 0,00
-✨ O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes!
+O impacto foi imediato:
+✨ O tempo de resposta caiu de 20 minutos para menos de 3 minutos
+✨ As reclamações por demora zeraram na primeira quinzena
+✨ O documento virou o material oficial da loja para treinar quem entra!
 
-Projetos não dão certo por sorte; dão certo quando alguém tem a coragem de assumir a responsabilidade e colocar processos onde havia confusão.
+Aprendi que melhorar um trabalho não depende de grandes cargos, e sim de olhar para o dia a dia e se perguntar: 'como posso deixar essa rotina mais leve e eficiente para todos?'
 
-Você já precisou assumir a liderança em um momento de incerteza? Como foi a experiência por aí? Compartilha comigo nos comentários! 👇
+Você já criou alguma solução simples que facilitou a vida de quem trabalha com você? Conta para mim nos comentários! 👇
 
-#GestãoDeProjetos #Liderança #MetodologiaSTAR #Operações #ResoluçãoDeProblemas #Carreira</div>
-              <div id="landingRawLinkedin" class="hidden">A 3 semanas de um evento para mais de 600 pessoas, a coordenação pensou em cancelar tudo por desorganização. Eu decidi assumir a liderança e mudar esse desfecho. 🚀
+#AtendimentoAoCliente #Organização #Iniciativa #Carreira #ProcessosSimples #TrabalhoEmEquipe</div>
+              <div id="landingRawLinkedin" class="hidden">Você não precisa de um software caro para resolver um problema que incomoda clientes todos os dias. 💡
 
-Quando a comissão organizadora da Semana Universitária se desmobilizou, o cenário era crítico:
-❌ Zero cronogramas unificados
-❌ Inscrições espalhadas em papéis e planilhas desconectadas
-❌ 12 palestrantes sem confirmação oficial de data
-❌ Risco real de cancelamento e frustração geral
+Onde eu trabalhava no atendimento, o WhatsApp vivia com dezenas de mensagens acumuladas. O motivo? Perguntas simples como 'qual o horário de funcionamento?' ou 'tem entrega para o bairro X?' eram digitadas do zero toda vez, demorando até 20 minutos para sair uma resposta.
 
-Em vez de focar no caos, assumi voluntariamente a coordenação de operações e apliquei um método simples e estruturado em 5 dias:
+Em vez de aceitar a sobrecarga diária, decidi fazer algo simples:
 
-1️⃣ Centralização total: Criei um painel ágil no Notion com responsáveis diretos e prazos claros para os 14 voluntários.
-2️⃣ Automação do credenciamento: Eliminamos listas manuais e criamos um fluxo com confirmação e QR Code por e-mail.
-3️⃣ Rituais diários de 15 min: Alinhamento rápido para destravar qualquer obstáculo antes que virasse um problema.
+1️⃣ Anotei as 10 perguntas mais comuns que os clientes faziam todos os dias.
+2️⃣ Escrevi respostas claras, diretas e gentis para cada uma.
+3️⃣ Configurei atalhos de 'Respostas Rápidas' no WhatsApp para toda a equipe.
 
-O resultado?
-✨ Auditório lotado nos 3 dias com mais de 600 credenciamentos sem filas
-✨ 100% das 12 palestras iniciadas pontualmente
-✨ Orçamento adicional: R$ 0,00
-✨ O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes!
+O impacto foi imediato:
+✨ O tempo de resposta caiu de 20 minutos para menos de 3 minutos
+✨ As reclamações por demora zeraram na primeira quinzena
+✨ O documento virou o material oficial da loja para treinar quem entra!
 
-Projetos não dão certo por sorte; dão certo quando alguém tem a coragem de assumir a responsabilidade e colocar processos onde havia confusão.
+Aprendi que melhorar um trabalho não depende de grandes cargos, e sim de olhar para o dia a dia e se perguntar: 'como posso deixar essa rotina mais leve e eficiente para todos?'
 
-Você já precisou assumir a liderança em um momento de incerteza? Como foi a experiência por aí? Compartilha comigo nos comentários! 👇
+Você já criou alguma solução simples que facilitou a vida de quem trabalha com você? Conta para mim nos comentários! 👇
 
-#GestãoDeProjetos #Liderança #MetodologiaSTAR #Operações #ResoluçãoDeProblemas #Carreira</div>
+#AtendimentoAoCliente #Organização #Iniciativa #Carreira #ProcessosSimples #TrabalhoEmEquipe</div>
             </div>
           </div>
 
@@ -1392,14 +1570,23 @@ Você já precisou assumir a liderança em um momento de incerteza? Como foi a e
                 <div class="flex items-center gap-2">
                   <h3 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">Conselho do Consultor de Carreira</h3>
                   <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-200/80">Visão Estratégica</span>
+                  <span class="hidden sm:inline-flex text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">100% Fiel aos seus dados</span>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">Dicas de um recrutador executivo sobre como defender essa experiência em entrevistas e processos seletivos.</p>
+                <p class="text-xs text-slate-500 mt-0.5">Dicas e sugestões de como defender sua experiência real em entrevistas, sem inventar fatos ou inflar dados.</p>
               </div>
             </div>
             <button onclick="copyToClipboard('textOutputConsultant', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-xs font-semibold text-white shadow-subtle transition-all self-start sm:self-auto">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span>Copiar Conselho</span>
             </button>
+          </div>
+
+          <!-- Transparency note -->
+          <div class="flex items-start gap-2.5 px-3.5 py-2.5 rounded-xl bg-amber-50/80 border border-amber-200/80 text-[11px] text-amber-900 leading-relaxed">
+            <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div>
+              <strong class="font-bold">Aviso de Fidelidade e Integridade:</strong> As orientações abaixo sugerem <em>como estruturar sua fala</em> para valorizar seu trabalho. <strong>Nunca invente números, ferramentas ou cargos que você não realizou</strong> — utilize apenas os fatos verídicos preenchidos na sua experiência.
+            </div>
           </div>
 
           <!-- Consultant Body Output -->
@@ -4175,339 +4362,83 @@ WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, a
     }
 
     // Generator Engine for Ready-to-Use Models (Executive Case, LinkedIn Post & Consultant Advice)
+    // CRITICAL: Must strictly respect the user's authentic input without fabricating fictional numbers, tools, or companies!
     function buildStarBundle(s, t, a, r, categoryId = 'SEMINAR', categoryLabel = 'Projeto & Evento', evidenceUrl = '') {
-      // 1. SEMINAR / EVENT MANAGEMENT (Default High-Impact Case)
-      if (categoryId === 'SEMINAR' || s.includes('Semana Universitária') || s.includes('evento')) {
-        const title = "🎯 Gestão de Crise e Operações: Como Reestruturei a Semana Universitária em 5 Dias e Entreguei um Evento de 600 Participantes sem Atrasos";
-        
-        const portfolioPart = `# ${title}
-
-## 📌 Visão Geral & Desafio
-${s}
-
-## 🎯 Meta & Responsabilidade (Task)
-${t}
-
-## 🛠️ Estratégia & Execução Técnica (Método STAR)
-${a}
-
-## 📈 Métricas & Resultados de Impacto
-- **🏆 600+ participantes credenciados** sem filas ou tumulto na recepção durante os 3 dias de evento.
-- **⏱️ 100% de pontualidade**: Todas as 12 palestras e mesas-redondas iniciaram exatamente no horário previsto.
-- **💰 Orçamento adicional zero**: Reestruturação viabilizada integralmente com ferramentas digitais gratuitas e realocação inteligente de voluntários.
-- **📜 Processo Oficializado**: O modelo de gestão, cronograma e credenciamento digital foi adotado como padrão permanente pela coordenação da instituição para as edições seguintes.
-
-## 💡 Competências Técnicas & Liderança
-- **Hard Skills**: Gestão de Projetos, Automação de Processos, Metodologias Ágeis (Kanban/Daily), Notion, Gestão de Operações e Fluxos.
-- **Soft Skills**: Liderança sob Pressão, Comunicação Intersetorial, Gestão de Equipes Voluntárias, Resolução Ágil de Problemas.`;
-
-        const linkedinPart = `A 3 semanas de um evento para mais de 600 pessoas, a coordenação pensou em cancelar tudo por desorganização. Eu decidi assumir a liderança e mudar esse desfecho. 🚀
-
-Quando a comissão organizadora da Semana Universitária se desmobilizou, o cenário era crítico:
-❌ Zero cronogramas unificados
-❌ Inscrições espalhadas em papéis e planilhas desconectadas
-❌ 12 palestrantes sem confirmação oficial de data
-❌ Risco real de cancelamento e frustração geral
-
-Em vez de focar no caos, assumi voluntariamente a coordenação de operações e apliquei um método simples e estruturado em 5 dias:
-
-1️⃣ Centralização total: Criei um painel ágil no Notion com responsáveis diretos e prazos claros para os 14 voluntários.
-2️⃣ Automação do credenciamento: Eliminamos listas manuais e criamos um fluxo com confirmação e QR Code por e-mail.
-3️⃣ Rituais diários de 15 min: Alinhamento rápido para destravar qualquer obstáculo antes que virasse um problema.
-
-O resultado?
-✨ Auditório lotado nos 3 dias com mais de 600 credenciamentos sem filas
-✨ 100% das 12 palestras iniciadas pontualmente
-✨ Orçamento adicional: R$ 0,00
-✨ O modelo de gestão foi oficializado pela faculdade para todas as edições seguintes!
-
-Projetos não dão certo por sorte; dão certo quando alguém tem a coragem de assumir a responsabilidade e colocar processos onde havia confusão.
-
-Você já precisou assumir a liderança em um momento de incerteza? Como foi a experiência por aí? Compartilha comigo nos comentários! 👇
-
-#GestãoDeProjetos #Liderança #MetodologiaSTAR #Operações #ResoluçãoDeProblemas #Carreira`;
-
-        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
-Este estudo de caso demonstra competências executivas de altíssimo valor para empresas: capacidade de agir em momentos de incerteza, estruturação de processos do zero e articulação de equipes multidisciplinares sem autoridade formal. Recrutadores e gestores procuram exatamente profissionais que não esperam ordens para agir diante de um gargalo crítico.
-
-### 🎯 Como Defender este Case em Entrevistas
-1. **Pergunta Comportamental 1:** *"Conte-me sobre uma ocasião em que você teve que liderar sob pressão com prazos curtos."*
-   - **Como Responder:** Destaque a sua iniciativa voluntária, a clareza do plano de 5 dias no Notion e finalize com as métricas concretas: 600 credenciados sem filas, 100% de pontualidade e custo zero adicional.
-2. **Pergunta Comportamental 2:** *"Como você engaja voluntários ou colegas que não respondem hierarquicamente a você?"*
-   - **Como Responder:** Explique que transparência gera autoridade: você distribuiu papéis claros no Notion e usou rituais diários de 15 minutos para apoiar a equipe e destravar bloqueios, em vez de microgerenciar.
-
-### 🌟 Dica de Ouro
-Ao defender este case, mencione sempre que o processo que você criou virou o **padrão oficial da faculdade**. Essa constatação comprova que sua passagem deixou legado institucional duradouro.`;
-
-        return { title, portfolioPart, linkedinPart, consultantPart };
-      }
-
-      // 2. PRESS / PR CASE
-      if (categoryId === 'PRESS' || s.includes('assessoria') || s.includes('imprensa') || s.includes('healthtech')) {
-        const title = "📰 Estratégia de PR e Relacionamento com a Mídia: Como Conquistamos Matérias na Folha, G1 e Valor Econômico com Custo Zero de Mídia Paga";
-        
-        const portfolioPart = `# ${title}
-
-## 📌 Visão Geral & Desafio
-${s}
-
-## 🎯 Meta & Responsabilidade (Task)
-${t}
-
-## 🛠️ Estratégia & Execução Técnica (Método STAR)
-${a}
-
-## 📈 Métricas & Resultados de Impacto
-- **📰 Emplacamento em veículos de prestígio nacional**: Matérias publicadas na Folha de S.Paulo, Valor Econômico e G1 Saúde.
-- **🌐 14+ menções orgânicas qualificadas** em portais e newsletters especializadas do setor de tecnologia e saúde.
-- **🎙️ Autoridade de Marca**: Convites para porta-vozes em programas de rádio e podcasts executivos.
-- **💰 R$ 0 em investimento em mídia paga**: Retorno de mídia equivalente (ad value) estimado em mais de R$ 120 mil.
-
-## 💡 Competências Técnicas & Comunicação
-- **Hard Skills**: Assessoria de Imprensa, Mapeamento de Pautas, Media Training, Clipping e Métricas de PR, Copywriting Jornalístico.
-- **Soft Skills**: Relacionamento Institucional, Negociação sob Embargo, Visão de Negócio, Agilidade Editorial.`;
-
-        const linkedinPart = `Como posicionar uma empresa como autoridade na imprensa nacional sem investir R$ 1 em mídia paga? 📰✨
-
-Durante o lançamento de uma pesquisa inédita sobre saúde corporativa, tínhamos um grande desafio: dados riquíssimos, prazo de 10 dias e zero verba para anúncios patrocinados.
-
-Minha estratégia como assessora de imprensa não foi disparar um release genérico para 500 jornalistas. Em vez disso, adotamos um processo cirúrgico:
-
-1️⃣ Segmentação editorial: Dividi a pesquisa em 3 ganchos distintos — econômico para veículos de negócios (Valor e Exame), saúde pública para grandes portais (Folha e G1) e viés técnico para canais especializados.
-2️⃣ Pautas exclusivas sob embargo: Ofereci dados inéditos com antecedência para editores-chave, preparando nossos porta-vozes com resumos executivos prontos.
-3️⃣ Media Kit visual: Transformei tabelas densas em infográficos diretos, facilitando o trabalho das redações.
-
-O impacto:
-🚀 Matérias de destaque na Folha de S.Paulo, G1 e Valor Econômico
-🚀 Mais de 14 inserções orgânicas em portais do setor
-🚀 Convites espontâneos para podcasts e debates sobre o tema
-🚀 Custo de mídia: Zero.
-
-Comunicação estratégica não é sobre fazer barulho; é sobre entregar valor real e dados relevantes no momento certo para as pessoas certas.
-
-Como você tem trabalhado a narrativa da sua empresa ou dos seus projetos? Vamos trocar ideias nos comentários! 👇
-
-#AssessoriaDeImprensa #RelaçõesPúblicas #ComunicaçãoEstratégica #PR #Branding #Carreira`;
-
-        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
-Este case posiciona o profissional não apenas como redator ou assessor, mas como estrategista de crescimento orgânico e autoridade de marca. Demonstrar que você gerou visibilidade na grande imprensa com orçamento zero prova ROI imediato para qualquer equipe de marketing ou comunicação.
-
-### 🎯 Como Defender este Case em Entrevistas
-1. **Pergunta:** *"Como você mede o sucesso de uma estratégia de comunicação além de curtidas e cliques?"*
-   - **Resposta Ideal:** Destaque a qualificação da audiência (G1, Valor, Folha), o impacto na reputação dos porta-vozes e o retorno institucional sem necessidade de investimento em tráfego pago.
-2. **Pergunta:** *"Qual foi o maior desafio no relacionamento com os jornalistas?"*
-   - **Resposta Ideal:** Mostre que você entendeu a dor do jornalista: eles têm pouco tempo e prazos apertados. Você entregou resumos visuais prontos e dados segmentados sob embargo, o que gerou confiança mútua.`;
-
-        return { title, portfolioPart, linkedinPart, consultantPart };
-      }
-
-      // 3. RESEARCH / TCC / DATA AUDIT
-      if (categoryId === 'RESEARCH' || s.includes('TCC') || s.includes('pesquisa') || s.includes('algoritmo')) {
-        const title = "🔬 Auditoria Algorítmica e Fairness em Machine Learning: Da Pesquisa Teórica à Validação Prática em Sistemas de Triagem";
-
-        const portfolioPart = `# ${title}
-
-## 📌 Visão Geral & Desafio
-${s}
-
-## 🎯 Meta & Responsabilidade (Task)
-${t}
-
-## 🛠️ Estratégia & Execução Técnica (Método STAR)
-${a}
-
-## 📈 Métricas & Resultados de Impacto
-- **📊 Dataset de 40.000 instâncias auditado** com métricas formais de paridade estatística e igualdade de oportunidades.
-- **🎯 Redução de 34% em discrepâncias demográficas** sem perda estatisticamente significativa na acurácia do classificador.
-- **📜 Artigo aprovado e publicado** nos anais do simpósio acadêmico com nota máxima da banca examinadora.
-- **💻 Repositório Open Source documentado**: Código reutilizável disponibilizado publicamente com pipelines reprodutíveis em Python.
-
-## 💡 Competências Técnicas & Científicas
-- **Hard Skills**: Python (Scikit-Learn, Pandas, NumPy), Métricas de Fairness em IA, Modelagem Estatística, Git/GitHub, Pesquisa Científica.
-- **Soft Skills**: Pensamento Crítico, Rigor Metodológico, Comunicação Científica para Negócios, Ética em Tecnologia.`;
-
-        const linkedinPart = `Como garantir que a inteligência artificial não reproduza preconceitos históricos em decisões de contratação? 🤖⚖️
-
-Durante o desenvolvimento da minha pesquisa e TCC, me dediquei a investigar como auditar e mitigar vieses algorítmicos em modelos preditivos de triagem.
-
-O desafio central era técnico e ético: como calibrar os dados para reduzir disparidades demográficas sem destruir a precisão do classificador?
-
-A abordagem prática envolveu:
-1️⃣ Análise exploratória profunda em bases de dados públicas e sintéticas com mais de 40 mil instâncias.
-2️⃣ Implementação de técnicas de reponderação amostral (reweighting) e métricas de igualdade de oportunidades com Python e Scikit-Learn.
-3️⃣ Criação de testes de robustez e documentação completa com pipelines reprodutíveis.
-
-Resultados alcançados:
-✅ Mitigação de 34% nas disparidades demográficas detectadas no modelo base
-✅ Preservação da acurácia geral do sistema
-✅ Artigo aprovado e publicado no simpósio acadêmico
-✅ Código disponibilizado em repositório aberto para a comunidade técnica
-
-Acredito que o futuro da inteligência artificial depende tanto de engenharia de software de ponta quanto de responsabilidade ética aplicada ao código.
-
-Qual a sua visão sobre governança e ética em sistemas inteligentes nas empresas hoje? 👇
-
-#InteligênciaArtificial #MachineLearning #DataScience #Python #ÉticaEmIA #PesquisaAplicada`;
-
-        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
-Com a proliferação da IA, profissionais que dominam governança de dados, auditoria algorítmica e ética prática são extremamente disputados por fintechs, big techs e consultorias. Este case transforma uma monografia em evidência de competência técnica sênior.
-
-### 🎯 Como Defender este Case em Entrevistas
-1. **Pergunta:** *"Como você equilibra a precisão do modelo com requisitos de negócio e justiça?"*
-   - **Resposta Ideal:** Explique o tradeoff entre precisão e recall/paridade, e como sua metodologia comprovou matematicamente que é possível ter modelos justos sem comprometer o objetivo de negócio.`;
-
-        return { title, portfolioPart, linkedinPart, consultantPart };
-      }
-
-      // 4. INTERNSHIP / PROCESS OPTIMIZATION
-      if (categoryId === 'INTERNSHIP' || s.includes('estágio') || s.includes('planilhas') || s.includes('logística')) {
-        const title = "⚙️ Automação de Processos e Inteligência Operacional: Como Eliminei 2 Horas Diárias de Retrabalho Manual com Python e Dashboards";
-
-        const portfolioPart = `# ${title}
-
-## 📌 Visão Geral & Desafio
-${s}
-
-## 🎯 Meta & Responsabilidade (Task)
-${t}
-
-## 🛠️ Estratégia & Execução Técnica (Método STAR)
-${a}
-
-## 📈 Métricas & Resultados de Impacto
-- **⏱️ 10+ horas semanais recuperadas** por analista de turno, eliminando a digitação manual de relatórios de expedição.
-- **📉 Redução de 98% nas discrepâncias de dados** entre a equipe de operações e o setor de vendas.
-- **🚀 Dashboard adotado pela diretoria regional** como ferramenta oficial de tomada de decisão diária.
-- **⭐ Efetivação antecipada** reconhecida pela liderança como resultado do impacto direto nos processos internos.
-
-## 💡 Competências Técnicas & Negócios
-- **Hard Skills**: Python (Automação/ETL), Dashboards e BI, Mapeamento de Processos (BPMN), Excel Avançado, Integração de Dados.
-- **Soft Skills**: Iniciativa e Autonomia, Escuta Ativa com Operadores, Foco em Eficiência, Resolução Prática de Problemas.`;
-
-        const linkedinPart = `Quando comecei meu estágio, percebi que o time perdia mais de 2 horas todos os dias copiando dados entre planilhas. Eu decidi automatizar. 💡⚡
-
-Em muitas empresas, tarefas manuais repetitivas passam despercebidas porque 'sempre foi feito assim'. Mas o custo acumulado em tempo e erros humanos é gigante.
-
-Em vez de aceitar a rotina manual de reconciliação de relatórios, tomei a iniciativa de desenhar uma solução:
-
-1️⃣ Fui ao chão de fábrica conversar com os operadores para mapear exatamente onde ocorriam as falhas de digitação.
-2️⃣ Criei scripts em Python para consolidar os relatórios automaticamente em segundos.
-3️⃣ Estruturei um painel visual dinâmico com alertas automáticos para as pendências mais críticas do turno.
-
-O impacto:
-📈 Eliminação de mais de 2 horas diárias de trabalho repetitivo por turno
-📈 Erros de divergência de dados com vendas caíram para quase zero
-📈 O dashboard virou o padrão oficial de monitoramento da diretoria regional
-📈 Reconhecimento que culminou em efetivação antecipada!
-
-O papel de um estagiário ou profissional em início de carreira não é apenas cumprir tarefas; é ter curiosidade para entender o negócio e coragem para propor melhorias que gerem impacto real.
-
-E você, qual processo repetitivo na sua rotina merecia ser automatizado hoje? 👇
-
-#Automação #Processos #Python #Eficiência #Estágio #Carreira`;
-
-        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
-Este é o exemplo clássico que os recrutadores amam: um profissional júnior ou estagiário que não se limitou a seguir instruções, mas identificou um desperdício de tempo e criou uma automação que impactou o resultado da empresa. Mostra maturidade operacional muito acima da média.`;
-
-        return { title, portfolioPart, linkedinPart, consultantPart };
-      }
-
-      // 5. VOLUNTEER / MENTORSHIP
-      if (categoryId === 'VOLUNTEER' || s.includes('voluntár') || s.includes('mentoria') || s.includes('comunit')) {
-        const title = "🤝 Liderança Social e Capacitação Profissional: Como Estruturei um Programa de Mentoria de Carreira com 70+ Alunos Atendidos";
-
-        const portfolioPart = `# ${title}
-
-## 📌 Visão Geral & Desafio
-${s}
-
-## 🎯 Meta & Responsabilidade (Task)
-${t}
-
-## 🛠️ Estratégia & Execução Técnica (Método STAR)
-${a}
-
-## 📈 Métricas & Resultados de Impacto
-- **👥 70+ estudantes capacitados** na primeira edição com oficinas práticas e simulações de entrevistas.
-- **📈 42% de aprovação comprovada** dos participantes em processos seletivos de empresas conveniadas em até 90 dias.
-- **🤝 Rede de 16 mentores voluntários mobilizada** e treinada com métricas de acompanhamento contínuo.
-- **🏛️ Institucionalização permanente**: O programa foi integrado ao calendário curricular oficial da instituição de ensino.
-
-## 💡 Competências Desenvolvidas
-- **Hard Skills**: Planejamento Instrucional, Gestão de Projetos Sociais, Metodologia STAR para Entrevistas, Avaliação de Desempenho.
-- **Soft Skills**: Empatia e Escuta Ativa, Liderança Comunitária, Mobilização de Voluntários, Comunicação Intergeracional.`;
-
-        const linkedinPart = `Acredito profundamente que a educação prática é a ponte mais poderosa para transformar vidas e democratizar oportunidades. 🤝🎓
-
-Como líder voluntária, percebi que muitos estudantes talentosos de escolas públicas tinham receio de se candidatar a vagas de estágio por não saberem como falar de suas vivências em entrevistas.
-
-Em vez de ficarmos na teoria, estruturamos um programa prático de capacitação:
-1️⃣ Trilha com 4 módulos intensivos focados em método STAR, comunicação executiva e simulações reais de entrevista.
-2️⃣ Recrutamento e treinamento de 16 mentores voluntários do mercado corporativo.
-3️⃣ Sessões individuais de feedback personalizado para cada aluno.
-
-Os resultados nos encheram de orgulho:
-✨ Mais de 70 estudantes formados na primeira turma
-✨ 42% dos participantes já conquistaram suas primeiras vagas em empresas parceiras
-✨ O projeto foi oficializado pela faculdade para ocorrer todos os semestres!
-
-A maior liderança é aquela que capacita outras pessoas a brilharem com sua própria voz.
-
-Quem foi a pessoa mentora que mais impactou o seu caminho profissional? Marca ela aqui para agradecer! 👇
-
-#Voluntariado #Liderança #Educação #Mentoria #ImpactoSocial #Carreira`;
-
-        const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
-Projetos de voluntariado bem estruturados provam competências comportamentais (soft skills) de forma muito mais autêntica do que discursos genéricos. Recrutadores valorizam profissionais que sabem liderar sem chefia direta e que demonstram compromisso com pessoas.`;
-
-        return { title, portfolioPart, linkedinPart, consultantPart };
-      }
-
-      // 6. GENERAL CUSTOM FALLBACK GENERATOR
-      const title = `🎯 Case Executivo de Carreira: ${categoryLabel} com Resultados Mensuráveis`;
+      // Clean and sanitize input summaries
+      const cleanSituation = (s || '').trim();
+      const cleanTask = (t || '').trim();
+      const cleanAction = (a || '').trim();
+      const cleanResult = (r || '').trim();
+
+      // Extract key terms provided by the user for realistic titling
+      let actionHighlight = cleanAction.split(/[\n\.,;]/)[0].trim();
+      if (actionHighlight.length > 55) actionHighlight = actionHighlight.slice(0, 52) + '...';
       
+      const title = actionHighlight.length > 10 
+        ? `🎯 Case Prático: ${actionHighlight}`
+        : `🎯 Estudo de Caso Prático: ${categoryLabel} com Resultados Reais`;
+
+      // Build Portfolio based 100% on what the user described
       const portfolioPart = `# ${title}
 
-## 📌 Visão Geral & Desafio
-${s}
+## 📌 Contexto & Desafio Real (Situação)
+${cleanSituation}
 
-## 🎯 Objetivo & Meta (Task)
-${t}
+## 🎯 Objetivo Definido (Tarefa)
+${cleanTask}
 
-## 🛠️ Estratégia & Execução Técnica (Método STAR)
-${a}
+## 🛠️ Execução na Prática (Ação)
+${cleanAction}
 
-## 📈 Métricas & Resultados de Impacto
-${r}
+## 📈 Impacto & Resultados Alcançados
+${cleanResult}
 
-## 💡 Competências Técnicas & Negócios
-- **Hard Skills**: Gestão por Resultados, Planejamento Estratégico, Execução com Metodologia STAR, Análise de Gargalos.
-- **Soft Skills**: Liderança Prática, Resolução de Conflitos, Comunicação Assertiva, Entrega sob Pressão.`;
+${evidenceUrl ? `## 🔗 Evidência / Comprovação\n[Acessar registro ou publicação do projeto](${evidenceUrl})\n` : ''}
+## 💡 Competências Evidenciadas
+- **Metodologia Aplicada**: Execução estruturada com método STAR, foco na entrega prática e resolução do desafio.
+- **Postura Profissional**: Iniciativa para agir, responsabilidade com metas e clareza de comunicação.`;
 
-      const linkedinPart = `Compartilho um marco relevante sobre como transformei um desafio prático em entrega mensurável no setor de ${categoryLabel}: 🚀
+      // Build LinkedIn post 100% truthful to the user's input
+      const linkedinPart = `Compartilho um aprendizado recente e os resultados práticos de um projeto em ${categoryLabel}: 🚀
 
-O desafio enfrentado:
-${s}
+📌 O contexto e o desafio:
+${cleanSituation}
 
-O plano de ação e execução:
-${a}
+🎯 O que me propus a fazer:
+${cleanTask}
 
-O impacto alcançado:
-✨ ${r}
+🛠️ O que executei na prática:
+${cleanAction}
 
-Cada projeto nos ensina que disciplina de processos e foco em resultados são os maiores diferenciais em qualquer carreira.
+📈 O resultado concreto alcançado:
+✨ ${cleanResult}
 
-O que achou dessa abordagem? Como você costuma lidar com desafios similares na sua área? 👇
+${evidenceUrl ? `🔗 Para ver mais detalhes ou o registro da iniciativa: ${evidenceUrl}\n` : ''}Cada experiência prática nos ensina a olhar para a rotina com método e foco no impacto real.
 
-#MetodologiaSTAR #Carreira #Resultados #${categoryLabel.replace(/[^a-zA-Z0-9]/g, '')}`;
+Como você costuma estruturar seus desafios do dia a dia? Vamos trocar ideias nos comentários! 👇
 
+#ResultadosReais #MetodoSTAR #ProjetosPraticos #${categoryLabel.replace(/\s+/g, '')} #Carreira`;
+
+      // Consultant advice strictly contextualized to user input with clear framing tips
       const consultantPart = `### 💡 Análise de Potencial & Valor no Mercado
-Este relato demonstra clareza na formulação de problemas e capacidade de execução focada em resultados. Ao transformar sua vivência em um case com números e impacto, você se destaca de 90% dos currículos genéricos do mercado.
+Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre tarefas, mas entende o propósito e acompanha o resultado concreto do que executa. Recrutadores valorizam candidatos que sabem narrar o que fizeram com base em fatos e métricas reais, sem rodeios ou floreios artificiais.
 
-### 🎯 Como Defender este Case em Entrevistas
-- Destaque o contexto do desafio inicial.
-- Explique as ferramentas e decisões tomadas para superar obstáculos.
-- Finalize sempre com os resultados mensuráveis e o aprendizado deixado.`;
+---
+
+### 🎙️ Como Defender este Case em Entrevistas de Emprego
+*(Use seus dados reais como âncora; as dicas abaixo servem como modelo de raciocínio para responder com confiança)*
+
+1. **Pergunta Provável:** *"Conte-me sobre uma situação em que você precisou resolver um desafio prático ou alcançar uma meta específica."*
+   - **Como Responder:** Comece descrevendo o contexto exato: *"${cleanSituation}"*. Explique que sua prioridade foi agir de forma objetiva (*"${cleanTask}"*), detalhando os passos que executou (*"${cleanAction}"*) e finalizando com o impacto comprovado: *"${cleanResult}"*.
+
+2. **Pergunta Provável:** *"Como você avalia o sucesso das suas iniciativas no dia a dia?"*
+   - **Como Responder:** Destaque que seu foco é sempre a entrega real: *"Para mim, o sucesso está em gerar impacto mensurável, exatamente como quando obtive o resultado de '${cleanResult}' através do projeto."*
+
+---
+
+### 🏷️ Sugestões de Enquadramento Estratégico (Dica para "Vender" seu Projeto)
+- **Fidelidade aos Fatos:** Mantenha sempre a verdade dos números e das ferramentas que você de fato usou. A consistência da sua fala transmite muito mais maturidade do que dados inflados.
+- **Dica de Ouro:** Ao falar com um recrutador, cite exatamente o que você fez (*"executei", "criei", "articulei"*) em vez de falar apenas no coletivo (*"a gente fez"*). Isso deixa seu papel transparente e memorável.`;
 
       return { title, portfolioPart, linkedinPart, consultantPart };
     }
@@ -4555,25 +4486,25 @@ Este relato demonstra clareza na formulação de problemas e capacidade de execu
     // Samples: Loads input AND immediately generates ready-to-use executive text and post
     function loadStarSample() {
       selectCategory('SEMINAR');
-      const s = "A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma unificado, as inscrições estavam dispersas em papéis e planilhas desconectadas e a coordenação já cogitava cancelar o evento por desorganização operacional.";
-      const t = "Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, unificar o fluxo entre as 4 frentes de voluntários (palestrantes, comunicação, logística e credenciamento) e garantir a entrega com orçamento zero adicional.";
-      const a = "Centralizei as demandas em um painel compartilhado no Notion com responsáveis e prazos claros para os 14 voluntários; criei um fluxo digital automatizado de inscrições com confirmação e QR Code por e-mail; e institui reuniões diárias de 15 minutos para resolver bloqueios com agilidade.";
-      const r = "O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras começaram pontualmente e o modelo de gestão que criei foi oficializado pela coordenação para todas as edições seguintes.";
+      const s = "Trabalhava no atendimento ao cliente de uma papelaria e loja de materiais. Diariamente recebíamos dezenas de mensagens no WhatsApp com as mesmas dúvidas repetidas: horários, taxa de entrega e estoque de itens básicos. Como cada pessoa respondia do seu jeito, as respostas demoravam mais de 20 minutos e alguns clientes desistiam da compra.";
+      const t = "Decidi criar um guia prático de respostas rápidas para que qualquer atendente pudesse responder na hora com clareza e gentileza, reduzindo o tempo de espera sem custo para a loja.";
+      const a = "Mapeei durante 7 dias as 10 dúvidas mais frequentes dos clientes, redigi respostas curtas e gentis e configurei os atalhos de 'Respostas Rápidas' no WhatsApp Business e um documento compartilhado para o time.";
+      const r = "O tempo de primeira resposta caiu de ~20 minutos para menos de 3 minutos, zerando reclamações por atraso no WhatsApp nas semanas seguintes. O guia foi oficializado pela gerência para treinar novos atendentes da equipe.";
 
       document.getElementById('inputSituation').value = s;
       document.getElementById('inputTask').value = t;
       document.getElementById('inputAction').value = a;
       document.getElementById('inputResult').value = r;
 
-      const bundle = buildStarBundle(s, t, a, r, 'SEMINAR', 'Seminário & Eventos');
-      renderStarCaseOutputs(bundle, 'SEMINAR', 'Seminário & Eventos', s, t, a, r);
+      const bundle = buildStarBundle(s, t, a, r, 'SEMINAR', 'Atendimento & Rotina');
+      renderStarCaseOutputs(bundle, 'SEMINAR', 'Atendimento & Rotina', s, t, a, r);
       switchOutputTab('portfolio');
 
       const resultsCard = document.getElementById('resultsCardStar');
       if (resultsCard) {
         resultsCard.scrollIntoView({ behavior: 'smooth' });
       }
-      showToast("Exemplo carregado com Estudo de Caso executivo e Post para LinkedIn prontos para uso!");
+      showToast("Exemplo prático carregado com Estudo de Caso e Post para LinkedIn prontos para uso!");
     }
 
     function clearStarForm() {
@@ -4587,10 +4518,10 @@ Este relato demonstra clareza na formulação de problemas e capacidade de execu
     }
 
     function loadResumeSample() {
-      document.getElementById('inputTargetRole').value = "Analista de Projetos / Operações Júnior (ou Gestão e Planejamento)";
-      document.getElementById('inputNewActivities').value = "1. Coordenação da reestruturação da Semana Universitária da faculdade (600 participantes, zero atrasos e fluxo digital de inscrições via Notion/QR Code).\n2. Otimização de processos internos e eliminação de retrabalho manual em relatórios acadêmicos.\n3. Apresentação de artigo em simpósio sobre metodologias colaborativas aplicadas a projetos interdisciplinares.";
-      document.getElementById('inputCurrentResume').value = "MARIANA SOUZA\nSão Paulo - SP | (11) 98888-7777 | mariana.souza@email.com | linkedin.com/in/marianasouza\n\nOBJETIVO:\nEstágio ou posição Júnior em Gestão de Projetos, Operações, Comunicação ou Planejamento Estratégico.\n\nFORMAÇÃO ACADÊMICA:\nGraduação - Universidade XYZ (2022 - 2026)\n\nHABILIDADES:\nGestão de Projetos, Otimização de Processos, Notion, Metodologias Ágeis, Comunicação Intersetorial, Excel e Ferramentas Colaborativas.";
-      showToast("Exemplo de Currículo carregado!");
+      document.getElementById('inputTargetRole').value = "Assistente Administrativo / Atendimento ao Cliente / Suporte Júnior";
+      document.getElementById('inputNewActivities').value = "1. Criação de catálogo de respostas rápidas no WhatsApp Business para loja, reduzindo o tempo de resposta de 20min para 3min.\n2. Organização de planilha de controle de estoque e conferência diária no Excel, eliminando retrabalho na contagem de produtos.\n3. Apoio na rotina de atendimento presencial e digital com foco em simpatia, clareza e solução de dúvidas dos clientes.";
+      document.getElementById('inputCurrentResume').value = "MARIANA SOUZA\nSão Paulo - SP | (11) 98888-7777 | mariana.souza@email.com | linkedin.com/in/marianasouza\n\nOBJETIVO:\nOportunidade em Atendimento ao Cliente, Assistência Administrativa ou Suporte Operacional.\n\nFORMAÇÃO ACADÊMICA:\nEnsino Superior em Andamento / Concluído - Administração\n\nHABILIDADES:\nAtendimento ao Cliente, WhatsApp Business, Pacote Office / Planilhas Google, Organização de Processos, Comunicação Clara e Trabalho em Equipe.";
+      showToast("Exemplo de Currículo realista carregado!");
     }
 
     // File Input Handler
@@ -5017,14 +4948,92 @@ Este relato demonstra clareza na formulação de problemas e capacidade de execu
       return `Estudo de Caso: ${fallbackCategory}`;
     }
 
+    // Initial grounded starter cases for newly created sessions / visitors
+    const DEFAULT_INITIAL_SAVED_CASES = [
+      {
+        id: 'case_default_1',
+        title: '💬 Otimização de Atendimento: Guia de Respostas Rápidas no WhatsApp de Loja de Bairro',
+        categoryId: 'SEMINAR',
+        categoryLabel: 'Atendimento & Rotina',
+        situation: 'Trabalhava no atendimento de uma papelaria e loja de materiais. Diariamente recebíamos dezenas de mensagens no WhatsApp com dúvidas repetitivas sobre horário, taxa de entrega e estoque de itens básicos, gerando espera de mais de 20 minutos para os clientes.',
+        task: 'Decidi criar um guia prático de respostas rápidas para que qualquer atendente pudesse responder na hora com clareza e gentileza, reduzindo o tempo de espera sem custo para a loja.',
+        action: 'Mapeei durante 7 dias as 10 dúvidas mais frequentes dos clientes, redigi respostas curtas e gentis e configurei os atalhos de "Respostas Rápidas" no WhatsApp Business e um documento compartilhado para o time.',
+        result: 'O tempo de primeira resposta caiu de ~20 minutos para menos de 3 minutos, zerando reclamações por atraso no WhatsApp nas semanas seguintes. O guia foi oficializado pela gerência para treinar novos atendentes da equipe.',
+        evidenceUrl: '',
+        createdAt: new Date().toISOString(),
+        portfolioPart: `# 💬 Otimização de Atendimento: Como Criei um Guia de Respostas Rápidas e Reduzi o Tempo de Espera de 20min para 3min
+
+## 📌 Desafio Real
+Em uma rotina com alto volume de mensagens no WhatsApp e atendimento presencial simultâneo, as dúvidas frequentes dos clientes demoravam mais de 20 minutos para serem respondidas, gerando insatisfação e perda de vendas.
+
+## 🛠️ Ação Prática (Método STAR)
+Mapeei as 10 principais dúvidas recorrentes durante 7 dias, elaborei respostas padronizadas e objetivas e configurei o recurso nativo de Respostas Rápidas do WhatsApp Business para os 3 atendentes da loja.
+
+## 📈 Impacto e Resultados
+- **Redução de 85% no tempo de espera:** Atendimento inicial caiu de ~20 minutos para menos de 3 minutos.
+- **Zero reclamações por atraso** registradas nas duas semanas seguintes à implantação.
+- **Custo financeiro: R$ 0,00**, aproveitando apenas ferramentas gratuitas já disponíveis.
+- **Adoção formal:** O material foi oficializado pela gerência como roteiro de treinamento para novos contratados.
+
+## 💡 Competências Demonstradas
+Organização de Processos, Foco no Cliente, Comunicação Clara, Resolução de Problemas, Proatividade.`,
+        linkedinPart: `Você não precisa de um software caro para resolver um problema que incomoda clientes todos os dias. 💡
+
+Onde eu trabalhava no atendimento, o WhatsApp vivia com dezenas de mensagens acumuladas com dúvidas repetidas.
+
+Decidi mapear as 10 perguntas mais comuns e configurei atalhos de Respostas Rápidas no WhatsApp Business para o time.
+
+O tempo de resposta despencou de 20 minutos para 3 minutos e o material virou o roteiro oficial de treinamento da loja!
+
+#AtendimentoAoCliente #Organização #Iniciativa #Carreira`
+      },
+      {
+        id: 'case_default_2',
+        title: '📋 Organização Administrativa: Validação de Dados em Planilha e Fim do Retrabalho Diário',
+        categoryId: 'INTERNSHIP',
+        categoryLabel: 'Estágio & Rotina Administrativa',
+        situation: 'No meu estágio administrativo, a equipe conferia manualmente mais de 50 cadastros diários em uma planilha do Excel, com erros frequentes de digitação de telefone e código que atrasavam o fechamento.',
+        task: 'Recebi o desafio de organizar a planilha para diminuir o tempo de conferência e evitar cadastros duplicados ou incompletos.',
+        action: 'Criei validações de dados automáticas com listas suspensas (dropdowns) e alertas de campos obrigatórios, além de destacar duplicidades com formatação condicional.',
+        result: 'Eliminação dos erros de digitação recorrentes e economia de cerca de 30 minutos diários de conferência para a equipe, tornando a planilha o modelo padrão do departamento.',
+        evidenceUrl: '',
+        createdAt: new Date(Date.now() - 86400000 * 2).toISOString(),
+        portfolioPart: `# 📋 Organização Administrativa: Como Estruturei uma Planilha com Validação e Reduzi Erros de Cadastro
+
+## 📌 Contexto da Rotina
+No estágio administrativo, a conferência de cadastros consumia quase uma hora diária devido a pequenos erros de preenchimento manual em planilhas compartilhadas.
+
+## 🛠️ Ação Executada (Método STAR)
+Criei listas suspensas (dropdowns) para padronizar os dados inseridos, bloqueei células com campos obrigatórios e apliquei formatação condicional para sinalizar códigos duplicados em tempo real.
+
+## 📈 Impacto Concreto
+- Eliminação completa de erros recorrentes de digitação.
+- Economia de 30 minutos diários de conferência para a equipe.
+- Planilha oficializada como padrão de preenchimento para o departamento.
+
+## 💡 Competências Demonstradas
+Excel e Planilhas Google, Validação de Dados, Atenção a Detalhes, Otimização de Processos.`,
+        linkedinPart: `No meu estágio, percebi que pequenos erros diários de digitação em planilhas acabavam virando horas de retrabalho no final do mês. 📊
+
+Criei validações simples no Excel e poupamos 30 minutos diários de conferência para todo o time.
+
+Pequenas melhorias somadas todos os dias transformam qualquer rotina de trabalho!
+
+#Estágio #Excel #Organização #Produtividade #Carreira`
+      }
+    ];
+
     // ==================== PASTA DE CASES STORAGE & MANAGEMENT ====================
     function getSavedCases() {
       try {
         const raw = localStorage.getItem('carreira_ia_saved_cases');
-        return raw ? JSON.parse(raw) : [];
+        if (raw) return JSON.parse(raw);
+        // If not initialized yet, seed with grounded starter cases
+        localStorage.setItem('carreira_ia_saved_cases', JSON.stringify(DEFAULT_INITIAL_SAVED_CASES));
+        return DEFAULT_INITIAL_SAVED_CASES;
       } catch (e) {
         console.error("Erro ao ler pasta de cases:", e);
-        return [];
+        return DEFAULT_INITIAL_SAVED_CASES;
       }
     }
 
@@ -5371,67 +5380,56 @@ Este relato demonstra clareza na formulação de problemas e capacidade de execu
     function loadDemoCaseToFolder() {
       const demoCase = {
         id: 'case_demo_' + Date.now(),
-        title: 'Gestão de Crise e Otimização de Processos: Como Reestruturei a Semana Universitária com Mais de 600 Participantes',
+        title: '💬 Otimização de Atendimento: Guia de Respostas Rápidas no WhatsApp de Loja de Bairro',
         categoryId: 'SEMINAR',
-        categoryLabel: 'Evento / Projeto',
+        categoryLabel: 'Atendimento & Rotina',
         createdAt: new Date().toISOString(),
-        situation: 'A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma centralizado, as inscrições estavam dispersas em planilhas manuais desconectadas e a coordenação já cogitava cancelar o evento por falta de tempo e desorganização operacional.',
-        task: 'Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, unificar o fluxo de comunicação entre as 4 frentes de voluntários (palestrantes, comunicação, logística e credenciamento) e garantir a entrega com orçamento zero adicional.',
-        action: '1. Centralizei as demandas e pendências em um painel compartilhado no Notion com responsáveis e prazos claros para os 14 voluntários.\n2. Criei um fluxo digital automatizado de inscrições e credenciamento com envio de QR Code por e-mail, eliminando planilhas manuais e filas.\n3. Instituí reuniões diárias de 15 minutos (estilo daily) para destravar bloqueios e renegociei diretamente com a direção o uso dos espaços e equipamentos de transmissão.',
-        result: 'O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras e oficinas começaram pontualmente. O modelo de gestão e cronograma que criei foi oficializado pela coordenação para ser utilizado em todas as edições seguintes.',
-        consultantPart: `### Análise de Potencial & Valor no Mercado
-Este projeto demonstra competências altamente valorizadas por qualquer recrutador ou líder de área: capacidade de liderança sob incerteza, alinhamento entre equipes com diferentes perfis e habilidade de criar processos estruturados onde antes havia caos.
+        situation: 'Trabalhava no atendimento de uma papelaria e loja de materiais. Diariamente recebíamos dezenas de mensagens no WhatsApp com dúvidas repetitivas sobre horário, taxa de entrega e estoque de itens básicos, gerando espera de mais de 20 minutos para os clientes.',
+        task: 'Decidi criar um guia prático de respostas rápidas para que qualquer atendente pudesse responder na hora com clareza e gentileza, reduzindo o tempo de espera sem custo para a loja.',
+        action: 'Mapeei durante 7 dias as 10 dúvidas mais frequentes dos clientes, redigi respostas curtas e gentis e configurei os atalhos de "Respostas Rápidas" no WhatsApp Business e um documento compartilhado para o time.',
+        result: 'O tempo de primeira resposta caiu de ~20 minutos para menos de 3 minutos, zerando reclamações por atraso no WhatsApp nas semanas seguintes. O guia foi oficializado pela gerência para treinar novos atendentes da equipe.',
+        consultantPart: `### 💡 Análise de Potencial & Valor no Mercado
+Este projeto demonstra competências altamente valorizadas por qualquer recrutador: iniciativa voluntária para resolver problemas reais de rotina, capacidade de simplificar a comunicação e foco na experiência do cliente com custo zero.
 
-### Como Defender este Case em Entrevistas
-- **Pergunta Típica do Recrutador:** "Conte sobre uma ocasião em que você precisou assumir a frente de um projeto desorganizado ou com prazo muito apertado."
-- **Como Responder:** Destaque que sua primeira atitude foi mapear a causa-raiz da desorganização e alinhar as pessoas em torno de metas claras e prazos curtos (reuniões diárias de 15 min), mostrando maturidade emocional e senso de dono.
+### 🎙️ Como Defender este Case em Entrevistas
+*(Use as sugestões abaixo como modelo para estruturar sua fala com segurança)*
+- **Pergunta Típica do Recrutador:** *"Conte sobre uma ocasião em que você teve iniciativa própria no trabalho."*
+- **[Sugestão de Articulação]:** Explique que percebeu mensagens acumuladas no WhatsApp e, em vez de esperar ordens, mapeou as 10 perguntas mais comuns, cadastrou respostas rápidas e ensinou os colegas, aliviando o fluxo de toda a equipe.
 
-### Habilidades-Chave em Destaque
-- **Hard Skills:** Gestão de Projetos Ágeis, Otimização de Processos, Ferramentas Colaborativas (Notion/Trello), Automação de Fluxos de Inscrição.
-- **Soft Skills:** Liderança Comunitária, Gestão de Conflitos e Prazos, Comunicação Intersetorial, Resolução de Problemas sob Pressão.
+### 🛠️ Habilidades-Chave em Destaque
+- **Hard Skills:** WhatsApp Business, Google Docs, Mapeamento de Perguntas Frequentes (FAQ), Organização de Processos.
+- **Soft Skills:** Iniciativa Própria, Foco no Cliente, Comunicação Empática, Colaboração em Equipe.
 
-### Dica de Ouro do Consultor
-Adicione no topo do seu currículo: "Especialista em Gestão de Projetos, Otimização de Processos e Coordenação de Equipes Multidisciplinares".`,
-        portfolioPart: `# Gestão de Crise e Otimização de Processos: Como Reestruturei a Semana Universitária com Mais de 600 Participantes
+### 🏷️ Dica de Ouro do Consultor (Como "Vender" seu Projeto)
+Destaque o impacto que a sua ação teve para as outras pessoas: enfatize que o guia reduziu a sobrecarga dos seus colegas e foi adotado pela gerência como padrão oficial de treinamento.`,
+        portfolioPart: `# 💬 Otimização de Atendimento: Como Criei um Guia de Respostas Rápidas e Reduzi o Tempo de Espera de 20min para 3min
 
-## Visão Geral do Desafio
-Organizar um evento de grande porte com múltiplos palestrantes, oficinas simultâneas e público de centenas de pessoas exige planejamento milimétrico. Quando a comissão anterior se desfez a poucas semanas da data limite, assumi a liderança para reorganizar o fluxo de ponta a ponta e garantir a entrega do evento.
+## 📌 Contexto & Desafio Real (Situação)
+Em uma rotina de alto volume de mensagens no WhatsApp e atendimento presencial simultâneo, dúvidas frequentes dos clientes demoravam mais de 20 minutos para serem respondidas, gerando insatisfação e perda de vendas.
 
-## Estratégia de Execução (Método STAR)
-1. **Diagnóstico Imediato:** Identificação dos gargalos críticos (ausência de cronograma unificado, risco de filas no credenciamento e falta de confirmação de palestrantes).
-2. **Centralização no Notion:** Criação de um espaço de trabalho único com quadro Kanban, dividindo as tarefas por áreas (Comunicação, Logística, Conteúdo e Infraestrutura).
-3. **Automação do Fluxo de Inscrições:** Substituição de listas de papel por formulário digital integrado com disparo de confirmações via e-mail.
-4. **Governança Ágil:** Rituais curtos diários de 15 minutos para acompanhar entregas e resolver bloqueios operacionais no mesmo dia.
+## 🎯 Objetivo Prático (Tarefa)
+Criar uma solução simples e gratuita para que qualquer atendente pudesse responder de imediato com precisão e gentileza.
 
-## Entregas e Impacto Real
-- **Pontualidade e Execução:** 100% das 12 atividades e palestras iniciadas no horário previsto.
-- **Público e Engajamento:** Auditório com lotação máxima nos 3 dias e mais de 600 participantes credenciados.
-- **Legado Institucional:** O framework e templates de organização desenvolvidos foram adotados como padrão pela coordenação da instituição.
+## 🛠️ Execução na Prática (Ação)
+Mapeei as 10 principais dúvidas recorrentes durante 7 dias, elaborei respostas padronizadas e objetivas e configurei o recurso nativo de Respostas Rápidas do WhatsApp Business para os 3 atendentes da loja.
 
-## Competências e Ferramentas
-Gestão de Projetos, Comunicação Interdisciplinar, Notion, Automação de Processos, Liderança de Equipes Voluntárias.`,
-        linkedinPart: `Como transformamos um evento acadêmico à beira do cancelamento em uma experiência para mais de 600 participantes? 🚀
+## 📈 Impacto & Resultados Concretos
+- **Redução de 85% no tempo de espera:** Atendimento inicial caiu de ~20 minutos para menos de 3 minutos.
+- **Zero reclamações por atraso** registradas nas duas semanas seguintes à implantação.
+- **Custo financeiro: R$ 0,00**, aproveitando ferramentas já disponíveis na rotina.
+- **Adoção formal:** O material foi oficializado pela gerência como roteiro de treinamento para novos contratados.
 
-A poucas semanas da Semana Universitária da faculdade, nossa equipe se deparou com um cenário crítico: a comissão anterior havia se desmobilizado, não havia cronograma definido e as inscrições estavam sem controle.
+## 💡 Competências Demonstradas
+Organização de Processos, Foco no Cliente, Comunicação Clara, Resolução de Problemas, Proatividade.`,
+        linkedinPart: `Você não precisa de um software caro para resolver um problema que incomoda clientes todos os dias. 💡
 
-Assumi a coordenação de operações com a meta de reestruturar o projeto em tempo recorde sem verba adicional.
+Onde eu trabalhava no atendimento, o WhatsApp vivia com dezenas de mensagens acumuladas com dúvidas repetidas.
 
-O que fizemos na prática:
-🔹 Centralizamos todo o fluxo de trabalho em um painel colaborativo no Notion com responsáveis e prazos claros para os 14 voluntários;
-🔹 Digitalizamos as inscrições com confirmação automatizada e QR Code, eliminando planilhas manuais e risco de filas;
-🔹 Instituímos reuniões diárias de 15 minutos para destravar impedimentos rapidamente;
-🔹 Alinhamos a infraestrutura diretamente com a coordenação para garantir auditórios e transmissão ao vivo.
+Decidi mapear as 10 perguntas mais comuns e configurei atalhos de Respostas Rápidas no WhatsApp Business para o time.
 
-O resultado?
-🏆 Mais de 600 credenciamentos realizados com auditório lotado nos 3 dias;
-⏰ 100% das 12 palestras iniciadas pontualmente e sem nenhum imprevisto técnico;
-📚 O modelo de gestão que criamos virou o guia oficial da faculdade para as próximas edições!
+O tempo de resposta despencou de 20 minutos para 3 minutos e o material virou o roteiro oficial de treinamento da loja!
 
-Essa vivência me ensinou que projetos complexos não dependem de sorte, mas de método, alinhamento de pessoas e clareza de prioridades.
-
-Você já precisou assumir a coordenação de um projeto em meio ao caos? Como foi sua estratégia? Me conta nos comentários! 👇
-
-#GestaoDeProjetos #Lideranca #OtimizacaoDeProcessos #Eventos #TrabalhoEmEquipe #Carreira #MetodoSTAR`
+#AtendimentoAoCliente #Organização #Iniciativa #Carreira #ProcessosSimples`
       };
 
       saveCaseToFolder(demoCase);
@@ -5524,42 +5522,51 @@ Você já precisou assumir a coordenação de um projeto em meio ao caos? Como f
       btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-white"></i><span class="text-white font-bold">Gerando Conselho, Portfólio & LinkedIn com IA...</span>`;
       if (window.lucide) lucide.createIcons();
 
-      let prompt = `Você é um Consultor Especialista de Carreira Executiva, Headhunter e Líder de Talent Acquisition.
-Sua missão é transformar a vivência de um profissional/estudante em um Estudo de Caso corporativo de alto impacto, fornecendo conselho consultivo estratégico, um case impecável para portfólio e um post engajador para o LinkedIn.
+      let prompt = `Você é um Consultor Especialista de Carreira Executiva, Headhunter e Mentor Profissional.
+Sua missão é estruturar e valorizar a vivência REAL fornecida pelo usuário, gerando:
+1) Conselho consultivo com visão de mercado e preparação para entrevistas;
+2) Estudo de Caso estruturado (Método STAR);
+3) Post objetivo e engajador para o LinkedIn.
 
-DADOS DA VIVÊNCIA:
-- Tipo de Atividade: ${catObj.label} (${catObj.desc})
-- Situação (Contexto do desafio): ${s}
-- Tarefa (Objetivo e metas): ${t}
-- Ação (Metodologia, ferramentas e execução): ${a}
-- Resultado (Impacto, métricas e ganhos): ${r}` + (evUrl ? `\n- Link de Evidência / Clipping / Publicação: ${evUrl}` : '') + `
+🚨 DIRETRIZ CRÍTICA DE FIDELIDADE (REGRA ABSOLUTA):
+- USE EXCLUSIVAMENTE AS INFORMAÇÕES VERÍDICAS FORNECIDAS PELO USUÁRIO.
+- NUNCA INVENTE ferramentas, softwares (ex: Notion, Trello), cargos, instituições (ex: faculdades, empresas), métricas ou números (ex: 600 participantes, 5 dias, etc.) que o usuário NÃO tenha citado expressamente.
+- Se o usuário disse "empresa ong educacional", "tráfego pago e peças pelo canva", "média de 30 alunos para mais de 50", trabalhe RIGOROSAMENTE com essa ONG, tráfego pago, Canva e 30 para 50 alunos.
+- Caso forneça sugestões de como defender ou "vender" o case em entrevistas, sinalize EXPLICITAMENTE como "[Sugestão de Enquadramento]" ou "[Exemplo de Raciocínio]", garantindo que o usuário compreenda que são formas de articular sua fala e não fatos inventados.
+
+DADOS REAIS FORNECIDOS PELO USUÁRIO (MÉTODO STAR):
+- Categoria do Projeto: ${catObj.label} (${catObj.desc})
+- Situação (Contexto real): ${s}
+- Tarefa (Meta / Desafio real): ${t}
+- Ação (Ferramentas e execução real): ${a}
+- Resultado (Métricas e impacto real): ${r}` + (evUrl ? `\n- Evidência / Link real: ${evUrl}` : '') + `
 
 ESTRUTURE SUA RESPOSTA OBRIGATORIAMENTE NAS 3 PARTES ABAIXO (Mantenha os delimitadores exatos):
 
 === PARTE 1: CONSELHO DO CONSULTOR ===
-Atue como o mentor/consultor sênior de carreira do candidato:
-- **Análise de Potencial & Valor no Mercado**: O que essa experiência demonstra para gestores e recrutadores.
-- **Como Defender este Case em Entrevistas**: As 2 principais perguntas comportamentais que recrutadores farão sobre essa vivência e exatamente como o candidato deve responder com segurança.
-- **Habilidades-Chave em Destaque**: Lista de Hard Skills e Soft Skills evidenciadas para colocar em destaque no perfil.
-- **Dica de Ouro do Consultor**: Uma recomendação tática para diferenciar este case da concorrência.
+Mentor de carreira avaliando a experiência real:
+- **Análise de Potencial & Valor no Mercado**: O que essa experiência REAL demonstra para gestores (foco nas competências reais demonstradas).
+- **Como Defender este Case em Entrevistas**: As 2 principais perguntas comportamentais que recrutadores farão especificamente sobre este caso e como responder ancorando-se 100% nos fatos reais do usuário (sinalize com "[Sugestão de Articulação]" como estruturar a resposta).
+- **Habilidades-Chave em Destaque**: Lista de Hard Skills e Soft Skills verdadeiramente extraídas das ações e ferramentas citadas pelo usuário.
+- **Dica de Ouro do Consultor (Como "Vender" seu Projeto)**: Como transmitir segurança e profissionalismo usando a verdade da sua entrega, sem floreios artificiais.
 
 === PARTE 2: ESTUDO DE CASO PARA PORTFÓLIO ===
 Estrutura executiva completa e profissional (pronta para Notion, GitHub, site pessoal ou PDF):
-- **Título do Case**: Um título executivo forte focado em solução e resultado.
-- **Visão Geral & Desafio**: Resumo executivo do problema e relevância.
-- **Estratégia & Execução Técnica (Método STAR)**: Detalhamento passo a passo com verbos de ação no passado, citando métodos, tecnologias e tomadas de decisão.
-- **Métricas & Resultados de Impacto**: Resultados quantitativos e qualitativos organizados de forma clara e visual.
-- **Competências & Tecnologias Utilizadas**: Tecnologias, frameworks e metodologias empregadas.
-- **Lições Aprendidas & Visão de Futuro**: Conclusão técnica e de negócio.
+- **Título do Case**: Um título profissional focado no impacto real alcançado.
+- **Visão Geral & Contexto**: Resumo fiel da situação e desafio enfrentado.
+- **Estratégia & Execução Técnica (Método STAR)**: Passo a passo fiel às ferramentas e ações informadas.
+- **Métricas & Resultados Reais**: Os ganhos e números verdadeiros citados pelo usuário.
+- **Competências & Ferramentas Utilizadas**: Apenas as ferramentas e habilidades reais.
+- **Aprendizados Práticos**: Reflexão sobre a maturidade profissional adquirida.
 
 === PARTE 3: PUBLICAÇÃO PARA O LINKEDIN ===
-Post pronto, magnético e profissional para publicar no feed do LinkedIn:
-- **Gancho Inicial (Hook)**: Frase inicial impactante que prende a atenção nos primeiros 3 segundos (sem frases batidas como "É com muito orgulho que venho compartilhar").
-- **Narrativa (Storytelling)**: Contexto rápido do desafio, obstáculos superados e a solução prática adotada.
-- **Resultados em Destaque**: Principais métricas em marcadores simples e legíveis no celular.
-- **Reflexão & Conexão**: Aprendizado gerado e como isso agrega valor.
-- **Chamada para Ação (CTA)**: Pergunta envolvente para gerar comentários e interações no post.
-- **Hashtags Estratégicas**: 4 a 6 hashtags relevantes para o nicho.`;
+Post pronto, envolvente e autêntico para publicar no feed do LinkedIn:
+- **Gancho Inicial (Hook)**: Frase inicial direta sobre o desafio superado.
+- **Narrativa (Storytelling)**: Contexto e ações executadas na prática (sem exageros).
+- **Resultados em Destaque**: Os números e impactos reais alcançados organizados em marcadores.
+- **Reflexão Profissional**: O aprendizado genuíno gerado pela entrega.
+- **Chamada para Ação (CTA)**: Pergunta engajadora para comentários.
+- **Hashtags Estratégicas**: 4 a 6 hashtags adequadas ao tema real.`;
 
       try {
         const result = await requestGemini(prompt);
@@ -6648,37 +6655,37 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       let s = "", t = "", a = "", r = "", ev = "", catLabel = "Projeto";
 
       if (category === 'PRESS') {
-        catLabel = "Assessoria de Imprensa & PR";
-        s = "Atuei na assessoria de imprensa e comunicação de uma healthtech durante o lançamento de uma pesquisa nacional inédita sobre saúde preventiva corporativa, com prazo curto e sem verba para compra de anúncios pagos.";
-        t = "Minha responsabilidade como assessora foi construir a estratégia de pautas para a imprensa, transformar os dados densos do levantamento em ganchos editoriais atrativos para diferentes editorias e emplacar porta-vozes médicos como fontes nos principais veículos do país.";
-        a = "Mapeei jornalistas e editores de saúde, negócios e tecnologia. Produzi 3 releases com abordagens segmentadas: viés econômico para o Valor Econômico e Exame, foco em saúde pública para Folha de S.Paulo e G1, e abordagem científica para portais especializados. Negociei entrevistas exclusivas sob embargo com porta-vozes e preparei um media kit com infográficos e resumos executivos prontos.";
-        r = "Emplacamento de matérias e entrevistas em veículos nacionais de grande prestígio (Folha de S.Paulo, G1 e Valor Econômico) e mais de 14 menções orgânicas em portais do setor. O material gerou convites para o porta-voz em programas de rádio e podcasts, estabelecendo a instituição como autoridade no assunto sem investimento em mídia paga.";
-        ev = "https://g1.globo.com/saude (Exemplo de Clipping e Matéria Publicada)";
+        catLabel = "Comunicação & Avisos";
+        s = "Na clínica odontológica onde auxiliava no atendimento, as constantes dúvidas e atrasos dos pacientes sobre o preparo para exames e consultas geravam atrasos acumulados de quase 40 minutos em dias de pico.";
+        t = "Minha responsabilidade foi reformular os comunicados de confirmação enviados por WhatsApp e e-mail, tornando as orientações fáceis de ler para qualquer pessoa.";
+        a = "Substituí o texto longo e formal por um modelo visual direto com 3 tópicos claros em tópicos (o que levar, tempo de jejum e horário ideal de chegada) e criei um aviso de confirmação com um clique.";
+        r = "Atrasos recorrentes caíram mais de 60% no primeiro mês e os pacientes frequentemente elogiavam a clareza das mensagens antes do atendimento. O modelo virou o padrão oficial de comunicação da clínica.";
+        ev = "https://exemplo.com/comunicados-claros-atendimento";
       } else if (category === 'RESEARCH') {
         catLabel = "Projeto Acadêmico / TCC";
-        s = "Durante a iniciação científica e desenvolvimento de TCC, investiguei metodologias para auditar vieses algorítmicos em sistemas de triagem automatizada de candidatos.";
-        t = "Minha meta foi conceber uma abordagem empírica de reponderação de dados que mitigasse discrepâncias demográficas sem comprometer a precisão do classificador.";
-        a = "Desenvolvi rotinas em Python com Scikit-Learn e Pandas para avaliar métricas de paridade estatística, elaborei testes com datasets sintéticos e públicos de mais de 40 mil instâncias e submeti o artigo a uma banca acadêmica multidisciplinar.";
-        r = "Publicação do trabalho nos anais do simpósio universitário, validação da metodologia perante a banca com recomendação para mestrado e publicação do código com documentação no repositório acadêmico aberto.";
-        ev = "https://github.com/exemplo/pesquisa-tcc-auditoria";
+        s = "Durante o desenvolvimento do meu TCC em Administração, escolhi estudar a taxa de desistência de clientes em pequenos comércios do bairro, evitando temas puramente teóricos.";
+        t = "Minha meta foi coletar dados reais através de questionários com 35 clientes e propor 4 melhorias práticas e de baixo custo para o dono do comércio parceiro.";
+        a = "Elaborei um formulário objetivo no Google Forms, entrevistei clientes presencialmente e analisei as respostas no Excel identificando que 70% das desistências ocorriam por falta de informações claras de preço e forma de pagamento no balcão.";
+        r = "Trabalho aprovado com nota máxima pela banca pela aplicabilidade prática e um relatório de 3 páginas entregue ao comerciante, que implementou as placas de preço e reduziu dúvidas imediatas no balcão.";
+        ev = "https://exemplo.com/tcc-pesquisa-aplicada";
       } else if (category === 'INTERNSHIP') {
-        catLabel = "Estágio & Vivência Inicial";
-        s = "No primeiro ano de estágio em Operações e Logística, o time sofria com a reconciliação manual e diária de relatórios de expedição, gerando divergências com a equipe de vendas.";
-        t = "Recebi a missão de desenhar um fluxo automatizado de consolidação de dados e criar um painel visual centralizado para os coordenadores de turno.";
-        a = "Mapeei os gargalos com os operadores de chão de fábrica, escrevi rotinas em Python para extração de planilhas e montei um dashboard interativo integrado com notificações automáticas de pendências críticas.";
-        r = "Eliminação de mais de 2 horas diárias de trabalho manual repetitivo da equipe, resolução das divergências de dados com vendas e adoção formal do painel pela diretoria regional, resultando em efetivação antecipada.";
+        catLabel = "Estágio & Rotina Administrativa";
+        s = "No meu estágio no setor administrativo, tínhamos que conferir manualmente mais de 50 cadastros diários em uma planilha do Excel, com erros frequentes de digitação de telefone e código.";
+        t = "Recebi o desafio de organizar a planilha para diminuir o tempo de conferência e evitar cadastros duplicados ou incompletos.";
+        a = "Criei validações de dados automáticas com listas suspensas (dropdowns) e alertas de campos obrigatórios, além de aplicar filtros inteligentes que destacavam linhas com códigos repetidos.";
+        r = "Eliminação de erros de digitação recorrentes e economia de cerca de 30 minutos diários de conferência para a equipe. O modelo passou a ser a planilha padrão de todo o departamento.";
       } else if (category === 'VOLUNTEER') {
-        catLabel = "Liderança & Voluntariado";
-        s = "Como líder voluntária de uma entidade comunitária universitária, notamos que estudantes calouros de escolas públicas encontravam barreiras na preparação para primeiros estágios.";
-        t = "Minha meta foi liderar a criação de um programa de mentoria e oficinas práticas de comunicação profissional e simulação de entrevistas comportamentais.";
-        a = "Estruturei a trilha de capacitação em 4 etapas (orador convidado, método STAR para projetos, revisão de perfil e postura em entrevistas), recrutei 16 mentores voluntários e estabeleci formulários de feedback estruturado.";
-        r = "Capacitação de mais de 70 estudantes na primeira edição, com índice elevado de aprovação nas primeiras fases de processos seletivos de empresas parceiras e institucionalização do projeto no calendário acadêmico anual.";
+        catLabel = "Ação Voluntária & Comunitária";
+        s = "Com a chegada do inverno, percebi que famílias acolhidas em uma creche comunitária da região precisavam de agasalhos e cobertores, mas a instituição não tinha voluntários suficientes para organizar uma arrecadação.";
+        t = "Assumi o compromisso de mobilizar colegas e comerciantes do bairro para arrecadar pelo menos 50 peças em duas semanas.";
+        a = "Criei cartazes simples de divulgação no Canva, conversei com 3 comerciantes locais para fixar caixas coletoras e organizei um mutirão no fim de semana para triar, dobrar e etiquetar por tamanho.";
+        r = "Arrecadação de mais de 150 agasalhos e 20 cobertores higienizados e entregues diretamente para as famílias cadastradas, com prestação de contas transparente com fotos aos doadores.";
       } else {
-        catLabel = "Seminário & Eventos";
-        s = "A 3 semanas da Semana Universitária Interdisciplinar da faculdade, a comissão anterior havia se desmobilizado. Não havia cronograma unificado, as inscrições estavam dispersas em papéis e planilhas desconectadas e a coordenação já cogitava cancelar o evento por desorganização operacional.";
-        t = "Assumi voluntariamente a coordenação de operações e planejamento, com a meta de reestruturar todo o cronograma em 5 dias, unificar o fluxo entre as 4 frentes de voluntários (palestrantes, comunicação, logística e credenciamento) e garantir a entrega com orçamento zero adicional.";
-        a = "Centralizei as demandas em um painel compartilhado no Notion com responsáveis e prazos claros para os 14 voluntários; criei um fluxo digital automatizado de inscrições com confirmação e QR Code por e-mail; e institui reuniões diárias de 15 minutos para resolver bloqueios com agilidade.";
-        r = "O evento aconteceu na data planejada com auditório lotado nos 3 dias e mais de 600 credenciamentos realizados sem filas. Todas as 12 palestras começaram pontualmente e o modelo de gestão que criei foi oficializado pela coordenação para todas as edições seguintes.";
+        catLabel = "Atendimento & Organização de Rotina";
+        s = "Trabalhava no atendimento de uma loja de materiais e papelaria. Diariamente recebíamos dezenas de mensagens no WhatsApp com as mesmas dúvidas repetidas: horários, taxa de entrega e estoque de itens básicos, gerando espera de mais de 20 minutos para os clientes.";
+        t = "Decidi criar um guia prático de respostas rápidas para que qualquer atendente pudesse responder na hora com clareza e gentileza, reduzindo o tempo de espera sem custo para a loja.";
+        a = "Mapeei durante 7 dias as 10 dúvidas mais frequentes dos clientes, redigi respostas curtas e gentis e configurei os atalhos de 'Respostas Rápidas' no WhatsApp Business e um documento compartilhado para o time.";
+        r = "O tempo de primeira resposta caiu de ~20 minutos para menos de 3 minutos, zerando reclamações por atraso no WhatsApp nas semanas seguintes. O guia foi oficializado pela gerência para treinar novos atendentes da equipe.";
       }
 
       sInput.value = s;
@@ -6702,17 +6709,17 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
     // User Profile Default Data
     const DEFAULT_USER_PROFILE = {
       name: "Rafaela Zampini",
-      headline: "Líder Técnica & Engenharia de Software | Especialista em Otimização e Performance",
-      area: "Tecnologia & Dados",
-      seniority: "Liderança / Gestão",
-      origin: "Projeto Acadêmico",
+      headline: "Assistente Administrativa & Atendimento | Foco em Processos e Rotina Eficiente",
+      area: "Administração & Operações",
+      seniority: "Júnior (0-2 anos)",
+      origin: "Mercado de Trabalho",
       location: "São Paulo, Brasil • Remoto / Híbrido",
       email: "contato.rafaela@carreiraia.com",
       linkedin: "https://linkedin.com",
       github: "https://github.com",
       avatarUrl: "",
-      bio: "Profissional focada em transformar vivências práticas em resultados corporativos comprovados. Especialista em resolução de problemas de alta complexidade com dados e metodologia STAR, com cases em bancos de dados relacionais, microsserviços e liderança técnica.",
-      skills: ["Python", "SQL", "Metodologias Ágeis (Scrum/Kanban)", "Liderança e Gestão de Equipes", "Resolução de Problemas Complexos", "Engenharia de Prompt"]
+      bio: "Profissional dedicada a transformar desafios do dia a dia em melhorias práticas para a equipe e para o cliente. Experiência em atendimento presencial e WhatsApp, organização de planilhas e controles de estoque, sempre buscando simplificar rotinas com empatia e método.",
+      skills: ["Atendimento ao Cliente", "WhatsApp Business", "Excel e Planilhas", "Organização de Processos", "Comunicação Clara", "Trabalho em Equipe"]
     };
 
     function getUserProfile() {
@@ -7093,112 +7100,112 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       {
         id: 'user_1',
         name: 'Rafaela Zampini',
-        headline: 'Líder Técnica & Engenharia de Software | Especialista em Otimização e Performance',
-        area: 'Tecnologia & Dados',
-        seniority: 'Liderança / Gestão',
-        origin: 'Projeto Acadêmico',
-        location: 'São Paulo • Remoto',
-        verifiedCases: 3,
-        highlightMetric: 'Diagnóstico com EXPLAIN ANALYZE e Eliminação de Gargalos de I/O em PostgreSQL',
-        skills: ['SQL', 'Python', 'Metodologias Ágeis (Scrum/Kanban)', 'Liderança e Gestão de Equipes', 'Resolução de Problemas Complexos', 'Engenharia de Prompt'],
+        headline: 'Assistente Administrativa & Atendimento | Otimização de Processos e Suporte',
+        area: 'Administração & Operações',
+        seniority: 'Júnior (0-2 anos)',
+        origin: 'Mercado de Trabalho',
+        location: 'São Paulo • Híbrido',
+        verifiedCases: 2,
+        highlightMetric: 'Criação de Guia de Respostas Rápidas no WhatsApp com Queda no Tempo de Espera de 20min para 3min',
+        skills: ['Atendimento ao Cliente', 'WhatsApp Business', 'Google Docs', 'Comunicação Clara', 'Organização de Rotina'],
         avatar: 'RZ',
         available: true
       },
       {
         id: 'user_2',
         name: 'Lucas Brandão',
-        headline: 'Product Manager & Growth | Foco em Retenção e Monetização',
-        area: 'Design & Produto',
-        seniority: 'Pleno (3-5 anos)',
-        origin: 'Mercado de Trabalho',
-        location: 'Belo Horizonte • Remoto',
-        verifiedCases: 4,
-        highlightMetric: 'Redesenho do Onboarding B2B com Eliminação de Fricção e Etapas Redundantes',
-        skills: ['Figma', 'Design Thinking', 'SQL', 'Metodologias Ágeis (Scrum/Kanban)', 'Resolução de Problemas Complexos'],
+        headline: 'Estagiário de Operações & Logística | Controle de Estoque e Planilhas',
+        area: 'Administração & Operações',
+        seniority: 'Estágio',
+        origin: 'Estágio',
+        location: 'Belo Horizonte • Presencial',
+        verifiedCases: 2,
+        highlightMetric: 'Padronização de Planilha com Validação de Dados e Redução de 30min no Fechamento Diário',
+        skills: ['Excel', 'Planilhas Google', 'Controle de Estoque', 'Atenção a Detalhes', 'Trabalho em Equipe'],
         avatar: 'LB',
         available: true
       },
       {
         id: 'user_3',
         name: 'Beatriz Vasconcelos',
-        headline: 'Product Designer Sênior | Design System & Acessibilidade',
-        area: 'Design & Produto',
-        seniority: 'Sênior',
-        origin: 'Mercado de Trabalho',
-        location: 'Curitiba • Híbrido',
-        verifiedCases: 5,
-        highlightMetric: 'Arquitetura e Implementação de Design System Acessível em Conformidade WCAG',
-        skills: ['Figma', 'Pacote Adobe', 'Design Thinking', 'Comunicação e Oratória'],
+        headline: 'Designer Gráfica Júnior | Identidade Visual e Redes Sociais para Pequenos Negócios',
+        area: 'Design & Comunicação',
+        seniority: 'Júnior (0-2 anos)',
+        origin: 'Projeto Prático',
+        location: 'Curitiba • Remoto',
+        verifiedCases: 3,
+        highlightMetric: 'Criação de Templates Editáveis no Canva para 4 Lojas Locais, Acelerando Postagens Semanais',
+        skills: ['Canva', 'Figma', 'Redes Sociais', 'Comunicação Visual', 'Criatividade'],
         avatar: 'BV',
         available: true
       },
       {
         id: 'user_4',
         name: 'Diego Nogueira',
-        headline: 'Engenheiro de Dados & IA | Pipelines Distribuídos & LLMs',
-        area: 'Tecnologia & Dados',
-        seniority: 'Pleno (3-5 anos)',
-        origin: 'Empresa Júnior / Centro Acadêmico',
-        location: 'Rio de Janeiro • Remoto',
-        verifiedCases: 2,
-        highlightMetric: 'Arquitetura de Pipeline de Dados Distribuído com Particionamento e Governança',
-        skills: ['Python', 'SQL', 'Análise de Dados', 'Engenharia de Prompt', 'Automação de Processos (No-code, Zapier, Make)'],
+        headline: 'Estudante de Administração | Pesquisa Aplicada & Análise de Clientes',
+        area: 'Negócios & Estratégia',
+        seniority: 'Estágio',
+        origin: 'Projeto Acadêmico / TCC',
+        location: 'Rio de Janeiro • Híbrido',
+        verifiedCases: 1,
+        highlightMetric: 'Diagnóstico de Atendimento com 35 Questionários e Apresentação de Plano de Melhorias no TCC',
+        skills: ['Google Forms', 'Excel Básico', 'Pesquisa de Campo', 'Relatórios Executivos', 'Foco no Cliente'],
         avatar: 'DN',
-        available: false
+        available: true
       },
       {
         id: 'user_5',
         name: 'Camila Ferreira',
-        headline: 'Desenvolvedora Full Stack Pleno | React, Node.js & TypeScript',
-        area: 'Tecnologia & Dados',
+        headline: 'Auxiliar de Recepção e Atendimento | Clínica Médica e Laboratórios',
+        area: 'Saúde & Atendimento',
         seniority: 'Júnior (0-2 anos)',
-        origin: 'Projeto Pessoal',
-        location: 'Florianópolis • Remoto',
-        verifiedCases: 3,
-        highlightMetric: 'Desenvolvimento e Entrega de MVP Full Stack Integrado com CI/CD Automatizado',
-        skills: ['JavaScript', 'SQL', 'Metodologias Ágeis (Scrum/Kanban)', 'Autonomia e Gestão de Tempo'],
+        origin: 'Mercado de Trabalho',
+        location: 'Florianópolis • Presencial',
+        verifiedCases: 2,
+        highlightMetric: 'Reformulação de Avisos de Preparo de Exames, Diminuindo Atrasos de Pacientes em 60%',
+        skills: ['Atendimento Humanizado', 'Organização de Agenda', 'WhatsApp', 'Comunicação Empática'],
         avatar: 'CF',
         available: true
       },
       {
         id: 'user_6',
         name: 'Mateus Duarte',
-        headline: 'Especialista em Estratégia & Operações de Negócios',
-        area: 'Negócios & Estratégia',
-        seniority: 'Pleno (3-5 anos)',
-        origin: 'Mercado de Trabalho',
-        location: 'São Paulo • Híbrido',
-        verifiedCases: 3,
-        highlightMetric: 'Estruturação de Planejamento Operacional e Automação de Fluxos Financeiros',
-        skills: ['Excel Avançado', 'Análise de Dados', 'Google Workspace', 'Liderança e Gestão de Equipes', 'Automação de Processos (No-code, Zapier, Make)'],
+        headline: 'Voluntário Comunitário & Apoio Operacional | Gestão de Campanhas Sociais',
+        area: 'Voluntariado & Terceiro Setor',
+        seniority: 'Júnior (0-2 anos)',
+        origin: 'Voluntariado',
+        location: 'São Paulo • Presencial',
+        verifiedCases: 2,
+        highlightMetric: 'Organização de Campanha de Agasalhos com Mobilização de Comércio Local e 150 Peças Doadas',
+        skills: ['Mobilização de Equipe', 'Logística Simples', 'Planejamento de Metas', 'Empatia'],
         avatar: 'MD',
         available: true
       },
       {
         id: 'user_7',
         name: 'Juliana Prado',
-        headline: 'Analista de People Analytics & Aquisição de Talentos',
-        area: 'Recursos Humanos & Pessoas',
+        headline: 'Assistente de Recursos Humanos | Triagem Curricular e Onboarding Inicial',
+        area: 'Recursos Humanos',
         seniority: 'Júnior (0-2 anos)',
-        origin: 'Voluntariado',
-        location: 'Campinas • Remoto',
+        origin: 'Mercado de Trabalho',
+        location: 'Campinas • Híbrido',
         verifiedCases: 2,
-        highlightMetric: 'Implementação de Seleção Baseada em Evidências e Entrevistas Estruturadas STAR',
-        skills: ['Google Workspace', 'Excel Avançado', 'Comunicação e Oratória', 'Inteligência Emocional e Adaptabilidade'],
+        highlightMetric: 'Criação de Checklist de Boas-Vindas para Novos Funcionários, Reduzindo Dúvidas no 1º Mês',
+        skills: ['Onboarding', 'Recrutamento Básico', 'Google Docs', 'Comunicação Interpessoal'],
         avatar: 'JP',
         available: true
       },
       {
         id: 'user_8',
-        name: 'Eduarda "Duda" Ramos',
-        headline: 'Assessora de Imprensa & PR | Estratégia Editorial e Relações com a Mídia',
-        area: 'Marketing & Comunicação',
+        name: 'Eduarda Ramos',
+        headline: 'Suporte ao Cliente & Pós-Venda Júnior | E-commerce e Lojas Virtuais',
+        area: 'Atendimento & E-commerce',
         seniority: 'Júnior (0-2 anos)',
         origin: 'Mercado de Trabalho',
-        location: 'São Paulo • Híbrido',
-        verifiedCases: 3,
-        highlightMetric: 'Estratégia de PR e Emplacamento de Matérias em Veículos Nacionais (Folha, G1 e Valor)',
-        skills: ['Comunicação e Oratória', 'Google Workspace', 'Design Thinking', 'Resolução de Problemas Complexos'],
+        location: 'São Paulo • Remoto',
+        verifiedCases: 2,
+        highlightMetric: 'Mapeamento de Reclamações de Rastreamento de Pedidos e Criação de Mensagem de Alerta Automático',
+        skills: ['Pós-Venda', 'Resolução de Conflitos', 'Rastreio de Pedidos', 'Paciência e Escuta'],
         avatar: 'ER',
         available: true
       }
