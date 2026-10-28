@@ -12,12 +12,12 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
   <link rel="icon" type="image/svg+xml" href="/icon.svg">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='115' ry='115' fill='%230A3273'/%3E%3Crect x='75' y='322' width='186' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Crect x='156' y='246' width='144' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Crect x='250' y='170' width='138' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Ccircle cx='330' cy='122' r='33' fill='%23FFFFFF'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='115' ry='115' fill='%230F172A'/%3E%3Crect x='75' y='322' width='186' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Crect x='156' y='246' width='144' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Crect x='250' y='170' width='138' height='42' rx='14' ry='14' fill='%23FFFFFF'/%3E%3Ccircle cx='330' cy='122' r='33' fill='%23FFFFFF'/%3E%3C/svg%3E">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   
   <!-- PWA & Mobile Web App Meta Tags with Official Logo -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0A3273">
+  <meta name="theme-color" content="#F8F9FA">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="CarreiraIA">
@@ -121,62 +121,63 @@
       color: #475569 !important; /* Contraste robusto > 4.5:1 em conformidade com WCAG */
     }
 
-    /* Em recipientes com fundo escuro (Navy / Slate 900 / 950), texto claro deve ser ultranítido */
+    .text-slate-600 {
+      color: #334155 !important; /* Contraste elevado > 5.5:1 para leitura fluida */
+    }
+
+    /* Campos de formulário com bordas e placeholders nítidos */
+    input, textarea, select {
+      color: #0F172A !important;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #64748B !important;
+      opacity: 1 !important;
+    }
+
+    /* Em recipientes com fundo escuro (quando houver), texto claro deve ser ultranítido */
     [class*="bg-slate-9"] .text-slate-400,
     [class*="bg-slate-9"] .text-slate-500,
     [class*="bg-blue-9"] .text-slate-400,
-    [class*="bg-blue-9"] .text-slate-500,
-    .dark-card .text-slate-400,
-    .dark-card .text-slate-500 {
+    [class*="bg-blue-9"] .text-slate-500 {
       color: #E2E8F0 !important;
     }
     [class*="bg-slate-9"] .text-slate-300,
-    [class*="bg-blue-9"] .text-slate-300,
-    .dark-card .text-slate-300 {
-      color: #F1F5F9 !important;
+    [class*="bg-blue-9"] .text-slate-300 {
+      color: #F8FAFC !important;
     }
     [class*="bg-slate-9"] .text-slate-200,
-    [class*="bg-blue-9"] .text-slate-200,
+    [class*="bg-blue-9"] .text-slate-200 {
+      color: #FFFFFF !important;
+    }
+
     /* ==================== PULSE FINTECH MINIMALIST INSPIRATION ==================== */
     body {
       background-color: #F8F9FA !important;
+      color: #0F172A !important;
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     }
     .pulse-card {
-      background: #FFFFFF;
-      border-radius: 28px;
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+      background: #FFFFFF !important;
+      border-radius: 28px !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .pulse-card:hover {
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
-    }
-    /* Vibrant Velvet Gradient Card (Pulse Agent Inspiration) */
-    .pulse-gradient-coral {
-      background: linear-gradient(135deg, #FF3B7A 0%, #FF655B 50%, #FF8D54 100%);
-      color: #FFFFFF;
-    }
-    /* Lavender Cyan Frosted Card (Metrics & Radar Inspiration) */
-    .pulse-gradient-lavender {
-      background: linear-gradient(135deg, #7E72F2 0%, #688BF8 50%, #46B3E6 100%);
-      color: #FFFFFF;
-    }
-    .pulse-gradient-cyan {
-      background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
-      color: #FFFFFF;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07) !important;
     }
     /* Frosted glass blur container */
     .pulse-glass {
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
     .pulse-pill {
       border-radius: 9999px;
       padding: 6px 14px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       transition: all 0.2s ease;
     }
 
@@ -200,7 +201,7 @@
       
       <!-- Brand / Logo (Left) -->
       <a href="javascript:void(0)" onclick="navigateToTab('landing')" class="flex items-center gap-2.5 shrink-0 hover:opacity-90 transition-opacity">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl overflow-hidden shadow-xs shrink-0 flex items-center justify-center bg-[#0A3273] border border-blue-950/20">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl overflow-hidden shadow-xs shrink-0 flex items-center justify-center bg-slate-900 border border-slate-800">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full p-1.5" aria-label="Logo CarreiraIA">
             <rect x="75" y="322" width="186" height="42" rx="14" ry="14" fill="#FFFFFF" />
             <rect x="156" y="246" width="144" height="42" rx="14" ry="14" fill="#FFFFFF" />
@@ -368,424 +369,386 @@
 
       </div>
 
-      <!-- ==================== PULSE BENTO PREVIEW GRID ==================== -->
-      <!-- Inspirado diretamente nos 4 blocos visuais da referência Pulse (Radar, Agente IA Coral, Métrica e STAR) -->
+      <!-- ==================== O QUE O CARREIRAIA RESOLVE & ENTREGA (PULSE BENTO GRID) ==================== -->
+      <!-- Explicação 100% intuitiva, funcional e honesta das 3 entregas e do propósito da plataforma -->
       <div id="section-bento-preview" class="max-w-5xl mx-auto space-y-4">
         
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
           
-          <!-- Widget 1: Radar de Competências (Frosted Lavender Gradient / Card de Gráficos) -->
-          <div class="md:col-span-5 pulse-card p-6 flex flex-col justify-between space-y-4 bg-white relative overflow-hidden">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                  <i data-lucide="pie-chart" class="w-4 h-4"></i>
+          <!-- Card 1: O Método (Como você preenche e estrutura) -->
+          <div class="md:col-span-5 pulse-card p-6 flex flex-col justify-between space-y-5 bg-white relative overflow-hidden">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm border border-blue-100">
+                  <i data-lucide="layers" class="w-5 h-5"></i>
                 </div>
-                <span class="text-xs font-bold text-slate-900">Radar de Habilidades</span>
+                <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">Método STAR</span>
               </div>
-              <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">Evidência Prática</span>
+              <h3 class="text-base font-extrabold text-slate-900 tracking-tight leading-snug">
+                Organização em 4 etapas objetivas
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Você insere os fatos da sua rotina sem precisar saber termos técnicos. O sistema guia sua experiência em:
+              </p>
             </div>
 
-            <!-- Mini Radar Visual SVG (Inspirado no radar chart de spend do Pulse) -->
-            <div class="p-4 rounded-2xl pulse-gradient-lavender relative shadow-sm text-white">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[11px] font-semibold text-white/80">Mix de Competências</span>
-                <span class="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-md">STAR Verificado</span>
+            <!-- Visual Flow Steps -->
+            <div class="space-y-2 pt-1">
+              <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                <span class="w-5 h-5 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">S</span>
+                <div>
+                  <strong class="text-slate-900 block font-bold text-[11px]">Situação</strong>
+                  <span class="text-slate-500 text-[11px]">O contexto inicial e o problema que existia.</span>
+                </div>
               </div>
-              <div class="py-2 flex items-center justify-center">
-                <svg viewBox="0 0 160 140" class="w-36 h-32">
-                  <!-- Hexagon rings -->
-                  <polygon points="80,10 135,42 135,98 80,130 25,98 25,42" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
-                  <polygon points="80,30 115,50 115,90 80,110 45,90 45,50" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
-                  <!-- Filled radar path representing user competencies -->
-                  <polygon points="80,22 125,48 110,88 80,105 38,82 48,46" fill="rgba(255,255,255,0.4)" stroke="#FFFFFF" stroke-width="2" />
-                  <!-- Radar points -->
-                  <circle cx="80" cy="22" r="3.5" fill="#FFFFFF" />
-                  <circle cx="125" cy="48" r="3.5" fill="#FFFFFF" />
-                  <circle cx="110" cy="88" r="3.5" fill="#FFFFFF" />
-                  <circle cx="80" cy="105" r="3.5" fill="#FFFFFF" />
-                  <circle cx="38" cy="82" r="3.5" fill="#FFFFFF" />
-                  <circle cx="48" cy="46" r="3.5" fill="#FFFFFF" />
-                </svg>
+              <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">T</span>
+                <div>
+                  <strong class="text-slate-900 block font-bold text-[11px]">Tarefa</strong>
+                  <span class="text-slate-500 text-[11px]">A meta ou objetivo que você precisava alcançar.</span>
+                </div>
               </div>
-              <div class="grid grid-cols-2 gap-1.5 text-[10px] text-white/90 pt-1 border-t border-white/20">
-                <span>• Atendimento: <strong>Avançado</strong></span>
-                <span>• WhatsApp API: <strong>Prático</strong></span>
-                <span>• Processos: <strong>Estruturado</strong></span>
-                <span>• Comunicação: <strong>Clara</strong></span>
+              <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                <span class="w-5 h-5 rounded-md bg-purple-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">A</span>
+                <div>
+                  <strong class="text-slate-900 block font-bold text-[11px]">Ação</strong>
+                  <span class="text-slate-500 text-[11px]">O que você de fato executou e as ferramentas usadas.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                <span class="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">R</span>
+                <div>
+                  <strong class="text-slate-900 block font-bold text-[11px]">Resultado</strong>
+                  <span class="text-slate-500 text-[11px]">A melhoria prática ou o aprendizado gerado.</span>
+                </div>
               </div>
             </div>
 
-            <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
-              <span>Mapeado a partir das suas ações</span>
-              <button onclick="navigateToTab('cases')" class="font-bold text-blue-600 hover:text-blue-800 text-xs">Mapear meu perfil →</button>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span>Simples e sem termos difíceis</span>
+              <button onclick="navigateToTab('cases')" class="font-bold text-blue-600 hover:text-blue-800 text-xs">Testar agora →</button>
             </div>
           </div>
 
-          <!-- Widget 2: Pulse Agent / Consultor Executivo (Coral Gradient Card da referência) -->
-          <div class="md:col-span-7 pulse-card p-6 flex flex-col justify-between space-y-4 pulse-gradient-coral text-white relative shadow-card overflow-hidden">
-            <div class="flex items-start justify-between">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 shadow-sm">
-                  <i data-lucide="compass" class="w-5 h-5"></i>
+          <!-- Card 2: As 3 Entregas Reais da Plataforma (O que o usuário recebe na hora) -->
+          <div class="md:col-span-7 pulse-card p-6 sm:p-7 flex flex-col justify-between space-y-6 bg-white border border-slate-200/90 text-slate-900 relative shadow-card overflow-hidden">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-[11px] font-bold border border-slate-200">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
+                  <span>O que a ferramenta gera para você</span>
                 </div>
-                <div>
-                  <h3 class="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
-                    Consultor de Carreira
-                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                  </h3>
-                  <p class="text-xs text-white/80">Inteligência de argumentação para entrevistas</p>
-                </div>
+                <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">100% Automático</span>
               </div>
-              <span class="text-[10px] font-bold bg-white/25 px-2.5 py-1 rounded-full text-white backdrop-blur-md border border-white/30">
-                100% Fiel aos Fatos
+              <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 pt-1">
+                A partir dos seus dados reais, você recebe 3 entregas prontas:
+              </h3>
+            </div>
+
+            <!-- The 3 Concrete Outputs (Light Minimalist Cards) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              
+              <div class="p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2 hover:bg-slate-100/70 transition-colors">
+                <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                  <i data-lucide="file-text" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-xs sm:text-sm text-slate-900">1. Estudo de Caso</h4>
+                <p class="text-[11px] text-slate-600 leading-snug">
+                  Texto executivo profissional pronto para anexar em candidaturas, portfólio online ou Notion.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2 hover:bg-slate-100/70 transition-colors">
+                <div class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
+                  <i data-lucide="share-2" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-xs sm:text-sm text-slate-900">2. Post para LinkedIn</h4>
+                <p class="text-[11px] text-slate-600 leading-snug">
+                  Publicação com narrativa clara, marcadores legíveis e chamada para engajar sua rede.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2 hover:bg-slate-100/70 transition-colors">
+                <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                  <i data-lucide="compass" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-xs sm:text-sm text-slate-900">3. Dicas de Entrevista</h4>
+                <p class="text-[11px] text-slate-600 leading-snug">
+                  Sugestões de como defender esse case e responder às perguntas dos recrutadores.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Safety & Realism Guarantee -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs text-slate-600">
+              <span class="flex items-center gap-1.5 text-[11px] font-medium text-slate-700">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+                Fidelidade total: nenhum dado ou métrica é inventado pela IA.
               </span>
-            </div>
-
-            <!-- Dialogue Quote Box (Estilo prompt do Pulse Agent) -->
-            <div class="bg-black/15 backdrop-blur-md p-4 rounded-2xl border border-white/20 space-y-2">
-              <p class="text-xs sm:text-sm font-medium text-white leading-relaxed">
-                "Você reduziu o tempo de espera no WhatsApp de 20 para 3 minutos sem gastar nada. Em entrevistas, não fale de forma genérica — cite que você mapeou as 10 dúvidas mais comuns e criou o guia oficial da equipe."
-              </p>
-              <div class="flex items-center justify-between pt-1 border-t border-white/15 text-[11px] text-white/85">
-                <span class="flex items-center gap-1">
-                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                  Zero alucinações • Apenas fatos reais
-                </span>
-                <span class="font-bold underline cursor-pointer" onclick="navigateToTab('cases')">Testar com meu case</span>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between pt-1">
-              <div class="flex items-center gap-2 text-xs font-semibold text-white/90">
-                <span class="w-2 h-2 rounded-full bg-emerald-300"></span>
-                <span>Análise de Mercado & Perguntas Comportamentais</span>
-              </div>
-              <button onclick="navigateToTab('cases')" class="h-8 px-3.5 rounded-full bg-white text-slate-900 font-bold text-xs shadow-sm hover:bg-slate-100 transition-all flex items-center gap-1 cursor-pointer">
-                <span>Gerar Conselho</span>
-                <i data-lucide="chevron-right" class="w-3 h-3 text-slate-700"></i>
+              <button onclick="navigateToTab('cases')" class="h-9 px-4 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-1.5 self-start sm:self-auto cursor-pointer">
+                <span>Criar Meu Case Grátis</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           </div>
 
         </div>
 
-        <!-- Widget 3: Impacto Concreto & Barra Mensal (Estilo Monthly Burn / Cards de Métricas do Pulse) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 3 Pilares do Problema que o CarreiraIA Resolve -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
           
-          <div class="pulse-card p-5 bg-white space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
-              <span>TEMPO DE ATENDIMENTO</span>
-              <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">-85%</span>
+          <div class="pulse-card p-5 bg-white space-y-2.5">
+            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
+              <i data-lucide="file-x" class="w-4 h-4"></i>
             </div>
-            <div class="flex items-baseline gap-2">
-              <span class="text-3xl font-extrabold text-slate-900 font-mono tracking-tight">3 min</span>
-              <span class="text-xs text-slate-400 line-through">20 min</span>
-            </div>
-            <p class="text-[11px] text-slate-500 leading-snug">Queda imediata de espera com atalhos de Respostas Rápidas.</p>
+            <h4 class="font-extrabold text-sm text-slate-900">O Problema do Currículo Tradicional</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Listas de cargos e habilidades soltas ("proativo", "organizado") não provam nada para quem contrata e são facilmente ignoradas.
+            </p>
           </div>
 
-          <div class="pulse-card p-5 bg-white space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
-              <span>CUSTO DE IMPLANTAÇÃO</span>
-              <span class="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full">Zero Reais</span>
+          <div class="pulse-card p-5 bg-white space-y-2.5">
+            <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
             </div>
-            <div class="flex items-baseline gap-2">
-              <span class="text-3xl font-extrabold text-slate-900 font-mono tracking-tight">R$ 0,00</span>
-            </div>
-            <p class="text-[11px] text-slate-500 leading-snug">Aproveitamento de ferramentas que a equipe já possuía.</p>
+            <h4 class="font-extrabold text-sm text-slate-900">A Solução por Evidência Prática</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Recrutadores priorizam quem demonstra como resolveu problemas: contexto real, método prático e impacto alcançado.
+            </p>
           </div>
 
-          <div class="pulse-card p-5 bg-white space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
-              <span>RECONHECIMENTO</span>
-              <span class="text-indigo-700 font-bold bg-indigo-50 px-2 py-0.5 rounded-full">Legado</span>
+          <div class="pulse-card p-5 bg-white space-y-2.5">
+            <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+              <i data-lucide="folder-check" class="w-4 h-4"></i>
             </div>
-            <div class="flex items-baseline gap-2">
-              <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Guia Oficial</span>
-            </div>
-            <p class="text-[11px] text-slate-500 leading-snug">Adotado pela gerência como padrão para novos contratados.</p>
+            <h4 class="font-extrabold text-sm text-slate-900">Seu Repositório Permanente de Conquistas</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Todos os seus estudos de caso ficam salvos na sua Pasta de Cases para você consultar, exportar em PDF ou usar quando surgir uma vaga.
+            </p>
           </div>
 
         </div>
 
       </div>
 
-      <!-- NOTION INTERACTIVE WORKSPACE CANVAS (O espaço de trabalho interativo do Notion) -->
-      <div id="section-interactive-canvas" class="relative max-w-5xl mx-auto rounded-3xl border border-slate-200/90 bg-white shadow-elevated overflow-hidden text-left">
+      <!-- ==================== DEMONSTRAÇÃO PRÁTICA: O FLUXO REAL DO CARREIRAIA ==================== -->
+      <!-- Visualizador interativo mostrando exatamente como o produto funciona e o que ele entrega -->
+      <div id="section-interactive-canvas" class="relative max-w-5xl mx-auto rounded-[28px] border border-slate-200/90 bg-white shadow-elevated overflow-hidden text-left">
         
-        <!-- Notion Window Title Bar (Traffic Lights + Breadcrumb + Actions) -->
-        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200/80 bg-slate-50/70">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-rose-400"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-400"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-            <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium ml-3">
-              <span>CarreiraIA</span>
+        <!-- Window Title Bar (Pulse Minimalist Style) -->
+        <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-200/80 bg-slate-50/70">
+          <div class="flex items-center gap-2.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-slate-500 font-medium ml-2">
+              <span class="font-bold text-slate-900">CarreiraIA</span>
               <span class="text-slate-300">/</span>
-              <span class="text-slate-700 font-semibold flex items-center gap-1">
-                <span>💬</span>
-                <span>Atendimento & Organização de Rotina</span>
-              </span>
+              <span class="text-slate-600 font-medium">Como Funciona a Geração na Prática</span>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-[10px] font-bold bg-amber-50 text-amber-800 px-2.5 py-0.5 rounded-md border border-amber-200/90 flex items-center gap-1">
-              <i data-lucide="sparkles" class="w-3 h-3 text-amber-600"></i> Exemplo Prático e Realista
+            <span class="text-[11px] font-bold bg-blue-50 text-blue-800 px-3 py-1 rounded-full border border-blue-200/80 flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Fiel aos seus fatos • Zero invenções</span>
             </span>
-            <button onclick="navigateToTab('cases')" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-semibold hover:bg-black transition-all">
-              <i data-lucide="sparkles" class="w-3 h-3 text-blue-400"></i>
-              <span>Novo Case</span>
-            </button>
           </div>
         </div>
 
-        <!-- Notion Page Content -->
-        <div class="p-6 sm:p-8 space-y-6">
+        <!-- Canvas Body: Explicação transparente do que você informa vs o que recebe -->
+        <div class="p-6 sm:p-8 space-y-8">
           
-          <!-- Notion Page Header with Icon & Title -->
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl shadow-2xs">
-              💬
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Processo 100% Transparente</span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-              Como criei um guia de respostas e reduzi o tempo de atendimento em uma loja de bairro
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+              Você traz os fatos da sua rotina. O CarreiraIA organiza a narrativa executiva.
             </h2>
-            <p class="text-xs sm:text-sm text-slate-500">
-              Estudo de caso no método STAR: como uma atendente de balcão e WhatsApp organizou as dúvidas mais frequentes dos clientes em um documento simples, acabando com a sobrecarga de mensagens repetitivas e agilizando as respostas da equipe.
+            <p class="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">
+              Você não precisa saber termos técnicos nem ter métricas extraordinárias. O método STAR guia suas respostas para transformar qualquer projeto acadêmico, estágio ou rotina profissional em entregas executivas claras.
             </p>
           </div>
 
-          <!-- Notion Properties Table -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-slate-100 text-xs">
-            <div class="space-y-0.5">
-              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Status</span>
-              <span class="inline-flex items-center gap-1.5 font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/80">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Concluído & Aplicado
+          <!-- Interactive Showcase: 3 Live Outputs -->
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-3">
+              <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">
+                Selecione para ver o que o sistema entrega para você:
               </span>
-            </div>
-            <div class="space-y-0.5">
-              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Metodologia</span>
-              <span class="inline-flex items-center gap-1 font-semibold text-blue-800 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200/80">
-                ⭐ Método STAR
-              </span>
-            </div>
-            <div class="space-y-0.5">
-              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Área & Posição</span>
-              <span class="font-semibold text-slate-700">🛒 Atendimento / Vendas / Suporte</span>
-            </div>
-            <div class="space-y-0.5">
-              <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Resultado Real</span>
-              <span class="font-bold text-slate-900">⏱️ Resposta de 20min para 3min</span>
-            </div>
-          </div>
-
-          <!-- Notion Callout Box with AI Consultant Feedback -->
-          <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
-            <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 text-sm font-bold shadow-xs">
-              💡
-            </div>
-            <div class="space-y-1">
-              <h4 class="text-xs font-bold text-blue-900">Por que este exemplo é poderoso em entrevistas:</h4>
-              <p class="text-xs sm:text-sm text-blue-950/90 leading-relaxed font-normal">
-                "Você não precisa ter liderado projetos milionários ou equipes de 20 pessoas para impressionar recrutadores. Este case mostra iniciativa própria: diante de uma rotina bagunçada e clientes esperando, a candidata não reclamou nem esperou ordens do chefe; ela organizou a informação, padronizou o processo e gerou alívio imediato para todo o time. É exatamente essa capacidade de resolução simples e prática que gestores procuram."
-              </p>
-            </div>
-          </div>
-
-          <!-- Notion Interactive Toggle Blocks (S - T - A - R) & Ready-to-Use Models -->
-          <div class="space-y-3">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/80 pb-2">
-              <span class="text-[11px] font-bold uppercase text-slate-500 tracking-wider">Modelos Prontos para Uso & Estrutura</span>
-              <!-- Tabs: STAR / Texto Executivo / Post LinkedIn -->
+              <!-- Tabs -->
               <div class="flex items-center bg-slate-100 p-1 rounded-xl text-xs self-start sm:self-auto">
-                <button type="button" onclick="switchLandingExampleTab('star')" id="btnLandingTabStar" class="px-3 py-1 font-bold rounded-lg bg-white text-slate-900 shadow-2xs transition-all cursor-pointer">
-                  ⭐ Estrutura STAR
+                <button type="button" onclick="switchLandingExampleTab('star')" id="btnLandingTabStar" class="px-3.5 py-1.5 font-bold rounded-lg bg-white text-slate-900 shadow-2xs transition-all cursor-pointer">
+                  1. Estrutura STAR
                 </button>
-                <button type="button" onclick="switchLandingExampleTab('portfolio')" id="btnLandingTabPortfolio" class="px-3 py-1 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer">
-                  📄 Texto Executivo
+                <button type="button" onclick="switchLandingExampleTab('portfolio')" id="btnLandingTabPortfolio" class="px-3.5 py-1.5 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer">
+                  2. Estudo de Caso
                 </button>
-                <button type="button" onclick="switchLandingExampleTab('linkedin')" id="btnLandingTabLinkedin" class="px-3 py-1 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer">
-                  📱 Post LinkedIn
+                <button type="button" onclick="switchLandingExampleTab('linkedin')" id="btnLandingTabLinkedin" class="px-3.5 py-1.5 font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all cursor-pointer">
+                  3. Post para LinkedIn
                 </button>
               </div>
             </div>
 
-            <!-- TAB 1: Estrutura STAR -->
-            <div id="landingExampleBoxStar" class="space-y-2">
-              <!-- S: Situation -->
-              <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
-                <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
-                  <span class="flex items-center gap-2">
-                    <span class="w-5 h-5 rounded-md bg-blue-100 text-blue-700 text-xs font-extrabold flex items-center justify-center">S</span>
-                    <span>Situação • O Problema do Dia a Dia</span>
-                  </span>
-                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                  Trabalhava no atendimento ao cliente de uma loja de materiais e papelaria. Todos os dias, dezenas de mensagens no WhatsApp chegavam perguntando as mesmas coisas: horário de funcionamento, formas de pagamento, disponibilidade de itens básicos e taxa de entrega. Como cada atendente respondia do seu jeito e de cabeça, as respostas demoravam mais de 20 minutos e alguns clientes desistiam da compra por demora.
-                </p>
-              </details>
+            <!-- TAB 1: A Estrutura STAR Explicada -->
+            <div id="landingExampleBoxStar" class="space-y-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">S</span>
+                    <strong class="text-xs font-bold text-slate-900">Situação (O Cenário Inicial)</strong>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Qual era o contexto do projeto ou trabalho? O que precisava de atenção ou estava gerando gargalos?
+                  </p>
+                  <span class="text-[11px] text-blue-700 font-semibold block pt-1">O que a IA faz: Organiza o contexto com clareza executiva, sem rodeios.</span>
+                </div>
 
-              <!-- T: Task -->
-              <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
-                <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
-                  <span class="flex items-center gap-2">
-                    <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-700 text-xs font-extrabold flex items-center justify-center">T</span>
-                    <span>Tarefa • O Objetivo Prático</span>
-                  </span>
-                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                  Decidi encontrar uma forma de padronizar essas respostas para que qualquer pessoa da equipe pudesse responder com rapidez e segurança, reduzindo a fila de mensagens sem precisar contratar mais ninguém nem comprar sistemas caros.
-                </p>
-              </details>
+                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-amber-500 text-white font-extrabold text-xs flex items-center justify-center">T</span>
+                    <strong class="text-xs font-bold text-slate-900">Tarefa (Sua Meta ou Desafio)</strong>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Qual era o objetivo que você precisava alcançar? O que era esperado de você ou do time?
+                  </p>
+                  <span class="text-[11px] text-amber-700 font-semibold block pt-1">O que a IA faz: Destaca sua responsabilidade e o foco prático da entrega.</span>
+                </div>
 
-              <!-- A: Action -->
-              <details open class="group rounded-xl border border-slate-200 bg-slate-50/50 p-3 sm:p-4 transition-all">
-                <summary class="font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between select-none">
-                  <span class="flex items-center gap-2">
-                    <span class="w-5 h-5 rounded-md bg-purple-100 text-purple-700 text-xs font-extrabold flex items-center justify-center">A</span>
-                    <span>Ação • O que Foi Feito na Prática</span>
-                  </span>
-                  <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="text-xs text-slate-600 mt-2.5 pl-7 leading-relaxed">
-                  1. Durante uma semana, anotei em um caderno as 10 dúvidas que mais se repetiam no balcão e no WhatsApp.
-                  <br>2. Redigi respostas curtas, gentis e diretas para cada uma delas e criei uma tabela no Google Docs e nas 'Respostas Rápidas' do próprio WhatsApp Business.
-                  <br>3. Mostrei o arquivo para os 3 colegas de equipe em 15 minutos, explicando como usar os atalhos no teclado do celular e do computador.
-                </p>
-              </details>
+                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-purple-600 text-white font-extrabold text-xs flex items-center justify-center">A</span>
+                    <strong class="text-xs font-bold text-slate-900">Ação (O que Você Executou)</strong>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Quais ferramentas você utilizou? Quais processos organizou? Que iniciativas práticas você tomou?
+                  </p>
+                  <span class="text-[11px] text-purple-700 font-semibold block pt-1">O que a IA faz: Evidencia competências técnicas e comportamentais reais.</span>
+                </div>
 
-              <!-- R: Result -->
-              <details open class="group rounded-xl border border-slate-200 bg-emerald-50/40 p-3 sm:p-4 transition-all">
-                <summary class="font-bold text-xs sm:text-sm text-emerald-950 cursor-pointer list-none flex items-center justify-between select-none">
-                  <span class="flex items-center gap-2">
-                    <span class="w-5 h-5 rounded-md bg-emerald-600 text-white text-xs font-extrabold flex items-center justify-center">R</span>
-                    <span>Resultado • A Melhoria Concreta</span>
-                  </span>
-                  <i data-lucide="chevron-down" class="w-4 h-4 text-emerald-600 group-open:rotate-180 transition-transform"></i>
-                </summary>
-                <p class="text-xs font-medium text-emerald-900 mt-2.5 pl-7 leading-relaxed">
-                  O tempo médio de primeira resposta caiu de cerca de 20 minutos para menos de 3 minutos. As reclamações por demora no WhatsApp praticamente zeraram na primeira quinzena. A dona da loja elogiou a iniciativa na reunião da equipe e passou a usar o mesmo guia para treinar novos funcionários que entravam.
-                </p>
-              </details>
+                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center">R</span>
+                    <strong class="text-xs font-bold text-slate-900">Resultado (A Conquista & Aprendizado)</strong>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Qual foi a entrega final? Se houve métricas, elas entram aqui; se não houve, o foco é a melhoria real ou o aprendizado.
+                  </p>
+                  <span class="text-[11px] text-emerald-700 font-semibold block pt-1">O que a IA faz: Conecta seu esforço ao impacto alcançado, sem exageros.</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-blue-50/50 border border-blue-200/80 flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong class="text-slate-900 font-bold block mb-0.5">Compromisso de Fidelidade Total aos Fatos:</strong>
+                  O CarreiraIA nunca insere clientes que você não mencionou, nunca inventa percentuais de crescimento e nunca adiciona ferramentas que você não usou. As sugestões de argumentação são separadas como orientações para você se defender bem em entrevistas.
+                </div>
+              </div>
             </div>
 
-            <!-- TAB 2: Texto Executivo Pronto (Portfólio / Notion) -->
+            <!-- TAB 2: Estudo de Caso Executivo -->
             <div id="landingExampleBoxPortfolio" class="hidden space-y-3 bg-slate-50/70 p-4 sm:p-6 rounded-2xl border border-slate-200 text-left">
               <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
                 <div>
-                  <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block">Texto Executivo Pronto</span>
-                  <p class="text-[11px] text-slate-500">Pronto para colocar no seu portfólio, Notion ou enviar para recrutadores.</p>
+                  <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block">Entrega 1: Estudo de Caso Executivo</span>
+                  <p class="text-[11px] text-slate-500">Documento estruturado pronto para seu portfólio, Notion ou anexo de processos seletivos.</p>
                 </div>
-                <button onclick="copyToClipboard('landingRawPortfolio', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                  <span>Copiar Estudo de Caso</span>
+                <button onclick="navigateToTab('cases')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
+                  <span>Criar Meu Estudo de Caso</span>
                 </button>
               </div>
+
               <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-white p-4 sm:p-5 rounded-xl border border-slate-200">
-                <h3 class="font-extrabold text-base text-slate-900">💬 Otimização de Atendimento: Como Criei um Guia de Respostas Rápidas e Reduzi o Tempo de Espera de 20min para 3min</h3>
-                <p><strong>Desafio Real:</strong> Em uma rotina com alto volume de mensagens no WhatsApp e atendimento presencial simultâneo, as dúvidas frequentes dos clientes demoravam mais de 20 minutos para serem respondidas, gerando insatisfação e perda de vendas.</p>
-                <p><strong>Ação Prática (Método STAR):</strong> Mapeei as 10 principais dúvidas recorrentes durante 7 dias, elaborei respostas padronizadas e objetivas e configurei o recurso nativo de Respostas Rápidas do WhatsApp Business para os 3 atendentes da loja.</p>
-                <p><strong>Impacto e Resultados:</strong></p>
-                <ul class="list-disc pl-5 space-y-1">
-                  <li><strong>Redução de 85% no tempo de espera:</strong> Atendimento inicial caiu de ~20 minutos para menos de 3 minutos.</li>
-                  <li><strong>Zero reclamações por atraso</strong> registradas nas duas semanas seguintes à implantação.</li>
-                  <li><strong>Custo financeiro: R$ 0,00</strong>, aproveitando apenas ferramentas gratuitas já disponíveis.</li>
-                  <li><strong>Adoção formal:</strong> O material foi oficializado pela gerência como roteiro de treinamento para novos contratados.</li>
-                </ul>
-                <p class="text-[11px] text-slate-500 pt-2 border-t border-slate-100"><strong>Competências Demonstradas:</strong> Organização de Processos, Foco no Cliente, Comunicação Clara, Resolução de Problemas, Proatividade.</p>
+                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Estrutura do Documento Gerado:</span>
+                  <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">Exportável em PDF</span>
+                </div>
+                
+                <div class="space-y-2 text-xs">
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">📌 Título Executivo Objetivo</strong>
+                    <span class="text-slate-500">Nome claro do projeto ou iniciativa que sintetiza a área e a entrega principal.</span>
+                  </div>
+
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">🎯 O Desafio Prático (Contexto & Meta)</strong>
+                    <span class="text-slate-500">Apresentação limpa do problema que precisava ser resolvido e a meta estabelecida.</span>
+                  </div>
+
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">⚙️ Ações e Metodologia Aplicada</strong>
+                    <span class="text-slate-500">Passo a passo organizado em tópicos claros, destacando ferramentas e iniciativas tomadas.</span>
+                  </div>
+
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">🏆 Impacto, Aprendizados e Competências Mapeadas</strong>
+                    <span class="text-slate-500">O fechamento com o resultado alcançado e as competências demonstradas na prática.</span>
+                  </div>
+                </div>
               </div>
-              <div id="landingRawPortfolio" class="hidden"># 💬 Otimização de Atendimento: Como Criei um Guia de Respostas Rápidas e Reduzi o Tempo de Espera de 20min para 3min
-
-## Desafio Real
-Em uma rotina com alto volume de mensagens no WhatsApp e atendimento presencial simultâneo, as dúvidas frequentes dos clientes demoravam mais de 20 minutos para serem respondidas, gerando insatisfação e perda de vendas.
-
-## Ação Prática (Método STAR)
-Mapeei as 10 principais dúvidas recorrentes durante 7 dias, elaborei respostas padronizadas e objetivas e configurei o recurso nativo de Respostas Rápidas do WhatsApp Business para os 3 atendentes da loja.
-
-## Impacto e Resultados
-- Redução de 85% no tempo de espera: Atendimento inicial caiu de ~20 minutos para menos de 3 minutos.
-- Zero reclamações por atraso registradas nas duas semanas seguintes à implantação.
-- Custo financeiro: R$ 0,00, aproveitando apenas ferramentas gratuitas já disponíveis.
-- Adoção formal: O material foi oficializado pela gerência como roteiro de treinamento para novos contratados.
-
-## Competências Demonstradas
-Organização de Processos, Foco no Cliente, Comunicação Clara, Resolução de Problemas, Proatividade.</div>
             </div>
 
             <!-- TAB 3: Post Pronto para o LinkedIn -->
             <div id="landingExampleBoxLinkedin" class="hidden space-y-3 bg-slate-50/70 p-4 sm:p-6 rounded-2xl border border-slate-200 text-left">
               <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
                 <div>
-                  <span class="text-xs font-bold text-[#0A66C2] uppercase tracking-wider block">Post Estruturado para LinkedIn</span>
-                  <p class="text-[11px] text-slate-500">Narrativa autêntica, humana e sem jargões corporativos forçados.</p>
+                  <span class="text-xs font-bold text-[#0A66C2] uppercase tracking-wider block">Entrega 2: Publicação Estruturada para LinkedIn</span>
+                  <p class="text-[11px] text-slate-500">Narrativa profissional autêntica, humana e sem autopromoção artificial.</p>
                 </div>
-                <button onclick="copyToClipboard('landingRawLinkedin', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                  <span>Copiar Post</span>
+                <button onclick="navigateToTab('cases')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                  <span>Testar com Meu Projeto</span>
                 </button>
               </div>
-              <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans whitespace-pre-wrap bg-white p-4 sm:p-5 rounded-xl border border-slate-200">Você não precisa de um software caro para resolver um problema que incomoda clientes todos os dias. 💡
 
-Onde eu trabalhava no atendimento, o WhatsApp vivia com dezenas de mensagens acumuladas. O motivo? Perguntas simples como 'qual o horário de funcionamento?' ou 'tem entrega para o bairro X?' eram digitadas do zero toda vez, demorando até 20 minutos para sair uma resposta.
+              <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-white p-4 sm:p-5 rounded-xl border border-slate-200">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Como o post é construído:</span>
+                  <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">1 Clique para Copiar</span>
+                </div>
+                
+                <div class="space-y-2 text-xs">
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">1. Gancho Inicial que prende a atenção</strong>
+                    <span class="text-slate-500">Uma frase introdutória sobre um desafio comum da sua área, sem frases prontas de marketing.</span>
+                  </div>
 
-Em vez de aceitar a sobrecarga diária, decidi fazer algo simples:
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">2. O Desafio e as Decisões Tomadas</strong>
+                    <span class="text-slate-500">Breve relato do problema enfrentado e como você atuou para encontrar uma solução viável.</span>
+                  </div>
 
-1️⃣ Anotei as 10 perguntas mais comuns que os clientes faziam todos os dias.
-2️⃣ Escrevi respostas claras, diretas e gentis para cada uma.
-3️⃣ Configurei atalhos de 'Respostas Rápidas' no WhatsApp para toda a equipe.
-
-O impacto foi imediato:
-✨ O tempo de resposta caiu de 20 minutos para menos de 3 minutos
-✨ As reclamações por demora zeraram na primeira quinzena
-✨ O documento virou o material oficial da loja para treinar quem entra!
-
-Aprendi que melhorar um trabalho não depende de grandes cargos, e sim de olhar para o dia a dia e se perguntar: 'como posso deixar essa rotina mais leve e eficiente para todos?'
-
-Você já criou alguma solução simples que facilitou a vida de quem trabalha com você? Conta para mim nos comentários! 👇
-
-#AtendimentoAoCliente #Organização #Iniciativa #Carreira #ProcessosSimples #TrabalhoEmEquipe</div>
-              <div id="landingRawLinkedin" class="hidden">Você não precisa de um software caro para resolver um problema que incomoda clientes todos os dias. 💡
-
-Onde eu trabalhava no atendimento, o WhatsApp vivia com dezenas de mensagens acumuladas. O motivo? Perguntas simples como 'qual o horário de funcionamento?' ou 'tem entrega para o bairro X?' eram digitadas do zero toda vez, demorando até 20 minutos para sair uma resposta.
-
-Em vez de aceitar a sobrecarga diária, decidi fazer algo simples:
-
-1️⃣ Anotei as 10 perguntas mais comuns que os clientes faziam todos os dias.
-2️⃣ Escrevi respostas claras, diretas e gentis para cada uma.
-3️⃣ Configurei atalhos de 'Respostas Rápidas' no WhatsApp para toda a equipe.
-
-O impacto foi imediato:
-✨ O tempo de resposta caiu de 20 minutos para menos de 3 minutos
-✨ As reclamações por demora zeraram na primeira quinzena
-✨ O documento virou o material oficial da loja para treinar quem entra!
-
-Aprendi que melhorar um trabalho não depende de grandes cargos, e sim de olhar para o dia a dia e se perguntar: 'como posso deixar essa rotina mais leve e eficiente para todos?'
-
-Você já criou alguma solução simples que facilitou a vida de quem trabalha com você? Conta para mim nos comentários! 👇
-
-#AtendimentoAoCliente #Organização #Iniciativa #Carreira #ProcessosSimples #TrabalhoEmEquipe</div>
+                  <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                    <strong class="text-slate-900 block font-bold text-xs">3. Lições Aprendidas & Chamada para Interação</strong>
+                    <span class="text-slate-500">Um aprendizado real compartilhado com seus pares e uma pergunta final para gerar conversas nos comentários.</span>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
 
           <!-- Bottom Workspace Toolbar Actions -->
           <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
             <div class="flex items-center gap-2">
-              <button onclick="navigateToTab('cases')" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center gap-2 shadow-xs cursor-pointer">
+              <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center gap-2 shadow-xs cursor-pointer">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
-                <span>Gerar Meu Próprio Case STAR</span>
+                <span>Preencher Meu Primeiro Case STAR</span>
               </button>
-              <button onclick="navigateToTab('network')" class="px-3.5 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
-                <i data-lucide="users" class="w-3.5 h-3.5 text-emerald-600"></i>
-                <span>Ver Radar de Talentos</span>
+              <button onclick="navigateToTab('folder')" class="px-4 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+                <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-500"></i>
+                <span>Ver Pasta de Cases</span>
               </button>
             </div>
-            <button onclick="navigateToTab('resume')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
-              <span>Abrir Currículo Vivo</span>
-              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </button>
+            <span class="text-xs text-slate-500">
+              Gratuito • Salvo com segurança no seu dispositivo
+            </span>
           </div>
 
         </div>
@@ -924,17 +887,17 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
 
         <!-- ==================== ABA 1: SE VOCÊ É CANDIDATO / PROFISSIONAL ==================== -->
         <div id="personaContentCandidate" class="space-y-6 transition-all duration-300">
-          <div class="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white p-6 sm:p-10 shadow-elevated space-y-8">
+          <div class="rounded-[28px] border border-slate-200/90 bg-white p-6 sm:p-10 shadow-card space-y-8 text-slate-900">
             
             <div class="max-w-3xl space-y-3">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-200 border border-blue-400/30 backdrop-blur-xs">
-                <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-blue-400"></i>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200/80">
+                <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-blue-600"></i>
                 <span>Para Universitários, Desenvolvedores, Designers, Jornalistas e Profissionais em Transição</span>
               </div>
-              <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 Mostre como você pensa e resolve problemas na prática — valorizando cada conquista da sua jornada.
               </h3>
-              <p class="text-xs sm:text-base text-slate-300 leading-relaxed font-normal">
+              <p class="text-xs sm:text-base text-slate-600 leading-relaxed font-normal">
                 O <strong>CarreiraIA</strong> apoia e impulsiona estudantes e profissionais a transformar projetos acadêmicos, pesquisas, TCCs, estágios, voluntariados e vivências práticas em <strong>estudos de caso estruturados no método STAR</strong>, transmitindo maturidade, método e autenticidade.
               </p>
             </div>
@@ -943,53 +906,53 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               
               <!-- Benefício 1 -->
-              <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5 backdrop-blur-xs hover:bg-white/[0.08] transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
                     🚀
                   </div>
-                  <h4 class="text-sm font-bold text-white">Valorize sua experiência real desde o início</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Valorize sua experiência real desde o início</h4>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   Suas vivências práticas na universidade, TCC, simpósios, projetos de extensão ou iniciativas comunitárias envolveram desafios reais de planejamento e execução. O método STAR impulsiona essas histórias, demonstrando capacidade de entrega e visão estratégica que o mercado valoriza.
                 </p>
               </div>
 
               <!-- Benefício 2 -->
-              <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5 backdrop-blur-xs hover:bg-white/[0.08] transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
                     🎯
                   </div>
-                  <h4 class="text-sm font-bold text-white">Visibilidade para a sua contribuição pessoal</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Visibilidade para a sua contribuição pessoal</h4>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   O método STAR impulsiona o profissional a expressar com nitidez o seu papel dentro do time. Você valoriza o esforço coletivo enquanto destaca sua contribuição pessoal, sua iniciativa e suas decisões com equilíbrio, clareza e maturidade profissional.
                 </p>
               </div>
 
               <!-- Benefício 3 -->
-              <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5 backdrop-blur-xs hover:bg-white/[0.08] transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
                     🗣️
                   </div>
-                  <h4 class="text-sm font-bold text-white">Segurança e tranquilidade em entrevistas</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Segurança e tranquilidade em entrevistas</h4>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   O CarreiraIA impulsiona sua autoconfiança para diálogos e entrevistas decisivas. Ao organizar suas vivências em blocos lógicos (Situação, Tarefa, Ação e Resultado), você compartilha suas histórias com tranquilidade, clareza e segurança profissional.
                 </p>
               </div>
 
               <!-- Benefício 4 -->
-              <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2.5 backdrop-blur-xs hover:bg-white/[0.08] transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-sm">
                     🌐
                   </div>
-                  <h4 class="text-sm font-bold text-white">Portfólio vivo e compartilhável com 1 clique</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Portfólio vivo e compartilhável com 1 clique</h4>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   Apresente suas conquistas de forma convidativa e profissional. Tenha um link executivo limpo (estilo Notion / Substack) com clippings de imprensa, links de projetos e evidências verificáveis para enriquecer seu currículo e seu perfil no LinkedIn.
                 </p>
               </div>
@@ -997,18 +960,18 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
             </div>
 
             <!-- Footer com Ação -->
-            <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div class="text-xs text-slate-300 space-y-1">
-                <p class="font-bold text-white">Pronto para transformar sua trajetória em cases de impacto?</p>
-                <p class="text-slate-400">Gratuito para começar • Consultoria executiva com inteligência artificial integrada</p>
+            <div class="pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="text-xs text-slate-600 space-y-1">
+                <p class="font-bold text-slate-900">Pronto para transformar sua trajetória em cases de impacto?</p>
+                <p class="text-slate-500">Gratuito para começar • Consultoria executiva com inteligência artificial integrada</p>
               </div>
               <div class="flex flex-wrap items-center gap-2.5">
-                <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer">
-                  <i data-lucide="sparkles" class="w-4 h-4 text-blue-600"></i>
+                <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
                   <span>Criar Meu Primeiro Case STAR</span>
                 </button>
-                <button onclick="navigateToTab('resume')" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all flex items-center gap-1.5 cursor-pointer">
-                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-300"></i>
+                <button onclick="navigateToTab('resume')" class="px-4 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs border border-slate-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs">
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
                   <span>Ver Modelo de Portfólio Vivo</span>
                 </button>
               </div>
@@ -1019,23 +982,23 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
 
         <!-- ==================== ABA 2: SE VOCÊ É RECRUTADOR / LÍDER ==================== -->
         <div id="personaContentRecruiter" class="space-y-6 hidden transition-all duration-300">
-          <div class="rounded-3xl border border-slate-700/80 bg-slate-950 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-10 shadow-elevated space-y-8" style="background-color: #0f172a; background-image: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);">
+          <div class="rounded-[28px] border border-slate-200/90 bg-white p-6 sm:p-10 shadow-card space-y-8 text-slate-900">
             
             <div class="max-w-3xl space-y-3">
               <div class="flex flex-wrap items-center gap-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/25 text-emerald-300 border border-emerald-400/40">
-                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
                   <span>100% Gratuito para Recrutadores & Líderes</span>
                 </span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-slate-200 border border-white/15">
-                  <i data-lucide="briefcase" class="w-3.5 h-3.5 text-blue-300"></i>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+                  <i data-lucide="briefcase" class="w-3.5 h-3.5 text-blue-600"></i>
                   <span>Para Tech Leads, Managers e RH Estratégico</span>
                 </span>
               </div>
-              <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 Avalie o potencial e o processo de raciocínio com agilidade, profundidade e custo zero.
               </h3>
-              <p class="text-xs sm:text-base text-slate-200 leading-relaxed font-normal">
+              <p class="text-xs sm:text-base text-slate-600 leading-relaxed font-normal">
                 O <strong>CarreiraIA</strong> é <strong>totalmente gratuito para empresas e recrutadores</strong>: explore o Radar de Talentos, analise estudos de caso com evidências reais e faça contato direto com profissionais sem mensalidades, sem comissão por contratação e sem surpresas.
               </p>
             </div>
@@ -1044,53 +1007,53 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               
               <!-- Benefício Recrutador 1 -->
-              <div class="p-5 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 backdrop-blur-xs hover:bg-white/15 transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
                     ⚡
                   </div>
-                  <h4 class="text-sm font-extrabold text-white">Triagem ágil com alto sinal de competência</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Triagem ágil com alto sinal de competência</h4>
                 </div>
-                <p class="text-xs text-slate-200 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   A estrutura padronizada STAR permite compreender rapidamente o desafio enfrentado, a iniciativa assumida pelo candidato e os caminhos escolhidos para a solução. Isso otimiza o tempo da equipe de atração e seleção, permitindo conversas muito mais ricas e produtivas na entrevista.
                 </p>
               </div>
 
               <!-- Benefício Recrutador 2 -->
-              <div class="p-5 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 backdrop-blur-xs hover:bg-white/15 transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
                     🔍
                   </div>
-                  <h4 class="text-sm font-extrabold text-white">Clareza sobre o papel e a contribuição individual</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Clareza sobre o papel e a contribuição individual</h4>
                 </div>
-                <p class="text-xs text-slate-200 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   Nossos modelos impulsionam o candidato a expressar com transparência a sua contribuição pessoal e o contexto de colaboração com a equipe. Isso proporciona à liderança uma visão clara e objetiva sobre o nível de iniciativa, maturidade e autonomia de cada profissional.
                 </p>
               </div>
 
               <!-- Benefício Recrutador 3 -->
-              <div class="p-5 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 backdrop-blur-xs hover:bg-white/15 transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
                     📊
                   </div>
-                  <h4 class="text-sm font-extrabold text-white">Menos viés e quase o dobro de validade preditiva</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Menos viés e quase o dobro de validade preditiva</h4>
                 </div>
-                <p class="text-xs text-slate-200 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   Apoiado em pesquisas empíricas de 85 anos da psicologia organizacional (Schmidt & Hunter, 1998; SHRM): avaliar o candidato por relatos comportamentais estruturados reduz vieses inconscientes e prevê com muito mais precisão o desempenho no trabalho real.
                 </p>
               </div>
 
               <!-- Benefício Recrutador 4 -->
-              <div class="p-5 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 backdrop-blur-xs hover:bg-white/15 transition-colors">
+              <div class="p-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 hover:bg-slate-100/70 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-sm">
+                  <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-sm">
                     🌐
                   </div>
-                  <h4 class="text-sm font-extrabold text-white">Radar de Talentos com acesso livre e gratuito</h4>
+                  <h4 class="text-sm font-bold text-slate-900">Radar de Talentos com acesso livre e gratuito</h4>
                 </div>
-                <p class="text-xs text-slate-200 leading-relaxed font-normal">
+                <p class="text-xs text-slate-600 leading-relaxed font-normal">
                   Navegue pela nossa base de profissionais qualificados com filtros por área (Engenharia de Software, Dados, Produto, Comunicação & PR, Jurídico) e acesse portfólios completos com links de código, relatórios e releases sem nenhum custo de assinatura ou contratação.
                 </p>
               </div>
@@ -1098,22 +1061,22 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
             </div>
 
             <!-- Footer com Ação Recrutador -->
-            <div class="pt-5 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div class="text-xs text-slate-200 space-y-1">
-                <p class="font-bold text-white flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <div class="pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="text-xs text-slate-600 space-y-1">
+                <p class="font-bold text-slate-900 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                   <span>Encontre profissionais com entregas comprovadas — 100% gratuito.</span>
                 </p>
-                <p class="text-slate-300">Cases verificados com histórico auditável, evidências e metodologia consistente.</p>
+                <p class="text-slate-500">Cases com evidências práticas e metodologia consistente.</p>
               </div>
               <div class="flex flex-wrap items-center gap-2.5">
-                <button onclick="navigateToTab('network')" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer">
-                  <i data-lucide="users" class="w-4 h-4 text-emerald-600"></i>
+                <button onclick="navigateToTab('network')" class="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+                  <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
                   <span>Explorar Radar de Talentos (Gratuito)</span>
                 </button>
-                <button onclick="navigateToTab('cases')" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/25 transition-all flex items-center gap-1.5 cursor-pointer">
-                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-300"></i>
-                  <span>Ver Modelos STAR por Área</span>
+                <button onclick="navigateToTab('cases')" class="px-4 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs border border-slate-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
+                  <span>Criar Estudo de Caso</span>
                 </button>
               </div>
             </div>
@@ -1411,19 +1374,25 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
         </div>
       </div>
 
-      <!-- NOTION STYLE BOTTOM BANNER -->
-      <div class="max-w-4xl mx-auto rounded-3xl bg-slate-900 text-white p-8 sm:p-10 text-center space-y-5 shadow-elevated">
-        <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Pronto para transformar sua carreira?</h3>
-        <p class="text-xs sm:text-base text-slate-300 max-w-xl mx-auto">
-          Crie seu portfólio executivo de cases agora mesmo e junte-se a centenas de talentos verificados.
+      <!-- LIGHT MINIMALIST BOTTOM BANNER (Pulse Style) -->
+      <div class="max-w-4xl mx-auto rounded-[28px] border border-slate-200/90 bg-white p-8 sm:p-12 text-center space-y-5 shadow-card">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200/80 mx-auto">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
+          <span>Comece em menos de 2 minutos</span>
+        </div>
+        <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Pronto para transformar sua trajetória em estudos de caso?
+        </h3>
+        <p class="text-xs sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
+          Estruture suas vivências no método STAR e tenha um repositório profissional com entregas reais para o seu portfólio, LinkedIn e entrevistas.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <button onclick="openAuthModal('register')" class="px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2 cursor-pointer">
-            <span>Comece grátis agora</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          <button onclick="navigateToTab('cases')" class="px-6 py-3 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center gap-2 cursor-pointer">
+            <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
+            <span>Criar Meu Estudo de Caso</span>
           </button>
-          <button onclick="handleDemoAccess('guest')" class="px-5 py-3 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-200 font-semibold text-xs sm:text-sm transition-all cursor-pointer">
-            Explorar como visitante
+          <button onclick="handleDemoAccess('guest')" class="px-5 py-3 rounded-full border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-2xs">
+            Testar como visitante
           </button>
         </div>
       </div>
@@ -1885,10 +1854,10 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
 
       <!-- Public Profile Header Card (LinkedIn / Twitter executive card style) -->
       <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-subtle">
-        <!-- Profile Banner -->
-        <div class="h-32 sm:h-40 bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 relative p-4 flex items-start justify-end">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 text-emerald-300 border border-emerald-400/40 backdrop-blur-md">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <!-- Profile Banner (Pulse Light Style) -->
+        <div class="h-32 sm:h-40 bg-gradient-to-r from-slate-100 via-slate-50 to-blue-50/40 border-b border-slate-200/80 relative p-4 flex items-start justify-end">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-white text-emerald-800 border border-emerald-200 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Disponível para Oportunidades
           </span>
         </div>
@@ -2575,38 +2544,37 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
         </div>
       </div>
 
-      <!-- Hero Header -->
-      <div class="p-6 sm:p-10 rounded-3xl bg-slate-950 bg-gradient-to-b from-blue-950 via-slate-900 to-slate-950 text-white shadow-elevated space-y-6 relative overflow-hidden border border-slate-800" style="background-color: #020617; background-image: linear-gradient(180deg, #0f172a 0%, #020617 100%);">
-        <div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-blue-600/20 blur-3xl pointer-events-none"></div>
+      <!-- Hero Header (Light Minimalist Pulse Style) -->
+      <div class="p-6 sm:p-10 rounded-[28px] bg-white border border-slate-200/90 text-slate-900 shadow-card space-y-6 relative overflow-hidden">
         <div class="relative z-10 space-y-3 max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-blue-500/25 border border-blue-400/40 text-blue-200">
-            <i data-lucide="award" class="w-3.5 h-3.5 text-blue-300"></i>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-50 border border-blue-200 text-blue-800">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i>
             <span>Fundamentação Baseada em Evidências e Revisão por Pares</span>
           </div>
-          <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+          <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-slate-900">
             A Base Científica por Trás do Método CarreiraIA
           </h1>
-          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl font-normal">
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl font-normal">
             Como a Psicologia Organizacional, o <em>Collective Effort Model</em> e a Avaliação Autêntica sustentam um modelo de portfólio comprovadamente preditivo, justo e que valoriza a autoria real sem tom punitivo.
           </p>
         </div>
 
         <!-- 3 Empirical Highlights -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-white/15 relative z-10">
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-1.5 backdrop-blur-xs">
-            <div class="text-lg font-black text-blue-300 font-mono">r = 0.51 vs &lt;0.15</div>
-            <div class="text-xs font-extrabold text-white">Validade Preditiva de Desempenho</div>
-            <p class="text-[11px] text-slate-200 leading-snug">Entrevistas comportamentais estruturadas (BDI/STAR) quase quadruplicam a precisão frente a currículos tradicionais (Campion et al., 1997).</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-100 relative z-10">
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-1.5">
+            <div class="text-lg font-black text-blue-700 font-mono">r = 0.51 vs &lt;0.15</div>
+            <div class="text-xs font-bold text-slate-900">Validade Preditiva de Desempenho</div>
+            <p class="text-[11px] text-slate-600 leading-snug">Entrevistas comportamentais estruturadas (BDI/STAR) quase quadruplicam a precisão frente a currículos tradicionais (Campion et al., 1997).</p>
           </div>
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-1.5 backdrop-blur-xs">
-            <div class="text-lg font-black text-emerald-300 font-mono">Anti-Social Loafing</div>
-            <div class="text-xs font-extrabold text-white">Mitigação do "Efeito Carona"</div>
-            <p class="text-[11px] text-slate-200 leading-snug">Pesquisa clássica da APA comprova que individualizar e evidenciar contribuições restaura o engajamento coletivo (Karau & Williams, 1993).</p>
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-1.5">
+            <div class="text-lg font-black text-emerald-700 font-mono">Anti-Social Loafing</div>
+            <div class="text-xs font-bold text-slate-900">Mitigação do "Efeito Carona"</div>
+            <p class="text-[11px] text-slate-600 leading-snug">Pesquisa clássica da APA comprova que individualizar e evidenciar contribuições restaura o engajamento coletivo (Karau & Williams, 1993).</p>
           </div>
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-1.5 backdrop-blur-xs">
-            <div class="text-lg font-black text-purple-300 font-mono">Artefatos Auditáveis</div>
-            <div class="text-xs font-extrabold text-white">Avaliação Autêntica & Reflexão</div>
-            <p class="text-[11px] text-slate-200 leading-snug">Evidências práticas e reflexão estruturada substituem listas vazias de habilidades abstratas (Wiggins, 1990; Schön, 1983).</p>
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-1.5">
+            <div class="text-lg font-black text-purple-700 font-mono">Artefatos Auditáveis</div>
+            <div class="text-xs font-bold text-slate-900">Avaliação Autêntica & Reflexão</div>
+            <p class="text-[11px] text-slate-600 leading-snug">Evidências práticas e reflexão estruturada substituem listas vazias de habilidades abstratas (Wiggins, 1990; Schön, 1983).</p>
           </div>
         </div>
       </div>
@@ -2731,21 +2699,22 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
         </div>
       </div>
 
-      <!-- MÓDULO SCISPACE & PROMPTS DE PESQUISA -->
-      <div class="p-6 sm:p-8 rounded-3xl bg-slate-950 bg-gradient-to-br from-slate-900 to-blue-950 text-white shadow-elevated space-y-6 border border-slate-800" style="background-color: #020617; background-image: linear-gradient(135deg, #0f172a 0%, #082f49 100%);">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/15 pb-4">
+      <!-- MÓDULO SCISPACE & PROMPTS DE PESQUISA (Pulse Light Style) -->
+      <div class="p-6 sm:p-8 rounded-[28px] bg-white border border-slate-200/90 text-slate-900 shadow-card space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div class="space-y-1">
-            <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-500/25 text-blue-200 text-xs font-bold border border-blue-400/30">
-              <i data-lucide="search" class="w-3.5 h-3.5"></i> Validação no SciSpace (typeset.io / scispace.com)
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-800 text-xs font-semibold border border-blue-200/80">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Validação no SciSpace (typeset.io / scispace.com)</span>
             </div>
-            <h3 class="text-lg sm:text-xl font-extrabold text-white">Como validar este método no SciSpace agora mesmo</h3>
-            <p class="text-xs text-slate-200 max-w-xl font-normal leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">Como validar este método no SciSpace agora mesmo</h3>
+            <p class="text-xs text-slate-600 max-w-xl font-normal leading-relaxed">
               O SciSpace indexa mais de 300 milhões de artigos científicos. Copie e cole os prompts acadêmicos abaixo no SciSpace para checar a literatura e extrair citações completas:
             </p>
           </div>
-          <a href="https://scispace.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/30 text-white text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 self-start sm:self-auto shadow-xs">
+          <a href="https://scispace.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 self-start sm:self-auto shadow-2xs">
             <span>Abrir SciSpace</span>
-            <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-200"></i>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
           </a>
         </div>
 
@@ -2753,56 +2722,56 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           
           <!-- Prompt 1 -->
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 flex flex-col justify-between backdrop-blur-xs">
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 flex flex-col justify-between">
             <div class="space-y-1.5">
-              <span class="text-[11px] font-extrabold text-blue-300 uppercase tracking-wider block">Prompt 1 • Validade STAR & BDI</span>
-              <p class="text-xs text-white font-mono leading-relaxed bg-black/50 p-3 rounded-xl border border-white/20 select-all font-medium">
+              <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Prompt 1 • Validade STAR & BDI</span>
+              <p class="text-xs text-slate-800 font-mono leading-relaxed bg-white p-3 rounded-xl border border-slate-200 select-all font-medium">
                 "How does the STAR methodology and structured behavioral interviewing predict job performance and reduce bias compared to traditional resumes? (Campion et al., 1997)"
               </p>
             </div>
-            <button onclick="copyToClipboardText(this, 'How does the STAR methodology and structured behavioral interviewing predict job performance and reduce bias compared to traditional resumes? (Campion et al., 1997)')" class="mt-2 w-full py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/20">
+            <button onclick="copyToClipboardText(this, 'How does the STAR methodology and structured behavioral interviewing predict job performance and reduce bias compared to traditional resumes? (Campion et al., 1997)')" class="mt-2 w-full py-2 rounded-full bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span>Copiar Prompt para SciSpace</span>
             </button>
           </div>
 
           <!-- Prompt 2 -->
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 flex flex-col justify-between backdrop-blur-xs">
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 flex flex-col justify-between">
             <div class="space-y-1.5">
-              <span class="text-[11px] font-extrabold text-emerald-300 uppercase tracking-wider block">Prompt 2 • Mitigação do Efeito Carona</span>
-              <p class="text-xs text-white font-mono leading-relaxed bg-black/50 p-3 rounded-xl border border-white/20 select-all font-medium">
+              <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Prompt 2 • Mitigação do Efeito Carona</span>
+              <p class="text-xs text-slate-800 font-mono leading-relaxed bg-white p-3 rounded-xl border border-slate-200 select-all font-medium">
                 "What are the effects of individual accountability and identifiable contributions on social loafing in team projects according to Karau and Williams' Collective Effort Model?"
               </p>
             </div>
-            <button onclick="copyToClipboardText(this, 'What are the effects of individual accountability and identifiable contributions on social loafing in team projects according to Karau and Williams\' Collective Effort Model?')" class="mt-2 w-full py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/20">
+            <button onclick="copyToClipboardText(this, 'What are the effects of individual accountability and identifiable contributions on social loafing in team projects according to Karau and Williams\' Collective Effort Model?')" class="mt-2 w-full py-2 rounded-full bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span>Copiar Prompt para SciSpace</span>
             </button>
           </div>
 
           <!-- Prompt 3 -->
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 flex flex-col justify-between backdrop-blur-xs">
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 flex flex-col justify-between">
             <div class="space-y-1.5">
-              <span class="text-[11px] font-extrabold text-purple-300 uppercase tracking-wider block">Prompt 3 • Portfólio & Transição de Carreira</span>
-              <p class="text-xs text-white font-mono leading-relaxed bg-black/50 p-3 rounded-xl border border-white/20 select-all font-medium">
+              <span class="text-[11px] font-bold text-purple-700 uppercase tracking-wider block">Prompt 3 • Portfólio & Transição de Carreira</span>
+              <p class="text-xs text-slate-800 font-mono leading-relaxed bg-white p-3 rounded-xl border border-slate-200 select-all font-medium">
                 "How do evidence-based reflection portfolios improve early-career transitions and employability for university students? (Wiggins, 1990)"
               </p>
             </div>
-            <button onclick="copyToClipboardText(this, 'How do evidence-based reflection portfolios improve early-career transitions and employability for university students? (Wiggins, 1990)')" class="mt-2 w-full py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/20">
+            <button onclick="copyToClipboardText(this, 'How do evidence-based reflection portfolios improve early-career transitions and employability for university students? (Wiggins, 1990)')" class="mt-2 w-full py-2 rounded-full bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span>Copiar Prompt para SciSpace</span>
             </button>
           </div>
 
           <!-- Prompt 4 -->
-          <div class="p-4 rounded-2xl bg-white/10 border border-white/20 space-y-2.5 flex flex-col justify-between backdrop-blur-xs">
+          <div class="p-4 rounded-2xl bg-slate-50/90 border border-slate-200/80 space-y-2.5 flex flex-col justify-between">
             <div class="space-y-1.5">
-              <span class="text-[11px] font-extrabold text-amber-300 uppercase tracking-wider block">Prompt 4 • IA e Preservação de Autoria</span>
-              <p class="text-xs text-white font-mono leading-relaxed bg-black/50 p-3 rounded-xl border border-white/20 select-all font-medium">
+              <span class="text-[11px] font-bold text-amber-700 uppercase tracking-wider block">Prompt 4 • IA e Preservação de Autoria</span>
+              <p class="text-xs text-slate-800 font-mono leading-relaxed bg-white p-3 rounded-xl border border-slate-200 select-all font-medium">
                 "How can generative AI support structured competency reflection without replacing authentic author voice and ethical agency?"
               </p>
             </div>
-            <button onclick="copyToClipboardText(this, 'How can generative AI support structured competency reflection without replacing authentic author voice and ethical agency?')" class="mt-2 w-full py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/20">
+            <button onclick="copyToClipboardText(this, 'How can generative AI support structured competency reflection without replacing authentic author voice and ethical agency?')" class="mt-2 w-full py-2 rounded-full bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span>Copiar Prompt para SciSpace</span>
             </button>
@@ -2835,18 +2804,18 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
         </div>
       </div>
 
-      <!-- Bottom Banner CTA -->
-      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <!-- Bottom Banner CTA (Pulse Light Style) -->
+      <div class="p-6 sm:p-8 rounded-[28px] bg-white border border-slate-200/90 text-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-card">
         <div class="space-y-1">
-          <h4 class="font-extrabold text-base sm:text-lg text-white">Pronto para colocar a ciência a favor da sua carreira?</h4>
-          <p class="text-xs text-slate-300">Estruture o seu primeiro estudo de caso com evidências auditáveis hoje mesmo.</p>
+          <h4 class="font-extrabold text-base sm:text-lg text-slate-900">Pronto para colocar a ciência a favor da sua carreira?</h4>
+          <p class="text-xs text-slate-600">Estruture o seu primeiro estudo de caso com evidências auditáveis hoje mesmo.</p>
         </div>
         <div class="flex items-center gap-2.5 shrink-0">
-          <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
             <span>Ir para o Gerador STAR</span>
           </button>
-          <button onclick="navigateToTab('network')" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/20 transition-all cursor-pointer">
+          <button onclick="navigateToTab('network')" class="px-4 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold border border-slate-300 transition-all cursor-pointer shadow-2xs">
             Radar de Talentos
           </button>
         </div>
@@ -2903,7 +2872,7 @@ Você já criou alguma solução simples que facilitou a vida de quem trabalha c
       <!-- 3. Logo & Copyright -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 text-xs text-slate-500 pt-5 border-t border-slate-100 max-w-4xl mx-auto">
         <div class="flex items-center gap-2 font-bold text-slate-900">
-          <div class="w-5 h-5 rounded-md bg-[#0A3273] flex items-center justify-center text-white text-[10px] font-black shadow-2xs">
+          <div class="w-5 h-5 rounded-md bg-slate-900 flex items-center justify-center text-white text-[10px] font-black shadow-2xs">
             C
           </div>
           <span>Carreira<span class="text-blue-600">IA</span></span>
