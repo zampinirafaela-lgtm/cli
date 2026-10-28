@@ -208,19 +208,12 @@
       background-color: #2563EB !important;
     }
 
-    /* ==================== AMBIENT PRISMATIC CANVAS (The Software House Ref) ==================== */
+    /* ==================== AMBIENT PRISMATIC CANVAS (FULL-SCREEN ARCHITECTURE) ==================== */
     .prismatic-hero-canvas {
       position: relative;
-      background: radial-gradient(125% 120% at 5% 0%, #FFF7ED 0%, #FAFAF9 45%, #EFF6FF 100%);
-      border: 1px solid rgba(226, 232, 240, 0.85);
-      border-radius: 28px;
+      background: radial-gradient(130% 120% at 5% 0%, #FFF7ED 0%, #FAFAF9 45%, #EFF6FF 100%);
       overflow: hidden;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
-    }
-    @media (min-width: 640px) {
-      .prismatic-hero-canvas {
-        border-radius: 36px;
-      }
+      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
     }
 
     /* Vertical translucent geometric slabs/prisms */
@@ -388,13 +381,13 @@
   </div>
 
   <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-8 mobile-safe-bottom">
+  <main class="flex-1 w-full mobile-safe-bottom">
 
-    <!-- ==================== VIEW 0: LANDING PAGE (PULSE FINTECH INSPIRATION) ==================== -->
-    <section id="view-landing" class="space-y-12 sm:space-y-16 py-4 sm:py-8">
+    <!-- ==================== VIEW 0: LANDING PAGE (FULL-SCREEN PRISMATIC ARCHITECTURE) ==================== -->
+    <section id="view-landing" class="w-full">
       
-      <!-- ==================== HERO PRINCIPAL (AMBIENT PRISMATIC ARCHITECTURE) ==================== -->
-      <div class="prismatic-hero-canvas p-6 sm:p-10 md:p-14 lg:p-16 mb-8 sm:mb-12">
+      <!-- ==================== HERO PRINCIPAL (AMBIENT PRISMATIC ARCHITECTURE - FULL SCREEN) ==================== -->
+      <div class="prismatic-hero-canvas w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-12 sm:py-20 relative border-b border-slate-200/80">
         
         <!-- Architectural Translucent Slabs / Prisms (Background Elements from Reference) -->
         <div class="prismatic-slab slab-amber-1"></div>
@@ -404,30 +397,26 @@
         <div class="prismatic-slab slab-blue-2"></div>
 
         <!-- Foreground Content Layer -->
-        <div class="relative z-10 max-w-5xl space-y-7 sm:space-y-9">
+        <div class="relative z-10 max-w-6xl mx-auto w-full space-y-8 sm:space-y-10">
           
           <!-- Top Category / Editorial Meta -->
           <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/85 border border-slate-200/90 shadow-2xs backdrop-blur-md">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200/90 shadow-2xs backdrop-blur-md">
               <span class="w-2 h-2 rounded-full bg-amber-500"></span>
               <span class="font-semibold text-slate-800">Portfólio de Cases & Método STAR</span>
             </div>
-            <div class="inline-flex items-center gap-2 text-slate-600 font-medium text-xs bg-white/60 px-3 py-1 rounded-full border border-slate-200/60 backdrop-blur-sm">
-              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
-              <span>100% ancorado em fatos reais • Zero alucinações</span>
-            </div>
           </div>
 
-          <!-- Headline (Uniform Solid Charcoal/Graphite - No Split Blue Sensationalism) -->
-          <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+          <!-- Headline (Uniform Solid Charcoal/Graphite - Clean & Prestigious) -->
+          <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] max-w-5xl">
             Transforme sua trajetória em resultados que o mercado reconhece
           </h1>
 
-          <!-- Editorial Two-Part Value Statement (Matching Reference Layout) -->
-          <div class="grid grid-cols-1 md:grid-cols-11 gap-4 sm:gap-6 pt-1 max-w-4xl text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+          <!-- Editorial Two-Part Value Statement (Matching Reference Layout - 100% Positive) -->
+          <div class="grid grid-cols-1 md:grid-cols-11 gap-4 sm:gap-8 pt-1 max-w-4xl text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed font-normal">
             <div class="md:col-span-5">
               <p>
-                Estruture projetos reais, pesquisas, iniciativas acadêmicas e histórico de atuação com o <strong>Método STAR</strong>, gerando estudos de caso para portfólio e publicações executivas para o LinkedIn.
+                Estruture projetos reais, pesquisas, iniciativas acadêmicas e histórico de atuação com o <strong>Método STAR</strong> e inteligência artificial especializada.
               </p>
             </div>
             <div class="hidden md:flex md:col-span-1 items-center justify-center text-slate-400">
@@ -435,23 +424,23 @@
             </div>
             <div class="md:col-span-5">
               <p>
-                Sem inventar dados, cargos fictícios ou métricas artificiais. O foco é valorizar com precisão e clareza o impacto que você verdadeiramente entregou na prática.
+                Gere estudos de caso executivos para portfólio, publicações de alto impacto para o LinkedIn e destaque suas competências com máxima clareza.
               </p>
             </div>
           </div>
 
           <!-- Action Controls & Access Hub -->
           <div class="pt-2 sm:pt-4 space-y-4">
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <button onclick="navigateToTab('cases')" class="h-12 px-7 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-sm shadow-card transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              <button onclick="navigateToTab('cases')" class="h-12 sm:h-13 px-8 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-sm sm:text-base shadow-card transition-all flex items-center justify-center gap-2.5 cursor-pointer">
                 <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
                 <span>Começar Estudo de Caso</span>
               </button>
-              <button onclick="scrollToLandingSection('section-bento-preview')" class="h-12 px-6 rounded-xl bg-white/85 hover:bg-white border border-slate-200 text-slate-800 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-2xs backdrop-blur-md cursor-pointer">
+              <button onclick="scrollToLandingSection('section-bento-preview')" class="h-12 sm:h-13 px-7 rounded-xl bg-white/90 hover:bg-white border border-slate-200 text-slate-800 font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2 shadow-2xs backdrop-blur-md cursor-pointer">
                 <i data-lucide="play-circle" class="w-4 h-4 text-slate-600"></i>
                 <span>Ver Demonstração Interativa</span>
               </button>
-              <button onclick="handleDemoAccess('guest')" class="h-12 px-4 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-1 cursor-pointer">
+              <button onclick="handleDemoAccess('guest')" class="h-12 sm:h-13 px-5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-1 cursor-pointer">
                 <span>Testar como visitante</span>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
               </button>
@@ -476,9 +465,12 @@
 
       </div>
 
-      <!-- ==================== O QUE O CARREIRAIA RESOLVE & ENTREGA (PULSE BENTO GRID) ==================== -->
-      <!-- Explicação 100% intuitiva, funcional e honesta das 3 entregas e do propósito da plataforma -->
-      <div id="section-bento-preview" class="max-w-5xl mx-auto space-y-4">
+      <!-- Rest of Landing Page Content (Centered in max-w-6xl container) -->
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-14 sm:space-y-20 py-12 sm:py-20">
+
+        <!-- ==================== O QUE O CARREIRAIA RESOLVE & ENTREGA (PULSE BENTO GRID) ==================== -->
+        <!-- Explicação 100% intuitiva, funcional e honesta das 3 entregas e do propósito da plataforma -->
+        <div id="section-bento-preview" class="space-y-4">
         
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
           
@@ -590,8 +582,8 @@
             <!-- Safety & Realism Guarantee -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs text-slate-600">
               <span class="flex items-center gap-1.5 text-[11px] font-medium text-slate-700">
-                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
-                Fidelidade total: nenhum dado ou métrica é inventado pela IA.
+                <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+                Qualidade executiva: narrativa profissional pronta para portfólio e entrevistas.
               </span>
               <button onclick="navigateToTab('cases')" class="h-9 px-4 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-1.5 self-start sm:self-auto cursor-pointer">
                 <span>Criar Meu Case Grátis</span>
@@ -659,8 +651,8 @@
           </div>
           <div class="flex items-center gap-2">
             <span class="text-[11px] font-bold bg-blue-50 text-blue-800 px-3 py-1 rounded-full border border-blue-200/80 flex items-center gap-1.5">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600"></i>
-              <span>Fiel aos seus fatos • Zero invenções</span>
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Metodologia Executiva • Alto Impacto</span>
             </span>
           </div>
         </div>
@@ -1504,10 +1496,12 @@
         </div>
       </div>
 
+      </div> <!-- /Rest of Landing Page Content wrapper -->
+
     </section>
 
     <!-- ==================== VIEW 1: CASES STAR (?tab=cases) ==================== -->
-    <section id="view-cases" class="hidden space-y-6">
+    <section id="view-cases" class="hidden space-y-6 max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       
       <!-- Top Title Bar with Quick Actions -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
@@ -1882,7 +1876,7 @@
     </section>
 
     <!-- ==================== VIEW: PASTA DE CASES (?tab=folder) ==================== -->
-    <section id="view-folder" class="hidden space-y-6">
+    <section id="view-folder" class="hidden space-y-6 max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       
       <!-- Top Title Bar with Folder Stats & Actions -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
@@ -1961,7 +1955,7 @@
     </section>
 
     <!-- ==================== VIEW 2: RESUME LIVE (?tab=resume) ==================== -->
-    <section id="view-resume" class="hidden space-y-6">
+    <section id="view-resume" class="hidden space-y-6 max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       
       <!-- Top Title Bar -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
@@ -2045,7 +2039,7 @@
     </section>
 
     <!-- ==================== VIEW: MEU PERFIL PÚBLICO (?tab=profile) ==================== -->
-    <section id="view-profile" class="hidden space-y-6">
+    <section id="view-profile" class="hidden space-y-6 max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       
       <!-- Top Title Bar with Preview Action -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
@@ -2346,7 +2340,7 @@
     </section>
 
     <!-- ==================== VIEW: REDE & RECRUTADORES (?tab=network) ==================== -->
-    <section id="view-network" class="hidden space-y-6">
+    <section id="view-network" class="hidden space-y-6 max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       
       <!-- Top Title Bar -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
@@ -2434,7 +2428,7 @@
     </section>
 
     <!-- ==================== VIEW 3: SETTINGS (?tab=settings) ==================== -->
-    <section id="view-settings" class="hidden space-y-6">
+    <section id="view-settings" class="hidden space-y-6 max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       
       <div class="flex items-center justify-between pb-2 border-b border-slate-200">
         <div>
