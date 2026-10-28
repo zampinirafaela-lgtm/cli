@@ -181,6 +181,87 @@
       transition: all 0.2s ease;
     }
 
+    /* Animação para destaque de campos preenchidos via Áudio / IA */
+    @keyframes starFieldHighlight {
+      0% {
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+        border-color: #2563EB;
+        background-color: #EFF6FF;
+      }
+      50% {
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
+        border-color: #10B981;
+        background-color: #ECFDF5;
+      }
+      100% {
+        box-shadow: none;
+        border-color: #E2E8F0;
+        background-color: rgba(248, 250, 252, 0.5);
+      }
+    }
+    .star-highlight-pulse {
+      animation: starFieldHighlight 2.2s ease-out;
+    }
+
+    /* Animação e estado das barras do equalizador de áudio */
+    .audio-bar-recording {
+      background-color: #2563EB !important;
+    }
+
+    /* ==================== AMBIENT PRISMATIC CANVAS (The Software House Ref) ==================== */
+    .prismatic-hero-canvas {
+      position: relative;
+      background: radial-gradient(125% 120% at 5% 0%, #FFF7ED 0%, #FAFAF9 45%, #EFF6FF 100%);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+    @media (min-width: 640px) {
+      .prismatic-hero-canvas {
+        border-radius: 36px;
+      }
+    }
+
+    /* Vertical translucent geometric slabs/prisms */
+    .prismatic-slab {
+      position: absolute;
+      top: -20%;
+      bottom: -20%;
+      pointer-events: none;
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
+      transform: skewX(-14deg);
+      border-left: 1px solid rgba(255, 255, 255, 0.75);
+      border-right: 1px solid rgba(255, 255, 255, 0.35);
+      transition: all 0.5s ease;
+    }
+    .slab-amber-1 {
+      left: 4%;
+      width: 15%;
+      background: linear-gradient(180deg, rgba(254, 243, 199, 0.5) 0%, rgba(253, 230, 138, 0.28) 45%, rgba(255, 255, 255, 0) 100%);
+    }
+    .slab-amber-2 {
+      left: 16%;
+      width: 18%;
+      background: linear-gradient(180deg, rgba(253, 230, 138, 0.38) 0%, rgba(252, 211, 77, 0.18) 55%, rgba(255, 255, 255, 0) 100%);
+    }
+    .slab-violet {
+      left: 36%;
+      width: 17%;
+      background: linear-gradient(180deg, rgba(238, 242, 255, 0.45) 0%, rgba(199, 210, 254, 0.22) 60%, rgba(255, 255, 255, 0) 100%);
+    }
+    .slab-blue-1 {
+      left: 52%;
+      width: 20%;
+      background: linear-gradient(180deg, rgba(224, 242, 254, 0.55) 0%, rgba(186, 230, 253, 0.3) 65%, rgba(255, 255, 255, 0) 100%);
+    }
+    .slab-blue-2 {
+      left: 71%;
+      width: 24%;
+      background: linear-gradient(180deg, rgba(219, 234, 254, 0.6) 0%, rgba(147, 197, 253, 0.35) 75%, rgba(255, 255, 255, 0.05) 100%);
+    }
+
     /* Enquadramento e ajuste responsivo para smartphones */
     html, body {
       max-width: 100vw;
@@ -209,7 +290,7 @@
             <circle cx="330" cy="122" r="33" fill="#FFFFFF" />
           </svg>
         </div>
-        <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">Carreira<span class="text-blue-600">IA</span></span>
+        <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">CarreiraIA</span>
       </a>
 
       <!-- 1. PUBLIC VISITOR NAV (Floating Pill Bar inspired by Pulse) -->
@@ -312,59 +393,85 @@
     <!-- ==================== VIEW 0: LANDING PAGE (PULSE FINTECH INSPIRATION) ==================== -->
     <section id="view-landing" class="space-y-12 sm:space-y-16 py-4 sm:py-8">
       
-      <!-- HERO PRINCIPAL (Inspirado na elegância minimalista da referência Pulse) -->
-      <div class="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8">
+      <!-- ==================== HERO PRINCIPAL (AMBIENT PRISMATIC ARCHITECTURE) ==================== -->
+      <div class="prismatic-hero-canvas p-6 sm:p-10 md:p-14 lg:p-16 mb-8 sm:mb-12">
         
-        <!-- Pulse-style Pill Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-800 border border-slate-200 shadow-xs hover:border-slate-300 transition-all cursor-pointer" onclick="openAuthModal('register')">
-          <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-          <span>CarreiraIA • Comprove seu valor prático para o mercado</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-400"></i>
-        </div>
+        <!-- Architectural Translucent Slabs / Prisms (Background Elements from Reference) -->
+        <div class="prismatic-slab slab-amber-1"></div>
+        <div class="prismatic-slab slab-amber-2"></div>
+        <div class="prismatic-slab slab-violet"></div>
+        <div class="prismatic-slab slab-blue-1"></div>
+        <div class="prismatic-slab slab-blue-2"></div>
 
-        <!-- Huge Headline (Mantida exatamente a frase preferida pela usuária) -->
-        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.12] sm:leading-[1.08] px-2 sm:px-0">
-          Transforme sua trajetória em resultados que o mercado reconhece.<br class="hidden sm:inline" />
-          <span class="inline-block mt-2 sm:mt-2.5">
-            Destaque-se com <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">estudos de caso práticos</span>.
-          </span>
-        </h1>
-
-        <!-- Subtitle claro, sofisticado e legível -->
-        <p class="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed px-2 sm:px-0">
-          Esqueça currículos genéricos e suposições. Transforme projetos reais, pesquisas, iniciativas e histórico profissional em <strong>estudos de caso estruturados (método STAR)</strong> — com diagnósticos estratégicos de IA e visibilidade em um radar de talentos verificado.
-        </p>
-
-        <!-- Pulse-style Action Hub (Sleek Black Pill Button + Minimalist Outline Secondary) -->
-        <div class="max-w-lg mx-auto space-y-4 pt-1">
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onclick="navigateToTab('cases')" class="w-full sm:w-auto h-12 px-7 rounded-full bg-slate-900 hover:bg-black active:scale-[0.98] text-white font-bold text-sm shadow-subtle transition-all flex items-center justify-center gap-2 cursor-pointer">
-              <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
-              <span>Começar Novo Estudo de Caso</span>
-            </button>
-            <button onclick="scrollToLandingSection('section-bento-preview')" class="w-full sm:w-auto h-12 px-6 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-2xs cursor-pointer">
-              <i data-lucide="play-circle" class="w-4 h-4 text-slate-500"></i>
-              <span>Ver Demonstração Interativa</span>
-            </button>
+        <!-- Foreground Content Layer -->
+        <div class="relative z-10 max-w-5xl space-y-7 sm:space-y-9">
+          
+          <!-- Top Category / Editorial Meta -->
+          <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/85 border border-slate-200/90 shadow-2xs backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span class="font-semibold text-slate-800">Portfólio de Cases & Método STAR</span>
+            </div>
+            <div class="inline-flex items-center gap-2 text-slate-600 font-medium text-xs bg-white/60 px-3 py-1 rounded-full border border-slate-200/60 backdrop-blur-sm">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+              <span>100% ancorado em fatos reais • Zero alucinações</span>
+            </div>
           </div>
 
-          <!-- Social Quick Access Pills -->
-          <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
-            <span class="text-[11px] text-slate-400 font-medium mr-1">Ou acesse com:</span>
-            <button type="button" onclick="handleSocialLogin('Google')" class="px-3 py-1 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-              <span>Google</span>
-            </button>
-            <button type="button" onclick="handleSocialLogin('LinkedIn')" class="px-3 py-1 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-all">
-              <svg class="w-3.5 h-3.5 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              <span>LinkedIn</span>
-            </button>
-            <button type="button" onclick="handleDemoAccess('guest')" class="px-3 py-1 rounded-full text-slate-600 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 transition-all">
-              <span>Testar como visitante</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
-            </button>
+          <!-- Headline (Uniform Solid Charcoal/Graphite - No Split Blue Sensationalism) -->
+          <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+            Transforme sua trajetória em resultados que o mercado reconhece
+          </h1>
+
+          <!-- Editorial Two-Part Value Statement (Matching Reference Layout) -->
+          <div class="grid grid-cols-1 md:grid-cols-11 gap-4 sm:gap-6 pt-1 max-w-4xl text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+            <div class="md:col-span-5">
+              <p>
+                Estruture projetos reais, pesquisas, iniciativas acadêmicas e histórico de atuação com o <strong>Método STAR</strong>, gerando estudos de caso para portfólio e publicações executivas para o LinkedIn.
+              </p>
+            </div>
+            <div class="hidden md:flex md:col-span-1 items-center justify-center text-slate-400">
+              <i data-lucide="arrow-right" class="w-5 h-5 text-slate-700"></i>
+            </div>
+            <div class="md:col-span-5">
+              <p>
+                Sem inventar dados, cargos fictícios ou métricas artificiais. O foco é valorizar com precisão e clareza o impacto que você verdadeiramente entregou na prática.
+              </p>
+            </div>
           </div>
-          <p class="text-[11px] text-slate-400">100% Gratuito • Sem necessidade de cartão</p>
+
+          <!-- Action Controls & Access Hub -->
+          <div class="pt-2 sm:pt-4 space-y-4">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <button onclick="navigateToTab('cases')" class="h-12 px-7 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-sm shadow-card transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+                <span>Começar Estudo de Caso</span>
+              </button>
+              <button onclick="scrollToLandingSection('section-bento-preview')" class="h-12 px-6 rounded-xl bg-white/85 hover:bg-white border border-slate-200 text-slate-800 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-2xs backdrop-blur-md cursor-pointer">
+                <i data-lucide="play-circle" class="w-4 h-4 text-slate-600"></i>
+                <span>Ver Demonstração Interativa</span>
+              </button>
+              <button onclick="handleDemoAccess('guest')" class="h-12 px-4 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-1 cursor-pointer">
+                <span>Testar como visitante</span>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              </button>
+            </div>
+
+            <!-- Social Logins Row -->
+            <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-1">
+              <span class="text-[11px] text-slate-500 font-medium mr-1">Ou acesse com:</span>
+              <button type="button" onclick="handleSocialLogin('Google')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white/90 hover:bg-white text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs backdrop-blur-sm transition-all cursor-pointer">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                <span>Google</span>
+              </button>
+              <button type="button" onclick="handleSocialLogin('LinkedIn')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white/90 hover:bg-white text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs backdrop-blur-sm transition-all cursor-pointer">
+                <svg class="w-3.5 h-3.5 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
+              </button>
+              <span class="text-[11px] text-slate-400 ml-2">100% Gratuito</span>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -1411,7 +1518,11 @@
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Cases de Carreira</h1>
           <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Estruture projetos, pesquisas, TCCs e voluntariados em estudos de caso com impacto corporativo para portfólio e LinkedIn.</p>
         </div>
-        <div class="flex items-center gap-2 self-start sm:self-auto">
+        <div class="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+          <button onclick="toggleStarAudioRecorder()" id="btnToggleAudioRecorder" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 shadow-subtle transition-all cursor-pointer">
+            <i data-lucide="mic" class="w-3.5 h-3.5 text-blue-600"></i>
+            <span>Gravar Áudio (IA)</span>
+          </button>
           <button onclick="loadStarSample()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all">
             <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
             Carregar Exemplo
@@ -1420,6 +1531,111 @@
             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
             Limpar
           </button>
+        </div>
+      </div>
+
+      <!-- ==================== GRAVADOR DE VOZ & ESTRUTURADOR STAR (IA) ==================== -->
+      <div id="starAudioRecorderCard" class="bg-white rounded-2xl sm:rounded-[24px] border border-blue-100 bg-gradient-to-b from-blue-50/40 to-white p-5 sm:p-6 shadow-card space-y-4 transition-all">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div id="audioMicIconBox" class="w-10 h-10 rounded-2xl bg-blue-100/80 border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 shadow-xs transition-all">
+              <i data-lucide="mic" id="audioMicIcon" class="w-5 h-5 text-blue-600"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">Gravar Relato por Voz & Estruturar STAR</h3>
+                <span id="audioRecordingBadge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white text-slate-700 border border-slate-200 shadow-xs">
+                  <span id="audioLiveDot" class="w-2 h-2 rounded-full bg-slate-400"></span>
+                  <span id="audioStatusText">Pronto para gravar</span>
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Fale naturalmente sobre sua vivência real. O agente inteligente transcreve, identifica o que é <strong>Situação, Tarefa, Ação e Resultado</strong> e preenche os campos automaticamente.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <button type="button" onclick="toggleAudioInputMode()" id="btnToggleInputMode" class="text-xs text-slate-600 hover:text-slate-900 font-medium underline flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-slate-100/70 transition-all cursor-pointer">
+              <i data-lucide="keyboard" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span id="btnToggleInputModeText">Prefere colar áudio transcrito?</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Audio Wave Equalizer & Timer Area -->
+        <div class="p-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200/90 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-slate-700">Transcrição em Tempo Real</span>
+              <span id="audioTimer" class="font-mono text-xs font-bold text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">00:00</span>
+            </div>
+            <!-- Equalizer Waveform bars -->
+            <div id="audioWaveformBars" class="flex items-end gap-1 h-5 px-1" title="Equalizador de Voz">
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-1 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-2 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-1.5 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-3 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-2 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-3.5 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-2 transition-all"></span>
+              <span class="audio-bar w-1 bg-slate-300 rounded-full h-1 transition-all"></span>
+            </div>
+          </div>
+
+          <!-- Transcript Box -->
+          <div id="audioTranscriptBox" class="min-h-[76px] max-h-44 overflow-y-auto p-3.5 bg-white rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 leading-relaxed font-sans shadow-2xs">
+            <span id="audioTranscriptPlaceholder" class="text-slate-400 italic">Pressione "Iniciar Gravação" e conte como foi sua experiência: o contexto que enfrentava, a meta que precisava bater, o que você executou na prática e qual resultado ou aprendizado obteve...</span>
+            <span id="audioTranscriptFinal" class="font-medium text-slate-900"></span>
+            <span id="audioTranscriptInterim" class="text-blue-600 font-medium"></span>
+          </div>
+
+          <!-- Optional Manual Textarea (shown when user chooses text mode) -->
+          <div id="audioManualTextAreaWrapper" class="hidden">
+            <textarea id="audioManualInput" rows="3" placeholder="Cole ou digite aqui seu relato falado (ex: transcrição de áudio do WhatsApp, roteiro de entrevista ou anotações livres)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+          </div>
+
+          <!-- Processing State Banner (Hidden by default) -->
+          <div id="audioProcessingState" class="hidden flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-xl">
+            <i data-lucide="loader-2" class="w-4 h-4 text-blue-600 animate-spin shrink-0"></i>
+            <div class="text-xs text-blue-900">
+              <span class="font-bold">Agente STAR analisando seu relato falado...</span>
+              <span class="block text-[11px] text-blue-700 mt-0.5">Mapeando Situação (S), Tarefa (T), Ação (A) e Resultado (R) sem inventar dados, preservando a verdade do que você falou.</span>
+            </div>
+          </div>
+
+          <!-- Success State Notification (Hidden by default) -->
+          <div id="audioSuccessState" class="hidden flex items-center justify-between gap-3 p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span class="text-xs font-bold text-emerald-900">Campos STAR preenchidos com sucesso pelo agente!</span>
+            </div>
+            <button type="button" onclick="document.getElementById('inputSituation').scrollIntoView({ behavior: 'smooth' })" class="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 underline cursor-pointer">
+              Ver campos abaixo ↓
+            </button>
+          </div>
+
+          <!-- Action Buttons Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200/60">
+            <div class="flex items-center gap-2">
+              <!-- Start / Pause / Reset Recording -->
+              <button type="button" onclick="startStarAudioRecording()" id="btnStartRecording" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-subtle transition-all cursor-pointer">
+                <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+                <span id="btnStartRecordingText">Iniciar Gravação</span>
+              </button>
+              <button type="button" onclick="pauseStarAudioRecording()" id="btnPauseRecording" class="hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-bold transition-all cursor-pointer">
+                <i data-lucide="pause" class="w-3.5 h-3.5"></i>
+                <span id="btnPauseRecordingText">Pausar</span>
+              </button>
+              <button type="button" onclick="resetStarAudioRecording()" id="btnResetRecording" class="hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all cursor-pointer">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5 text-slate-500"></i>
+                <span>Limpar</span>
+              </button>
+            </div>
+
+            <!-- Finish & Structure STAR Button -->
+            <button type="button" onclick="handleFinishAndStructureSTAR()" id="btnStructureStar" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-subtle transition-all cursor-pointer">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-300"></i>
+              <span id="btnStructureStarText">Estruturar Case STAR</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2875,7 +3091,7 @@
           <div class="w-5 h-5 rounded-md bg-slate-900 flex items-center justify-center text-white text-[10px] font-black shadow-2xs">
             C
           </div>
-          <span>Carreira<span class="text-blue-600">IA</span></span>
+          <span>CarreiraIA</span>
         </div>
         <span class="hidden sm:inline text-slate-300">•</span>
         <span>© Copyright 2026. Todos os direitos reservados.</span>
@@ -4476,6 +4692,475 @@ Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre 
       showToast("Exemplo prático carregado com Estudo de Caso e Post para LinkedIn prontos para uso!");
     }
 
+    // ==================== AUDIO RECORDING & AGENT STAR PARSER ====================
+    let starSpeechRecognition = null;
+    let isStarRecording = false;
+    let isStarPaused = false;
+    let starRecordingTimer = null;
+    let starRecordingSeconds = 0;
+    let starWaveInterval = null;
+    let isManualAudioTextMode = false;
+
+    function toggleStarAudioRecorder() {
+      const card = document.getElementById('starAudioRecorderCard');
+      if (!card) return;
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const btn = document.getElementById('btnStartRecording');
+      if (btn && !isStarRecording) btn.focus();
+    }
+
+    function toggleAudioInputMode() {
+      isManualAudioTextMode = !isManualAudioTextMode;
+      const transcriptBox = document.getElementById('audioTranscriptBox');
+      const manualWrapper = document.getElementById('audioManualTextAreaWrapper');
+      const toggleText = document.getElementById('btnToggleInputModeText');
+      const btnStart = document.getElementById('btnStartRecording');
+      const btnPause = document.getElementById('btnPauseRecording');
+      const waveBars = document.getElementById('audioWaveformBars');
+
+      if (isManualAudioTextMode) {
+        if (isStarRecording) pauseStarAudioRecording();
+        transcriptBox.classList.add('hidden');
+        manualWrapper.classList.remove('hidden');
+        if (waveBars) waveBars.classList.add('opacity-30');
+        if (toggleText) toggleText.innerText = 'Prefere gravar áudio pelo microfone?';
+        if (btnStart) btnStart.classList.add('hidden');
+        if (btnPause) btnPause.classList.add('hidden');
+        const manualInput = document.getElementById('audioManualInput');
+        if (manualInput) {
+          const finalTxt = document.getElementById('audioTranscriptFinal')?.innerText.trim() || '';
+          if (finalTxt && !manualInput.value.trim()) {
+            manualInput.value = finalTxt;
+          }
+          manualInput.focus();
+        }
+      } else {
+        manualWrapper.classList.add('hidden');
+        transcriptBox.classList.remove('hidden');
+        if (waveBars) waveBars.classList.remove('opacity-30');
+        if (toggleText) toggleText.innerText = 'Prefere colar áudio transcrito?';
+        if (btnStart) btnStart.classList.remove('hidden');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function initStarSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) return null;
+
+      try {
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'pt-BR';
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = () => {
+          isStarRecording = true;
+          isStarPaused = false;
+          updateAudioRecorderUI('recording');
+        };
+
+        recognition.onresult = (event) => {
+          let interimTranscript = '';
+          let finalTranscript = document.getElementById('audioTranscriptFinal')?.innerText || '';
+
+          for (let i = event.resultIndex; i < event.results.length; ++i) {
+            const piece = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+              finalTranscript += (finalTranscript ? ' ' : '') + piece.trim();
+            } else {
+              interimTranscript += piece;
+            }
+          }
+
+          const placeholder = document.getElementById('audioTranscriptPlaceholder');
+          if (placeholder) placeholder.classList.add('hidden');
+
+          const finalSpan = document.getElementById('audioTranscriptFinal');
+          const interimSpan = document.getElementById('audioTranscriptInterim');
+          if (finalSpan) finalSpan.innerText = finalTranscript;
+          if (interimSpan) interimSpan.innerText = interimTranscript ? ` ${interimTranscript}` : '';
+
+          const box = document.getElementById('audioTranscriptBox');
+          if (box) box.scrollTop = box.scrollHeight;
+        };
+
+        recognition.onerror = (event) => {
+          console.warn("Speech recognition notice:", event.error);
+          if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+            showToast("Permissão de microfone negada. Você pode colar o áudio transcrito no modo texto!");
+            toggleAudioInputMode();
+            stopStarAudioRecording(false);
+          }
+        };
+
+        recognition.onend = () => {
+          if (isStarRecording && !isStarPaused) {
+            try {
+              recognition.start();
+            } catch (e) {
+              // Ignore if already active
+            }
+          } else if (!isStarRecording) {
+            updateAudioRecorderUI('stopped');
+          }
+        };
+
+        return recognition;
+      } catch (err) {
+        console.error("Erro ao inicializar SpeechRecognition:", err);
+        return null;
+      }
+    }
+
+    function startStarAudioRecording() {
+      if (!starSpeechRecognition) {
+        starSpeechRecognition = initStarSpeechRecognition();
+      }
+
+      if (!starSpeechRecognition) {
+        showToast("Seu navegador não suporta a API de áudio contínua. Use o modo de texto para colar seu relato!");
+        toggleAudioInputMode();
+        return;
+      }
+
+      try {
+        isStarRecording = true;
+        isStarPaused = false;
+        starSpeechRecognition.start();
+        startAudioTimer();
+        startAudioWaveAnimation();
+        updateAudioRecorderUI('recording');
+        showToast("Microfone ativado! Fale naturalmente sobre sua vivência.");
+      } catch (e) {
+        isStarRecording = true;
+        isStarPaused = false;
+        startAudioTimer();
+        startAudioWaveAnimation();
+        updateAudioRecorderUI('recording');
+      }
+    }
+
+    function pauseStarAudioRecording() {
+      if (!isStarRecording) return;
+      isStarPaused = !isStarPaused;
+
+      const pauseBtn = document.getElementById('btnPauseRecordingText');
+      if (isStarPaused) {
+        try {
+          if (starSpeechRecognition) starSpeechRecognition.stop();
+        } catch (e) {}
+        clearInterval(starRecordingTimer);
+        stopAudioWaveAnimation();
+        updateAudioRecorderUI('paused');
+        if (pauseBtn) pauseBtn.innerText = 'Retomar';
+        showToast("Gravação pausada.");
+      } else {
+        try {
+          if (starSpeechRecognition) starSpeechRecognition.start();
+        } catch (e) {}
+        startAudioTimer();
+        startAudioWaveAnimation();
+        updateAudioRecorderUI('recording');
+        if (pauseBtn) pauseBtn.innerText = 'Pausar';
+        showToast("Gravação retomada.");
+      }
+    }
+
+    function stopStarAudioRecording(keepText = true) {
+      isStarRecording = false;
+      isStarPaused = false;
+      try {
+        if (starSpeechRecognition) starSpeechRecognition.stop();
+      } catch (e) {}
+      clearInterval(starRecordingTimer);
+      stopAudioWaveAnimation();
+      updateAudioRecorderUI('stopped');
+
+      if (!keepText) {
+        resetStarAudioRecording();
+      }
+    }
+
+    function resetStarAudioRecording() {
+      isStarRecording = false;
+      isStarPaused = false;
+      try {
+        if (starSpeechRecognition) starSpeechRecognition.stop();
+      } catch (e) {}
+      clearInterval(starRecordingTimer);
+      stopAudioWaveAnimation();
+
+      starRecordingSeconds = 0;
+      const timerEl = document.getElementById('audioTimer');
+      if (timerEl) timerEl.innerText = '00:00';
+
+      const finalSpan = document.getElementById('audioTranscriptFinal');
+      const interimSpan = document.getElementById('audioTranscriptInterim');
+      const placeholder = document.getElementById('audioTranscriptPlaceholder');
+      if (finalSpan) finalSpan.innerText = '';
+      if (interimSpan) interimSpan.innerText = '';
+      if (placeholder) placeholder.classList.remove('hidden');
+
+      const manualInput = document.getElementById('audioManualInput');
+      if (manualInput) manualInput.value = '';
+
+      const proc = document.getElementById('audioProcessingState');
+      if (proc) proc.classList.add('hidden');
+      const succ = document.getElementById('audioSuccessState');
+      if (succ) succ.classList.add('hidden');
+
+      updateAudioRecorderUI('idle');
+      showToast("Áudio e transcrição limpos.");
+    }
+
+    function startAudioTimer() {
+      clearInterval(starRecordingTimer);
+      const timerEl = document.getElementById('audioTimer');
+      starRecordingTimer = setInterval(() => {
+        starRecordingSeconds++;
+        const mins = String(Math.floor(starRecordingSeconds / 60)).padStart(2, '0');
+        const secs = String(starRecordingSeconds % 60).padStart(2, '0');
+        if (timerEl) timerEl.innerText = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function startAudioWaveAnimation() {
+      stopAudioWaveAnimation();
+      const bars = document.querySelectorAll('#audioWaveformBars .audio-bar');
+      bars.forEach(bar => bar.classList.add('audio-bar-recording'));
+      starWaveInterval = setInterval(() => {
+        bars.forEach(bar => {
+          const randH = Math.floor(Math.random() * 18) + 4;
+          bar.style.height = `${randH}px`;
+        });
+      }, 120);
+    }
+
+    function stopAudioWaveAnimation() {
+      clearInterval(starWaveInterval);
+      const bars = document.querySelectorAll('#audioWaveformBars .audio-bar');
+      bars.forEach(bar => {
+        bar.classList.remove('audio-bar-recording');
+        bar.style.height = '6px';
+      });
+    }
+
+    function updateAudioRecorderUI(status) {
+      const badge = document.getElementById('audioRecordingBadge');
+      const dot = document.getElementById('audioLiveDot');
+      const text = document.getElementById('audioStatusText');
+      const iconBox = document.getElementById('audioMicIconBox');
+      const btnStart = document.getElementById('btnStartRecording');
+      const btnStartText = document.getElementById('btnStartRecordingText');
+      const btnPause = document.getElementById('btnPauseRecording');
+      const btnReset = document.getElementById('btnResetRecording');
+
+      if (status === 'recording') {
+        if (badge) badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-50 text-red-700 border border-red-200 animate-pulse';
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-red-600 animate-ping';
+        if (text) text.innerText = 'Gravando áudio ao vivo...';
+        if (iconBox) iconBox.className = 'w-10 h-10 rounded-2xl bg-red-100 border border-red-200 text-red-600 flex items-center justify-center shrink-0 shadow-xs';
+        if (btnStart) btnStart.classList.add('hidden');
+        if (btnPause) {
+          btnPause.classList.remove('hidden');
+          const pText = document.getElementById('btnPauseRecordingText');
+          if (pText) pText.innerText = 'Pausar';
+        }
+        if (btnReset) btnReset.classList.remove('hidden');
+      } else if (status === 'paused') {
+        if (badge) badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200';
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-500';
+        if (text) text.innerText = 'Gravação pausada';
+        if (iconBox) iconBox.className = 'w-10 h-10 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center shrink-0 shadow-xs';
+        if (btnPause) {
+          btnPause.classList.remove('hidden');
+          const pText = document.getElementById('btnPauseRecordingText');
+          if (pText) pText.innerText = 'Retomar';
+        }
+      } else if (status === 'stopped' || status === 'idle') {
+        if (badge) badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white text-slate-700 border border-slate-200 shadow-xs';
+        if (dot) dot.className = 'w-2 h-2 rounded-full bg-slate-400';
+        if (text) text.innerText = 'Pronto para gravar';
+        if (iconBox) iconBox.className = 'w-10 h-10 rounded-2xl bg-blue-100/80 border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 shadow-xs';
+        if (btnStart) {
+          btnStart.classList.remove('hidden');
+          if (btnStartText) btnStartText.innerText = 'Iniciar Gravação';
+        }
+        if (btnPause) btnPause.classList.add('hidden');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Heuristic Extractor for Portuguese spoken narratives (Zero Hallucination Fallback)
+    function extractStarHeuristically(rawTranscript) {
+      const clean = rawTranscript.replace(/\s+/g, ' ').trim();
+      // Split into sentences using punctuation or transition words
+      const rawSentences = clean.split(/(?<=[.?!])\s+|(?<=\b(?:então|aí|daí|depois disso|no final|como resultado)\b,\s*)/i)
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+
+      let sParts = [];
+      let tParts = [];
+      let aParts = [];
+      let rParts = [];
+
+      const sKeywords = /trabalhava|estagiava|na época|na empresa|no laborat[óo]rio|no meu curso|na faculdade|no projeto|o cen[áa]rio|o contexto|atuava como|éramos|eu fazia|atend[ií]amos|existia|durante/i;
+      const tKeywords = /precis[aá]vamos|o problema|a meta|o desafio|tinha que|minha tarefa|meu objetivo|a dificuldade|precisava resolver|foi pedido|foi solicitado|estava atrasado|a demanda/i;
+      const aKeywords = /ent[ãa]o eu|eu criei|desenvolvi|organizei|estruturei|implementei|apliquei|utilizei|mapeei|elaborei|conversei|reuni|fiz|configurei|adotei|redigi|comecei/i;
+      const rKeywords = /resultado|conseguimos|reduziu|caiu de|aumentou|melhorou|foi aprovado|gerou|zerou|alcan[çc]amos|no final|o impacto|feedback|oficializado|elogiaram/i;
+
+      rawSentences.forEach((sent, idx) => {
+        if (rKeywords.test(sent)) {
+          rParts.push(sent);
+        } else if (aKeywords.test(sent)) {
+          aParts.push(sent);
+        } else if (tKeywords.test(sent)) {
+          tParts.push(sent);
+        } else if (sKeywords.test(sent)) {
+          sParts.push(sent);
+        } else {
+          // Positional distribution
+          if (sParts.length === 0) sParts.push(sent);
+          else if (tParts.length === 0 && idx < 2) tParts.push(sent);
+          else if (aParts.length === 0 && idx < 4) aParts.push(sent);
+          else rParts.push(sent);
+        }
+      });
+
+      if (sParts.length === 0) sParts = [rawSentences[0] || clean];
+      if (tParts.length === 0) tParts = rawSentences.length > 1 ? [rawSentences[1]] : [sParts[0]];
+      if (aParts.length === 0) aParts = rawSentences.length > 2 ? [rawSentences[2]] : [sParts[0]];
+      if (rParts.length === 0) rParts = rawSentences.length > 3 ? rawSentences.slice(3) : [aParts[0]];
+
+      let detectedCat = 'OTHER';
+      if (/pesquisa|laborat[óo]rio|artigo|cient[íi]fico|tcc|inicia[çc][ãa]o/i.test(clean)) detectedCat = 'RESEARCH';
+      else if (/est[áa]gio|empresa|supervisor|departamento|setor/i.test(clean)) detectedCat = 'INTERNSHIP';
+      else if (/volunt[áa]r|ong|social|comunidade/i.test(clean)) detectedCat = 'VOLUNTEER';
+      else if (/curso|bootcamp|extens[ãa]o|certifica/i.test(clean)) detectedCat = 'COURSE';
+      else if (/imprensa|jornal|release|pauta|comunica/i.test(clean)) detectedCat = 'PRESS';
+      else if (/palestra|apresenta[çc][ãa]o|semin[áa]rio/i.test(clean)) detectedCat = 'SEMINAR';
+      else if (/desenvolv|c[óo]digo|software|app|freelance|sistema/i.test(clean)) detectedCat = 'INDEPENDENT';
+
+      return {
+        situation: sParts.join(' ').trim(),
+        task: tParts.join(' ').trim(),
+        action: aParts.join(' ').trim(),
+        result: rParts.join(' ').trim(),
+        category: detectedCat
+      };
+    }
+
+    async function handleFinishAndStructureSTAR() {
+      if (isStarRecording) {
+        stopStarAudioRecording(true);
+      }
+
+      let text = '';
+      if (isManualAudioTextMode) {
+        text = document.getElementById('audioManualInput')?.value.trim() || '';
+      } else {
+        const finalSpan = document.getElementById('audioTranscriptFinal');
+        const interimSpan = document.getElementById('audioTranscriptInterim');
+        text = ((finalSpan?.innerText || '') + ' ' + (interimSpan?.innerText || '')).trim();
+      }
+
+      if (!text || text.length < 12) {
+        showToast("Grave ou digite um breve relato sobre sua experiência para o agente estruturar o STAR.");
+        return;
+      }
+
+      const proc = document.getElementById('audioProcessingState');
+      const succ = document.getElementById('audioSuccessState');
+      const btn = document.getElementById('btnStructureStar');
+      const btnText = document.getElementById('btnStructureStarText');
+
+      if (proc) proc.classList.remove('hidden');
+      if (succ) succ.classList.add('hidden');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.innerText = 'Agente Estruturando...';
+
+      let parsedStar = null;
+      const apiKey = getStoredKey();
+
+      if (apiKey) {
+        const prompt = `Você é o Agente Especialista no Método STAR do CarreiraIA.
+O usuário relatou verbalmente sua experiência profissional ou acadêmica:
+"""
+${text}
+"""
+
+Sua missão é extrair e organizar estritamente o que foi falado nos 4 blocos do Método STAR:
+1. Situação (S): O contexto, empresa, departamento, laboratório ou área citada.
+2. Tarefa (T): O desafio específico, problema a ser resolvido ou meta que precisava ser cumprida.
+3. Ação (A): As iniciativas práticas, ferramentas, passos e decisões tomadas pelo usuário.
+4. Resultado (R): O impacto, métricas, melhorias, aprovação ou aprendizado alcançado.
+
+DIRETRIZ CRÍTICA DE FIDELIDADE (ZERO ALUCINAÇÃO):
+- Use EXCLUSIVAMENTE o que o usuário disse no relato.
+- NUNCA invente ferramentas, softwares, empresas, cargos ou números que não foram citados.
+- Se o usuário não citou uma métrica numérica, descreva o desfecho real que ele relatou sem inventar percentuais.
+- Identifique a categoria mais adequada entre: 'PRESS', 'SEMINAR', 'RESEARCH', 'INDEPENDENT', 'COURSE', 'INTERNSHIP', 'VOLUNTEER', 'OTHER'.
+
+Retorne RIGOROSAMENTE apenas um objeto JSON com esta estrutura (sem blocos de código markdown \`\`\`json):
+{
+  "situation": "...",
+  "task": "...",
+  "action": "...",
+  "result": "...",
+  "category": "..."
+}`;
+
+        try {
+          const resp = await requestGemini(prompt);
+          let cleanJson = resp.trim();
+          if (cleanJson.startsWith('```json')) cleanJson = cleanJson.replace(/^```json/, '').replace(/```$/, '').trim();
+          else if (cleanJson.startsWith('```')) cleanJson = cleanJson.replace(/^```/, '').replace(/```$/, '').trim();
+          parsedStar = JSON.parse(cleanJson);
+        } catch (e) {
+          console.warn("Falha no parse do Gemini ou offline, aplicando heurística local:", e);
+          parsedStar = extractStarHeuristically(text);
+        }
+      } else {
+        parsedStar = extractStarHeuristically(text);
+      }
+
+      if (!parsedStar) {
+        parsedStar = extractStarHeuristically(text);
+      }
+
+      const sInput = document.getElementById('inputSituation');
+      const tInput = document.getElementById('inputTask');
+      const aInput = document.getElementById('inputAction');
+      const rInput = document.getElementById('inputResult');
+
+      if (sInput) sInput.value = parsedStar.situation || text;
+      if (tInput) tInput.value = parsedStar.task || '';
+      if (aInput) aInput.value = parsedStar.action || '';
+      if (rInput) rInput.value = parsedStar.result || '';
+
+      [sInput, tInput, aInput, rInput].forEach(field => {
+        if (field) {
+          field.classList.remove('star-highlight-pulse');
+          void field.offsetWidth;
+          field.classList.add('star-highlight-pulse');
+        }
+      });
+
+      if (parsedStar.category && categories.some(c => c.id === parsedStar.category)) {
+        selectCategory(parsedStar.category);
+      }
+
+      if (proc) proc.classList.add('hidden');
+      if (succ) succ.classList.remove('hidden');
+      if (btn) btn.disabled = false;
+      if (btnText) btnText.innerText = 'Estruturar Case STAR';
+
+      sInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showToast("✨ Relato estruturado com sucesso no Método STAR! Revise os campos e gere seu case.");
+    }
+
     function clearStarForm() {
       document.getElementById('inputSituation').value = '';
       document.getElementById('inputTask').value = '';
@@ -4483,6 +5168,8 @@ Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre 
       document.getElementById('inputResult').value = '';
       document.getElementById('fileNameCases').innerText = 'Nenhum anexo';
       document.getElementById('resultsCardStar').classList.add('hidden');
+      const succ = document.getElementById('audioSuccessState');
+      if (succ) succ.classList.add('hidden');
       showToast("Formulário limpo.");
     }
 
