@@ -208,51 +208,56 @@
       background-color: #2563EB !important;
     }
 
-    /* ==================== AMBIENT PRISMATIC CANVAS (FULL-SCREEN ARCHITECTURE) ==================== */
-    .prismatic-hero-canvas {
+    /* ==================== GRADISOFT & LIGHT HERO CANVAS (SUAVE & ORGÂNICO) ==================== */
+    .gradisoft-hero-canvas {
       position: relative;
-      background: radial-gradient(130% 120% at 5% 0%, #FFF7ED 0%, #FAFAF9 45%, #EFF6FF 100%);
+      background-color: #FAFAFD;
+      background-image: 
+        radial-gradient(at 6% 10%, rgba(254, 215, 170, 0.42) 0px, transparent 50%),
+        radial-gradient(at 50% 16%, rgba(224, 231, 255, 0.55) 0px, transparent 52%),
+        radial-gradient(at 94% 12%, rgba(191, 219, 254, 0.52) 0px, transparent 50%),
+        radial-gradient(at 82% 65%, rgba(254, 205, 211, 0.32) 0px, transparent 46%),
+        radial-gradient(at 16% 75%, rgba(219, 234, 254, 0.38) 0px, transparent 50%);
       overflow: hidden;
-      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     }
 
-    /* Vertical translucent geometric slabs/prisms */
-    .prismatic-slab {
+    /* Soft fluid aura glows (seamless degradê, no sharp geometric borders or cuts) */
+    .gradisoft-aura {
       position: absolute;
-      top: -20%;
-      bottom: -20%;
+      border-radius: 9999px;
+      filter: blur(85px);
+      -webkit-filter: blur(85px);
       pointer-events: none;
-      backdrop-filter: blur(1.5px);
-      -webkit-backdrop-filter: blur(1.5px);
-      transform: skewX(-14deg);
-      border-left: 1px solid rgba(255, 255, 255, 0.75);
-      border-right: 1px solid rgba(255, 255, 255, 0.35);
-      transition: all 0.5s ease;
+      opacity: 0.65;
     }
-    .slab-amber-1 {
-      left: 4%;
-      width: 15%;
-      background: linear-gradient(180deg, rgba(254, 243, 199, 0.5) 0%, rgba(253, 230, 138, 0.28) 45%, rgba(255, 255, 255, 0) 100%);
+    .aura-amber {
+      top: -12%;
+      left: 1%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(254, 215, 170, 0.72) 0%, rgba(253, 186, 116, 0.28) 55%, transparent 75%);
     }
-    .slab-amber-2 {
-      left: 16%;
-      width: 18%;
-      background: linear-gradient(180deg, rgba(253, 230, 138, 0.38) 0%, rgba(252, 211, 77, 0.18) 55%, rgba(255, 255, 255, 0) 100%);
-    }
-    .slab-violet {
+    .aura-violet {
+      top: 4%;
       left: 36%;
-      width: 17%;
-      background: linear-gradient(180deg, rgba(238, 242, 255, 0.45) 0%, rgba(199, 210, 254, 0.22) 60%, rgba(255, 255, 255, 0) 100%);
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(224, 231, 255, 0.88) 0%, rgba(199, 210, 254, 0.35) 55%, transparent 75%);
     }
-    .slab-blue-1 {
-      left: 52%;
-      width: 20%;
-      background: linear-gradient(180deg, rgba(224, 242, 254, 0.55) 0%, rgba(186, 230, 253, 0.3) 65%, rgba(255, 255, 255, 0) 100%);
+    .aura-blue {
+      top: 12%;
+      right: 0%;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.78) 0%, rgba(147, 197, 253, 0.3) 55%, transparent 75%);
     }
-    .slab-blue-2 {
-      left: 71%;
-      width: 24%;
-      background: linear-gradient(180deg, rgba(219, 234, 254, 0.6) 0%, rgba(147, 197, 253, 0.35) 75%, rgba(255, 255, 255, 0.05) 100%);
+    .aura-rose {
+      bottom: -15%;
+      left: 20%;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(254, 226, 226, 0.58) 0%, rgba(254, 205, 211, 0.22) 55%, transparent 75%);
     }
 
     /* Enquadramento e ajuste responsivo para smartphones */
@@ -386,15 +391,14 @@
     <!-- ==================== VIEW 0: LANDING PAGE (FULL-SCREEN PRISMATIC ARCHITECTURE) ==================== -->
     <section id="view-landing" class="w-full">
       
-      <!-- ==================== HERO PRINCIPAL (AMBIENT PRISMATIC ARCHITECTURE - FULL SCREEN) ==================== -->
-      <div class="prismatic-hero-canvas w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-12 sm:py-20 relative border-b border-slate-200/80">
+      <!-- ==================== HERO PRINCIPAL (GRADISOFT LIGHT & DEGRADÊ SUAVE - FULL SCREEN) ==================== -->
+      <div class="gradisoft-hero-canvas w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-12 sm:py-20 relative border-b border-slate-200/80">
         
-        <!-- Architectural Translucent Slabs / Prisms (Background Elements from Reference) -->
-        <div class="prismatic-slab slab-amber-1"></div>
-        <div class="prismatic-slab slab-amber-2"></div>
-        <div class="prismatic-slab slab-violet"></div>
-        <div class="prismatic-slab slab-blue-1"></div>
-        <div class="prismatic-slab slab-blue-2"></div>
+        <!-- Organic Soft Degradê Auras (Suaves, luminosas e sem cortes geométricos) -->
+        <div class="gradisoft-aura aura-amber"></div>
+        <div class="gradisoft-aura aura-violet"></div>
+        <div class="gradisoft-aura aura-blue"></div>
+        <div class="gradisoft-aura aura-rose"></div>
 
         <!-- Foreground Content Layer -->
         <div class="relative z-10 max-w-6xl mx-auto w-full space-y-8 sm:space-y-10">
