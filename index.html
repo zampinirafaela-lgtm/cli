@@ -1655,14 +1655,34 @@
           </div>
 
           <!-- Success State Notification (Hidden by default) -->
-          <div id="audioSuccessState" class="hidden flex items-center justify-between gap-3 p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+          <div id="audioSuccessState" class="hidden flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
             <div class="flex items-center gap-2">
               <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
               <span id="audioSuccessMessage" class="text-xs font-bold text-emerald-900">Campos STAR preenchidos com sucesso pelo agente!</span>
             </div>
-            <button type="button" onclick="document.getElementById('inputSituation').scrollIntoView({ behavior: 'smooth' })" class="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 underline cursor-pointer">
-              Ver campos abaixo ↓
-            </button>
+            <div class="flex items-center gap-3 shrink-0">
+              <button type="button" id="audioApiWarningAction" onclick="goToApiKeySettings()" class="hidden inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 text-[11px] font-bold transition-all cursor-pointer">
+                <i data-lucide="key" class="w-3 h-3 text-amber-800"></i>
+                <span>Conectar Chave API →</span>
+              </button>
+              <button type="button" onclick="document.getElementById('inputSituation').scrollIntoView({ behavior: 'smooth' })" class="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 underline cursor-pointer">
+                Ver campos abaixo ↓
+              </button>
+            </div>
+          </div>
+
+          <!-- API Key Notice for Audio Recognition & Analysis (Hidden automatically when key is connected) -->
+          <div onclick="goToApiKeySettings()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goToApiKeySettings();}" class="api-key-required-notice group flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl bg-amber-50 hover:bg-amber-100/80 border border-amber-300/90 cursor-pointer transition-all">
+            <div class="flex items-start sm:items-center gap-2.5">
+              <i data-lucide="key-round" class="w-4 h-4 text-amber-700 shrink-0 mt-0.5 sm:mt-0"></i>
+              <p class="text-[11px] sm:text-xs text-amber-950 font-medium leading-snug">
+                <strong>Reconhecimento e análise por IA:</strong> Para ter um resultado adequado com o seu próprio áudio ou texto (exceto nos exemplos prontos acima), conecte sua <strong>Chave API do Gemini</strong>.
+              </p>
+            </div>
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-900 group-hover:bg-black text-white text-[11px] font-bold shrink-0 self-start sm:self-auto transition-all">
+              <span>Conectar Chave API</span>
+              <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
 
           <!-- Action Buttons Bar -->
@@ -1771,6 +1791,20 @@
         </div>
       </div>
 
+      <!-- API Key Notice for STAR Case Generation (Hidden automatically when key is connected) -->
+      <div onclick="goToApiKeySettings()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goToApiKeySettings();}" class="api-key-required-notice group flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3.5 rounded-xl bg-amber-50 hover:bg-amber-100/80 border border-amber-300/90 cursor-pointer transition-all shadow-2xs">
+        <div class="flex items-start sm:items-center gap-2.5">
+          <i data-lucide="key-round" class="w-4 h-4 text-amber-700 shrink-0 mt-0.5 sm:mt-0"></i>
+          <p class="text-xs text-amber-950 font-medium leading-snug">
+            <strong>Análise estratégica personalizada com IA:</strong> Para ter um resultado adequado ao gerar seu case real (sem ser um exemplo pronto), conecte sua <strong>Chave API</strong>.
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 group-hover:bg-black text-white text-xs font-bold shrink-0 self-start sm:self-auto transition-all">
+          <span>Conectar Chave API</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </span>
+      </div>
+
       <!-- Action Button: "Gerar Conquista com IA" (White Text on Dark Slate/Navy) -->
       <button onclick="handleGenerateStar()" id="btnActionStar" class="w-full py-4 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-card transition-all">
         <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
@@ -1779,6 +1813,19 @@
 
       <!-- Output Results Card (Rich Formatted with Consultant Advice, Portfolio & LinkedIn) -->
       <div id="resultsCardStar" class="hidden space-y-6">
+        <!-- Offline Fallback Notice inside generated results (hidden for ready-made examples or when API key is connected) -->
+        <div id="starResultApiWarning" onclick="goToApiKeySettings()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goToApiKeySettings();}" class="hidden group flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100/80 border border-amber-300 cursor-pointer transition-all shadow-2xs">
+          <div class="flex items-start sm:items-center gap-2.5">
+            <i data-lucide="alert-circle" class="w-4 h-4 text-amber-700 shrink-0 mt-0.5 sm:mt-0"></i>
+            <p class="text-xs text-amber-950 font-medium leading-snug">
+              <strong>Prévia gerada sem IA conectada:</strong> Para análise personalizada, conselho de entrevista sob medida e texto refinado para seu caso real, clique para conectar sua Chave API.
+            </p>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 group-hover:bg-black text-white text-xs font-bold shrink-0 self-start sm:self-auto transition-all">
+            <span>Conectar Chave API</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
         
         <!-- Status & Auto-Save Banner -->
         <div class="bg-emerald-50 border border-emerald-200/90 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-subtle">
@@ -2070,6 +2117,20 @@
           <textarea id="inputCurrentResume" rows="7" placeholder="Cole aqui as seções do seu currículo atual (Resumo, Experiência, Educação, Habilidades)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 font-sans"></textarea>
           <span id="fileNameResume" class="text-xs text-slate-400 block"></span>
         </div>
+      </div>
+
+      <!-- API Key Notice for Currículo Vivo ATS (Hidden automatically when key is connected) -->
+      <div onclick="goToApiKeySettings()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goToApiKeySettings();}" class="api-key-required-notice group flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3.5 rounded-xl bg-amber-50 hover:bg-amber-100/80 border border-amber-300/90 cursor-pointer transition-all shadow-2xs">
+        <div class="flex items-start sm:items-center gap-2.5">
+          <i data-lucide="key-round" class="w-4 h-4 text-amber-700 shrink-0 mt-0.5 sm:mt-0"></i>
+          <p class="text-xs text-amber-950 font-medium leading-snug">
+            <strong>Otimização de Currículo por IA:</strong> Para analisar e reescrever seu currículo com resultado adequado ao perfil ATS, conecte sua <strong>Chave API do Gemini</strong>.
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 group-hover:bg-black text-white text-xs font-bold shrink-0 self-start sm:self-auto transition-all">
+          <span>Conectar Chave API</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </span>
       </div>
 
       <!-- Action Button: "Gerar Currículo com IA" (White Text on Dark Slate/Navy) -->
@@ -2496,7 +2557,7 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle space-y-5">
+      <div id="settingsApiKeyCard" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-subtle space-y-5">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
             <i data-lucide="key" class="w-5 h-5"></i>
@@ -3470,9 +3531,9 @@
         <button onclick="closeErrorModal()" class="px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 transition-all">
           Fechar
         </button>
-        <button onclick="closeErrorModal(); navigateToTab('settings');" class="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white flex items-center gap-1.5 shadow-subtle transition-all">
-          <i data-lucide="settings" class="w-3.5 h-3.5"></i>
-          <span>Ajustar Chave</span>
+        <button onclick="closeErrorModal(); goToApiKeySettings();" class="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white flex items-center gap-1.5 shadow-subtle transition-all cursor-pointer">
+          <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
+          <span>Conectar Chave API</span>
         </button>
       </div>
     </div>
@@ -4823,6 +4884,8 @@ Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre 
       renderStarCaseOutputs(bundle, 'SEMINAR', 'Atendimento & Rotina', s, t, a, r);
       switchOutputTab('portfolio');
 
+      const warnEl = document.getElementById('starResultApiWarning');
+      if (warnEl) warnEl.classList.add('hidden');
       const resultsCard = document.getElementById('resultsCardStar');
       if (resultsCard) {
         resultsCard.scrollIntoView({ behavior: 'smooth' });
@@ -4875,7 +4938,7 @@ Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre 
       const btnReset = document.getElementById('btnResetRecording');
       if (btnReset) btnReset.classList.remove('hidden');
 
-      handleFinishAndStructureSTAR();
+      handleFinishAndStructureSTAR(true);
     }
 
     function toggleStarAudioRecorder() {
@@ -5392,7 +5455,7 @@ Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre 
       };
     }
 
-    async function handleFinishAndStructureSTAR() {
+    async function handleFinishAndStructureSTAR(isSampleDemo = false) {
       if (isStarRecording) {
         stopStarAudioRecording(true);
       }
@@ -5416,6 +5479,7 @@ Sua experiência em **${categoryLabel}** demonstra que você não apenas cumpre 
       const proc = document.getElementById('audioProcessingState');
       const succ = document.getElementById('audioSuccessState');
       const succMsg = document.getElementById('audioSuccessMessage');
+      const audioApiBtn = document.getElementById('audioApiWarningAction');
       const btn = document.getElementById('btnStructureStar');
       const btnText = document.getElementById('btnStructureStarText');
 
@@ -5502,11 +5566,30 @@ Retorne APENAS o objeto JSON puro, sem texto adicional e sem markdown:
       if (aVal) filledLabels.push('Ação');
       if (rVal) filledLabels.push('Resultado');
 
+      const needsApiKeyWarning = !apiKey && !isSampleDemo;
+
       if (succMsg) {
-        const modeTag = usedGeminiAI ? 'Agente Gemini IA' : 'Agente STAR Local';
-        succMsg.innerText = filledLabels.length > 0
-          ? `${modeTag} reconheceu e separou: ${filledLabels.join(', ')}. Revise abaixo!`
-          : 'Transcrição aplicada nos campos abaixo. Revise e complete se necessário!';
+        if (needsApiKeyWarning) {
+          succMsg.innerText = filledLabels.length > 0
+            ? `Prévia local (${filledLabels.join(', ')}). Para detecção e análise adequadas por IA, conecte sua chave API.`
+            : 'Modo local sem IA ativa. Conecte sua chave API para reconhecimento e análise adequados!';
+        } else {
+          const modeTag = usedGeminiAI ? 'Agente Gemini IA' : 'Exemplo STAR';
+          succMsg.innerText = filledLabels.length > 0
+            ? `${modeTag} reconheceu e separou: ${filledLabels.join(', ')}. Revise abaixo!`
+            : 'Transcrição aplicada nos campos abaixo. Revise e complete se necessário!';
+        }
+      }
+
+      if (audioApiBtn) {
+        if (needsApiKeyWarning) audioApiBtn.classList.remove('hidden');
+        else audioApiBtn.classList.add('hidden');
+      }
+
+      if (succ) {
+        succ.className = needsApiKeyWarning
+          ? 'flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 bg-amber-50 border border-amber-300 rounded-xl'
+          : 'flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 bg-emerald-50 border border-emerald-200 rounded-xl';
       }
 
       [sInput, tInput, aInput, rInput].forEach(field => {
@@ -5522,12 +5605,14 @@ Retorne APENAS o objeto JSON puro, sem texto adicional e sem markdown:
       }
 
       if (proc) proc.classList.add('hidden');
-      if (succ) succ.classList.remove('hidden');
       if (btn) btn.disabled = false;
       if (btnText) btnText.innerText = 'Estruturar Case STAR';
+      if (window.lucide) lucide.createIcons();
 
       sInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      showToast("✨ Relato estruturado no Método STAR! Confira cada bloco abaixo.");
+      showToast(needsApiKeyWarning
+        ? "Separação local concluída. Conecte sua Chave API para análise completa com IA!"
+        : "✨ Relato estruturado no Método STAR! Confira cada bloco abaixo.");
     }
 
     function clearStarForm() {
@@ -5650,6 +5735,21 @@ Retorne APENAS o objeto JSON puro, sem texto adicional e sem markdown:
       }
     }
 
+    function goToApiKeySettings() {
+      navigateToTab('settings');
+      setTimeout(() => {
+        const card = document.getElementById('settingsApiKeyCard');
+        const input = document.getElementById('inputApiKey');
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          card.classList.remove('star-highlight-pulse');
+          void card.offsetWidth;
+          card.classList.add('star-highlight-pulse');
+        }
+        if (input) input.focus();
+      }, 180);
+    }
+
     function updateStatusBadge() {
       const key = getStoredKey();
       const workingModel = getWorkingModel();
@@ -5666,6 +5766,12 @@ Retorne APENAS o objeto JSON puro, sem texto adicional e sem markdown:
           activeBadge.innerText = selected;
         }
       }
+
+      // Toggle all inline API key warning banners across AI features
+      document.querySelectorAll('.api-key-required-notice').forEach(el => {
+        if (key) el.classList.add('hidden');
+        else el.classList.remove('hidden');
+      });
 
       if (key) {
         const displayLabel = 'IA Ativa & Conectada';
@@ -5801,11 +5907,10 @@ Retorne APENAS o objeto JSON puro, sem texto adicional e sem markdown:
       const apiKey = getStoredKey();
       if (!apiKey) {
         if (!silentOnFail) {
-          navigateToTab('settings');
           showErrorModal(
-            "Chave de IA não configurada",
-            "Para gerar o Estudo de Caso ou otimizar o Currículo, você precisa adicionar sua chave de acesso nas configurações.",
-            "Clique em <strong>Ajustar Chave</strong> abaixo para configurar a conexão com o motor de inteligência artificial."
+            "Chave de API necessária para análise por IA",
+            "Para ter um resultado adequado na detecção e análise com o motor do Google Gemini, conecte sua chave de API gratuita.",
+            "Clique no botão <strong>Conectar Chave API</strong> abaixo para ir direto à aba de cadastro da chave."
           );
         }
         throw new Error("Chave ausente");
@@ -6676,16 +6781,20 @@ O tempo de resposta despencou de 20 minutos para 3 minutos e o material virou o 
 
       const catObj = categories.find(c => c.id === currentSelectedCategory) || categories[0];
       const apiKey = getStoredKey();
+      const resultWarnEl = document.getElementById('starResultApiWarning');
 
-      // If no API key configured, generate directly with executive template engine
+      // If no API key configured, generate local preview AND display prominent clickable banner to connect API Key
       if (!apiKey) {
         const bundle = buildStarBundle(s, t, a, r, currentSelectedCategory, catObj.label, evUrl);
         renderStarCaseOutputs(bundle, currentSelectedCategory, catObj.label, s, t, a, r, evUrl);
+        if (resultWarnEl) resultWarnEl.classList.remove('hidden');
         switchOutputTab('portfolio');
         document.getElementById('resultsCardStar').scrollIntoView({ behavior: 'smooth' });
-        showToast("Conquista gerada com o motor executivo! (Dica: adicione sua chave nas configurações para enriquecer com IA)");
+        showToast("Prévia básica gerada! Para análise adequada com IA, clique no aviso para conectar sua Chave API.");
         return;
       }
+
+      if (resultWarnEl) resultWarnEl.classList.add('hidden');
 
       const btn = document.getElementById('btnActionStar');
       const originalHtml = btn.innerHTML;
@@ -7870,6 +7979,8 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       switchOutputTab('portfolio');
 
       navigateToTab('cases');
+      const warnEl = document.getElementById('starResultApiWarning');
+      if (warnEl) warnEl.classList.add('hidden');
       const resultsCard = document.getElementById('resultsCardStar');
       if (resultsCard) {
         resultsCard.scrollIntoView({ behavior: 'smooth' });
