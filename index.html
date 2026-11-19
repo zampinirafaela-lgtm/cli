@@ -112,7 +112,7 @@
     }
 
     /* ==================== ALTO CONTRASTE & LEGIBILIDADE WCAG AA (GLOBAL) ==================== */
-    /* Cores de texto primárias e secundárias com alto contraste garantido */
+    /* Cores de texto primárias e secundárias com alto contraste garantido em superfícies claras */
     .text-slate-400 {
       color: #334155 !important; /* Grafite escuro legível (> 7:1 em fundo claro) */
     }
@@ -129,6 +129,18 @@
       color: #020617 !important;
     }
 
+    /* Preservar texto claro dentro de faixas e botões escuros */
+    #trialModeBanner .text-slate-300,
+    #trialModeBanner .text-slate-400,
+    #toast .text-slate-300,
+    #toast .text-slate-400,
+    .bg-slate-900 .text-slate-300,
+    .bg-slate-900 .text-slate-400,
+    .bg-slate-800 .text-slate-300,
+    .bg-slate-800 .text-slate-400 {
+      color: #E2E8F0 !important;
+    }
+
     /* Regra estrita para qualquer modal: todo o conteúdo do card deve ter contraste absoluto */
     [id^="modal"] .bg-white,
     [id^="modal"] .bg-slate-50,
@@ -137,7 +149,8 @@
     }
     [id^="modal"] .text-slate-400,
     [id^="modal"] .text-slate-500,
-    [id^="modal"] .text-slate-600 {
+    [id^="modal"] .text-slate-600,
+    [id^="modal"] .text-slate-700 {
       color: #1E293B !important;
     }
     [id^="modal"] p,
@@ -351,16 +364,16 @@
           <span>Gerador STAR</span>
         </button>
         <button onclick="navigateToTab('folder')" id="tab-btn-folder" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
-          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
+          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-600"></i>
           <span>Meus Cases</span>
           <span id="badgeFolderDesktop" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 leading-none">0</span>
         </button>
         <button onclick="navigateToTab('resume')" id="tab-btn-resume" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
-          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-600"></i>
           <span>Currículo</span>
         </button>
         <button onclick="navigateToTab('network')" id="tab-btn-network" class="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer">
-          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
+          <i data-lucide="users" class="w-3.5 h-3.5 text-slate-600"></i>
           <span>Radar</span>
         </button>
       </nav>
@@ -391,7 +404,7 @@
               <img id="navAuthAvatarImg" src="" class="w-full h-full object-cover hidden" alt="Foto de perfil">
             </div>
             <span id="navAuthLabel" class="text-xs font-semibold max-w-[85px] sm:max-w-[110px] truncate">Rafaela</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-600 shrink-0"></i>
           </button>
         </div>
       </div>
@@ -459,7 +472,7 @@
                 Estruture projetos reais, pesquisas, iniciativas acadêmicas e histórico de atuação com o <strong>Método STAR</strong> e inteligência artificial especializada.
               </p>
             </div>
-            <div class="hidden md:flex md:col-span-1 items-center justify-center text-slate-400">
+            <div class="hidden md:flex md:col-span-1 items-center justify-center text-slate-600">
               <i data-lucide="arrow-right" class="w-5 h-5 text-slate-700"></i>
             </div>
             <div class="md:col-span-5">
@@ -482,13 +495,13 @@
               </button>
               <button onclick="handleDemoAccess('guest')" class="h-12 sm:h-13 px-5 rounded-xl hover:bg-white/60 text-slate-700 hover:text-slate-900 font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-1 cursor-pointer">
                 <span>Testar como visitante</span>
-                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-600"></i>
               </button>
             </div>
 
             <!-- Social Logins Row -->
-            <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-1">
-              <span class="text-[11px] text-slate-500 font-medium mr-1">Ou acesse com:</span>
+            <div class="flex flex-wrap items-center gap-2 text-xs text-slate-700 pt-1">
+              <span class="text-[11px] text-slate-700 font-medium mr-1">Ou acesse com:</span>
               <button type="button" onclick="handleSocialLogin('Google')" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white/90 hover:bg-white text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs backdrop-blur-sm transition-all cursor-pointer">
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
                 <span>Google</span>
@@ -497,7 +510,7 @@
                 <svg class="w-3.5 h-3.5 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 <span>LinkedIn</span>
               </button>
-              <span class="text-[11px] text-slate-400 ml-2">100% Gratuito</span>
+              <span class="text-[11px] text-slate-600 ml-2">100% Gratuito</span>
             </div>
           </div>
 
@@ -537,33 +550,33 @@
                 <span class="w-5 h-5 rounded-md bg-blue-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">S</span>
                 <div>
                   <strong class="text-slate-900 block font-bold text-[11px]">Situação</strong>
-                  <span class="text-slate-500 text-[11px]">O contexto inicial e o problema que existia.</span>
+                  <span class="text-slate-700 text-[11px]">O contexto inicial e o problema que existia.</span>
                 </div>
               </div>
               <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
                 <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">T</span>
                 <div>
                   <strong class="text-slate-900 block font-bold text-[11px]">Tarefa</strong>
-                  <span class="text-slate-500 text-[11px]">A meta ou objetivo que você precisava alcançar.</span>
+                  <span class="text-slate-700 text-[11px]">A meta ou objetivo que você precisava alcançar.</span>
                 </div>
               </div>
               <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
                 <span class="w-5 h-5 rounded-md bg-purple-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">A</span>
                 <div>
                   <strong class="text-slate-900 block font-bold text-[11px]">Ação</strong>
-                  <span class="text-slate-500 text-[11px]">O que você de fato executou e as ferramentas usadas.</span>
+                  <span class="text-slate-700 text-[11px]">O que você de fato executou e as ferramentas usadas.</span>
                 </div>
               </div>
               <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs">
                 <span class="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">R</span>
                 <div>
                   <strong class="text-slate-900 block font-bold text-[11px]">Resultado</strong>
-                  <span class="text-slate-500 text-[11px]">A melhoria prática ou o aprendizado gerado.</span>
+                  <span class="text-slate-700 text-[11px]">A melhoria prática ou o aprendizado gerado.</span>
                 </div>
               </div>
             </div>
 
-            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-700">
               <span>Simples e sem termos difíceis</span>
               <button onclick="navigateToTab('cases')" class="font-bold text-blue-600 hover:text-blue-800 text-xs">Testar agora →</button>
             </div>
@@ -683,9 +696,9 @@
               <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
             </div>
-            <div class="flex items-center gap-2 text-xs text-slate-500 font-medium ml-2">
+            <div class="flex items-center gap-2 text-xs text-slate-700 font-medium ml-2">
               <span class="font-bold text-slate-900">CarreiraIA</span>
-              <span class="text-slate-300">/</span>
+              <span class="text-slate-500">/</span>
               <span class="text-slate-600 font-medium">Como Funciona a Geração na Prática</span>
             </div>
           </div>
@@ -716,7 +729,7 @@
           <!-- Interactive Showcase: 3 Live Outputs -->
           <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-3">
-              <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">
+              <span class="text-xs font-bold uppercase text-slate-700 tracking-wider">
                 Selecione para ver o que o sistema entrega para você:
               </span>
               <!-- Tabs -->
@@ -795,7 +808,7 @@
               <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
                 <div>
                   <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block">Entrega 1: Estudo de Caso Executivo</span>
-                  <p class="text-[11px] text-slate-500">Documento estruturado pronto para seu portfólio, Notion ou anexo de processos seletivos.</p>
+                  <p class="text-[11px] text-slate-700">Documento estruturado pronto para seu portfólio, Notion ou anexo de processos seletivos.</p>
                 </div>
                 <button onclick="navigateToTab('cases')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
                   <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
@@ -805,29 +818,29 @@
 
               <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-white p-4 sm:p-5 rounded-xl border border-slate-200">
                 <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Estrutura do Documento Gerado:</span>
+                  <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Estrutura do Documento Gerado:</span>
                   <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">Exportável em PDF</span>
                 </div>
                 
                 <div class="space-y-2 text-xs">
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">📌 Título Executivo Objetivo</strong>
-                    <span class="text-slate-500">Nome claro do projeto ou iniciativa que sintetiza a área e a entrega principal.</span>
+                    <span class="text-slate-700">Nome claro do projeto ou iniciativa que sintetiza a área e a entrega principal.</span>
                   </div>
 
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">🎯 O Desafio Prático (Contexto & Meta)</strong>
-                    <span class="text-slate-500">Apresentação limpa do problema que precisava ser resolvido e a meta estabelecida.</span>
+                    <span class="text-slate-700">Apresentação limpa do problema que precisava ser resolvido e a meta estabelecida.</span>
                   </div>
 
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">⚙️ Ações e Metodologia Aplicada</strong>
-                    <span class="text-slate-500">Passo a passo organizado em tópicos claros, destacando ferramentas e iniciativas tomadas.</span>
+                    <span class="text-slate-700">Passo a passo organizado em tópicos claros, destacando ferramentas e iniciativas tomadas.</span>
                   </div>
 
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">🏆 Impacto, Aprendizados e Competências Mapeadas</strong>
-                    <span class="text-slate-500">O fechamento com o resultado alcançado e as competências demonstradas na prática.</span>
+                    <span class="text-slate-700">O fechamento com o resultado alcançado e as competências demonstradas na prática.</span>
                   </div>
                 </div>
               </div>
@@ -838,7 +851,7 @@
               <div class="flex items-center justify-between pb-3 border-b border-slate-200/80">
                 <div>
                   <span class="text-xs font-bold text-[#0A66C2] uppercase tracking-wider block">Entrega 2: Publicação Estruturada para LinkedIn</span>
-                  <p class="text-[11px] text-slate-500">Narrativa profissional autêntica, humana e sem autopromoção artificial.</p>
+                  <p class="text-[11px] text-slate-700">Narrativa profissional autêntica, humana e sem autopromoção artificial.</p>
                 </div>
                 <button onclick="navigateToTab('cases')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-semibold shadow-2xs transition-all cursor-pointer">
                   <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
@@ -848,24 +861,24 @@
 
               <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 bg-white p-4 sm:p-5 rounded-xl border border-slate-200">
                 <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Como o post é construído:</span>
+                  <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Como o post é construído:</span>
                   <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">1 Clique para Copiar</span>
                 </div>
                 
                 <div class="space-y-2 text-xs">
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">1. Gancho Inicial que prende a atenção</strong>
-                    <span class="text-slate-500">Uma frase introdutória sobre um desafio comum da sua área, sem frases prontas de marketing.</span>
+                    <span class="text-slate-700">Uma frase introdutória sobre um desafio comum da sua área, sem frases prontas de marketing.</span>
                   </div>
 
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">2. O Desafio e as Decisões Tomadas</strong>
-                    <span class="text-slate-500">Breve relato do problema enfrentado e como você atuou para encontrar uma solução viável.</span>
+                    <span class="text-slate-700">Breve relato do problema enfrentado e como você atuou para encontrar uma solução viável.</span>
                   </div>
 
                   <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                     <strong class="text-slate-900 block font-bold text-xs">3. Lições Aprendidas & Chamada para Interação</strong>
-                    <span class="text-slate-500">Um aprendizado real compartilhado com seus pares e uma pergunta final para gerar conversas nos comentários.</span>
+                    <span class="text-slate-700">Um aprendizado real compartilhado com seus pares e uma pergunta final para gerar conversas nos comentários.</span>
                   </div>
                 </div>
               </div>
@@ -881,11 +894,11 @@
                 <span>Preencher Meu Primeiro Case STAR</span>
               </button>
               <button onclick="navigateToTab('folder')" class="px-4 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
-                <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-500"></i>
+                <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-700"></i>
                 <span>Ver Pasta de Cases</span>
               </button>
             </div>
-            <span class="text-xs text-slate-500">
+            <span class="text-xs text-slate-700">
               Gratuito • Salvo com segurança no seu dispositivo
             </span>
           </div>
@@ -916,7 +929,7 @@
               <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center gap-1.5">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Psicologia Organizacional
               </span>
-              <span class="text-[11px] font-semibold text-slate-400">Dr. Tom Janz (1982) & SHRM</span>
+              <span class="text-[11px] font-semibold text-slate-600">Dr. Tom Janz (1982) & SHRM</span>
             </div>
             <h3 class="text-base font-bold text-slate-900 leading-snug">
               O Axioma Científico da Entrevista Comportamental (BDI)
@@ -924,7 +937,7 @@
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Em 1982, o Dr. Tom Janz publicou os estudos pioneiros da <em>Behavioral Description Interview</em> (BDI), base conceitual do método STAR. A premissa central, hoje formalizada pela <strong>Society for Human Resource Management (SHRM)</strong>, é uma lei da psicologia: <em>o comportamento passado real e documentado é o preditor mais seguro de desempenho futuro</em>. Falar sobre o que você de fato executou tem valor infinitamente superior a suposições do tipo "o que você faria".
             </p>
-            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-500 flex items-center gap-1.5">
+            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-700 flex items-center gap-1.5">
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
               <span>Fonte: Society for Human Resource Management (SHRM) & Journal of Applied Psychology</span>
             </div>
@@ -936,7 +949,7 @@
               <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center gap-1.5">
                 <i data-lucide="line-chart" class="w-3.5 h-3.5"></i> Meta-análise de 85 Anos
               </span>
-              <span class="text-[11px] font-semibold text-slate-400">Schmidt & Hunter (1998)</span>
+              <span class="text-[11px] font-semibold text-slate-600">Schmidt & Hunter (1998)</span>
             </div>
             <h3 class="text-base font-bold text-slate-900 leading-snug">
               Quase o Dobro de Validade Preditiva de Sucesso no Cargo
@@ -944,7 +957,7 @@
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
               O estudo seminal de Frank Schmidt e John Hunter (publicado no <em>Psychological Bulletin / Journal of Applied Psychology</em>) sintetizou 85 anos de pesquisas científicas em contratação. A conclusão foi categórica: <strong>entrevistas comportamentais estruturadas possuem quase o dobro da capacidade preditiva</strong> em comparação a conversas livres e triagens tradicionais de currículo em papel.
             </p>
-            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-500 flex items-center gap-1.5">
+            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-700 flex items-center gap-1.5">
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
               <span>Fonte: The Validity and Utility of Selection Methods in Personnel Psychology</span>
             </div>
@@ -956,7 +969,7 @@
               <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-100 flex items-center gap-1.5">
                 <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Padrão Big Tech
               </span>
-              <span class="text-[11px] font-semibold text-slate-400">Amazon & Google Rubrics</span>
+              <span class="text-[11px] font-semibold text-slate-600">Amazon & Google Rubrics</span>
             </div>
             <h3 class="text-base font-bold text-slate-900 leading-snug">
               Exigência Mandatória na Amazon (Leadership Principles)
@@ -964,7 +977,7 @@
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
               A <strong>Amazon</strong> adota em sua documentação global de contratação que as conversas com lideranças e sessões de avaliação sigam a estrutura STAR. A justificativa: o método STAR impulsiona relatos consistentes e objetivos, evidenciando o senso de dono (<em>Ownership</em>), o rigor analítico (<em>Dive Deep</em>) e a clareza na tomada de decisão.
             </p>
-            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-500 flex items-center gap-1.5">
+            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-700 flex items-center gap-1.5">
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
               <span>Fonte: Amazon Global Interviewing Guide & Bar Raiser Hiring Rubric</span>
             </div>
@@ -976,7 +989,7 @@
               <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-purple-50 text-purple-700 border border-purple-100 flex items-center gap-1.5">
                 <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Excelência Acadêmica
               </span>
-              <span class="text-[11px] font-semibold text-slate-400">Harvard & MIT Career Services</span>
+              <span class="text-[11px] font-semibold text-slate-600">Harvard & MIT Career Services</span>
             </div>
             <h3 class="text-base font-bold text-slate-900 leading-snug">
               Diretriz Oficial das Principais Universidades do Mundo
@@ -984,7 +997,7 @@
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Tanto a <strong>Harvard Business School</strong> quanto o <strong>MIT (Career Advising & Professional Development)</strong> adotam o método STAR como protocolo de comunicação técnica. O objetivo é capacitar pesquisadores, estudantes e profissionais a traduzir pesquisas, artigos e projetos em narrativas claras de resolução de problemas, valorizando tanto a colaboração em equipe quanto a sua contribuição individual relevante.
             </p>
-            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-500 flex items-center gap-1.5">
+            <div class="pt-2 border-t border-slate-100 text-[11px] font-medium text-slate-700 flex items-center gap-1.5">
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
               <span>Fonte: MIT CAPD Guide & Harvard University Career Services Framework</span>
             </div>
@@ -1102,7 +1115,7 @@
             <div class="pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div class="text-xs text-slate-600 space-y-1">
                 <p class="font-bold text-slate-900">Pronto para transformar sua trajetória em cases de impacto?</p>
-                <p class="text-slate-500">Gratuito para começar • Consultoria executiva com inteligência artificial integrada</p>
+                <p class="text-slate-700">Gratuito para começar • Consultoria executiva com inteligência artificial integrada</p>
               </div>
               <div class="flex flex-wrap items-center gap-2.5">
                 <button onclick="navigateToTab('cases')" class="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 cursor-pointer">
@@ -1110,7 +1123,7 @@
                   <span>Criar Meu Primeiro Case STAR</span>
                 </button>
                 <button onclick="navigateToTab('resume')" class="px-4 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs border border-slate-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs">
-                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-700"></i>
                   <span>Ver Modelo de Portfólio Vivo</span>
                 </button>
               </div>
@@ -1206,7 +1219,7 @@
                   <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                   <span>Encontre profissionais com entregas comprovadas — 100% gratuito.</span>
                 </p>
-                <p class="text-slate-500">Cases com evidências práticas e metodologia consistente.</p>
+                <p class="text-slate-700">Cases com evidências práticas e metodologia consistente.</p>
               </div>
               <div class="flex flex-wrap items-center gap-2.5">
                 <button onclick="navigateToTab('network')" class="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-black text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 cursor-pointer">
@@ -1232,7 +1245,7 @@
             Uma plataforma integrada
           </div>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Construído para dar visibilidade ao seu melhor trabalho</h2>
-          <p class="text-sm text-slate-500 max-w-xl mx-auto">Uma arquitetura em 4 etapas conectadas para estruturar, certificar e conectar suas conquistas.</p>
+          <p class="text-sm text-slate-700 max-w-xl mx-auto">Uma arquitetura em 4 etapas conectadas para estruturar, certificar e conectar suas conquistas.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
@@ -1243,7 +1256,7 @@
               ⚡
             </div>
             <h4 class="font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors">Gerador STAR</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
+            <p class="text-xs text-slate-700 leading-relaxed">
               Transforme ideias esparsas em narrativas executivas estruturadas, com métricas de negócio e posts prontos para o LinkedIn.
             </p>
           </div>
@@ -1254,7 +1267,7 @@
               🌐
             </div>
             <h4 class="font-bold text-base text-slate-900 group-hover:text-emerald-600 transition-colors">Radar de Talentos</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
+            <p class="text-xs text-slate-700 leading-relaxed">
               Uma rede social transparente onde recrutadores encontram perfis por competências e vivências reais comprovadas.
             </p>
           </div>
@@ -1265,7 +1278,7 @@
               📄
             </div>
             <h4 class="font-bold text-base text-slate-900 group-hover:text-purple-600 transition-colors">Currículo Vivo</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
+            <p class="text-xs text-slate-700 leading-relaxed">
               Portfólio público com link dinâmico e exportação imediata para PDF para anexar em candidaturas de alto impacto.
             </p>
           </div>
@@ -1276,7 +1289,7 @@
               🧠
             </div>
             <h4 class="font-bold text-base text-slate-900 group-hover:text-amber-600 transition-colors">Consultoria Executiva</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
+            <p class="text-xs text-slate-700 leading-relaxed">
               Receba diagnósticos estratégicos e simulações de entrevista formuladas sob medida para o seu case com inteligência analítica integrada.
             </p>
           </div>
@@ -1295,7 +1308,7 @@
               <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
                 "Como apresentar meus trabalhos com mais contexto e impacto?"
               </h3>
-              <p class="text-xs sm:text-sm text-slate-500 max-w-2xl">
+              <p class="text-xs sm:text-sm text-slate-700 max-w-2xl">
                 Uma necessidade real compartilhada por profissionais de Comunicação, Design, Tecnologia e Negócios que desejam valorizar suas entregas.
               </p>
             </div>
@@ -1355,7 +1368,7 @@
           </div>
 
           <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <p class="text-xs text-slate-500">
+            <p class="text-xs text-slate-700">
               Perfeito para <strong>Assessores de Imprensa, Jornalistas, Designers, Engenheiros, Pesquisadores e Consultores</strong>.
             </p>
             <button onclick="loadTemplateSample('PRESS')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-bold transition-all shadow-subtle cursor-pointer self-start sm:self-auto">
@@ -1371,7 +1384,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
           <div>
             <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">Modelos estruturados para começar em 1 clique</h3>
-            <p class="text-xs text-slate-500">Selecione sua área para pré-carregar um roteiro do método STAR com dados e entregas reais.</p>
+            <p class="text-xs text-slate-700">Selecione sua área para pré-carregar um roteiro do método STAR com dados e entregas reais.</p>
           </div>
           <button onclick="navigateToTab('cases')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 self-start sm:self-auto">
             <span>Ver todos os modelos</span>
@@ -1385,7 +1398,7 @@
           <div onclick="loadTemplateSample('PRESS')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 hover:shadow-card transition-all cursor-pointer space-y-2">
             <div class="text-xl">📰</div>
             <h5 class="text-xs font-bold text-slate-900">Assessoria de Imprensa & PR</h5>
-            <p class="text-[11px] text-slate-500 line-clamp-2">Pautas, relacionamento com a mídia, estratégia de pitch e clipping de matérias emplacadas.</p>
+            <p class="text-[11px] text-slate-700 line-clamp-2">Pautas, relacionamento com a mídia, estratégia de pitch e clipping de matérias emplacadas.</p>
             <span class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-600">Usar Modelo →</span>
           </div>
 
@@ -1393,7 +1406,7 @@
           <div onclick="loadTemplateSample('RESEARCH')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-400 hover:shadow-card transition-all cursor-pointer space-y-2">
             <div class="text-xl">🎓</div>
             <h5 class="text-xs font-bold text-slate-900">Projeto Acadêmico / TCC</h5>
-            <p class="text-[11px] text-slate-500 line-clamp-2">Converta pesquisas, artigos e monografias em resolução prática com valor de mercado.</p>
+            <p class="text-[11px] text-slate-700 line-clamp-2">Converta pesquisas, artigos e monografias em resolução prática com valor de mercado.</p>
             <span class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-600">Usar Modelo →</span>
           </div>
 
@@ -1401,7 +1414,7 @@
           <div onclick="loadTemplateSample('INTERNSHIP')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-400 hover:shadow-card transition-all cursor-pointer space-y-2">
             <div class="text-xl">💼</div>
             <h5 class="text-xs font-bold text-slate-900">Estágio & Vivência Inicial</h5>
-            <p class="text-[11px] text-slate-500 line-clamp-2">Destaque autonomia, aprendizado acelerado e suporte a projetos de grande escala.</p>
+            <p class="text-[11px] text-slate-700 line-clamp-2">Destaque autonomia, aprendizado acelerado e suporte a projetos de grande escala.</p>
             <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600">Usar Modelo →</span>
           </div>
 
@@ -1409,7 +1422,7 @@
           <div onclick="loadTemplateSample('INDEPENDENT')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-purple-400 hover:shadow-card transition-all cursor-pointer space-y-2">
             <div class="text-xl">💻</div>
             <h5 class="text-xs font-bold text-slate-900">Projeto Técnico / Software</h5>
-            <p class="text-[11px] text-slate-500 line-clamp-2">Demonstre escolhas de arquitetura, ferramentas modernas e entregas verificadas.</p>
+            <p class="text-[11px] text-slate-700 line-clamp-2">Demonstre escolhas de arquitetura, ferramentas modernas e entregas verificadas.</p>
             <span class="inline-flex items-center gap-1 text-[10px] font-bold text-purple-600">Usar Modelo →</span>
           </div>
 
@@ -1417,7 +1430,7 @@
           <div onclick="loadTemplateSample('VOLUNTEER')" class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-amber-400 hover:shadow-card transition-all cursor-pointer space-y-2">
             <div class="text-xl">🤝</div>
             <h5 class="text-xs font-bold text-slate-900">Liderança & Voluntariado</h5>
-            <p class="text-[11px] text-slate-500 line-clamp-2">Evidencie soft skills, gestão de equipes e impacto social ou comunitário.</p>
+            <p class="text-[11px] text-slate-700 line-clamp-2">Evidencie soft skills, gestão de equipes e impacto social ou comunitário.</p>
             <span class="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600">Usar Modelo →</span>
           </div>
 
@@ -1550,7 +1563,7 @@
             <i data-lucide="award" class="w-3 h-3"></i> Metodologia STAR Corporativa
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Cases de Carreira</h1>
-          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Estruture projetos, pesquisas, TCCs e voluntariados em estudos de caso com impacto corporativo para portfólio e LinkedIn.</p>
+          <p class="text-sm text-slate-700 mt-0.5 max-w-2xl">Estruture projetos, pesquisas, TCCs e voluntariados em estudos de caso com impacto corporativo para portfólio e LinkedIn.</p>
         </div>
         <div class="flex items-center gap-2 self-start sm:self-auto flex-wrap">
           <button onclick="toggleStarAudioRecorder()" id="btnToggleAudioRecorder" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 shadow-subtle transition-all cursor-pointer">
@@ -1561,7 +1574,7 @@
             <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
             Carregar Exemplo
           </button>
-          <button onclick="clearStarForm()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-all">
+          <button onclick="clearStarForm()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-transparent text-slate-700 hover:text-slate-700 hover:bg-slate-100 transition-all">
             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
             Limpar
           </button>
@@ -1583,12 +1596,12 @@
                   <span id="audioStatusText">Pronto para gravar</span>
                 </span>
               </div>
-              <p class="text-xs text-slate-500 mt-0.5">Fale naturalmente sobre sua vivência real. O agente inteligente transcreve, identifica o que é <strong>Situação, Tarefa, Ação e Resultado</strong> e preenche os campos automaticamente.</p>
+              <p class="text-xs text-slate-700 mt-0.5">Fale naturalmente sobre sua vivência real. O agente inteligente transcreve, identifica o que é <strong>Situação, Tarefa, Ação e Resultado</strong> e preenche os campos automaticamente.</p>
             </div>
           </div>
           <div class="flex items-center gap-2 self-start sm:self-auto">
             <button type="button" onclick="toggleAudioInputMode()" id="btnToggleInputMode" class="text-xs text-slate-600 hover:text-slate-900 font-medium underline flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-slate-100/70 transition-all cursor-pointer">
-              <i data-lucide="keyboard" class="w-3.5 h-3.5 text-slate-500"></i>
+              <i data-lucide="keyboard" class="w-3.5 h-3.5 text-slate-700"></i>
               <span id="btnToggleInputModeText">Prefere colar áudio transcrito?</span>
             </button>
           </div>
@@ -1616,14 +1629,14 @@
 
           <!-- Transcript Box -->
           <div id="audioTranscriptBox" class="min-h-[84px] max-h-48 overflow-y-auto p-3.5 bg-white rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 leading-relaxed font-sans shadow-2xs">
-            <span id="audioTranscriptPlaceholder" class="text-slate-400 italic">Pressione "Iniciar Gravação" e conte como foi sua experiência: o contexto que enfrentava, a meta que precisava bater, o que você executou na prática e qual resultado ou aprendizado obteve...</span>
+            <span id="audioTranscriptPlaceholder" class="text-slate-600 italic">Pressione "Iniciar Gravação" e conte como foi sua experiência: o contexto que enfrentava, a meta que precisava bater, o que você executou na prática e qual resultado ou aprendizado obteve...</span>
             <span id="audioTranscriptFinal" contenteditable="true" oninput="syncManualTranscriptEdit()" class="font-medium text-slate-900 outline-none"></span>
             <span id="audioTranscriptInterim" class="text-blue-600 font-medium"></span>
           </div>
 
           <!-- Optional Manual Textarea (shown when user chooses text mode) -->
           <div id="audioManualTextAreaWrapper" class="hidden">
-            <textarea id="audioManualInput" rows="3" placeholder="Cole ou digite aqui seu relato falado (ex: transcrição de áudio do WhatsApp, roteiro de entrevista ou anotações livres)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+            <textarea id="audioManualInput" rows="3" placeholder="Cole ou digite aqui seu relato falado (ex: transcrição de áudio do WhatsApp, roteiro de entrevista ou anotações livres)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all placeholder:text-slate-600 resize-none"></textarea>
           </div>
 
           <!-- Quick Test Examples (for instant testing without microphone) -->
@@ -1698,7 +1711,7 @@
                 <span id="btnPauseRecordingText">Pausar</span>
               </button>
               <button type="button" onclick="resetStarAudioRecording()" id="btnResetRecording" class="hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all cursor-pointer">
-                <i data-lucide="trash-2" class="w-3.5 h-3.5 text-slate-500"></i>
+                <i data-lucide="trash-2" class="w-3.5 h-3.5 text-slate-700"></i>
                 <span>Limpar</span>
               </button>
             </div>
@@ -1714,7 +1727,7 @@
 
       <!-- Activity Category Selector (Lovable Style Cards) -->
       <div class="space-y-2">
-        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">1. Tipo de Vivência Prática</label>
+        <label class="text-xs font-semibold text-slate-700 uppercase tracking-wider">1. Tipo de Vivência Prática</label>
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2" id="categoryChips">
           <!-- Rendered via JS -->
         </div>
@@ -1723,8 +1736,8 @@
       <!-- Form Cards: Method STAR (S - T - A - R) -->
       <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-subtle space-y-4">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">2. Detalhamento Estruturado (Método STAR)</span>
-          <span class="text-[11px] text-slate-400">Preencha os tópicos para máxima precisão</span>
+          <span class="text-xs font-semibold text-slate-700 uppercase tracking-wider">2. Detalhamento Estruturado (Método STAR)</span>
+          <span class="text-[11px] text-slate-600">Preencha os tópicos para máxima precisão</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1734,7 +1747,7 @@
               <span class="w-4 h-4 rounded bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-extrabold">S</span>
               Situação (Contexto)
             </label>
-            <textarea id="inputSituation" rows="3" placeholder="Qual era o contexto, empresa, disciplina ou laboratório?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+            <textarea id="inputSituation" rows="3" placeholder="Qual era o contexto, empresa, disciplina ou laboratório?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600 resize-none"></textarea>
           </div>
 
           <!-- T: Task -->
@@ -1743,7 +1756,7 @@
               <span class="w-4 h-4 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-[10px] font-extrabold">T</span>
               Tarefa (Desafio & Objetivo)
             </label>
-            <textarea id="inputTask" rows="3" placeholder="Qual problema você precisava resolver e qual era a meta esperada?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+            <textarea id="inputTask" rows="3" placeholder="Qual problema você precisava resolver e qual era a meta esperada?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600 resize-none"></textarea>
           </div>
 
           <!-- A: Action -->
@@ -1752,7 +1765,7 @@
               <span class="w-4 h-4 rounded bg-purple-100 text-purple-700 flex items-center justify-center text-[10px] font-extrabold">A</span>
               Ação (O que você executou)
             </label>
-            <textarea id="inputAction" rows="3" placeholder="Quais metodologias, ferramentas e decisões técnicas você tomou?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+            <textarea id="inputAction" rows="3" placeholder="Quais metodologias, ferramentas e decisões técnicas você tomou?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600 resize-none"></textarea>
           </div>
 
           <!-- R: Result -->
@@ -1761,7 +1774,7 @@
               <span class="w-4 h-4 rounded bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-extrabold">R</span>
               Resultado (Impacto & Métricas)
             </label>
-            <textarea id="inputResult" rows="3" placeholder="Quais dados, notas, percentuais ou melhorias foram alcançadas?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+            <textarea id="inputResult" rows="3" placeholder="Quais dados, notas, percentuais ou melhorias foram alcançadas?..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600 resize-none"></textarea>
           </div>
         </div>
 
@@ -1772,9 +1785,9 @@
               <i data-lucide="link-2" class="w-3.5 h-3.5 text-blue-600"></i>
               Link de Evidência, Clipping ou Publicação (Opcional)
             </span>
-            <span class="text-[10px] text-slate-400 font-normal">Ex: Matéria publicada (G1, Folha, Valor), repositório GitHub ou artigo</span>
+            <span class="text-[10px] text-slate-600 font-normal">Ex: Matéria publicada (G1, Folha, Valor), repositório GitHub ou artigo</span>
           </label>
-          <input type="url" id="inputCaseEvidenceUrl" placeholder="https://exemplo.com/sua-materia-ou-projeto" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400">
+          <input type="url" id="inputCaseEvidenceUrl" placeholder="https://exemplo.com/sua-materia-ou-projeto" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600">
         </div>
 
         <!-- Optional File Upload Dropzone -->
@@ -1785,9 +1798,9 @@
               <i data-lucide="paperclip" class="w-3.5 h-3.5"></i>
               <span>Anexar Relatório / Documento</span>
             </button>
-            <span id="fileNameCases" class="text-xs text-slate-400 truncate max-w-xs">Nenhum anexo</span>
+            <span id="fileNameCases" class="text-xs text-slate-600 truncate max-w-xs">Nenhum anexo</span>
           </div>
-          <span class="text-[11px] text-slate-400">TXT, PDF ou DOCX</span>
+          <span class="text-[11px] text-slate-600">TXT, PDF ou DOCX</span>
         </div>
       </div>
 
@@ -1857,7 +1870,7 @@
                   <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-200/80">Visão Estratégica</span>
                   <span class="hidden sm:inline-flex text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">100% Fiel aos seus dados</span>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">Dicas e sugestões de como defender sua experiência real em entrevistas, sem inventar fatos ou inflar dados.</p>
+                <p class="text-xs text-slate-700 mt-0.5">Dicas e sugestões de como defender sua experiência real em entrevistas, sem inventar fatos ou inflar dados.</p>
               </div>
             </div>
             <button onclick="copyToClipboard('textOutputConsultant', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-xs font-semibold text-white shadow-subtle transition-all self-start sm:self-auto">
@@ -1894,7 +1907,7 @@
                 <span>Estudo de Caso (Portfólio)</span>
               </button>
               <button onclick="switchOutputTab('linkedin')" id="btnOutputLinkedin" class="px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
-                <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-400"></i>
+                <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-600"></i>
                 <span>Post para LinkedIn</span>
               </button>
             </div>
@@ -1906,7 +1919,7 @@
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
                 <div>
                   <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Texto Executivo Pronto</span>
-                  <p class="text-xs text-slate-500">Ideal para Notion, GitHub README, Portfólio online ou anexo em candidaturas.</p>
+                  <p class="text-xs text-slate-700">Ideal para Notion, GitHub README, Portfólio online ou anexo em candidaturas.</p>
                 </div>
                 <div class="flex items-center gap-2">
                   <button onclick="copyToClipboard('rawOutputPortfolio', this)" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-subtle transition-all">
@@ -1927,7 +1940,7 @@
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
                 <div>
                   <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Publicação Estruturada para LinkedIn</span>
-                  <p class="text-xs text-slate-500">Narrativa magnética, tópicos de impacto, chamada para ação e hashtags recomendadas.</p>
+                  <p class="text-xs text-slate-700">Narrativa magnética, tópicos de impacto, chamada para ação e hashtags recomendadas.</p>
                 </div>
                 <!-- Proeminent Copy to Clipboard Button -->
                 <button onclick="copyToClipboard('rawOutputLinkedin', this)" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#004182] text-white text-xs sm:text-sm font-bold shadow-subtle transition-all active:scale-[0.98]">
@@ -1956,14 +1969,14 @@
               <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-subtle space-y-4">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs">
-                    <i data-lucide="user" class="w-5 h-5 text-slate-400"></i>
+                    <i data-lucide="user" class="w-5 h-5 text-slate-600"></i>
                   </div>
                   <div>
                     <div class="flex items-center gap-1.5">
                       <span class="text-xs font-bold text-slate-900">Seu Perfil Profissional</span>
-                      <span class="text-[10px] text-slate-400">• 1º</span>
+                      <span class="text-[10px] text-slate-600">• 1º</span>
                     </div>
-                    <p class="text-[10px] text-slate-400 flex items-center gap-1">
+                    <p class="text-[10px] text-slate-600 flex items-center gap-1">
                       <span>Agora</span> • <i data-lucide="globe" class="w-2.5 h-2.5"></i>
                     </p>
                   </div>
@@ -1991,7 +2004,7 @@
             <i data-lucide="folder-archive" class="w-3 h-3"></i> Repositório Central de Conquistas
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Pasta de Cases & Projetos</h1>
-          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Acesse todos os seus estudos de caso, conselhos do consultor e posts prontos para o LinkedIn em um só local seguro.</p>
+          <p class="text-sm text-slate-700 mt-0.5 max-w-2xl">Acesse todos os seus estudos de caso, conselhos do consultor e posts prontos para o LinkedIn em um só local seguro.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
           <button onclick="navigateToTab('cases')" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-slate-900 hover:bg-slate-800 text-white shadow-subtle transition-all">
@@ -2015,12 +2028,12 @@
         <div class="flex flex-col sm:flex-row gap-3">
           <!-- Search Input -->
           <div class="relative flex-1">
-            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
-            <input type="text" id="inputSearchFolder" oninput="handleSearchFolder()" placeholder="Buscar por título, desafio, ferramenta ou métrica..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400">
+            <i data-lucide="search" class="w-4 h-4 text-slate-600 absolute left-3.5 top-3.5"></i>
+            <input type="text" id="inputSearchFolder" oninput="handleSearchFolder()" placeholder="Buscar por título, desafio, ferramenta ou métrica..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600">
           </div>
           <!-- Clear or Filter Reset -->
           <div class="flex items-center gap-2 shrink-0">
-            <span id="folderStatsCount" class="text-xs font-semibold text-slate-500 px-2">0 cases catalogados</span>
+            <span id="folderStatsCount" class="text-xs font-semibold text-slate-700 px-2">0 cases catalogados</span>
           </div>
         </div>
 
@@ -2042,7 +2055,7 @@
         </div>
         <div class="max-w-md mx-auto space-y-1">
           <h3 class="text-base font-bold text-slate-900">Sua Pasta de Cases está vazia</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
+          <p class="text-xs text-slate-700 leading-relaxed">
             Estruture suas experiências na aba <strong>Cases STAR</strong> para que a IA gere automaticamente o conselho do consultor, o estudo para portfólio e o post do LinkedIn. Todos os seus projetos ficarão salvos aqui!
           </p>
         </div>
@@ -2070,7 +2083,7 @@
             <i data-lucide="shield-check" class="w-3 h-3"></i> Otimização ATS & Recrutadores
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Currículo Vivo</h1>
-          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Incorpore novos projetos e conquistas ao seu currículo atual, calibrado para passar nas triagens automáticas e humanas.</p>
+          <p class="text-sm text-slate-700 mt-0.5 max-w-2xl">Incorpore novos projetos e conquistas ao seu currículo atual, calibrado para passar nas triagens automáticas e humanas.</p>
         </div>
         <div class="flex items-center gap-2 self-start sm:self-auto">
           <button onclick="loadResumeSample()" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all">
@@ -2089,7 +2102,7 @@
             <i data-lucide="target" class="w-3.5 h-3.5 text-blue-600"></i>
             Cargo ou Área Alvo
           </label>
-          <input type="text" id="inputTargetRole" placeholder="Ex: Desenvolvedor Front-end Júnior / Analista de Dados Trainee" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400">
+          <input type="text" id="inputTargetRole" placeholder="Ex: Desenvolvedor Front-end Júnior / Analista de Dados Trainee" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600">
         </div>
 
         <!-- Recent Activities to Incorporate -->
@@ -2098,7 +2111,7 @@
             <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-blue-600"></i>
             Novas Atividades e Projetos para Incorporar
           </label>
-          <textarea id="inputNewActivities" rows="3" placeholder="Ex: Coordenei a organização da Semana Acadêmica com 600 inscritos; criei fluxo digital de inscrições no Notion eliminando filas; publiquei artigo em simpósio acadêmico..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400"></textarea>
+          <textarea id="inputNewActivities" rows="3" placeholder="Ex: Coordenei a organização da Semana Acadêmica com 600 inscritos; criei fluxo digital de inscrições no Notion eliminando filas; publiquei artigo em simpósio acadêmico..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600"></textarea>
         </div>
 
         <!-- Current Resume Text or File -->
@@ -2114,8 +2127,8 @@
               Importar de Arquivo
             </button>
           </div>
-          <textarea id="inputCurrentResume" rows="7" placeholder="Cole aqui as seções do seu currículo atual (Resumo, Experiência, Educação, Habilidades)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-400 font-sans"></textarea>
-          <span id="fileNameResume" class="text-xs text-slate-400 block"></span>
+          <textarea id="inputCurrentResume" rows="7" placeholder="Cole aqui as seções do seu currículo atual (Resumo, Experiência, Educação, Habilidades)..." class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none transition-all placeholder:text-slate-600 font-sans"></textarea>
+          <span id="fileNameResume" class="text-xs text-slate-600 block"></span>
         </div>
       </div>
 
@@ -2168,7 +2181,7 @@
             <i data-lucide="globe" class="w-3 h-3"></i> Sua Vitrine Profissional na Web
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Meu Perfil Público & Portfólio</h1>
-          <p class="text-sm text-slate-500 mt-0.5 max-w-2xl">Personalize como recrutadores e líderes verão seus cases STAR comprovados, trajetória e contatos profissionais.</p>
+          <p class="text-sm text-slate-700 mt-0.5 max-w-2xl">Personalize como recrutadores e líderes verão seus cases STAR comprovados, trajetória e contatos profissionais.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
           <button onclick="sharePublicProfile()" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-slate-900 hover:bg-slate-800 text-white shadow-subtle transition-all">
@@ -2176,7 +2189,7 @@
             <span>Compartilhar Perfil</span>
           </button>
           <button onclick="toggleEditProfileMode()" id="btnToggleEditProfile" class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 shadow-subtle transition-all">
-            <i data-lucide="edit-3" class="w-3.5 h-3.5 text-slate-500"></i>
+            <i data-lucide="edit-3" class="w-3.5 h-3.5 text-slate-700"></i>
             <span id="btnEditProfileText">Editar Informações</span>
           </button>
         </div>
@@ -2243,15 +2256,15 @@
               <span id="profileDisplayOriginBadge" class="inline-flex items-center gap-1.5 text-xs font-bold bg-slate-100 text-slate-800 px-3 py-1 rounded-lg border border-slate-200">
                 <i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i> Projeto Acadêmico
               </span>
-              <span class="text-xs text-slate-500 font-medium flex items-center gap-1.5 ml-1" id="profileDisplayLocation">
-                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> São Paulo, Brasil • Remoto / Híbrido
+              <span class="text-xs text-slate-700 font-medium flex items-center gap-1.5 ml-1" id="profileDisplayLocation">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-600"></i> São Paulo, Brasil • Remoto / Híbrido
               </span>
             </div>
           </div>
 
           <!-- Professional Bio -->
           <div class="mt-5 pt-4 border-t border-slate-100">
-            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Sobre Mim & Foco de Carreira</h4>
+            <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Sobre Mim & Foco de Carreira</h4>
             <p class="text-xs sm:text-sm text-slate-800 leading-relaxed max-w-4xl font-normal" id="profileDisplayBio">
               Profissional apaixonada por resolver problemas complexos com engenharia pragmática, pensamento crítico e dados. Experiência em liderança técnica de projetos acadêmicos e corporativos, com foco em resultados mensuráveis de eficiência, redução de latência e excelência em arquitetura de software.
             </p>
@@ -2259,7 +2272,7 @@
 
           <!-- Top Skills Tags -->
           <div class="mt-5 pt-4 border-t border-slate-100 space-y-2">
-            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Competências Verificadas</span>
+            <span class="text-xs font-bold text-slate-600 uppercase tracking-wider block">Competências Verificadas</span>
             <div class="flex flex-wrap items-center gap-1.5" id="profileDisplaySkills">
               <!-- Populated via JS -->
             </div>
@@ -2277,7 +2290,7 @@
             </div>
             <h3 class="font-bold text-sm text-slate-900">Editar Detalhes do Perfil Público</h3>
           </div>
-          <button onclick="toggleEditProfileMode()" class="text-xs text-slate-400 hover:text-slate-600">Fechar edição</button>
+          <button onclick="toggleEditProfileMode()" class="text-xs text-slate-600 hover:text-slate-600">Fechar edição</button>
         </div>
 
         <!-- Photo & Avatar Management -->
@@ -2289,7 +2302,7 @@
           <div class="space-y-2 flex-1 w-full text-left">
             <div class="flex items-center justify-between">
               <label class="text-xs font-bold text-slate-700">Foto de Perfil do Portfólio</label>
-              <span class="text-[11px] text-slate-400">Aparecerá na vitrine e na barra superior</span>
+              <span class="text-[11px] text-slate-600">Aparecerá na vitrine e na barra superior</span>
             </div>
             <div class="flex flex-wrap items-center gap-2">
               <label class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold cursor-pointer shadow-2xs transition-all flex items-center gap-1.5">
@@ -2363,7 +2376,7 @@
                 <i data-lucide="tags" class="w-3.5 h-3.5 text-blue-600"></i>
                 Seletor Rápido de Competências Padronizadas (Clique para Adicionar)
               </label>
-              <span class="text-[11px] text-slate-500">Facilita ser encontrado por recrutadores</span>
+              <span class="text-[11px] text-slate-700">Facilita ser encontrado por recrutadores</span>
             </div>
 
             <!-- Hard Skills Group -->
@@ -2439,7 +2452,7 @@
               <i data-lucide="award" class="w-5 h-5 text-blue-600"></i>
               Cases STAR em Destaque no Perfil
             </h3>
-            <p class="text-xs text-slate-500">Estudos de caso reais com resultados práticos gerados na plataforma</p>
+            <p class="text-xs text-slate-700">Estudos de caso reais com resultados práticos gerados na plataforma</p>
           </div>
           <button onclick="navigateToTab('cases')" class="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
             <span>+ Adicionar Novo Case</span>
@@ -2452,7 +2465,7 @@
         </div>
 
         <div id="profileCasesEmpty" class="hidden bg-white rounded-3xl border border-dashed border-slate-300 p-8 text-center space-y-3">
-          <p class="text-xs text-slate-500">Você ainda não tem cases catalogados no perfil. Crie seu primeiro case STAR para que recrutadores vejam seu impacto!</p>
+          <p class="text-xs text-slate-700">Você ainda não tem cases catalogados no perfil. Crie seu primeiro case STAR para que recrutadores vejam seu impacto!</p>
           <button onclick="navigateToTab('cases')" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold">Criar Primeiro Case STAR</button>
         </div>
       </div>
@@ -2490,7 +2503,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <!-- Text Search -->
           <div class="relative sm:col-span-2 lg:col-span-1">
-            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <i data-lucide="search" class="w-4 h-4 text-slate-600 absolute left-3.5 top-3.5"></i>
             <input type="text" id="inputSearchNetwork" oninput="handleSearchNetwork()" placeholder="Buscar por nome, competência ou tecnologia..." class="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none">
           </div>
 
@@ -2523,7 +2536,7 @@
               <i data-lucide="filter" class="w-3.5 h-3.5 text-blue-600"></i>
               Filtrar por Competências em Alta:
             </span>
-            <button onclick="clearNetworkFilters()" class="text-slate-400 hover:text-slate-700 text-[11px] font-semibold">
+            <button onclick="clearNetworkFilters()" class="text-slate-600 hover:text-slate-700 text-[11px] font-semibold">
               Limpar Filtros
             </button>
           </div>
@@ -2532,7 +2545,7 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+        <div class="flex items-center justify-between text-xs text-slate-700 pt-1">
           <span id="networkCountLabel">Exibindo 0 profissionais</span>
           <span class="text-[11px] text-emerald-700 font-semibold flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/80">
             <i data-lucide="check-circle" class="w-3 h-3 text-emerald-600"></i> Perfis com cases estruturados no método STAR
@@ -2553,7 +2566,7 @@
       <div class="flex items-center justify-between pb-2 border-b border-slate-200">
         <div>
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Configurações & Chave de API</h1>
-          <p class="text-sm text-slate-500 mt-0.5">Gerencie a conexão segura com os modelos de IA do Google Gemini.</p>
+          <p class="text-sm text-slate-700 mt-0.5">Gerencie a conexão segura com os modelos de IA do Google Gemini.</p>
         </div>
       </div>
 
@@ -2564,7 +2577,7 @@
           </div>
           <div>
             <h2 class="text-sm font-bold text-slate-900">Google Gemini API Key</h2>
-            <p class="text-xs text-slate-500">Sua chave é salva no navegador (LocalStorage) e usada diretamente pelo cliente.</p>
+            <p class="text-xs text-slate-700">Sua chave é salva no navegador (LocalStorage) e usada diretamente pelo cliente.</p>
           </div>
         </div>
 
@@ -2572,7 +2585,7 @@
           <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Chave de Acesso</label>
           <div class="relative">
             <input type="password" id="inputApiKey" placeholder="AIzaSy..." class="w-full text-xs sm:text-sm p-3.5 pr-20 rounded-xl border border-slate-200 bg-slate-50/50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:outline-none font-mono">
-            <button onclick="toggleKeyVisibility()" class="absolute right-3.5 top-3.5 text-xs text-slate-500 hover:text-slate-800 font-semibold">
+            <button onclick="toggleKeyVisibility()" class="absolute right-3.5 top-3.5 text-xs text-slate-700 hover:text-slate-800 font-semibold">
               <span id="labelToggleKey">Ver</span>
             </button>
           </div>
@@ -2587,7 +2600,7 @@
               <option value="gemini-3.5-flash">Gemini 3.5 Flash (Excelente qualidade e velocidade)</option>
               <option value="gemini-3.6-flash">Gemini 3.6 Flash (Mais recente)</option>
             </select>
-            <p class="text-[11px] text-slate-500">Usa os modelos mais recentes e ativos da API do Google Gemini com fallback automático.</p>
+            <p class="text-[11px] text-slate-700">Usa os modelos mais recentes e ativos da API do Google Gemini com fallback automático.</p>
           </div>
 
           <div class="flex flex-wrap items-center gap-2 pt-2">
@@ -2636,18 +2649,18 @@
                 <h2 class="text-base font-bold text-slate-900">Central de Controle de Cadastros & Leads</h2>
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-800">Painel Gestor</span>
               </div>
-              <p class="text-xs text-slate-500 mt-0.5">Gerenciamento da base de usuários, candidatos e recrutadores cadastrados.</p>
+              <p class="text-xs text-slate-700 mt-0.5">Gerenciamento da base de usuários, candidatos e recrutadores cadastrados.</p>
             </div>
           </div>
           
           <!-- Export Actions -->
           <div class="flex items-center gap-2">
             <button onclick="exportLeadsCSV()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
-              <i data-lucide="download" class="w-3.5 h-3.5 text-slate-500"></i>
+              <i data-lucide="download" class="w-3.5 h-3.5 text-slate-700"></i>
               <span>Exportar CSV (Leads)</span>
             </button>
             <button onclick="exportLeadsJSON()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
-              <i data-lucide="code" class="w-3.5 h-3.5 text-slate-500"></i>
+              <i data-lucide="code" class="w-3.5 h-3.5 text-slate-700"></i>
               <span>Exportar JSON</span>
             </button>
           </div>
@@ -2656,12 +2669,12 @@
         <!-- 4 Metric Cards -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div class="p-4 rounded-xl border border-slate-200/80 bg-slate-50/50 space-y-1">
-            <div class="flex items-center justify-between text-slate-500 text-xs">
+            <div class="flex items-center justify-between text-slate-700 text-xs">
               <span>Total de Cadastros</span>
-              <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
+              <i data-lucide="users" class="w-3.5 h-3.5 text-slate-600"></i>
             </div>
             <div id="statTotalUsers" class="text-2xl font-black text-slate-900">0</div>
-            <div class="text-[10px] text-slate-500">Base ativa da plataforma</div>
+            <div class="text-[10px] text-slate-700">Base ativa da plataforma</div>
           </div>
 
           <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/40 space-y-1">
@@ -2695,7 +2708,7 @@
         <!-- Filter and Search Bar -->
         <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
           <div class="relative flex-1 w-full">
-            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3"></i>
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-600 absolute left-3 top-3"></i>
             <input type="text" id="leadsSearchInput" oninput="filterLeadsTable()" placeholder="Buscar cadastro por nome, e-mail, área ou cargo..." class="w-full text-xs pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
           </div>
           <div class="flex items-center gap-2 w-full sm:w-auto">
@@ -2714,7 +2727,7 @@
         <!-- Leads Table -->
         <div class="overflow-x-auto rounded-xl border border-slate-200">
           <table class="w-full text-left text-xs text-slate-700 border-collapse">
-            <thead class="bg-slate-50/80 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200">
+            <thead class="bg-slate-50/80 text-[11px] font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200">
               <tr>
                 <th class="py-3 px-4">Usuário</th>
                 <th class="py-3 px-4">Perfil</th>
@@ -2796,18 +2809,18 @@
                 <h2 class="text-base font-bold text-slate-900">Caixa de Entrada de Contatos & Feedbacks</h2>
                 <span id="badgeTotalFeedbacks" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">0 mensagens</span>
               </div>
-              <p class="text-xs text-slate-500 mt-0.5">Mensagens recebidas pelo formulário de contato do rodapé, organizadas com histórico e respostas.</p>
+              <p class="text-xs text-slate-700 mt-0.5">Mensagens recebidas pelo formulário de contato do rodapé, organizadas com histórico e respostas.</p>
             </div>
           </div>
           
           <!-- Actions -->
           <div class="flex items-center gap-2">
             <button onclick="exportFeedbacksCSV()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
-              <i data-lucide="download" class="w-3.5 h-3.5 text-slate-500"></i>
+              <i data-lucide="download" class="w-3.5 h-3.5 text-slate-700"></i>
               <span>Exportar CSV</span>
             </button>
             <button onclick="clearReadFeedbacks()" class="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
-              <i data-lucide="check-check" class="w-3.5 h-3.5 text-slate-400"></i>
+              <i data-lucide="check-check" class="w-3.5 h-3.5 text-slate-600"></i>
               <span>Limpar Lidos</span>
             </button>
           </div>
@@ -2830,7 +2843,7 @@
         <!-- Filter bar -->
         <div class="flex flex-col sm:flex-row items-center gap-3">
           <div class="relative flex-1 w-full">
-            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3"></i>
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-600 absolute left-3 top-3"></i>
             <input type="text" id="feedbacksSearchInput" oninput="renderFeedbacksList()" placeholder="Buscar mensagens por nome, e-mail, assunto ou conteúdo..." class="w-full text-xs pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
           </div>
           <select id="feedbacksStatusFilter" onchange="renderFeedbacksList()" class="text-xs px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none w-full sm:w-auto">
@@ -2854,7 +2867,7 @@
       
       <!-- Top Breadcrumb & Quick Actions -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
-        <div class="flex items-center gap-2 text-xs text-slate-500">
+        <div class="flex items-center gap-2 text-xs text-slate-700">
           <button onclick="navigateToTab('landing')" class="hover:text-slate-900 transition-colors flex items-center gap-1 font-medium cursor-pointer">
             <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
             <span>Voltar ao Início</span>
@@ -2864,7 +2877,7 @@
         </div>
         <div class="flex items-center gap-2">
           <button onclick="copyAcademicReferences()" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer">
-            <i data-lucide="copy" class="w-3.5 h-3.5 text-slate-500"></i>
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-slate-700"></i>
             <span>Copiar Referências (ABNT/APA)</span>
           </button>
           <button onclick="navigateToTab('cases')" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
@@ -2929,7 +2942,7 @@
                   <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
                     Behavioral Description Interviewing (BDI) & Estrutura STAR
                   </h3>
-                  <p class="text-xs text-slate-500">Fundamentação: Janz (1982), McClelland (1973), Campion, Palmer & Campion (1997), Schmidt & Hunter (1998)</p>
+                  <p class="text-xs text-slate-700">Fundamentação: Janz (1982), McClelland (1973), Campion, Palmer & Campion (1997), Schmidt & Hunter (1998)</p>
                 </div>
               </div>
               <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px] tracking-wide shrink-0">PSICOLOGIA ORGANIZACIONAL</span>
@@ -2965,7 +2978,7 @@
                   <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
                     Teoria do Esforço Coletivo & Mitigação do "Efeito Carona" (Social Loafing)
                   </h3>
-                  <p class="text-xs text-slate-500">Fundamentação: Steven J. Karau & Kipling D. Williams (1993, APA - Journal of Personality and Social Psychology)</p>
+                  <p class="text-xs text-slate-700">Fundamentação: Steven J. Karau & Kipling D. Williams (1993, APA - Journal of Personality and Social Psychology)</p>
                 </div>
               </div>
               <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px] tracking-wide shrink-0">DINÂMICA DE GRUPO</span>
@@ -3001,7 +3014,7 @@
                   <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
                     Avaliação Autêntica & Prática Reflexiva (Authentic Assessment)
                   </h3>
-                  <p class="text-xs text-slate-500">Fundamentação: Grant Wiggins (1990), Donald Schön (1983 - The Reflective Practitioner), Albert Bandura (1997)</p>
+                  <p class="text-xs text-slate-700">Fundamentação: Grant Wiggins (1990), Donald Schön (1983 - The Reflective Practitioner), Albert Bandura (1997)</p>
                 </div>
               </div>
               <span class="px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 font-bold text-[10px] tracking-wide shrink-0">CIÊNCIAS DA EDUCAÇÃO</span>
@@ -3044,7 +3057,7 @@
           </div>
           <a href="https://scispace.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 self-start sm:self-auto shadow-2xs">
             <span>Abrir SciSpace</span>
-            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-700"></i>
           </a>
         </div>
 
@@ -3164,7 +3177,7 @@
         <div class="relative inline-block text-left" id="containerLangSelector">
           <button id="btnLanguageSelector" onclick="toggleLanguageMenu()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-2xs transition-all cursor-pointer">
             <span id="labelCurrentLanguage">Português (Brasil)</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500"></i>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-700"></i>
           </button>
           
           <!-- Dropdown -->
@@ -3200,14 +3213,14 @@
       </nav>
 
       <!-- 3. Logo & Copyright -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 text-xs text-slate-500 pt-5 border-t border-slate-100 max-w-4xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 text-xs text-slate-700 pt-5 border-t border-slate-100 max-w-4xl mx-auto">
         <div class="flex items-center gap-2 font-bold text-slate-900">
           <div class="w-5 h-5 rounded-md bg-slate-900 flex items-center justify-center text-white text-[10px] font-black shadow-2xs">
             C
           </div>
           <span>CarreiraIA</span>
         </div>
-        <span class="hidden sm:inline text-slate-300">•</span>
+        <span class="hidden sm:inline text-slate-500">•</span>
         <span>© Copyright 2026. Todos os direitos reservados.</span>
       </div>
 
@@ -3222,41 +3235,41 @@
       </div>
       <span class="text-[9px]">Início</span>
     </button>
-    <button onclick="navigateToTab('cases')" id="mobile-tab-cases" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-1.5 py-1">
+    <button onclick="navigateToTab('cases')" id="mobile-tab-cases" class="flex flex-col items-center gap-0.5 text-slate-600 font-medium px-1.5 py-1">
       <div class="w-8 h-6 rounded-full flex items-center justify-center">
-        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-400"></i>
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-slate-600"></i>
       </div>
       <span class="text-[9px]">Cases</span>
     </button>
-    <button onclick="navigateToTab('folder')" id="mobile-tab-folder" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative">
+    <button onclick="navigateToTab('folder')" id="mobile-tab-folder" class="flex flex-col items-center gap-0.5 text-slate-600 font-medium px-2 py-1 relative">
       <div class="w-8 h-6 rounded-full flex items-center justify-center">
-        <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-400"></i>
+        <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-slate-600"></i>
       </div>
       <span class="text-[9px]">Pasta</span>
       <span id="badgeFolderMobile" class="w-2 h-2 rounded-full bg-blue-600 absolute top-1 right-2 hidden"></span>
     </button>
-    <button onclick="navigateToTab('profile')" id="mobile-tab-profile" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1">
+    <button onclick="navigateToTab('profile')" id="mobile-tab-profile" class="flex flex-col items-center gap-0.5 text-slate-600 font-medium px-2 py-1">
       <div class="w-8 h-6 rounded-full flex items-center justify-center">
-        <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-400"></i>
+        <i data-lucide="user-check" class="w-3.5 h-3.5 text-slate-600"></i>
       </div>
       <span class="text-[9px]">Meu Perfil</span>
     </button>
-    <button onclick="navigateToTab('network')" id="mobile-tab-network" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative">
+    <button onclick="navigateToTab('network')" id="mobile-tab-network" class="flex flex-col items-center gap-0.5 text-slate-600 font-medium px-2 py-1 relative">
       <div class="w-8 h-6 rounded-full flex items-center justify-center">
-        <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
+        <i data-lucide="users" class="w-3.5 h-3.5 text-slate-600"></i>
       </div>
       <span class="text-[9px]">Rede</span>
       <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 absolute top-1 right-2"></span>
     </button>
-    <button onclick="navigateToTab('resume')" id="mobile-tab-resume" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1">
+    <button onclick="navigateToTab('resume')" id="mobile-tab-resume" class="flex flex-col items-center gap-0.5 text-slate-600 font-medium px-2 py-1">
       <div class="w-8 h-6 rounded-full flex items-center justify-center">
-        <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400"></i>
+        <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-600"></i>
       </div>
       <span class="text-[9px]">Currículo</span>
     </button>
-    <button onclick="navigateToTab('settings')" id="mobile-tab-settings" class="flex flex-col items-center gap-0.5 text-slate-400 font-medium px-2 py-1 relative">
+    <button onclick="navigateToTab('settings')" id="mobile-tab-settings" class="flex flex-col items-center gap-0.5 text-slate-600 font-medium px-2 py-1 relative">
       <div class="w-8 h-6 rounded-full flex items-center justify-center">
-        <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-400"></i>
+        <i data-lucide="settings" class="w-3.5 h-3.5 text-slate-600"></i>
       </div>
       <span class="text-[9px]">Ajustes</span>
       <span id="dotSettingsMobile" class="w-1.5 h-1.5 rounded-full bg-amber-500 absolute top-1 right-2"></span>
@@ -3357,7 +3370,7 @@
         <div class="space-y-1">
           <div class="flex items-center gap-2">
             <span id="modalCaseCategory" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">Categoria</span>
-            <span id="modalCaseDate" class="text-xs text-slate-400">Data</span>
+            <span id="modalCaseDate" class="text-xs text-slate-600">Data</span>
           </div>
           <h3 id="modalCaseTitle" class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">Título do Estudo de Caso</h3>
           <div id="modalCaseEvidenceContainer" class="hidden pt-1">
@@ -3367,7 +3380,7 @@
             </a>
           </div>
         </div>
-        <button onclick="closeCaseDetailModal()" class="w-8 h-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all">
+        <button onclick="closeCaseDetailModal()" class="w-8 h-8 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -3380,11 +3393,11 @@
             <span>Conselho do Consultor</span>
           </button>
           <button onclick="switchModalDetailTab('portfolio')" id="modalTabBtnPortfolio" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
-            <i data-lucide="file-code" class="w-3.5 h-3.5 text-slate-400"></i>
+            <i data-lucide="file-code" class="w-3.5 h-3.5 text-slate-600"></i>
             <span>Portfólio</span>
           </button>
           <button onclick="switchModalDetailTab('linkedin')" id="modalTabBtnLinkedin" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
-            <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-400"></i>
+            <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-600"></i>
             <span>LinkedIn</span>
           </button>
         </div>
@@ -3465,10 +3478,10 @@
           </div>
           <div>
             <h3 class="font-extrabold text-base text-slate-900">Instalar CarreiraIA</h3>
-            <p class="text-xs text-slate-500">Acesso rápido na tela inicial do celular ou PC</p>
+            <p class="text-xs text-slate-700">Acesso rápido na tela inicial do celular ou PC</p>
           </div>
         </div>
-        <button onclick="closeInstallPwaModal()" class="w-7 h-7 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 flex items-center justify-center">
+        <button onclick="closeInstallPwaModal()" class="w-7 h-7 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-700 flex items-center justify-center">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -3544,7 +3557,7 @@
     <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in p-6 sm:p-7 relative space-y-5 text-left max-h-[92vh] overflow-y-auto">
       
       <!-- Close Button -->
-      <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer" aria-label="Fechar modal">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
@@ -3561,7 +3574,7 @@
         <h3 id="authModalTitle" class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
           Acessar o CarreiraIA
         </h3>
-        <p id="authModalSubtitle" class="text-xs text-slate-500">
+        <p id="authModalSubtitle" class="text-xs font-medium text-slate-700">
           Selecione seu perfil para uma experiência personalizada:
         </p>
       </div>
@@ -3574,18 +3587,18 @@
           </div>
           <div class="min-w-0 flex-1">
             <span class="text-xs font-bold text-blue-950 block leading-tight">Profissional</span>
-            <span class="text-[10px] text-slate-500 block truncate">Cases STAR & CV</span>
+            <span class="text-[11px] font-medium text-slate-700 block truncate">Cases STAR & CV</span>
           </div>
           <span id="roleCheckCandidate" class="text-blue-600 text-xs font-bold">✓</span>
         </button>
 
-        <button type="button" id="authRoleRecruiterBtn" onclick="switchAuthRole('recruiter')" class="p-2.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/60 text-slate-700 transition-all text-left flex items-center gap-2.5 cursor-pointer">
-          <div class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center text-xs shrink-0">
+        <button type="button" id="authRoleRecruiterBtn" onclick="switchAuthRole('recruiter')" class="p-2.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/60 text-slate-800 transition-all text-left flex items-center gap-2.5 cursor-pointer">
+          <div class="w-7 h-7 rounded-lg bg-slate-200 text-slate-800 flex items-center justify-center text-xs shrink-0">
             <i data-lucide="briefcase" class="w-4 h-4"></i>
           </div>
           <div class="min-w-0 flex-1">
             <span class="text-xs font-bold text-slate-900 block leading-tight">Recrutador</span>
-            <span class="text-[10px] text-slate-500 block truncate">Radar de Talentos</span>
+            <span class="text-[11px] font-medium text-slate-700 block truncate">Radar de Talentos</span>
           </div>
           <span id="roleCheckRecruiter" class="text-emerald-600 text-xs font-bold hidden">✓</span>
         </button>
@@ -3596,7 +3609,7 @@
         <button type="button" id="authTabBtnRegister" onclick="switchAuthTab('register')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-white text-slate-900 shadow-2xs">
           Criar Cadastro Grátis
         </button>
-        <button type="button" id="authTabBtnLogin" onclick="switchAuthTab('login')" class="flex-1 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all">
+        <button type="button" id="authTabBtnLogin" onclick="switchAuthTab('login')" class="flex-1 py-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 rounded-lg transition-all">
           Já Tenho Conta
         </button>
       </div>
@@ -3606,8 +3619,8 @@
         <!-- Register only fields -->
         <div id="authRegisterFields" class="space-y-3">
           <div class="space-y-1">
-            <label class="text-xs font-bold text-slate-700">Nome Completo</label>
-            <input type="text" id="authInputName" placeholder="Ex: Rafaela Zampini" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+            <label class="text-xs font-bold text-slate-800">Nome Completo</label>
+            <input type="text" id="authInputName" placeholder="Ex: Seu nome completo" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all placeholder:text-slate-600">
           </div>
 
           <!-- Role-specific fields: Candidate -->
@@ -3661,10 +3674,10 @@
         <!-- Password Field -->
         <div class="space-y-1">
           <div class="flex items-center justify-between">
-            <label class="text-xs font-bold text-slate-700">Senha</label>
-            <span class="text-[11px] text-slate-400">Mínimo 6 caracteres</span>
+            <label class="text-xs font-bold text-slate-800">Senha</label>
+            <span class="text-[11px] font-medium text-slate-700">Mínimo 6 caracteres</span>
           </div>
-          <input type="password" id="authInputPassword" placeholder="••••••••" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all">
+          <input type="password" id="authInputPassword" placeholder="••••••••" class="w-full text-xs sm:text-sm p-3 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:outline-none transition-all placeholder:text-slate-600">
         </div>
 
         <!-- Notion Style Black Submit Button -->
@@ -3675,13 +3688,13 @@
       </div>
 
       <!-- ==================== SEÇÃO: TESTAR SEM CADASTRO (MODO DEGUSTAÇÃO) ==================== -->
-      <div class="pt-4 border-t border-slate-100 space-y-2.5">
+      <div class="pt-4 border-t border-slate-200 space-y-2.5">
         <div class="flex items-center justify-between">
           <span class="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
             <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
             Quer testar sem cadastro agora?
           </span>
-          <span class="text-[10px] text-slate-400">Modo Demonstração</span>
+          <span class="text-[11px] font-semibold text-slate-700">Modo Demonstração</span>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -3691,7 +3704,7 @@
             </div>
             <div class="min-w-0 flex-1">
               <span class="font-bold text-blue-950 block text-[11px] truncate">Como Profissional</span>
-              <span class="text-[10px] text-blue-700 block truncate">Gerador STAR & Currículo</span>
+              <span class="text-[10px] font-medium text-blue-800 block truncate">Gerador STAR & Currículo</span>
             </div>
           </button>
 
@@ -3701,32 +3714,32 @@
             </div>
             <div class="min-w-0 flex-1">
               <span class="font-bold text-emerald-950 block text-[11px] truncate">Como Recrutador</span>
-              <span class="text-[10px] text-emerald-700 block truncate">Radar & Triagem Preditiva</span>
+              <span class="text-[10px] font-medium text-emerald-800 block truncate">Radar & Triagem Preditiva</span>
             </div>
           </button>
         </div>
       </div>
 
       <!-- Social Logins -->
-      <div class="pt-2 border-t border-slate-100 space-y-2">
-        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block text-center">Ou continue com um clique:</span>
+      <div class="pt-2 border-t border-slate-200 space-y-2">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-700 block text-center">Ou continue com um clique:</span>
         <div class="grid grid-cols-3 gap-2">
-          <button type="button" onclick="handleSocialLogin('Google')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+          <button type="button" onclick="handleSocialLogin('Google')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
             <span>Google</span>
           </button>
-          <button type="button" onclick="handleSocialLogin('LinkedIn')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+          <button type="button" onclick="handleSocialLogin('LinkedIn')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
             <svg class="w-3.5 h-3.5 text-blue-700 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             <span>LinkedIn</span>
           </button>
-          <button type="button" onclick="handleSocialLogin('Microsoft')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+          <button type="button" onclick="handleSocialLogin('Microsoft')" class="py-2 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24"><path fill="#f25022" d="M1 1h10v10H1z"/><path fill="#00a4ef" d="M1 13h10v10H1z"/><path fill="#7fba00" d="M13 1h10v10H13z"/><path fill="#ffb900" d="M13 13h10v10H13z"/></svg>
             <span>Microsoft</span>
           </button>
         </div>
       </div>
 
-      <p class="text-[11px] text-center text-slate-400 leading-tight">
+      <p class="text-[11px] font-medium text-center text-slate-700 leading-tight">
         Ao continuar, você concorda com os Termos de Serviço e com a Política de Privacidade do CarreiraIA.
       </p>
 
@@ -3746,14 +3759,14 @@
             <h4 id="userMenuName" class="text-xs font-bold text-slate-900 truncate">Rafaela Zampini</h4>
             <span id="userMenuRoleBadge" class="px-1.5 py-0.2 rounded-md text-[9px] font-extrabold bg-blue-100 text-blue-800">Profissional</span>
           </div>
-          <p id="userMenuEmail" class="text-[11px] text-slate-500 truncate">rafaela@carreiraia.com</p>
+          <p id="userMenuEmail" class="text-[11px] text-slate-700 truncate">rafaela@carreiraia.com</p>
         </div>
       </div>
 
       <!-- Quick Switch Role Action -->
       <div class="p-2 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
         <div class="text-[11px]">
-          <span class="text-slate-500 block text-[10px]">Visão Atual:</span>
+          <span class="text-slate-700 block text-[10px]">Visão Atual:</span>
           <span id="userMenuCurrentRoleLabel" class="font-bold text-slate-800">Espaço do Profissional</span>
         </div>
         <button onclick="toggleUserWorkspaceRole()" class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-[11px] font-bold text-slate-700 transition-all cursor-pointer">
@@ -3763,19 +3776,19 @@
 
       <div class="space-y-1">
         <button onclick="closeUserMenu(); navigateToTab('profile');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-          <i data-lucide="user" class="w-4 h-4 text-slate-400"></i>
+          <i data-lucide="user" class="w-4 h-4 text-slate-600"></i>
           <span>Meu Perfil & Portfólio</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('cases');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-4 h-4 text-slate-400"></i>
+          <i data-lucide="sparkles" class="w-4 h-4 text-slate-600"></i>
           <span>Gerador STAR com IA</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('folder');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-          <i data-lucide="folder-kanban" class="w-4 h-4 text-slate-400"></i>
+          <i data-lucide="folder-kanban" class="w-4 h-4 text-slate-600"></i>
           <span>Meus Cases STAR</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('network');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-          <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+          <i data-lucide="users" class="w-4 h-4 text-slate-600"></i>
           <span>Radar Social de Talentos</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('settings'); scrollToAdminLeads();" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-indigo-700 hover:bg-indigo-50 flex items-center gap-2">
@@ -3783,7 +3796,7 @@
           <span>Central de Cadastros & Leads</span>
         </button>
         <button onclick="closeUserMenu(); navigateToTab('settings');" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-          <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>
+          <i data-lucide="settings" class="w-4 h-4 text-slate-600"></i>
           <span>Configurações & Chave de IA</span>
         </button>
       </div>
@@ -3793,7 +3806,7 @@
           <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
           <span>Sair da Conta</span>
         </button>
-        <button onclick="closeUserMenu()" class="text-xs text-slate-400 hover:text-slate-600 cursor-pointer">
+        <button onclick="closeUserMenu()" class="text-xs text-slate-600 hover:text-slate-600 cursor-pointer">
           Fechar
         </button>
       </div>
@@ -3812,10 +3825,10 @@
           </div>
           <div>
             <h3 id="modalFooterTitle" class="text-sm sm:text-base font-extrabold text-slate-900">Central Institucional</h3>
-            <p id="modalFooterSubtitle" class="text-[11px] text-slate-500">Transparência, planos e suporte CarreiraIA</p>
+            <p id="modalFooterSubtitle" class="text-[11px] text-slate-700">Transparência, planos e suporte CarreiraIA</p>
           </div>
         </div>
-        <button onclick="closeFooterModal()" class="w-8 h-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer">
+        <button onclick="closeFooterModal()" class="w-8 h-8 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -3843,7 +3856,7 @@
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Acesso 100% Gratuito e Aberto
             </span>
             <h4 class="text-base sm:text-lg font-extrabold text-slate-900">Gratuito para Candidatos e Recrutadores</h4>
-            <p class="text-xs text-slate-500 max-w-lg mx-auto">
+            <p class="text-xs text-slate-700 max-w-lg mx-auto">
               Sem pegadinhas e sem mensalidades. Candidatos criam seus portfólios e recrutadores descobrem talentos sem pagar nada.
             </p>
           </div>
@@ -3854,7 +3867,7 @@
               <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">GRATUITO</span>
               <div class="space-y-0.5">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Profissionais & Estudantes</span>
-                <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-500 font-normal">/ para sempre</span></div>
+                <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-700 font-normal">/ para sempre</span></div>
               </div>
               <ul class="space-y-1.5 text-[11px] text-slate-600">
                 <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Gerador de Cases STAR ilimitado com IA</li>
@@ -3872,7 +3885,7 @@
               <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800">GRATUITO</span>
               <div class="space-y-0.5">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700">Empresas & Recrutadores</span>
-                <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-500 font-normal">/ acesso livre</span></div>
+                <div class="text-xl font-extrabold text-slate-900">R$ 0 <span class="text-xs text-slate-700 font-normal">/ acesso livre</span></div>
               </div>
               <ul class="space-y-1.5 text-[11px] text-slate-600">
                 <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-600 shrink-0"></i> Acesso livre e gratuito ao Radar de Talentos</li>
@@ -3890,10 +3903,10 @@
           <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="space-y-0.5">
               <span class="font-bold text-slate-800 flex items-center gap-1.5">
-                <i data-lucide="building" class="w-3.5 h-3.5 text-slate-500"></i>
+                <i data-lucide="building" class="w-3.5 h-3.5 text-slate-700"></i>
                 Universidades & ATS Corporativo (Projetos Especiais)
               </span>
-              <p class="text-[11px] text-slate-500">Integração à grade acadêmica, relatórios de estágios ou conexões via API dedicada.</p>
+              <p class="text-[11px] text-slate-700">Integração à grade acadêmica, relatórios de estágios ou conexões via API dedicada.</p>
             </div>
             <button onclick="switchFooterModalTab('contact')" class="px-3.5 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs whitespace-nowrap cursor-pointer transition-all self-start sm:self-auto">
               Falar de Parceria
@@ -3905,7 +3918,7 @@
         <div id="footerTabContent-about" class="hidden space-y-3">
           <div class="space-y-1 pb-1">
             <h4 class="text-base font-extrabold text-slate-900">Sobre o CarreiraIA</h4>
-            <p class="text-xs text-slate-500">Nossa missão é dar visibilidade a quem realmente põe a mão na massa.</p>
+            <p class="text-xs text-slate-700">Nossa missão é dar visibilidade a quem realmente põe a mão na massa.</p>
           </div>
           <p class="leading-relaxed">
             O <strong>CarreiraIA</strong> nasceu da constatação de que o currículo tradicional de papel falha com quem está no início de carreira ou em transição. Milhares de talentos lideram projetos universitários, organizam eventos, produzem pesquisas e códigos incríveis, mas não conseguem expressar isso em formatos engessados.
@@ -3919,7 +3932,7 @@
         <div id="footerTabContent-help" class="hidden space-y-3">
           <div class="space-y-1 pb-1">
             <h4 class="text-base font-extrabold text-slate-900">Perguntas Frequentes (FAQ)</h4>
-            <p class="text-xs text-slate-500">Tire suas dúvidas sobre o funcionamento da plataforma.</p>
+            <p class="text-xs text-slate-700">Tire suas dúvidas sobre o funcionamento da plataforma.</p>
           </div>
           <div class="space-y-2">
             <details class="p-3 rounded-xl bg-slate-50 border border-slate-200">
@@ -3976,7 +3989,7 @@
           <p>
             Ao utilizar o CarreiraIA, você concorda em utilizar a plataforma para fins profissionais legítimos, respeitando a propriedade intelectual de terceiros e mantendo relatos fidedignos em seus estudos de caso.
           </p>
-          <p class="text-[11px] text-slate-500">
+          <p class="text-[11px] text-slate-700">
             Última atualização: Outubro de 2026.
           </p>
         </div>
@@ -3985,7 +3998,7 @@
         <div id="footerTabContent-contact" class="hidden space-y-4">
           <div class="space-y-1 pb-1">
             <h4 class="text-base font-extrabold text-slate-900">Entre em Contato Conosco</h4>
-            <p class="text-xs text-slate-500">Dúvidas, sugestões, parcerias institucionais ou suporte ao usuário.</p>
+            <p class="text-xs text-slate-700">Dúvidas, sugestões, parcerias institucionais ou suporte ao usuário.</p>
           </div>
 
           <!-- Transparency Notice: Where feedback goes -->
@@ -4034,7 +4047,7 @@
               </button>
 
               <a href="mailto:zampinirafaela@gmail.com?subject=Contato%20CarreiraIA" class="w-full py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer text-center">
-                <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i>
+                <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-700"></i>
                 <span>Ou clique para abrir diretamente no seu leitor de e-mail</span>
               </a>
             </div>
@@ -4045,35 +4058,35 @@
         <div id="footerTabContent-apps" class="hidden space-y-3">
           <div class="space-y-1 pb-1">
             <h4 class="text-base font-extrabold text-slate-900">Recursos & Integrações</h4>
-            <p class="text-xs text-slate-500">Ecossistema conectado para potencializar seu portfólio.</p>
+            <p class="text-xs text-slate-700">Ecossistema conectado para potencializar seu portfólio.</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">IN</div>
               <div>
                 <span class="font-bold text-slate-900 block text-xs">LinkedIn Feed & Posts</span>
-                <span class="text-[10px] text-slate-500">Exportação com formatação nativa</span>
+                <span class="text-[10px] text-slate-700">Exportação com formatação nativa</span>
               </div>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs">GH</div>
               <div>
                 <span class="font-bold text-slate-900 block text-xs">GitHub & Repositórios</span>
-                <span class="text-[10px] text-slate-500">Links para README e commits</span>
+                <span class="text-[10px] text-slate-700">Links para README e commits</span>
               </div>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center font-bold text-xs">PDF</div>
               <div>
                 <span class="font-bold text-slate-900 block text-xs">Currículo em PDF</span>
-                <span class="text-[10px] text-slate-500">Impressão profissional para ATS</span>
+                <span class="text-[10px] text-slate-700">Impressão profissional para ATS</span>
               </div>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">SCI</div>
               <div>
                 <span class="font-bold text-slate-900 block text-xs">SciSpace & Papers</span>
-                <span class="text-[10px] text-slate-500">Validação com literatura científica</span>
+                <span class="text-[10px] text-slate-700">Validação com literatura científica</span>
               </div>
             </div>
           </div>
@@ -4083,24 +4096,24 @@
         <div id="footerTabContent-templates" class="hidden space-y-3">
           <div class="space-y-1 pb-1">
             <h4 class="text-base font-extrabold text-slate-900">Templates Prontos por Área</h4>
-            <p class="text-xs text-slate-500">Escolha uma categoria para carregar o modelo correspondente:</p>
+            <p class="text-xs text-slate-700">Escolha uma categoria para carregar o modelo correspondente:</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('PRESS');" class="p-3 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/30 text-left transition-all cursor-pointer">
               <span class="font-bold text-slate-900 block text-xs">📰 Assessoria & Relações Públicas</span>
-              <span class="text-[10px] text-slate-500">Clipping, imprensa e releases</span>
+              <span class="text-[10px] text-slate-700">Clipping, imprensa e releases</span>
             </button>
             <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('RESEARCH');" class="p-3 rounded-xl border border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/30 text-left transition-all cursor-pointer">
               <span class="font-bold text-slate-900 block text-xs">🔬 Pesquisa & Iniciação Científica</span>
-              <span class="text-[10px] text-slate-500">Artigos, laboratórios e congressos</span>
+              <span class="text-[10px] text-slate-700">Artigos, laboratórios e congressos</span>
             </button>
             <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('INTERNSHIP');" class="p-3 rounded-xl border border-slate-200 hover:border-purple-400 hover:bg-purple-50/30 text-left transition-all cursor-pointer">
               <span class="font-bold text-slate-900 block text-xs">💼 Estágio & Projetos Práticos</span>
-              <span class="text-[10px] text-slate-500">Entregas e otimização de rotinas</span>
+              <span class="text-[10px] text-slate-700">Entregas e otimização de rotinas</span>
             </button>
             <button onclick="closeFooterModal(); navigateToTab('cases'); loadTemplateSample('VOLUNTEER');" class="p-3 rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/30 text-left transition-all cursor-pointer">
               <span class="font-bold text-slate-900 block text-xs">🤝 Liderança & Voluntariado</span>
-              <span class="text-[10px] text-slate-500">Eventos, centros acadêmicos e ONGs</span>
+              <span class="text-[10px] text-slate-700">Eventos, centros acadêmicos e ONGs</span>
             </button>
           </div>
         </div>
@@ -4109,7 +4122,7 @@
 
       <!-- Modal Footer Action -->
       <div class="p-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
-        <span class="text-[11px] text-slate-500">CarreiraIA Platform</span>
+        <span class="text-[11px] text-slate-700">CarreiraIA Platform</span>
         <button onclick="closeFooterModal()" class="px-4 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all cursor-pointer">
           Concluir
         </button>
@@ -4250,17 +4263,17 @@
             dBtn.className = "h-8 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap";
           }
           const icon = dBtn.querySelector('i');
-          if (icon) icon.className = "w-3.5 h-3.5 text-slate-400 shrink-0";
+          if (icon) icon.className = "w-3.5 h-3.5 text-slate-600 shrink-0";
         }
 
         // Mobile styles reset
         const mBtn = document.getElementById(`mobile-tab-${t}`);
         if (mBtn) {
-          mBtn.className = "flex flex-col items-center gap-0.5 text-slate-400 font-medium px-1.5 py-1 relative";
+          mBtn.className = "flex flex-col items-center gap-0.5 text-slate-600 font-medium px-1.5 py-1 relative";
           const iconBox = mBtn.querySelector('div');
           if (iconBox) iconBox.className = "w-8 h-6 rounded-full flex items-center justify-center";
           const icon = mBtn.querySelector('i');
-          if (icon) icon.className = "w-3.5 h-3.5 text-slate-400";
+          if (icon) icon.className = "w-3.5 h-3.5 text-slate-600";
         }
       });
 
@@ -4616,9 +4629,9 @@ WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, a
       if (filtered.length === 0) {
         container.innerHTML = `
           <div class="p-8 rounded-2xl border border-dashed border-slate-200 text-center space-y-2 bg-slate-50/50">
-            <i data-lucide="inbox" class="w-8 h-8 text-slate-300 mx-auto"></i>
+            <i data-lucide="inbox" class="w-8 h-8 text-slate-500 mx-auto"></i>
             <h4 class="text-xs font-bold text-slate-700">Nenhuma mensagem encontrada</h4>
-            <p class="text-[11px] text-slate-500 max-w-sm mx-auto">
+            <p class="text-[11px] text-slate-700 max-w-sm mx-auto">
               ${search ? 'Nenhum resultado corresponde à sua pesquisa.' : 'Quando os usuários preencherem o formulário de contato do rodapé, as mensagens aparecerão aqui automaticamente.'}
             </p>
           </div>
@@ -4643,13 +4656,13 @@ WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, a
                 <div>
                   <div class="flex items-center gap-2">
                     <span class="font-extrabold text-xs text-slate-900">${f.name}</span>
-                    <span class="text-[10px] font-mono text-slate-500">&lt;${f.email}&gt;</span>
+                    <span class="text-[10px] font-mono text-slate-700">&lt;${f.email}&gt;</span>
                   </div>
                   <div class="flex items-center gap-1.5 mt-0.5">
                     <span class="px-2 py-0.2 rounded-md text-[9px] font-bold bg-blue-50 text-blue-700 border border-blue-100">
                       ${f.subject}
                     </span>
-                    <span class="text-[10px] text-slate-400">• ${f.date}</span>
+                    <span class="text-[10px] text-slate-600">• ${f.date}</span>
                   </div>
                 </div>
               </div>
@@ -4663,7 +4676,7 @@ WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, a
                 <button onclick="toggleFeedbackRead('${f.id}')" title="${isUnread ? 'Marcar como Lido' : 'Marcar como Não Lido'}" class="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition-all cursor-pointer">
                   <i data-lucide="${isUnread ? 'check' : 'rotate-ccw'}" class="w-3.5 h-3.5"></i>
                 </button>
-                <button onclick="deleteFeedback('${f.id}')" title="Excluir mensagem" class="p-1.5 rounded-lg border border-slate-200 hover:bg-rose-50 hover:text-rose-600 text-slate-400 transition-all cursor-pointer">
+                <button onclick="deleteFeedback('${f.id}')" title="Excluir mensagem" class="p-1.5 rounded-lg border border-slate-200 hover:bg-rose-50 hover:text-rose-600 text-slate-600 transition-all cursor-pointer">
                   <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
@@ -4676,10 +4689,10 @@ WIGGINS, G. The case for authentic assessment. Practical Assessment, Research, a
 
             <!-- Reply Actions -->
             <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
-              <span class="text-[10px] text-slate-400">Resposta direta via e-mail do remetente</span>
+              <span class="text-[10px] text-slate-600">Resposta direta via e-mail do remetente</span>
               <div class="flex items-center gap-2">
                 <button onclick="copyToClipboardText(this, '${(f.message || '').replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer">
-                  <i data-lucide="copy" class="w-3 h-3 text-slate-400"></i>
+                  <i data-lucide="copy" class="w-3 h-3 text-slate-600"></i>
                   <span>Copiar Mensagem</span>
                 </button>
                 <a href="mailto:${f.email}?subject=Re:%20${encodeURIComponent(f.subject)}%20-%20CarreiraIA&body=${encodeURIComponent('Olá ' + f.name + ',\n\nObrigado pelo seu contato através da plataforma CarreiraIA!\n\nEm resposta à sua mensagem:\n\"' + f.message + '\"\n\n')}" class="px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold transition-all flex items-center gap-1.5 shadow-2xs">
@@ -6317,7 +6330,7 @@ Pequenas melhorias somadas todos os dias transformam qualquer rotina de trabalho
                   <i data-lucide="${cat.icon}" class="w-3 h-3 text-blue-600"></i>
                   ${c.categoryLabel || 'Vivência'}
                 </span>
-                <span class="text-slate-400 text-[11px]">${dateStr}</span>
+                <span class="text-slate-600 text-[11px]">${dateStr}</span>
               </div>
 
               <!-- Title -->
@@ -6356,7 +6369,7 @@ Pequenas melhorias somadas todos os dias transformam qualquer rotina de trabalho
                 <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
               </button>
 
-              <button onclick="deleteCaseFromFolder('${c.id}')" title="Excluir" class="p-2 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all">
+              <button onclick="deleteCaseFromFolder('${c.id}')" title="Excluir" class="p-2 rounded-lg text-slate-600 hover:text-rose-600 hover:bg-rose-50 transition-all">
                 <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -7231,7 +7244,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       });
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-xs text-slate-400">Nenhum cadastro encontrado com os filtros atuais.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-xs text-slate-600">Nenhum cadastro encontrado com os filtros atuais.</td></tr>`;
         return;
       }
 
@@ -7248,12 +7261,12 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
           <tr class="hover:bg-slate-50/80 transition-colors">
             <td class="py-3 px-4">
               <div class="font-bold text-slate-900">${u.name}</div>
-              <div class="text-[11px] text-slate-500">${u.email}</div>
+              <div class="text-[11px] text-slate-700">${u.email}</div>
             </td>
             <td class="py-3 px-4">${roleBadge}</td>
             <td class="py-3 px-4">
               <div class="font-medium text-slate-800 text-[11px]">${u.area || '-'}</div>
-              <div class="text-[10px] text-slate-500">${u.cargo || '-'}</div>
+              <div class="text-[10px] text-slate-700">${u.cargo || '-'}</div>
             </td>
             <td class="py-3 px-4 text-[11px] text-slate-600 whitespace-nowrap">${createdFormatted}</td>
             <td class="py-3 px-4 text-[11px] text-slate-600 whitespace-nowrap">${lastLoginFormatted} (${u.loginCount || 1}x)</td>
@@ -7333,8 +7346,8 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       const submitText = document.getElementById('authSubmitBtnText');
 
       if (role === 'candidate') {
-        if (candidateBtn) candidateBtn.className = "p-3 rounded-2xl border-2 transition-all text-left flex flex-col justify-between bg-blue-50/70 border-blue-600 text-slate-900 shadow-2xs cursor-pointer";
-        if (recruiterBtn) recruiterBtn.className = "p-3 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/50 text-slate-700 transition-all text-left flex flex-col justify-between cursor-pointer";
+        if (candidateBtn) candidateBtn.className = "p-2.5 rounded-xl border-2 transition-all text-left flex items-center gap-2.5 bg-blue-50/70 border-blue-600 text-slate-900 shadow-2xs cursor-pointer";
+        if (recruiterBtn) recruiterBtn.className = "p-2.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/60 text-slate-800 transition-all text-left flex items-center gap-2.5 cursor-pointer";
         if (checkCandidate) checkCandidate.classList.remove('hidden');
         if (checkRecruiter) checkRecruiter.classList.add('hidden');
         if (candidateFields) candidateFields.classList.remove('hidden');
@@ -7345,8 +7358,8 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
           submitText.innerText = currentAuthMode === 'register' ? "Criar Conta como Profissional e Acessar" : "Entrar como Profissional";
         }
       } else {
-        if (recruiterBtn) recruiterBtn.className = "p-3 rounded-2xl border-2 transition-all text-left flex flex-col justify-between bg-emerald-50/70 border-emerald-600 text-slate-900 shadow-2xs cursor-pointer";
-        if (candidateBtn) candidateBtn.className = "p-3 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/50 text-slate-700 transition-all text-left flex flex-col justify-between cursor-pointer";
+        if (recruiterBtn) recruiterBtn.className = "p-2.5 rounded-xl border-2 transition-all text-left flex items-center gap-2.5 bg-emerald-50/70 border-emerald-600 text-slate-900 shadow-2xs cursor-pointer";
+        if (candidateBtn) candidateBtn.className = "p-2.5 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-slate-50/60 text-slate-800 transition-all text-left flex items-center gap-2.5 cursor-pointer";
         if (checkCandidate) checkCandidate.classList.add('hidden');
         if (checkRecruiter) checkRecruiter.classList.remove('hidden');
         if (candidateFields) candidateFields.classList.add('hidden');
@@ -8081,7 +8094,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
         const customSkills = (p.skills || []).filter(s => !standardSkills.has(s));
 
         if (customSkills.length === 0) {
-          customContainer.innerHTML = `<span class="text-[11px] text-slate-400 italic">Nenhuma competência personalizada adicionada ainda. Digite abaixo para incluir.</span>`;
+          customContainer.innerHTML = `<span class="text-[11px] text-slate-600 italic">Nenhuma competência personalizada adicionada ainda. Digite abaixo para incluir.</span>`;
         } else {
           customContainer.innerHTML = customSkills.map(s => `
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 shadow-sm">
@@ -8282,7 +8295,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       if (originBadge) originBadge.innerHTML = `<i data-lucide="award" class="w-3 h-3"></i> ${p.origin || 'Projeto Prático'}`;
 
       const locEl = document.getElementById('profileDisplayLocation');
-      if (locEl) locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i> ${p.location}`;
+      if (locEl) locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-600"></i> ${p.location}`;
 
       const bioEl = document.getElementById('profileDisplayBio');
       if (bioEl) bioEl.innerText = p.bio;
@@ -8351,7 +8364,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
                     ${c.title || 'Estudo de Caso Corporativo'}
                   </h4>
                   <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 text-xs text-slate-600 space-y-1">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Resultado Mensurável:</span>
+                    <span class="text-[10px] font-bold text-slate-600 uppercase tracking-wider block">Resultado Mensurável:</span>
                     <p class="font-medium text-slate-800">${cleanResult || 'Impacto mensurado com metodologia STAR corporativa.'}</p>
                   </div>
                 </div>
@@ -8615,11 +8628,11 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
       if (list.length === 0) {
         container.innerHTML = `
           <div class="col-span-full bg-white rounded-3xl border border-dashed border-slate-300 p-10 text-center space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center mx-auto">
+            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center mx-auto">
               <i data-lucide="search-x" class="w-6 h-6"></i>
             </div>
             <h4 class="font-bold text-slate-900 text-sm">Nenhum profissional encontrado com os filtros selecionados</h4>
-            <p class="text-xs text-slate-500">Tente remover ou alterar alguns filtros para ver outros talentos.</p>
+            <p class="text-xs text-slate-700">Tente remover ou alterar alguns filtros para ver outros talentos.</p>
             <button onclick="clearNetworkFilters()" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold">
               Redefinir Filtros
             </button>
@@ -8642,7 +8655,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
                     ${t.name}
                     <i data-lucide="badge-check" class="w-4 h-4 text-blue-600"></i>
                   </h3>
-                  <p class="text-[11px] text-slate-400">${t.location}</p>
+                  <p class="text-[11px] text-slate-600">${t.location}</p>
                 </div>
               </div>
               <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
@@ -8693,7 +8706,7 @@ INSTRUÇÕES DE OTIMIZAÇÃO:
           </div>
 
           <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-[11px] text-slate-500 font-semibold flex items-center gap-1">
+            <span class="text-[11px] text-slate-700 font-semibold flex items-center gap-1">
               <i data-lucide="folder-check" class="w-3.5 h-3.5 text-blue-600"></i>
               ${t.verifiedCases} cases verificados
             </span>
